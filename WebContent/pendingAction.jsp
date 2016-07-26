@@ -20,6 +20,7 @@
 <title>Pending Actions</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 	<div class="container">
 		<c:set var="mesL" scope="session" value="${message}" />
 		<c:if test="${mesL != null}">
