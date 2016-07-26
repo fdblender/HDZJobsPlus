@@ -1,19 +1,15 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import dao.RoleActionDao;
+import model.HdzEmployee;
 
 /**
  * Servlet implementation class ActionSubmit
@@ -47,52 +43,46 @@ public class ActionSubmit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HDZEmployee employee = (HDZEmployee)session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee) session.getAttribute("employee");
 		String urlToRedirect = null;
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
-			List<HDZApplication> hdzapplication = null;
-			if (role.equals("ComplianceOfficer")) {				
-				urlToRedirect = "/";
-				
+			session.setAttribute("applicationid", request.getAttribute("applicationid"));
+			if (role.equals("ComplianceOfficer")) {
+				urlToRedirect = "/Nationalityform";
+
 			} else if (role.equals("HRAssistant")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRAssistant();
-				
+				urlToRedirect = "/Workhistoryreferenveform";
+
 			} else if (role.equals("HRManager")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRManager();
-				
+				urlToRedirect = "/InterviewForm";
+
 			} else if (role.equals("HRSpecialist")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRSpecialist();
-				
+				urlToRedirect = "/EducationForm";
+
 			} else if (role.equals("HealthCareProfessional")) {
-				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsHealthCareProfessional();
-				
+				urlToRedirect = "/DrugScreenForm";
+
 			} else if (role.equals("HiringManager")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHiringManager();
-				
+				urlToRedirect = "/InterviewForm";
+
 			} else if (role.equals("Employee")) {
-				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsEmployee();
-				
+				urlToRedirect = "/InterviewForm";
 			}
-			
-		JSONObject jobj = new JSONObject();
-		
-		try {
-			jobj.put("url", urlToRedirect);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+			JSONObject jobj = new JSONObject();
+
+			try {
+				jobj.put("url", urlToRedirect);
+			} catch (JSONException e) {
+				request.setAttribute("message", "Something went wrong!!");
+				request.getRequestDispatcher("error.jsp").forward(request, response);
+			}
+			response.getWriter().write(jobj.toString());
 		}
-		response.getWriter().write(jobj.toString());
 	}
 
 }
