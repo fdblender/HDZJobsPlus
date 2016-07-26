@@ -36,22 +36,32 @@
 
 </head>
 <body>
-<div>
-	<form onsubmit="return validateLogin()" action="Login"
+<div class="container">
+	<div class="row">
+	<div class="col-sm-3"></div>	
+	<div class="col-sm-6">	
+	<form class="form-signin" onsubmit="return validateLogin()" action="Login"
 		method="get">
-		<h4>Enter your email and password</h4>
-		<input type="text" name="email" id="email" value=""></input>
-		<input type="password" name="password" id="password" value=""></input>
-		<input type="hidden" name="action" id="action" value="login"></input> 
+		<h3 class="form-signin-heading">Please sign in</h3>		
+		<label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="email" name="email" class="form-control" value="Email address" required autofocus>
+         <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="password" name="password" class="form-control" value="Password" required>        
+		
 		<h4>Select from below</h4>
 		<select id="loginrole" name="loginrole">
 			<option value="applicant">Applicant</option>
-			<option value="employee">Employee</option>
-		</select>		
-		<input type="submit" name="submit" id="submit" value="Login"></input>
+			<option value="employee">Employee</option>			
+		</select>
+		<br/>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>		
+		
 	</form>
 	<br/>	
 	<h4><a href="./newapplicant.jsp">Create New Applicant Account</a></h4>
+	</div>
+	<div class="col-sm-3"></div>	
+
 </div>
 </body>
 </html>
