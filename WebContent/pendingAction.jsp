@@ -38,13 +38,34 @@
 
 					</div>
 					<div class="panel-body">
-						<textarea maxlength="141" id="post" name="post"
-							placeholder="Say something"></textarea>
+					
+						<table>
+						<thead>
+						<tr>
+						<th>Job ID</th>
+						<th>Job Desc</th>
+						<th>Applicatnt Name</th>
+						<th>Applicatnt Status</th>
+						<th></th>
+						</tr>
+						</thead>
+						<c:forEach var="action" items="${actionList}">
+						<tbody>
+							<tr>
+							<td><c:out value="${action.job.jobid}"></c:out> </td>
+							<td><c:out value="${action.job.jobdesc}"></c:out> </td>
+							<td><c:out value="${action.applicant.name}"></c:out> </td>
+							<td><c:out value="${action.applicant.status}"></c:out> </td>
+							<td><input class="actionSubmit" type="button" id="${action.id}"></td>
+							</tr>
+						</tbody>
+						</c:forEach>
+						</table>
 					</div>
 					<div class="panel-footer">
 						<div id="text"></div>
 						<div align="right">
-							<input type="submit" id="submit" name="submit" value="Post"></input>
+							
 						</div>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 package dao;
 
 import controllers.HDZApplication;
-import controllers.List;
+import java.util.List;
 
 public class RoleActionDao {
 

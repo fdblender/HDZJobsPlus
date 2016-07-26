@@ -10,44 +10,53 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import dao.RoleActionDao;
 
 /**
- * Servlet implementation class PendingAction
+ * Servlet implementation class ActionSubmit
  */
-@WebServlet("/PendingAction")
-public class PendingAction extends HttpServlet {
+@WebServlet("/ActionSubmit")
+public class ActionSubmit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PendingAction() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+	public ActionSubmit() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		HDZEmployee employee = (HDZEmployee)session.getAttribute("employee");
+		String urlToRedirect = null;
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
 			List<HDZApplication> hdzapplication = null;
-			if (role.equals("ComplianceOfficer")) {
-				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsComplianceOfficer();
+			if (role.equals("ComplianceOfficer")) {				
+				urlToRedirect = "/";
 				
 			} else if (role.equals("HRAssistant")) {
 				session.setAttribute("HR", "Yes");
@@ -74,9 +83,16 @@ public class PendingAction extends HttpServlet {
 				hdzapplication = RoleActionDao.getActionsEmployee();
 				
 			}
-			session.setAttribute("actionList", hdzapplication);
-			request.getRequestDispatcher("pendingAction.jsp").forward(request, response);
+			
+		JSONObject jobj = new JSONObject();
+		
+		try {
+			jobj.put("url", urlToRedirect);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		response.getWriter().write(jobj.toString());
 	}
 
 }
