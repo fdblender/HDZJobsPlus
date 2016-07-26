@@ -57,7 +57,7 @@ function limitText(limitField, limitCount, limitNum) {
  
         
          <c:set var="myveteranid" value="${VeteranApplication.applicationid}"/>
-        <a href="ViewApplication?applicationid=<c:out value="${myveteranid}"/>" >${VeteranApplication.applicationid}</a>
+        <a href="ApplicationDetail?applicationid=<c:out value="${myveteranid}"/>" >${VeteranApplication.applicationid}</a>
         
     <td align="center"> 
 	
@@ -109,7 +109,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">      
         <c:set var="myworkid" value="${WorkApplicationid}"/>
-        <a href="ViewApplication?applicationid=<c:out value="${myworkid}"/>" >${WorkApplicationid}</a>
+        <a href="ApplicationDetail?applicationid=<c:out value="${myworkid}"/>" >${WorkApplicationid}</a>
         
     <td align="center"> 
 	
