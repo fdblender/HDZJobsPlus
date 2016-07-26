@@ -51,6 +51,7 @@ public class RoleActionDao {
 
 	public static List<HdzApplication> getActionsHRManager() {
 		// get all applicants where status is workReferenceChecked
+		System.out.println("in getActionsHRManager");
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
         String qString = "select b from HdzApplication b where b.appstatus = :status";

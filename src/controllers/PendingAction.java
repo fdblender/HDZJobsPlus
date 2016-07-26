@@ -50,6 +50,7 @@ public class PendingAction extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
+			System.out.println(role);
 			List<HdzApplication> hdzapplication = null;
 			if (role.equals("ComplianceOfficer")) {
 				session.setAttribute("HR", "No");
@@ -61,10 +62,12 @@ public class PendingAction extends HttpServlet {
 				
 			} else if (role.equals("HRManager")) {
 				session.setAttribute("HR", "Yes");
+				System.out.println("HR mana");
 				hdzapplication = RoleActionService.getActionsHRManager();
 				
 			} else if (role.equals("HRSpecialist")) {
 				session.setAttribute("HR", "Yes");
+				
 				hdzapplication = RoleActionService.getActionsHRSpecialist();
 				
 			} else if (role.equals("HealthCareProfessional")) {
@@ -75,7 +78,7 @@ public class PendingAction extends HttpServlet {
 				session.setAttribute("HR", "Yes");
 				hdzapplication = RoleActionService.getActionsHiringManager();
 				
-			} else if (role.equals("Employee")) {
+			} else {
 				session.setAttribute("HR", "No");
 				hdzapplication = RoleActionService.getActionsEmployee();
 				

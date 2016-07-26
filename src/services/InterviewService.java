@@ -5,8 +5,8 @@ import model.HdzApplication;
 
 public class InterviewService {
 
-	public static Object getCodingTest(String appid) {
-		return InterviewDao.getCosingTest(appid);
+	public static Object getCodingTest(long id) {
+		return InterviewDao.getCosingTest(id);
 	}
 
 	public static HdzApplication getHdzApplication(String appid) {

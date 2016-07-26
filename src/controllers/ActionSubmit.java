@@ -64,6 +64,7 @@ public class ActionSubmit extends HttpServlet {
 				urlToRedirect = "/Workhistoryreferenceform";
 
 			} else if (role.equals("HRManager")) {
+				System.out.println("int");
 				urlToRedirect = "/InterviewForm";
 
 			} else if (role.equals("HRSpecialist")) {

@@ -32,7 +32,7 @@ public class InterviewReportSubmission extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		doPost(request, response);
 	}
 
 	/**
@@ -40,20 +40,19 @@ public class InterviewReportSubmission extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee)session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String groupInterviewCoding = request.getParameter("groupInterviewCoding");
-			String groupInterview = request.getParameter("groupInterviewCoding");
-			String hmInterviewCoding = request.getParameter("groupInterviewCoding");
-			String hmInterview = request.getParameter("groupInterviewCoding");
+			String groupInterview = request.getParameter("groupInterview");
+			String hmInterviewCoding = request.getParameter("hmInterviewCoding");
+			String hmInterview = request.getParameter("hmInterview");
 			String hrInterview = request.getParameter("hrInterview");
-			System.out.println(hrInterview);
 			if (hrInterview != null) {
-				if (hmInterview.equals("Pass")) {
+				if (hrInterview.equals("Pass")) {
 					hdzApplication.setAppstatus("HRInterviewDone");					
 					InterviewService.updateApplication(hdzApplication);
 				} else {
@@ -78,18 +77,24 @@ public class InterviewReportSubmission extends HttpServlet {
 				
 			}
 			if (groupInterviewCoding != null) {
-				hdzApplication.setCodingtest(hmInterviewCoding);
+				hdzApplication.setCodingtest(groupInterviewCoding);
 				InterviewService.updateApplication(hdzApplication);
 			} 
 			
 			if (groupInterview != null) {
-				if (hmInterview.equals("Pass")) {
-					hdzApplication.setAppstatus("GroupInterviewDone");					
-					InterviewService.updateApplication(hdzApplication);
-					if (PendingActionsDao.checkAppStatus(hdzApplication)) {
-						hdzApplication.setAppstatus("Hired");					
+				if (groupInterview.equals("Pass")) {
+					if (hdzApplication.getCodingtest().equals("N")) {
+						request.setAttribute("message", "Coding Test has to be completed");
+						request.getRequestDispatcher("/InterviewForm").forward(request, response);
+					} else {
+						hdzApplication.setAppstatus("GroupInterviewDone");					
 						InterviewService.updateApplication(hdzApplication);
+						if (PendingActionsDao.checkAppStatus(hdzApplication)) {
+							hdzApplication.setAppstatus("Hired");					
+							InterviewService.updateApplication(hdzApplication);
+						}
 					}
+					
 				} else {
 					hdzApplication.setAppstatus("Fail");					
 					InterviewService.updateApplication(hdzApplication);
@@ -97,7 +102,7 @@ public class InterviewReportSubmission extends HttpServlet {
 				
 			}
 			
-			request.getRequestDispatcher("interview.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 		}
 	}
 
