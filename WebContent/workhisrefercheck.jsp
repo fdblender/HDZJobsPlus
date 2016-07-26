@@ -172,7 +172,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">      
         <c:set var="myreferid" value="${WorkApplicationid}"/>
-        <a href="ViewApplication?applicationid=<c:out value="${myreferid}"/>" >${WorkApplicationid}</a>
+        <a href="ApplicationDetail?applicationid=<c:out value="${myreferid}"/>" >${WorkApplicationid}</a>
         
     <td align="center"> 
 	

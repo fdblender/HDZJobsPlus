@@ -55,7 +55,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">      
         <c:set var="myeduid" value="${EduApplicationid}"/>
-        <a href="ViewApplication?applicationid=<c:out value="${myeduid}"/>" >${EduApplicationid}</a>
+        <a href="ApplicationDetail?applicationid=<c:out value="${myeduid}"/>" >${EduApplicationid}</a>
         
     <td align="center"> 
 	
