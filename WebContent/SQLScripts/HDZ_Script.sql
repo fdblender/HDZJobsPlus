@@ -48,8 +48,8 @@ alcoholtest varchar2(100) not null
 );
 
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', 'password', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
+values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 
 
@@ -133,29 +133,29 @@ salt varchar2(200),
 position varchar2(100) not null
 );
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','password','HR Manager');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd, salt, position)
+values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'HR Manager');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','password','Compliance Officer');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Compliance Officer');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','password','HR Assistant');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','HR Assistant');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','password','HR Specialist');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','HR Specialist');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','password','Health Care Professional');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Health Care Professional');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','password','Hiring Manager');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Hiring Manager');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','password','Software Engineer');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Software Engineer');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,position)
-values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','password','Technology analyst');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
+values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Technology analyst');
 
 commit;
 

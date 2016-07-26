@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import customTools.DBUser;
+import dao.ValidateUserDao;
 import model.HdzApplicant;
 import model.HdzEmployee;
-import model.Huser;
 
 /**
  * Servlet implementation class Login
@@ -35,33 +34,42 @@ public class Login extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		HdzApplicant applicant = null;
-		HdzEmployee employee = null;		
+		HdzEmployee employee = null;
+		String nextURL = "/error.jsp";
 		
-		String useremail = request.getParameter("email");
-		String userpassword = request.getParameter("password");
-		String role = request.getParameter("role");
-		//String nextURL = "/loginerror.jsp";
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String loginrole = request.getParameter("loginrole");		
 
-		if (action.equals("createaccount")) {
-			// create an account for a new user
-			System.out.println("Login: creating an account for a new user");
-			String firstname = request.getParameter("firstname");
-			String lastname = request.getParameter("lastname");
-			user = DBUser.addNewUser(firstname, lastname, useremail, userpassword);
+		if (loginrole.equals("applicant")) {
+		// validate an employee user
+			System.out.println("Login: validating an applicant");
+			applicant = ValidateUserDao.getValidApplicant(email, password);
+			if (applicant != null) {
+				System.out.println("found valid user" + email + " " + password);
+				session.setAttribute("user", applicant);				
+				nextURL = "/yourapplications.jsp";
+			} else {
+				System.out.println("user not found: " + email + " " + password);
+				nextURL = "/newapplicant.jsp";
+			}
+			
+			
 		} else {
-			// validate the user for login
-			System.out.println("Login: validating a user");
-			user = DBUser.getValidUser(useremail, userpassword);
+			// validate an employee user	
+			System.out.println("Login: validating an employee");
+			employee = ValidateUserDao.getValidEmployee(email, password);		
+			if (employee != null) {
+				System.out.println("found valid user" + email + " " + password);
+				session.setAttribute("user", employee);
+				session.setAttribute("role",  employee.getPosition());				
+				nextURL = "/pendingAction.jsp";
+			} else {
+				System.out.println("user not found: " + email + " " + password);
+				nextURL = "/login.jsp";
+			}
 		}
-		if (user != null) {
-			System.out.println("found valid user" + useremail + " " + userpassword);
-			session.setAttribute("user", user);
-			session.setAttribute("firstname", String.valueOf(user.getFirstname()));
-			session.setAttribute("lastname", String.valueOf(user.getLastname()));
-			nextURL = "/Portal";
-		}
-		request.getRequestDispatcher(nextURL).forward(request,response);
-		
+		request.getRequestDispatcher(nextURL).forward(request,response);		
 	}
 
 	/**
