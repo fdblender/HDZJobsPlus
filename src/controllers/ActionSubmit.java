@@ -32,8 +32,7 @@ public class ActionSubmit extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -43,6 +42,7 @@ public class ActionSubmit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		System.out.println("in ");
 		HdzEmployee employee = (HdzEmployee) session.getAttribute("employee");
 		String urlToRedirect = null;
 		if (employee == null) {
@@ -50,11 +50,13 @@ public class ActionSubmit extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
+			System.out.println(role);
 			session.setAttribute("applicationid", request.getAttribute("applicationid"));
 			if (role.equals("ComplianceOfficer")) {
 				urlToRedirect = "/Nationalityform";
 
 			} else if (role.equals("HRAssistant")) {
+				System.out.println("in Workhistoryreferenveform");
 				urlToRedirect = "/Workhistoryreferenveform";
 
 			} else if (role.equals("HRManager")) {
@@ -73,7 +75,7 @@ public class ActionSubmit extends HttpServlet {
 				urlToRedirect = "/InterviewForm";
 			}
 
-			JSONObject jobj = new JSONObject();
+			/*JSONObject jobj = new JSONObject();
 
 			try {
 				jobj.put("url", urlToRedirect);
@@ -81,7 +83,8 @@ public class ActionSubmit extends HttpServlet {
 				request.setAttribute("message", "Something went wrong!!");
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
-			response.getWriter().write(jobj.toString());
+			response.getWriter().write(jobj.toString());*/
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 

@@ -43,6 +43,7 @@ public class PendingAction extends HttpServlet {
 		String id = (String) request.getParameter("empid");
 		System.out.println(id);
 		employee = RoleActionService.getEmployee(id);
+		session.setAttribute("employee", employee);
 		session.setAttribute("role", employee.getPosition().replace(" ", ""));
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
