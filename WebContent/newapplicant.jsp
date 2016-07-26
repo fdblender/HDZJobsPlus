@@ -48,8 +48,10 @@ function validateForm() {
 </script>
 </head>
 <body>
-<form action="NewApplicant" onsubmit="return validateForm()" name="applicant">
-Name<input type="text" name="name" id="name"/><br/>
+<form action="NewApplicant" onsubmit="return validateForm()" name="applicant" method="post">
+Name<input type="text" name="firstname" id="firstname" placeholder="firstname"/>
+	<input type ="text" name="aastneme" id="lastname" placeholder="lastname"/>
+<br/>
 Email Address<input type="text" name="email" id="email"/>
 Password<input type="password" name="password" id="password"/><br/>
 Date of Birth<input type="text" name="dob" id="dob"/>
