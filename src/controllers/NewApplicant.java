@@ -68,18 +68,21 @@ public class NewApplicant extends HttpServlet {
 			String schoolname = request.getParameter("edu" + i);
 			String degree = request.getParameter("degree" + i);
 			String datecomp = request.getParameter("date" + i);
-			if (!schoolname.equals(null) && !degree.equals(null) && !datecomp.equals(null)) {
+			
+			if (!schoolname.equals("") && !degree.equals("") && !datecomp.equals("")) {
 				edu.setDegreecompleted(degree);
 				edu.setDatecompleted(datecomp);
 				edu.setSchoolname(schoolname);
 				edhist.add(edu);
 			}
+			
 			String jobTitle = request.getParameter("job" + i);
 			String company = request.getParameter("company" + i);
 			String jobdesc = request.getParameter("jobdesc" + i);
 			String startdate=request.getParameter("start"+i);
 			String enddate=request.getParameter("leave"+i);
-			if (!jobTitle.equals(null) && !company.equals(null) && !jobdesc.equals(null)) {
+			
+			if (!jobTitle.equals("") && !company.equals("") && !jobdesc.equals("")) {
 				job.setCompanyname(company);
 				job.setDescription(jobdesc);
 				job.setStartdate(startdate);
@@ -87,11 +90,13 @@ public class NewApplicant extends HttpServlet {
 				job.setEnddate(enddate);
 				jobhist.add(job);
 			}
+			
 			String refname=request.getParameter("refname"+i);
 			String refnumber=request.getParameter("refphone"+i);
 			String refemail=request.getParameter("refemail"+i);
 			String refposition=request.getParameter("refpos"+i);
-			if(!refname.equals(null)&&!refnumber.equals(null)&&!refemail.equals(null)&&!refposition.equals(null)){
+			
+			if(!refname.equals("")&&!refnumber.equals("")&&!refemail.equals("")&&!refposition.equals("")){
 				reference.setRefemail(refemail);
 				reference.setRefname(refname);
 				reference.setRefphone(refnumber);
