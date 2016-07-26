@@ -44,7 +44,9 @@ public class HdzApplicant implements Serializable {
 
 	private String lastname;
 
-	private String pwd;
+	private String hashedpwd;
+	
+	private String salt;
 
 	private String stdpanel;
 
@@ -181,12 +183,20 @@ public class HdzApplicant implements Serializable {
 		this.lastname = lastname;
 	}
 
-	public String getPwd() {
-		return this.pwd;
+	public String getHashedpwd() {
+		return hashedpwd;
 	}
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setHashedpwd(String hashedpwd) {
+		this.hashedpwd = hashedpwd;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	public String getStdpanel() {
