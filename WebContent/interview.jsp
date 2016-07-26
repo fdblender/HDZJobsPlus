@@ -27,6 +27,12 @@
 <a href="InterviewReportSubmission?hmInterview='Fail'">Hiring Manager Interview Failed</a>
 </c:if>
 
+<c:if test="${type == 'HR Interview'}">
+		
+<a href="InterviewReportSubmission?hrInterview='Pass'">Hiring Manager Interview Passed</a>
+<a href="InterviewReportSubmission?hrInterview='Fail'">Hiring Manager Interview Failed</a>
+</c:if>
+
 
 </body>
 </html>

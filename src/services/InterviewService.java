@@ -13,8 +13,8 @@ public class InterviewService {
 		return InterviewDao.getHdzApplication(appid);
 	}
 
-	public static void updateCodingTest(HdzApplication hdzApplication) {
-		InterviewDao.updateCodingTest(hdzApplication);
+	public static void updateApplication(HdzApplication hdzApplication) {
+		InterviewDao.updateApplication(hdzApplication);
 		
 	}
 

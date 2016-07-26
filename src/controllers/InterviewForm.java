@@ -39,7 +39,7 @@ public class InterviewForm extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee)session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		String appid = (String) session.getAttribute("appid");
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
@@ -51,6 +51,8 @@ public class InterviewForm extends HttpServlet {
 				request.setAttribute("coding", InterviewService.getCodingTest(appid));
 			} else if (role.equals("Hiring Manager")) {
 				request.setAttribute("interviewType", "HM Interview");				
+			} else if (role.equals("HR Manager")) {
+				request.setAttribute("interviewType", "HR Interview");				
 			}
 			request.getRequestDispatcher("interview.jsp").forward(request, response);
 		}

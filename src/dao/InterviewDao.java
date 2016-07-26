@@ -45,7 +45,7 @@ public class InterviewDao {
         return hdzApplication;  
 	}
 
-	public static void updateCodingTest(HdzApplication hdzApplication) {
+	public static void updateApplication(HdzApplication hdzApplication) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         EntityTransaction trans = em.getTransaction();
         try {

@@ -39,12 +39,12 @@ public class PendingAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee)session.getAttribute("employee");
-		String id = (String) request.getParameter("empid");
+		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
+		/*String id = (String) request.getParameter("empid");
 		System.out.println(id);
 		employee = RoleActionService.getEmployee(id);
 		session.setAttribute("employee", employee);
-		session.setAttribute("role", employee.getPosition().replace(" ", ""));
+		session.setAttribute("role", employee.getPosition().replace(" ", ""));*/
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);

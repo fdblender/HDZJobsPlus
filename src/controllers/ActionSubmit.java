@@ -44,7 +44,7 @@ public class ActionSubmit extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		System.out.println("in ");
-		HdzEmployee employee = (HdzEmployee) session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
 		String urlToRedirect = null;
 		String appid = request.getParameter("applicationid");
 		HdzApplication hdzApplication = InterviewService.getHdzApplication(appid);

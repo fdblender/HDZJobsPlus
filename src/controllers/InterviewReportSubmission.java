@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.PendingActionsDao;
 import model.HdzApplication;
 import model.HdzEmployee;
 import services.InterviewService;
@@ -49,10 +50,50 @@ public class InterviewReportSubmission extends HttpServlet {
 			String groupInterview = request.getParameter("groupInterviewCoding");
 			String hmInterviewCoding = request.getParameter("groupInterviewCoding");
 			String hmInterview = request.getParameter("groupInterviewCoding");
+			String hrInterview = request.getParameter("hrInterview");
+			System.out.println(hrInterview);
+			if (hrInterview != null) {
+				if (hmInterview.equals("Pass")) {
+					hdzApplication.setAppstatus("HRInterviewDone");					
+					InterviewService.updateApplication(hdzApplication);
+				} else {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+				}
+				
+			}
 			if (hmInterviewCoding != null) {
 				hdzApplication.setCodingtest(hmInterviewCoding);
-				InterviewService.updateCodingTest(hdzApplication);
-			} else if (hmInterview != null) {
+				InterviewService.updateApplication(hdzApplication);
+			} 
+			
+			if (hmInterview != null) {
+				if (hmInterview.equals("Pass")) {
+					hdzApplication.setAppstatus("HMInterviewDone");					
+					InterviewService.updateApplication(hdzApplication);
+				} else {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+				}
+				
+			}
+			if (groupInterviewCoding != null) {
+				hdzApplication.setCodingtest(hmInterviewCoding);
+				InterviewService.updateApplication(hdzApplication);
+			} 
+			
+			if (groupInterview != null) {
+				if (hmInterview.equals("Pass")) {
+					hdzApplication.setAppstatus("GroupInterviewDone");					
+					InterviewService.updateApplication(hdzApplication);
+					if (PendingActionsDao.checkAppStatus(hdzApplication)) {
+						hdzApplication.setAppstatus("Hired");					
+						InterviewService.updateApplication(hdzApplication);
+					}
+				} else {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+				}
 				
 			}
 			
