@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="bootstrap.jsp"/>
 <title>HDZ - Create account</title>
 <script>
 function validateForm() {
@@ -49,10 +50,26 @@ function validateForm() {
 </head>
 <body>
 <form action="NewApplicant" onsubmit="return validateForm()" name="applicant">
+<fieldset>
+<legend>Personal</legend>
 Name<input type="text" name="name" id="name"/><br/>
 Email Address<input type="text" name="email" id="email"/>
 Password<input type="password" name="password" id="password"/><br/>
 Date of Birth<input type="text" name="dob" id="dob"/>
+Veteran status
+<select name="veteran">
+  <option value="yes">Veteran</option>
+  <option value="no">Non-veteran</option>
+</select>
+<br/>
+Citizenship
+<select name="citizen">
+  <option value="yes">Citizen</option>
+  <option value="no">Non-citizen</option>
+</select>
+<br/>
+Nationality<input type="text" name="nationality" id="nationality"/><br/>
+</fieldset>
 <fieldset>
 <legend>Education</legend>
 Institution: <input type="text" name="edu1" id="edu1"/>
@@ -89,19 +106,6 @@ Start date: <input type="text" name="start3" id="start3"/>
 Leave date: <input type="text" name="leave3" id="leave3"/>
 <br/>
 </fieldset>
-Veteran status
-<select name="veteran">
-  <option value="yes">Veteran</option>
-  <option value="no">Non-veteran</option>
-</select>
-<br/>
-Citizenship
-<select name="citizen">
-  <option value="yes">Citizen</option>
-  <option value="no">Non-citizen</option>
-</select>
-<br/>
-Nationality<input type="text" name="nationality" id="nationality"/><br/>
 <p id="invalid"></p>
 <input type="submit" name="submit" id="submit" value="Submit"/>
 </form>

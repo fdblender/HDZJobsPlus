@@ -7,22 +7,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/JobSearch")
-public class JobSearch extends HttpServlet {
+/**
+ * Servlet implementation class InterviewForm
+ */
+@WebServlet("/InterviewForm")
+public class InterviewForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    public JobSearch() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public InterviewForm() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		request.getRequestDispatcher("/yourapplications.jsp").forward(request, response);
+		doPost(request, response);
 	}
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		System.out.println("in");
 	}
 
 }

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.RoleActionDao;
+import model.HdzApplication;
+import model.HdzEmployee;
 
 /**
  * Servlet implementation class PendingAction
@@ -38,13 +40,14 @@ public class PendingAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		HDZEmployee employee = (HDZEmployee)session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee)session.getAttribute("employee");
+		employee = RoleActionDao.getEmployee((String) request.getAttribute("empid"));
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
-			List<HDZApplication> hdzapplication = null;
+			List<HdzApplication> hdzapplication = null;
 			if (role.equals("ComplianceOfficer")) {
 				session.setAttribute("HR", "No");
 				hdzapplication = RoleActionDao.getActionsComplianceOfficer();
