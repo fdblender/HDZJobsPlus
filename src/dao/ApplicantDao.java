@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import util.DBUtil;
 import model.HdzApplicant;
+import model.HdzApplication;
 import model.HdzEducation;
 import model.HdzJob;
 import model.HdzJobhistory;
@@ -29,6 +30,20 @@ public class ApplicantDao {
 		}
 	}
 
+	public static void insert(HdzApplication app) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.persist(app);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	
 	public static void insert(HdzEducation edu) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
@@ -116,7 +131,7 @@ public class ApplicantDao {
         
         try{
             TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
-            query.setParameter("search", "id");
+            query.setParameter("search", Long.parseLong(id));
             searchposts = query.getSingleResult();
         }catch (Exception e){
             e.printStackTrace();
@@ -124,4 +139,5 @@ public class ApplicantDao {
             em.close();
         }return searchposts;
     }
+	
 }

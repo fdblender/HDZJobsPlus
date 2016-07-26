@@ -8,24 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.ApplicantDao;
-import model.HdzApplicant;
-import model.HdzApplication;
 import model.HdzJob;
 
 /**
- * Servlet implementation class Apply
+ * Servlet implementation class Jobs
  */
-@WebServlet("/Apply")
-public class Apply extends HttpServlet {
+@WebServlet("/Jobs")
+public class Jobs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Apply() {
+    public Jobs() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +31,12 @@ public class Apply extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String jobid = request.getParameter("jobid");
+
+		List<HdzJob> jobs = ApplicantDao.getAllJobs();
 		
-		HdzApplicant applicant = (HdzApplicant)session.getAttribute("user");
-		HdzJob job = ApplicantDao.getJobById(jobid);
-		HdzApplication application = new HdzApplication();
-		List<HdzApplication> myapps = applicant.getHdzApplications();
+		request.setAttribute("jobs", jobs);
 		
-		application.setAppstatus("New");
-		application.setCodingtest("N");
-		application.setHdzJob(job);
-		application.setHdzApplicant(applicant);
-		myapps.add(application);
-		applicant.setHdzApplications(myapps);
-		ApplicantDao.insert(application);
-		session.setAttribute("user", applicant);
-		
-		request.getRequestDispatcher("/yourapplications.jsp").forward(request, response);
+		request.getRequestDispatcher("/jobs.jsp").forward(request, response);
 	}
 
 	/**
