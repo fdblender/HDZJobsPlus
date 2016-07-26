@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import model.HdzApplicant;
 import model.HdzEducation;
 import model.HdzJobhistory;
+import model.HdzReftable;
 import services.NewApplicantService;
 import util.PasswordUtil;
 
@@ -59,11 +60,11 @@ public class NewApplicant extends HttpServlet {
 		String citizen = request.getParameter("citizen");
 		List<HdzEducation> edhist = new ArrayList<HdzEducation>();
 		List<HdzJobhistory> jobhist = new ArrayList<HdzJobhistory>();
-
+		List<HdzReftable> references=new ArrayList<HdzReftable>();
 		for (int i = 1; i <= 3; i++) {
 			HdzEducation edu = new HdzEducation();
 			HdzJobhistory job = new HdzJobhistory();
-
+			HdzReftable reference = new HdzReftable();
 			String schoolname = request.getParameter("edu" + i);
 			String degree = request.getParameter("degree" + i);
 			String datecomp = request.getParameter("date" + i);
@@ -86,7 +87,17 @@ public class NewApplicant extends HttpServlet {
 				job.setEnddate(enddate);
 				jobhist.add(job);
 			}
-
+			String refname=request.getParameter("refname"+i);
+			String refnumber=request.getParameter("refphone"+i);
+			String refemail=request.getParameter("refemail"+i);
+			String refposition=request.getParameter("refpos"+i);
+			if(!refname.equals(null)&&!refnumber.equals(null)&&!refemail.equals(null)&&!refposition.equals(null)){
+				reference.setRefemail(refemail);
+				reference.setRefname(refname);
+				reference.setRefphone(refnumber);
+				reference.setRefposition(refposition);
+				references.add(reference);
+			}
 		}
 
 		String salt = PasswordUtil.getSalt();
@@ -109,6 +120,7 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHdzEducations(edhist);
 		applicant.setHdzJobhistories(jobhist);
 		applicant.setSalt(salt);
+		applicant.setHdzReftables(references);
 		NewApplicantService.insertApplicant(applicant);
 		String nextURL = "/login.jsp";
 		request.getRequestDispatcher(nextURL).forward(request, response);
