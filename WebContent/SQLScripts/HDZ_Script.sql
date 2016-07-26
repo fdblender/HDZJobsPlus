@@ -24,26 +24,26 @@ create sequence  hdz_employee_id_seq start with 1 increment by 1 nocache;
 
 create table HDZ_Applicant (
 applicantID integer primary key,
-email varchar2(50) unique not null,
-hashedpwd varchar2(200) not null,
+email varchar2(50) unique ,
+hashedpwd varchar2(200) ,
 salt varchar2(200),
-firstname varchar2(100) not null,
-lastname varchar2(100) not null,
-bday varchar2(100) not null,
+firstname varchar2(100) ,
+lastname varchar2(100) ,
+bday varchar2(100) ,
 citizenflag varchar2(1),
-citizen varchar2(100) not null,
+citizen varchar2(100) ,
 visaflag varchar2(1),
-visa varchar2(100) not null,
+visa varchar2(100) ,
 veteranflag varchar2(1),
-veteran varchar2(100) not null,
+veteran varchar2(100) ,
 drugtestflag varchar2(1),
-drugtest varchar2(100) not null,
+drugtest varchar2(100) ,
 stdpanelflag varchar2(1),
-stdpanel varchar2(100) not null,
+stdpanel varchar2(100) ,
 dottestflag varchar2(1),
-dottest varchar2(100) not null,
+dottest varchar2(100) ,
 alcoholtestflag varchar2(1),
-alcoholtest varchar2(100) not null
+alcoholtest varchar2(100) 
 
 );
 
@@ -57,7 +57,7 @@ create table HDZ_Education(
 educationid integer primary key,
 educationflag varchar2(1),
 applicantid integer,
-schoolname varchar2(200) not null,
+schoolname varchar2(200) ,
 degreecompleted varchar2(100),
 datecompleted varchar2(100),
 CONSTRAINT fk_HDZ_Education_applicantID FOREIGN KEY (applicantID) references HDZ_Applicant(applicantID)
@@ -70,11 +70,11 @@ create table HDZ_jobhistory(
 jobhistoryid integer primary key,
 jobhistoryflag varchar2(1),
 applicantid integer,
-position varchar2(50) not null,
-companyname varchar2(200) not null,
-startdate varchar2(100) not null,
+position varchar2(50) ,
+companyname varchar2(200) ,
+startdate varchar2(100) ,
 enddate varchar2(100),
-description varchar2(100) not null,
+description varchar2(100) ,
 CONSTRAINT fk_jobhistory_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID)
 );
 
@@ -86,10 +86,10 @@ create table HDZ_reftable(
 refid integer primary key,
 refflag varchar2(1),
 applicantid integer,
-refname varchar2(50) not null,
-refemail varchar2(200) not null,
-refphone varchar2(200) not null,
-refposition varchar2(200) not null,
+refname varchar2(50) ,
+refemail varchar2(200) ,
+refphone varchar2(200) ,
+refposition varchar2(200) ,
 CONSTRAINT fk_HDZ_reftable_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID)
 );
 
@@ -98,8 +98,8 @@ values (hdz_reftable_id_seq.nextval,null, 1,'Bob', 'bob@gmail.com', '2029940771'
 
 create table HDZ_Jobs(
 jobsid integer primary key,
-position varchar2(50) not null,
-description varchar2(200) not null
+position varchar2(50) ,
+description varchar2(200) 
 );
 
 insert into HDZ_Jobs (jobsid, position, description)
@@ -113,10 +113,10 @@ values (hdz_jobs_id_seq.nextval, 'Quality Assurance', 'Software testing and conf
 
 create table HDZ_application(
 applicationid integer primary key,
-applicantid integer not null,
-codingtest varchar2(1) not null,
-jobsid integer not null,
-appstatus varchar2(50) not null,
+applicantid integer ,
+codingtest varchar2(1) ,
+jobsid integer ,
+appstatus varchar2(50) ,
 CONSTRAINT fk_HDZ_application_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID),
 CONSTRAINT fk_HDZ_application_jobsID FOREIGN KEY (jobsID) references HDZ_jobs(jobsID)
 );
@@ -126,11 +126,11 @@ values (hdz_application_id_seq.nextval, 1,'N', 1,'New');
 
 create table HDZ_employee(
 employeeid integer primary key,
-empname varchar2(50) not null,
-email varchar2(100) not null,
-hashedpwd varchar2(200) not null,
+empname varchar2(50) ,
+email varchar2(100) ,
+hashedpwd varchar2(200) ,
 salt varchar2(200),
-position varchar2(100) not null
+position varchar2(100) 
 );
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd, salt, position)

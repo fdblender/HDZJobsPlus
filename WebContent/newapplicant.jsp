@@ -8,7 +8,7 @@
 <title>HDZ - Create account</title>
 <script>
 function validateForm() {
-    var x = document.forms["applicant"]["name"].value;
+    var x = document.forms["applicant"]["firstname"].value;
     var text;
     if (x == null || x == "") {
         text= "Name must be filled out";

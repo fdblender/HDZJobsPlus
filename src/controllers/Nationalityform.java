@@ -1,0 +1,111 @@
+package controllers;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.*;
+import model.*;
+
+/**
+ * Servlet implementation class Nationalityform
+ */
+@WebServlet("/Nationalityform")
+public class Nationalityform extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Nationalityform() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		
+		HttpSession session = request.getSession();	
+		String applicantid=request.getParameter("applicantid");	
+		String applicationid=request.getParameter("applicationid");
+		
+		if(applicationid!=null)
+		{
+			session.setAttribute("Nationalityapplicationid", applicationid);
+			HdzApplication nationalityapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			
+			session.setAttribute("NationalityCheck", nationalityapplication);
+			
+			request.getRequestDispatcher("nationalitycheck.jsp").forward(request, response);
+		}
+		
+		if(applicantid!=null)
+		{
+			//Validate nationality
+			
+			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(applicantid);
+			
+			myapplicant.setCitizenflag("Y");
+			myapplicant.setVisaflag("Y");
+			
+			dao.PendingActionsDao.update(myapplicant);	
+			HdzApplication myapplication=(HdzApplication)session.getAttribute("NationalityCheck");
+			
+			if(dao.PendingActionsDao.checkAppStatus(myapplication))
+			{
+				myapplication.setAppstatus("Hired");
+				
+				dao.PendingActionsDao.update(myapplication);
+			}
+			
+			session.setAttribute("NationalityCheck", myapplication);
+			
+			request.getRequestDispatcher("nationalitycheck.jsp").forward(request, response);
+			
+		}
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();	
+		String applicantid=request.getParameter("applicantid");	
+		String applicationid=session.getAttribute("Nationalityapplicationid").toString();
+		
+		
+		if(applicantid!=null)
+		{
+			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(applicantid);
+			HdzApplication nationalityapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			
+			myapplicant.setCitizenflag("N");
+			myapplicant.setVisaflag("N");
+			dao.PendingActionsDao.update(myapplicant);
+			
+			nationalityapplication.setAppstatus("Fail");
+			
+			dao.PendingActionsDao.update(nationalityapplication);
+			
+			session.setAttribute("NationalityCheck", nationalityapplication);
+			
+			request.getRequestDispatcher("nationalitycheck.jsp").forward(request, response);
+			
+		}
+		
+		
+		
+		
+		
+	}
+
+}
