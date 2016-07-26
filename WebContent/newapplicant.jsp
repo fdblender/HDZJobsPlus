@@ -52,7 +52,8 @@ function validateForm() {
 <form action="NewApplicant" onsubmit="return validateForm()" name="applicant">
 <fieldset>
 <legend>Personal</legend>
-Name<input type="text" name="name" id="name"/><br/>
+First name: <input type="text" name="firstname" id="firstname"/>
+Last name: <input type="text" name="lastname" id="lastname"/><br/>
 Email Address<input type="text" name="email" id="email"/>
 Password<input type="password" name="password" id="password"/><br/>
 Date of Birth<input type="text" name="dob" id="dob"/>
@@ -67,44 +68,60 @@ Citizenship
   <option value="yes">Citizen</option>
   <option value="no">Non-citizen</option>
 </select>
-<br/>
-Nationality<input type="text" name="nationality" id="nationality"/><br/>
 </fieldset>
 <fieldset>
 <legend>Education</legend>
 Institution: <input type="text" name="edu1" id="edu1"/>
-Field: <input type="text" name="field1" id="field1"/><br/>
-Degree Awarded: <input type="text" name="degree1" id="degree1"/>
-<br/>
+Degree Awarded: <input type="text" name="degree1" id="degree1"/><br/>
+Date completed: <input type="text" name="date1" id="date1"/>
+<br/><br/>
 Institution: <input type="text" name="edu2" id="edu2"/>
-Field: <input type="text" name="field2" id="field2"/><br/>
-Degree Awarded: <input type="text" name="degree2" id="degree2"/>
-<br/>
+Degree Awarded: <input type="text" name="degree2" id="degree2"/><br/>
+Date completed: <input type="text" name="date2" id="date2"/>
+<br/><br/>
 Institution: <input type="text" name="edu3" id="edu3"/>
-Field: <input type="text" name="field3" id="field3"/><br/>
-Degree Awarded: <input type="text" name="degree3" id="degree3"/>
+Degree Awarded: <input type="text" name="degree3" id="degree3"/><br/>
+Date completed: <input type="text" name="date3" id="date3"/>
 </fieldset>
 <br/>
 <fieldset>
 <legend>Job history</legend>
 Job title: <input type="text" name="job1" id="job1"/>
-Company: <input type="text" name="company1" id="company1"/>
+Company: <input type="text" name="company1" id="company1"/><br/>
+Job Description: <input type="text" name="jobdesc1" id="jobdesc1"/>
 <br/>
 Start date: <input type="text" name="start1" id="start1"/>
 Leave date: <input type="text" name="leave1" id="leave1"/>
-<br/>
+<br/><br/>
 Job title: <input type="text" name="job2" id="job2"/>
-Company: <input type="text" name="company2" id="company2"/>
+Company: <input type="text" name="company2" id="company2"/><br/>
+Job Description: <input type="text" name="jobdesc2" id="jobdesc2"/>
 <br/>
 Start date: <input type="text" name="start2" id="start2"/>
 Leave date: <input type="text" name="leave2" id="leave2"/>
-<br/>
+<br/><br/>
 Job title: <input type="text" name="job3" id="job3"/>
-Company: <input type="text" name="company3" id="company3"/>
+Company: <input type="text" name="company3" id="company3"/><br/>
+Job Description: <input type="text" name="jobdesc3" id="jobdesc3"/>
 <br/>
 Start date: <input type="text" name="start3" id="start3"/>
 Leave date: <input type="text" name="leave3" id="leave3"/>
 <br/>
+</fieldset>
+<fieldset>
+<legend>References</legend>
+Reference Name: <input type="text" name="refname1" id="refname1"/>
+Contact Number: <input type="text" name="refphone1" id="refphone1"/><br/>
+Contact Email: <input type="text" name="refemail1" id="refemail1"/>
+Reference Position: <input type="text" name="refpos1" id="refpos1"/><br/><br/>
+Reference Name: <input type="text" name="refname2" id="refname2"/>
+Contact Number: <input type="text" name="refphone2" id="refphone2"/><br/>
+Contact Email: <input type="text" name="refemail2" id="refemail2"/>
+Reference Position: <input type="text" name="refpos2" id="refpos2"/><br/><br/>
+Reference Name: <input type="text" name="refname3" id="refname3"/>
+Contact Number: <input type="text" name="refphone3" id="refphone3"/><br/>
+Contact Email: <input type="text" name="refemail3" id="refemail3"/>
+Reference Position: <input type="text" name="refpos3" id="refpos3"/><br/>
 </fieldset>
 <p id="invalid"></p>
 <input type="submit" name="submit" id="submit" value="Submit"/>
