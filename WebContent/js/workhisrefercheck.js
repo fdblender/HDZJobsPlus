@@ -12,7 +12,7 @@ $(document).ready(function() {
            data: dataString,
            success: function(data){
         	   alert("Reference Validated!");
-               window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+        	   window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
              }                
 			  });
 		
@@ -30,7 +30,7 @@ $(document).ready(function() {
           data: dataString,
           success: function(data){
         	  alert("Failed to Verify Reference");
-              window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+        	  window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
             }                
 			  });
 	}); 
@@ -46,7 +46,7 @@ $(document).ready(function() {
           data: dataString,
           success: function(data){
        	   alert("Job History Validated!");
-              window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+       	 window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
             }                
 			  });
 		
@@ -65,7 +65,7 @@ $(document).ready(function() {
          data: dataString,
          success: function(data){
        	  alert("Failed to Verify Job History");
-             window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+       	 window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
            }                
 			  });
 	}); 
@@ -80,8 +80,8 @@ $(document).ready(function() {
 			    url: "Workhistoryreferenceform",
          data: dataString,
          success: function(data){
-      	   alert("Job History Validated!");
-             window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+      	   alert("Job History Veteran!");
+             window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
            }                
 			  });
 		
@@ -99,8 +99,8 @@ $(document).ready(function() {
 			    url: "Workhistoryreferenceform",
         data: dataString,
         success: function(data){
-      	  alert("Failed to Verify Job History");
-            window.location = 'http://localhost:8080/HDZjobs/workhisrefercheck.jsp';
+      	  alert("Failed to Verify Veteran");
+      	 window.location = 'http://localhost:8080/HDZJobs/workhisrefercheck.jsp';
           }                
 			  });
 	}); 

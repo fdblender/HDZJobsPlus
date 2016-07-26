@@ -44,7 +44,9 @@ public class EducationForm extends HttpServlet {
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(application.getHdzApplicant().getApplicantid());
 			
-			session.setAttribute("EduApplicationid", educations);
+			session.setAttribute("EducationCheck", educations);
+			
+			
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 		}
@@ -67,7 +69,7 @@ public class EducationForm extends HttpServlet {
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			
-			session.setAttribute("EduApplicationid", educations);
+			session.setAttribute("EducationCheck", educations);
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 			
@@ -98,7 +100,7 @@ public class EducationForm extends HttpServlet {
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			
-			session.setAttribute("EduApplicationid", educations);
+			session.setAttribute("EducationCheck", educations);
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 			

@@ -12,7 +12,7 @@ $(document).ready(function() {
            data: dataString,
            success: function(data){
         	   alert("Nationality Validated!");
-               window.location = 'http://localhost:8080/HDZjobs/nationalitycheck.jsp';
+               window.location = 'http://localhost:8080/HDZJobs/nationalitycheck.jsp';
              }                
 			  });
 		
@@ -30,7 +30,7 @@ $(document).ready(function() {
           data: dataString,
           success: function(data){
         	  alert("Failed to Verify Nationality");
-              window.location = 'http://localhost:8080/HDZjobs/nationalitycheck.jsp';
+              window.location = 'http://localhost:8080/HDZJobs/nationalitycheck.jsp';
             }                
 			  });
 	}); 

@@ -296,7 +296,7 @@ public class PendingActionsDao {
 		{
 			if(refcheck&&educheck&&jobcheck)
 			{
-				if(myapplication.getAppstatus().equals("HMInterviewDone"))
+				if(myapplication.getAppstatus().equals("GroupInterviewDone"))
 				{
 					appstatus=true;
 				}
