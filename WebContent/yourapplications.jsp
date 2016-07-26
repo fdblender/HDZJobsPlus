@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="bootstrap.jsp"/>
 <title>Your Applications</title>
 </head>
 <body>
