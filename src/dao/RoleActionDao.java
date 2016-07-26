@@ -1,43 +1,165 @@
 package dao;
 
-import controllers.HDZApplication;
+
+import model.HdzApplication;
+import model.HdzEmployee;
+import util.DBUtil;
+
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 public class RoleActionDao {
 
-	public static List<HDZApplication> getActionsComplianceOfficer() {
-		// get all applicants where status not fail
-		return null;
+	public static List<HdzApplication> getActionsComplianceOfficer() {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus <> :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "Fail");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsHRAssistant() {
+	public static List<HdzApplication> getActionsHRAssistant() {
 		// get all applicants where status is new
-		return null;
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus = :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "New");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsHRManager() {
+	public static List<HdzApplication> getActionsHRManager() {
 		// get all applicants where status is workReferenceChecked
-		return null;
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus = :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "WorkRefChecked");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsHRSpecialist() {
+	public static List<HdzApplication> getActionsHRSpecialist() {
 		// get all applicants where status not fail
-		return null;
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus <> :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "Fail");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsHealthCareProfessional() {
+	public static List<HdzApplication> getActionsHealthCareProfessional() {
 		// get all applicants where status not fail
-		return null;
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus <> :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "Fail");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsHiringManager() {
-		// // get all applicants where status not fail
-		return null;
+	public static List<HdzApplication> getActionsHiringManager() {
+		// get all applicants where status not HRInterviewDone
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus = :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "HRInterviewDone");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
 	}
 
-	public static List<HDZApplication> getActionsEmployee() {
+	public static List<HdzApplication> getActionsEmployee() {
 		// get all applicants where HiringManagerInterviewDone
-		return null;
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        List<HdzApplication> hdzApplications = null;
+        String qString = "select b from HdzApplication b where b.appstatus = :status";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "HMInterviewDone");
+            hdzApplications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzApplications;  
+	}
+
+	public static HdzEmployee getEmployee(String id) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		HdzEmployee hdzEmployee = null;
+        String qString = "select b from HdzEmployee b where b.employeeid = :id";
+        
+        try{
+            TypedQuery<HdzEmployee> query = em.createQuery(qString,HdzEmployee.class);
+            query.setParameter("id", id);
+            hdzEmployee = query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return hdzEmployee;  
 	}
 
 }
