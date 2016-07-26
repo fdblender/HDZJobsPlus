@@ -16,10 +16,10 @@
 <th>Position</th>
 <th>Status</th>
 </tr>
-<c:forEach var="app" items="${applications}">
+<c:forEach var="app" items="${user.hdzapplications}">
 <tr>
-<td><c:out value="${app.title}"/></td>
-<td><c:out value="${app.status}"/></td>
+<td><c:out value="${app.hdzjob.position}"/></td>
+<td><c:out value="${app.appstatus}"/></td>
 </tr>
 </c:forEach>
 </table>
