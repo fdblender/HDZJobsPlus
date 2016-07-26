@@ -57,7 +57,7 @@ public class ActionSubmit extends HttpServlet {
 
 			} else if (role.equals("HRAssistant")) {
 				System.out.println("in Workhistoryreferenveform");
-				urlToRedirect = "/Workhistoryreferenveform";
+				urlToRedirect = "/Workhistoryreferenceform";
 
 			} else if (role.equals("HRManager")) {
 				urlToRedirect = "/InterviewForm";
@@ -66,7 +66,7 @@ public class ActionSubmit extends HttpServlet {
 				urlToRedirect = "/EducationForm";
 
 			} else if (role.equals("HealthCareProfessional")) {
-				urlToRedirect = "/DrugScreenForm";
+				urlToRedirect = "/DrugCheckForm";
 
 			} else if (role.equals("HiringManager")) {
 				urlToRedirect = "/InterviewForm";
@@ -84,7 +84,7 @@ public class ActionSubmit extends HttpServlet {
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 			response.getWriter().write(jobj.toString());*/
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			request.getRequestDispatcher(urlToRedirect).forward(request, response);
 		}
 	}
 

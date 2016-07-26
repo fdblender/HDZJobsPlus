@@ -33,7 +33,7 @@ function limitText(limitField, limitCount, limitNum) {
 <jsp:include page="navbar.jsp" />
 
 
-<form action="Nationalityform" method="get" >
+<form action="DrugCheckForm" method="get" >
 <div class="container">
 
 <br /><br />
@@ -45,8 +45,10 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">Application ID</div></th>
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
-<th align="center"><div align="center">Nationality</div></th>
-<th align="center"><div align="center">Visa</div></th>
+<th align="center"><div align="center">Drug Test</div></th>
+<th align="center"><div align="center">STD Panel</div></th>
+<th align="center"><div align="center">DOT Test</div></th>
+<th align="center"><div align="center">Alcohol Test</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
 </thead>
@@ -55,31 +57,42 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">   
        
-        <c:out value="${NationalityCheck.applicationid}"/>
+        <c:out value="${DrugApplication.applicationid}"/>
     <td align="center"> 
 	
-        <c:out value="${NationalityCheck.hdzApplicant.firstname} ${NationalityCheck.hdzApplicant.lastname}"/>
+        <c:out value="${DrugApplication.hdzApplicant.firstname} ${NationalityCheck.hdzApplicant.lastname}"/>
    
  	</td> 
     <td align="center"> 
 	
-        <c:out value="${NationalityCheck.hdzJob.position}"/>
+        <c:out value="${DrugApplication.hdzJob.position}"/>
     
  	</td> 
 	<td align="center">
-    <c:out value="${NationalityCheck.hdzApplicant.citizen}"/>  
+    <c:out value="${DrugApplication.hdzApplicant.drugtest}"/>  
+    
+   </td>
+   
+   <td align="center">
+    <c:out value="${DrugApplication.hdzApplicant.stdpanel}"/>  
+    
+   </td>
+   
+   <td align="center">
+    <c:out value="${DrugApplication.hdzApplicant.dottest}"/>  
     
    </td>
    <td align="center">
-    <c:out value="${NationalityCheck.hdzApplicant.visa}"/>  
+    <c:out value="${DrugApplication.hdzApplicant.alcoholtest}"/>  
     
-   </td>  
+   </td>
+   
    
    <td align="center">
    
-   <input type="button" class="ValidateNationality" name="ValidateNation${NationalityCheck.hdzApplicant.applicantid}" id="ValidateNation${NationalityCheck.hdzApplicant.applicantid}" value="Validate" />
+   <input type="button" class="ValidateDrug" name="ValidateDrug${DrugApplication.hdzApplicant.applicantid}" id="ValidateDrug${DrugApplication.hdzApplicant.applicantid}" value="Validate" />
    
-    <input type="button" class="FailNationality" name="FailNation${NationalityCheck.hdzApplicant.applicantid}" id="FailNation${NationalityCheck.hdzApplicant.applicantid}" value="Fail"/> 
+    <input type="button" class="FailDrug" name="FailDrug${DrugApplication.hdzApplicant.applicantid}" id="FailDrug${DrugApplication.hdzApplicant.applicantid}" value="Fail"/> 
        
     
    </td> 
@@ -90,7 +103,7 @@ function limitText(limitField, limitCount, limitNum) {
  </table> 
 
  </div> 
-  <script  src="js/nationalitycheck.js"></script>
+  <script  src="js/drugscreencheck.js"></script>
 </form>
 
 

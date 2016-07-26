@@ -255,31 +255,43 @@ public class PendingActionsDao {
 		boolean jobcheck=true;
 		for(HdzReftable ref: references)
 		{
+			if(ref.getRefflag()!=null)
+			{
 			if(ref.getRefflag().equals("N"))
 			{	
 				refcheck=false;
 				break;
 			}
+			}
 		}
 		
 		for(HdzEducation edu: educations)
 		{
+			if(edu.getEducationflag()!=null)
+			{
 			if(edu.getEducationflag().equals("N"))
 			{	
 				educheck=false;
 				break;
 			}
+			}
 		}
 		
 		for(HdzJobhistory job: jobs)
 		{
+			if(job.getJobhistoryflag()!=null)
+			{
+				
+			
 			if(job.getJobhistoryflag().equals("N"))
 			{	
 				jobcheck=false;
 				break;
 			}
+			}
 		}	
-		
+		if(myapplicant.getCitizenflag()!=null&&myapplicant.getVisaflag()!=null&&myapplicant.getVeteranflag()!=null &&myapplicant.getDrugtestflag()!=null&&myapplicant.getStdpanelflag()!=null&&myapplicant.getDottestflag()!=null&&myapplicant.getAlcoholtest()!=null)
+		{
 		if(myapplicant.getCitizenflag().equals("Y")&&myapplicant.getVisaflag().equals("Y")&&myapplicant.getVeteranflag().equals("Y")&&myapplicant.getDrugtestflag().equals("Y")&&myapplicant.getStdpanelflag().equals("Y")&&myapplicant.getDottestflag().equals("Y")&&myapplicant.getAlcoholtest().equals("Y"))
 		{
 			if(refcheck&&educheck&&jobcheck)
@@ -289,6 +301,7 @@ public class PendingActionsDao {
 					appstatus=true;
 				}
 			}
+		}
 		}
 		return appstatus;
 		

@@ -51,7 +51,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ReferenceCheck", myreferences);
 			
-			request.getRequestDispatcher("workhistorycheck.jsp").forward(request, response);
+			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 		}
 		
 		if(refid!=null)
