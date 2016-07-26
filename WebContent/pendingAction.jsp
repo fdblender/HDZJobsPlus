@@ -11,7 +11,7 @@
 <!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="javascripts/home.js"></script>
+<!-- <script src="js/pendingAction.js"></script> -->
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -39,7 +39,7 @@
 					</div>
 					<div class="panel-body">
 					
-						<table>
+						<table width = 100%>
 						<thead>
 						<tr>
 						<th>Job ID</th>
@@ -52,11 +52,12 @@
 						<c:forEach var="action" items="${actionList}">
 						<tbody>
 							<tr>
-							<td><c:out value="${action.job.jobid}"></c:out> </td>
-							<td><c:out value="${action.job.jobdesc}"></c:out> </td>
-							<td><c:out value="${action.applicant.name}"></c:out> </td>
-							<td><c:out value="${action.applicant.status}"></c:out> </td>
-							<td><input class="actionSubmit" type="button" id="${action.id}"></td>
+							<td><c:out value="${action.hdzJob.jobsid}"></c:out> </td>
+							<td><c:out value="${action.hdzJob.description}"></c:out> </td>
+							<td><c:out value="${action.hdzApplicant.firstname}"></c:out> </td>
+							<td><c:out value="${action.appstatus}"></c:out> </td>
+							<td><a href="ActionSubmit?applicationid=${action.applicationid}">
+							Take Action</a></td>
 							</tr>
 						</tbody>
 						</c:forEach>

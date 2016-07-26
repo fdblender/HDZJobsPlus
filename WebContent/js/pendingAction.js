@@ -3,9 +3,10 @@
  */
 $(document).ready(function(){
      $('.actionSubmit').click(function (event) {
+    	 alert("in");
 			 var id = $(this).attr('id');
 			 var dataString ='applicationid='+ id;
-			 
+			 alert(dataString);
 			 $.ajax({  
 				    type: "POST",  
 				    url: "ActionSubmit",
