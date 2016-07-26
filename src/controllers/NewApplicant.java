@@ -122,8 +122,8 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHashedpwd(hashedPwd);
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
-		applicant.setHdzEducations(edhist);
-		applicant.setHdzJobhistories(jobhist);
+		//applicant.setHdzEducations(edhist);
+		//applicant.setHdzJobhistories(jobhist);
 		applicant.setSalt(salt);
 		applicant.setHdzReftables(references);
 		NewApplicantService.insertApplicant(applicant);
