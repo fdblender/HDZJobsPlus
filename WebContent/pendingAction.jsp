@@ -39,7 +39,7 @@
 					</div>
 					<div class="panel-body">
 					
-						<table width = 100%>
+						<table>
 						<thead>
 						<tr>
 						<th>Job ID</th>
