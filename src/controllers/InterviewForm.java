@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.HdzApplication;
 import model.HdzEmployee;
 import services.InterviewService;
 import services.RoleActionService;
@@ -38,22 +39,23 @@ public class InterviewForm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("in");
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
-		String appid = (String) session.getAttribute("appid");
+		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
-			if (role.equals("Employee")) {
-				request.setAttribute("interviewType", "Group Interview");
-				request.setAttribute("coding", InterviewService.getCodingTest(appid));
-			} else if (role.equals("Hiring Manager")) {
+			if (role.equals("HiringManager")) {
 				request.setAttribute("interviewType", "HM Interview");				
-			} else if (role.equals("HR Manager")) {
+			} else if (role.equals("HRManager")) {
 				request.setAttribute("interviewType", "HR Interview");				
-			}
+			} else {
+				request.setAttribute("interviewType", "Group Interview");
+				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+			} 
 			request.getRequestDispatcher("interview.jsp").forward(request, response);
 		}
 	}

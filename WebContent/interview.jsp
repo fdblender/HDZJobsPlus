@@ -12,25 +12,25 @@
 <c:if test="${type == 'Group Interview'}">
 	<c:set var="coding" scope="session" value="${coding}" />
 	<c:if test="${coding == 'N'}">
-		<a href="InterviewReportSubmission?groupInterviewCoding='Y'">Coding Interview Completed</a>
-		<a href="InterviewReportSubmission?groupInterviewCoding='N'">Coding Interview Failed</a>
+		<a href="InterviewReportSubmission?groupInterviewCoding=Y">Coding Interview Completed</a>
+		<a href="InterviewReportSubmission?groupInterviewCoding=N">Coding Interview Failed</a>
 	</c:if>
 
-<a href="InterviewReportSubmission?groupInterview='Pass'">Group Interview Passed</a>
-<a href="InterviewReportSubmission?groupInterview='Fail'">Group Interview Failed</a>
+<a href="InterviewReportSubmission?groupInterview=Pass">Group Interview Passed</a>
+<a href="InterviewReportSubmission?groupInterview=Fail">Group Interview Failed</a>
 </c:if>
 
 <c:if test="${type == 'HM Interview'}">
-		<a href="InterviewReportSubmission?hmInterviewCoding='Y'">Coding Interview Completed</a>
-		<a href="InterviewReportSubmission?hmInterviewCoding='N'">Coding Interview Failed</a>
-<a href="InterviewReportSubmission?hmInterview='Pass'">Hiring Manager Interview Passed</a>
-<a href="InterviewReportSubmission?hmInterview='Fail'">Hiring Manager Interview Failed</a>
+		<a href="InterviewReportSubmission?hmInterviewCoding=Y">Coding Interview Completed</a>
+		<a href="InterviewReportSubmission?hmInterviewCoding=N">Coding Interview Failed</a>
+<a href="InterviewReportSubmission?hmInterview=Pass">Hiring Manager Interview Passed</a>
+<a href="InterviewReportSubmission?hmInterview=Fail">Hiring Manager Interview Failed</a>
 </c:if>
 
 <c:if test="${type == 'HR Interview'}">
 		
-<a href="InterviewReportSubmission?hrInterview='Pass'">Hiring Manager Interview Passed</a>
-<a href="InterviewReportSubmission?hrInterview='Fail'">Hiring Manager Interview Failed</a>
+<a href="InterviewReportSubmission?hrInterview=Pass">HR Interview Passed</a>
+<a href="InterviewReportSubmission?hrInterview=Fail">HR Interview Failed</a>
 </c:if>
 
 

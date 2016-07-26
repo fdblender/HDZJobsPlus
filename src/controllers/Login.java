@@ -66,7 +66,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("user", employee);
 				session.setAttribute("role",  employee.getPosition().replaceAll(" ", ""));
 				session.setAttribute("userrole",  2);
-				nextURL = "/pendingAction.jsp";
+				nextURL = "/PendingAction";
 			} else {
 				System.out.println("user not found: " + email + " " + password);
 				nextURL = "/login.jsp";

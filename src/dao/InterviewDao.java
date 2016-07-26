@@ -9,14 +9,14 @@ import util.DBUtil;
 
 public class InterviewDao {
 
-	public static Object getCosingTest(String appid) {
+	public static Object getCosingTest(long id) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		String coding = null;
         String qString = "select b.codingtest from HdzApplication b where b.applicationid = :id";
         
         try{
             TypedQuery<String> query = em.createQuery(qString,String.class);
-            query.setParameter("id", Long.parseLong(appid));
+            query.setParameter("id",id);
             coding = query.getSingleResult();
         }catch (Exception e){
             e.printStackTrace();
