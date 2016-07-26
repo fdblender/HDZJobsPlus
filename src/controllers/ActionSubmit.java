@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.JSONException;
-import org.json.JSONObject;
+
+import model.HdzApplication;
 import model.HdzEmployee;
+import services.InterviewService;
 
 /**
  * Servlet implementation class ActionSubmit
@@ -43,8 +44,11 @@ public class ActionSubmit extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		System.out.println("in ");
-		HdzEmployee employee = (HdzEmployee) session.getAttribute("employee");
+		HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
 		String urlToRedirect = null;
+		String appid = request.getParameter("applicationid");
+		HdzApplication hdzApplication = InterviewService.getHdzApplication(appid);
+		session.setAttribute("app", hdzApplication);
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -13,7 +13,8 @@ import model.HdzJob;
 import model.HdzJobhistory;
 import model.HdzReftable;
 
-public class ApplicantDao {
+
+public class ApplicantDao {	
 	public static void insert(HdzApplicant applicant) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();

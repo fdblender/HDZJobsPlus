@@ -47,7 +47,9 @@ public class Login extends HttpServlet {
 			applicant = ValidateUserDao.getValidApplicant(email, password);
 			if (applicant != null) {
 				System.out.println("found valid user" + email + " " + password);
-				session.setAttribute("user", applicant);				
+				session.setAttribute("user", applicant);
+				session.setAttribute("role",  "applicant");
+				session.setAttribute("userrole",  1);
 				nextURL = "/yourapplications.jsp";
 			} else {
 				System.out.println("user not found: " + email + " " + password);
@@ -62,7 +64,8 @@ public class Login extends HttpServlet {
 			if (employee != null) {
 				System.out.println("found valid user" + email + " " + password);
 				session.setAttribute("user", employee);
-				session.setAttribute("role",  employee.getPosition().replaceAll(" ", ""));				
+				session.setAttribute("role",  employee.getPosition().replaceAll(" ", ""));
+				session.setAttribute("userrole",  2);
 				nextURL = "/pendingAction.jsp";
 			} else {
 				System.out.println("user not found: " + email + " " + password);
