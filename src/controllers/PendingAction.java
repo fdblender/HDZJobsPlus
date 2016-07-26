@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import dao.RoleActionDao;
 import model.HdzApplication;
 import model.HdzEmployee;
+import services.RoleActionService;
 
 /**
  * Servlet implementation class PendingAction
@@ -41,7 +40,10 @@ public class PendingAction extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("employee");
-		employee = RoleActionDao.getEmployee((String) request.getAttribute("empid"));
+		String id = (String) request.getParameter("empid");
+		System.out.println(id);
+		employee = RoleActionService.getEmployee(id);
+		session.setAttribute("role", employee.getPosition().replace(" ", ""));
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -50,31 +52,31 @@ public class PendingAction extends HttpServlet {
 			List<HdzApplication> hdzapplication = null;
 			if (role.equals("ComplianceOfficer")) {
 				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsComplianceOfficer();
+				hdzapplication = RoleActionService.getActionsComplianceOfficer();
 				
 			} else if (role.equals("HRAssistant")) {
 				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRAssistant();
+				hdzapplication = RoleActionService.getActionsHRAssistant();
 				
 			} else if (role.equals("HRManager")) {
 				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRManager();
+				hdzapplication = RoleActionService.getActionsHRManager();
 				
 			} else if (role.equals("HRSpecialist")) {
 				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHRSpecialist();
+				hdzapplication = RoleActionService.getActionsHRSpecialist();
 				
 			} else if (role.equals("HealthCareProfessional")) {
 				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsHealthCareProfessional();
+				hdzapplication = RoleActionService.getActionsHealthCareProfessional();
 				
 			} else if (role.equals("HiringManager")) {
 				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionDao.getActionsHiringManager();
+				hdzapplication = RoleActionService.getActionsHiringManager();
 				
 			} else if (role.equals("Employee")) {
 				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionDao.getActionsEmployee();
+				hdzapplication = RoleActionService.getActionsEmployee();
 				
 			}
 			session.setAttribute("actionList", hdzapplication);

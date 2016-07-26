@@ -7,9 +7,9 @@
 <title>Error</title>
 </head>
 <body>
-<form action="PendingAction">
+<form action="PendingAction" method="post">
 <input type="text" id="empid" name="empid">
-
+<input type="submit" id="submit" name="submit">
 </form>
 
 </body>

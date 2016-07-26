@@ -151,7 +151,7 @@ public class RoleActionDao {
         
         try{
             TypedQuery<HdzEmployee> query = em.createQuery(qString,HdzEmployee.class);
-            query.setParameter("id", id);
+            query.setParameter("id", Long.parseLong(id));
             hdzEmployee = query.getSingleResult();
         }catch (Exception e){
             e.printStackTrace();
