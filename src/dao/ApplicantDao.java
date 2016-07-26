@@ -107,21 +107,22 @@ public class ApplicantDao {
         }return searchposts;
     }
 	
-	public static HdzJob getJobById (String id)
-    {
-        EntityManager em = DBUtil.getEmfFactory().createEntityManager();
-        HdzJob searchposts = null;
-        String qString = "select j from HdzJob j "
-                + "where j.jobsid = :search";
-        
-        try{
-            TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
-            query.setParameter("search", "id");
-            searchposts = query.getSingleResult();
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally{
-            em.close();
-        }return searchposts;
-    }
+//	public static HdzJob getJobById (String id)
+//    {
+//        EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+//        HdzJob searchposts = null;
+//        String qString = "select j from HdzJob j "
+//                + "where j.jobsid = :search";
+//        
+//        try{
+//            TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
+//            query.setParameter("search", "id");
+//            searchposts = query.getSingleResult();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally{
+//            em.close();
+//        }return searchposts;
+//    }
+	
 }

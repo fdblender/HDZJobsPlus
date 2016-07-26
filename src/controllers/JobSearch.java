@@ -23,16 +23,11 @@ public class JobSearch extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String search = request.getParameter("search");
 		
-		List<HdzJob> jobs;
-		if(search!=null){
-			jobs = ApplicantDao.searchJobs(search);
-		}
-		else{
-			jobs = ApplicantDao.getAllJobs();
-		}
-		request.setAttribute("jobs", jobs);
+		List<HdzJob> jobs = ApplicantDao.searchJobs(search);
 		
-		request.getRequestDispatcher("/jobs.jsp");
+		request.setAttribute("jobs", jobs);
+
+		request.getRequestDispatcher("/jobs.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

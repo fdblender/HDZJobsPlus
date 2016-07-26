@@ -11,7 +11,7 @@
 <body>
 <h2>Job Openings</h2>
 <h4>${query}</h4>
-<form action="Search">
+<form action="JobSearch">
 <input type="text" name="search" id="search"/>
 <input type="submit" name="submit" id="submit" value="Search"/>
 </form>
@@ -21,10 +21,10 @@
 </tr>
 <c:forEach var="job" items="${jobs}">
 <tr>
-<td>${job.title}</td>
+<td>${job.position}</td>
 <td>
 <form action="Apply">
-<input type="hidden" name="jobid" id="jobid" value="${job.jobid}"/>
+<input type="hidden" name="jobid" id="jobid" value="${job.jobsid}"/>
 <input type="submit" name="submit" id="submit" value="Apply"/>
 </form>
 </td>

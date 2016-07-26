@@ -6,8 +6,8 @@
     </div>
     <ul class="nav navbar-nav">   	  
       <c:if test="${userrole == 1}">
-      <li ><a href="yourapplications.jsp" style="color: #fff; font-weight: bold;font-size:16px" >Your Applications
-      </a></li> 
+      <li ><a href="yourapplications.jsp" style="color: #fff; font-weight: bold;font-size:16px" >Your Applications</a></li> 
+      <li ><a href="./Jobs" style="color: #fff; font-weight: bold;font-size:16px" >Jobs</a></li>
       </c:if>
       <c:if test="${userrole == 2}">
       <li><a href="pendingAction.jsp" style="color: #fff; font-weight: bold;font-size:16px" >Pending Actions
