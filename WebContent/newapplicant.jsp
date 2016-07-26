@@ -5,9 +5,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>HDZ - Create account</title>
+<script>
+function validateForm() {
+    var x = document.forms["applicant"]["name"].value;
+    var text;
+    if (x == null || x == "") {
+        text= "Name must be filled out";
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+    x = document.forms["applicant"]["email"].value;
+    if (x == null || x == "") {
+        text=("Email must be filled out");
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+    x = document.forms["applicant"]["password"].value;
+    if (x == null || x == "") {
+        text=("Password must be filled out");
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+    x = document.forms["applicant"]["dob"].value;
+    if (x == null || x == "") {
+        text=("Birthdate must be filled out");
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+    x = document.forms["applicant"]["edu1"].value;
+    if (x == null || x == "") {
+        text=("You must specify one degree");
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+    x = document.forms["applicant"]["job1"].value;
+    if (x == null || x == "") {
+        text=("You must specify one job");
+        document.getElementById("invalid").innerHTML = text;
+        return false;
+    }
+}
+</script>
 </head>
 <body>
-<form>
+<form action="NewApplicant" onsubmit="return validateForm()" name="applicant">
 Name<input type="text" name="name" id="name"/><br/>
 Email Address<input type="text" name="email" id="email"/>
 Password<input type="password" name="password" id="password"/><br/>
@@ -61,6 +102,7 @@ Citizenship
 </select>
 <br/>
 Nationality<input type="text" name="nationality" id="nationality"/><br/>
+<p id="invalid"></p>
 <input type="submit" name="submit" id="submit" value="Submit"/>
 </form>
 </body>
