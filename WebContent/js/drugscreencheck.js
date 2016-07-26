@@ -12,7 +12,7 @@ $(document).ready(function() {
            data: dataString,
            success: function(data){
         	   alert("Drug Screen Validated!");
-               window.location = 'http://localhost:8080/HDZjobs/drugscreencheck.jsp';
+               window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
              }                
 			  });
 		
@@ -30,7 +30,7 @@ $(document).ready(function() {
           data: dataString,
           success: function(data){
         	  alert("Failed to Verify Drug Screen");
-              window.location = 'http://localhost:8080/HDZjobs/drugscreencheck.jsp';
+              window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
             }                
 			  });
 	}); 

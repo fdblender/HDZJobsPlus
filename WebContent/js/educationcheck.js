@@ -12,7 +12,7 @@ $(document).ready(function() {
            data: dataString,
            success: function(data){
         	   alert("Education Validated!");
-               window.location = 'http://localhost:8080/HDZjobs/educationcheck.jsp';
+               window.location = 'http://localhost:8080/HDZJobs/educationcheck.jsp';
              }                
 			  });
 		
@@ -30,7 +30,7 @@ $(document).ready(function() {
           data: dataString,
           success: function(data){
         	  alert("Failed to Verify Education");
-              window.location = 'http://localhost:8080/HDZjobs/educationcheck.jsp';
+              window.location = 'http://localhost:8080/HDZJobs/educationcheck.jsp';
             }                
 			  });
 	}); 
