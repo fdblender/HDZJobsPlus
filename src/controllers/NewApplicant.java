@@ -108,6 +108,7 @@ public class NewApplicant extends HttpServlet {
 		applicant.setVeteran(veteran);
 		applicant.setHdzEducations(edhist);
 		applicant.setHdzJobhistories(jobhist);
+		applicant.setSalt(salt);
 		NewApplicantService.insertApplicant(applicant);
 		String nextURL = "/login.jsp";
 		request.getRequestDispatcher(nextURL).forward(request, response);
