@@ -59,11 +59,13 @@ public class InterviewReportSubmission extends HttpServlet {
 					hdzApplication.setAppstatus("Fail");					
 					InterviewService.updateApplication(hdzApplication);
 				}
+				request.getRequestDispatcher("/PendingAction").forward(request, response);
 				
 			}
 			if (hmInterviewCoding != null) {
 				hdzApplication.setCodingtest(hmInterviewCoding);
 				InterviewService.updateApplication(hdzApplication);
+				request.getRequestDispatcher("/PendingAction").forward(request, response);
 			} 
 			
 			if (hmInterview != null) {
@@ -74,11 +76,12 @@ public class InterviewReportSubmission extends HttpServlet {
 					hdzApplication.setAppstatus("Fail");					
 					InterviewService.updateApplication(hdzApplication);
 				}
-				
+				request.getRequestDispatcher("/PendingAction").forward(request, response);
 			}
 			if (groupInterviewCoding != null) {
 				hdzApplication.setCodingtest(groupInterviewCoding);
 				InterviewService.updateApplication(hdzApplication);
+				request.getRequestDispatcher("/PendingAction").forward(request, response);
 			} 
 			
 			if (groupInterview != null) {
@@ -93,16 +96,18 @@ public class InterviewReportSubmission extends HttpServlet {
 							hdzApplication.setAppstatus("Hired");					
 							InterviewService.updateApplication(hdzApplication);
 						}
+						request.getRequestDispatcher("/PendingAction").forward(request, response);
 					}
 					
 				} else {
 					hdzApplication.setAppstatus("Fail");					
 					InterviewService.updateApplication(hdzApplication);
+					request.getRequestDispatcher("/PendingAction").forward(request, response);
 				}
 				
 			}
 			
-			request.getRequestDispatcher("/PendingAction").forward(request, response);
+			
 		}
 	}
 
