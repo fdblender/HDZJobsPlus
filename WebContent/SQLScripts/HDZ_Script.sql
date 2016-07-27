@@ -183,13 +183,13 @@ insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appst
 values (hdz_application_id_seq.nextval, 1,'N', 1,'New',null);
 
 insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 2,'Y', 2,'New',null);
+values (hdz_application_id_seq.nextval, 2,'N', 2,'New',null);
 
 insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
 values (hdz_application_id_seq.nextval, 3,'N', 3,'New',null);
 
 insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 4,'Y', 4,'New',null);
+values (hdz_application_id_seq.nextval, 4,'N', 4,'New',null);
 
 insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
 values (hdz_application_id_seq.nextval, 5,'N', 5,'New',null);

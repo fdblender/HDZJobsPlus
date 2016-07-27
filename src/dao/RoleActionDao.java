@@ -22,6 +22,9 @@ public class RoleActionDao {
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
             query.setParameter("status", "Fail");
             hdzApplications = query.getResultList();
+            for(HdzApplication h: hdzApplications) {
+            	System.out.println(h.getHdzApplicant().getCitizenflag());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -94,7 +97,12 @@ public class RoleActionDao {
 		// get all applicants where status not fail
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
-        String qString = "select b from HdzApplication b where b.appstatus <> :status";
+        String qString = "select b from HdzApplication b where b.appstatus <> :status"
+        		+ " and (b.hdzApplicant.dottestflag is null"
+        		+ " or b.hdzApplicant.dottestflag is null"
+        		+ " or b.hdzApplicant.drugtestflag is null"
+        		+ " or b.hdzApplicant.alcoholtestflag is null"
+        		+ " or b.hdzApplicant.stdpanelflag is null)";
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
