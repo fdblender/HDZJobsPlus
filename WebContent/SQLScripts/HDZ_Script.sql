@@ -174,24 +174,25 @@ applicantid integer ,
 codingtest varchar2(1) ,
 jobsid integer ,
 appstatus varchar2(50) ,
+comments varchar2(500) ,
 CONSTRAINT fk_HDZ_application_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID),
 CONSTRAINT fk_HDZ_application_jobsID FOREIGN KEY (jobsID) references HDZ_jobs(jobsID)
 );
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus)
-values (hdz_application_id_seq.nextval, 1,'N', 1,'New');
+insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
+values (hdz_application_id_seq.nextval, 1,'N', 1,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus)
-values (hdz_application_id_seq.nextval, 2,'Y', 2,'New');
+insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
+values (hdz_application_id_seq.nextval, 2,'Y', 2,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus)
-values (hdz_application_id_seq.nextval, 3,'N', 3,'New');
+insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
+values (hdz_application_id_seq.nextval, 3,'N', 3,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus)
-values (hdz_application_id_seq.nextval, 4,'Y', 4,'New');
+insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
+values (hdz_application_id_seq.nextval, 4,'Y', 4,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus)
-values (hdz_application_id_seq.nextval, 5,'N', 5,'New');
+insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
+values (hdz_application_id_seq.nextval, 5,'N', 5,'New',null);
 
 
 
