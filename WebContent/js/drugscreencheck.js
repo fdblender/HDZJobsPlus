@@ -4,9 +4,9 @@ $(document).ready(function() {
 	$('.PositiveStd').click(function (event) {
 	
 		 var idItem = $(this).attr('id');
-		 var id = idItem.substring(11);
-		 
-		 
+		 var id = idItem.substring(11);	
+		 alert($('#addcomment').val());
+		 var comment=$('#addcomment').val();
 		 var dataString ='stdid='+ id;
 		 $.ajax({  
 			    type: "GET",  

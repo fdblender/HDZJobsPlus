@@ -71,6 +71,7 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">DOT Test</div></th>
 <th align="center"><div align="center">Alcohol Test</div></th>
 <th align="center"><div align="center">Drug Test</div></th>
+<th align="center"><div align="center">Comment</div></th>
 </tr>
 </thead>
  <tbody>
@@ -116,7 +117,14 @@ function limitText(limitField, limitCount, limitNum) {
    <c:out value="${DrugApplicant.drugtestflag}"/>  
        
     
-   </td> 
+   </td>
+   
+    <td align="center">
+   
+   <c:out value="${DrugApplication.comments}"/>  
+       
+    
+   </td>  
    
 	 </tr> 
 	 

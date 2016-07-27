@@ -68,6 +68,7 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">Applying</div></th>
 <th align="center"><div align="center">Citizen</div></th>
 <th align="center"><div align="center">Visa</div></th>
+<th align="center"><div align="center">Comments</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
 </thead>
@@ -95,6 +96,11 @@ function limitText(limitField, limitCount, limitNum) {
     <c:out value="${NationalityCheck.hdzApplicant.visa}"/>  
     
    </td>  
+   
+     <td align="center">
+    <c:out value="${NationalityCheck.comments}"/>  
+    
+   </td>
    
    <td align="center">
    
