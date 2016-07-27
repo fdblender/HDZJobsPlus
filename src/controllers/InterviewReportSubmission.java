@@ -43,10 +43,19 @@ public class InterviewReportSubmission extends HttpServlet {
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
 		String url = "/PendingAction";
+		String comment = (String) session.getAttribute("commentInterview") + "\n";
+		System.out.println("Interview comment: " + comment);
+		
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
+			if (comment != null && !comment.equals("")) {
+				comment +=  InterviewService.getComment(hdzApplication);
+				hdzApplication.setComments(employee.getEmpname() + " ("+ 
+						employee.getPosition()+"): " + comment);
+			}
+			
 			String groupInterviewCoding = request.getParameter("groupInterviewCoding");
 			String groupInterview = request.getParameter("groupInterview");
 			String hmInterviewCoding = request.getParameter("hmInterviewCoding");
