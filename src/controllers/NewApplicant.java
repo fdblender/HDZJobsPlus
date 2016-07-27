@@ -124,7 +124,7 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHashedpwd(hashedPwd);
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
-		System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+" "+" "+citizen+" "+veteran);
+		//System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+" "+" "+citizen+" "+veteran);
 		applicant.setSalt(salt);
 		NewApplicantService.insertApplicant(applicant);
 		applicant = ValidateUserDao.getValidApplicant(email, password);

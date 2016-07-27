@@ -50,19 +50,19 @@ alcoholtest varchar2(100)
 
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '54daccaa47c824f9e30ab5a6d8850a1322ff76f09d571e6f75c351e62ca6ea92', '54daccaa47c824f9e30ab5a6d8850a1322ff76f09d571e6f75c351e62ca6ea92', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '8f23afaa0ec822bef56b4e71da62d1d19cb569b7957124b57816463fb952fbdf', 'cDxst4bFuL7tqMdGPSy+RgCW+1EJ2F40LsNh+uHwHUs=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '24c3c855e32fdf89f07f37c35f9cb60384af3ba8b4828607daa292bb0c63c6ee', '24c3c855e32fdf89f07f37c35f9cb60384af3ba8b4828607daa292bb0c63c6ee', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '447903c4bddf950b8fed39041d3f786a04601be1107de2667cb3369e1ee420ce', '6GxvpU56PKnpNC5OddEAgKhJz252pAkITHKO7Hz2r+s=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', 'e789626e67fe570204be7f81123fd31b4d6abdeabfc7a0e9a0f887bb17aa70ec', 'e789626e67fe570204be7f81123fd31b4d6abdeabfc7a0e9a0f887bb17aa70ec', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null,'no',null,'no',null,'no',null,'no');
+values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '634becb83a351b7201e75d8e69eabe64be3f9d8bb1f4c5cb86da00bdf6cb123d', '7rRh4eqTNh+LJL0Iqp3o3n3ZwU/Ektm7xwsK1TczFQE=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null,'no',null,'no',null,'no',null,'no');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', 'b0c485f74e5e7bd3bbcc0dfc85641945db70c989b04a219133936feca6e04f22', 'hbGBcq+w1NHIdod8spbeVtlC9wrJFM2gzQfXgl4S8Ds=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null,'no',null,'no',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df0661cd9ea573e91626b8c1dd92026fe05a67196360c', 'o6uSUE7IKGUMAQ1mrj+k8Ggf5CHlmfxGAiWoHv8rzok=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null,'no',null,'no',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '44b812f2198040a98a6c9cab91813c1546e27695730ec150b9a75aa7691d98c3', 'oDIuWRN8mkhL4IbXs1rSY2rbbtEQuId0blDB9Z6M69Y=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 create table HDZ_Education(
 educationid integer primary key,
