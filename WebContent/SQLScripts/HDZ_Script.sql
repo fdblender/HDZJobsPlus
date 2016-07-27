@@ -6,6 +6,7 @@ drop table HDZ_reftable;
 drop table HDZ_jobs;
 drop table HDZ_Applicant;
 
+
 drop sequence hdz_employee_id_seq;
 drop sequence hdz_application_id_seq;
 drop sequence hdz_jobhistory_id_seq;
@@ -49,19 +50,19 @@ alcoholtest varchar2(100)
 
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '54daccaa47c824f9e30ab5a6d8850a1322ff76f09d571e6f75c351e62ca6ea92', '54daccaa47c824f9e30ab5a6d8850a1322ff76f09d571e6f75c351e62ca6ea92', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '24c3c855e32fdf89f07f37c35f9cb60384af3ba8b4828607daa292bb0c63c6ee', '24c3c855e32fdf89f07f37c35f9cb60384af3ba8b4828607daa292bb0c63c6ee', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null,'no',null,'no',null,'no',null,'no');
+values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', 'e789626e67fe570204be7f81123fd31b4d6abdeabfc7a0e9a0f887bb17aa70ec', 'e789626e67fe570204be7f81123fd31b4d6abdeabfc7a0e9a0f887bb17aa70ec', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null,'no',null,'no',null,'no',null,'no');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null,'no',null,'no',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', 'b0c485f74e5e7bd3bbcc0dfc85641945db70c989b04a219133936feca6e04f22', 'hbGBcq+w1NHIdod8spbeVtlC9wrJFM2gzQfXgl4S8Ds=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null,'no',null,'no',null,'yes',null,'yes');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '44b812f2198040a98a6c9cab91813c1546e27695730ec150b9a75aa7691d98c3', 'oDIuWRN8mkhL4IbXs1rSY2rbbtEQuId0blDB9Z6M69Y=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
 
 create table HDZ_Education(
 educationid integer primary key,
@@ -204,28 +205,28 @@ position varchar2(100)
 );
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd, salt, position)
-values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=', 'HR Manager');
+values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','e95a5ad51f4af4ea83c652fbc74796ed413cff1fde20b01e29b7b749ad109d49', 'sFr6YJz/jKBZi8GPvtVz576kytszrhcj/kaSp9MZ2q0=', 'HR Manager');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Compliance Officer');
+values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','ea46ff538d38fce90d9f6a177cb2c538e25f44a5deb47725115913ffc93ceaf2', 'W7BnXZhU/efVeOCaXEnfkI3L9s1vOfEZCYfE7+93D0k=','Compliance Officer');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','HR Assistant');
+values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','8d9bd9192e2eed579d92ca4995289febcee969fa57979dde0feb5f6477427620', 'zYWAq2b39MEkGgcA1oXK5owfdtVFQad++2tK7futvAA=','HR Assistant');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','HR Specialist');
+values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','34f78a77941dacb64b5010a3cd3971295982d9b6583fc8dbe770311c4f24b5b4', 'cFcwYn6sDNpz75L8qaLsqzZ2tqoz5BnqUdRw3JqYnNw=','HR Specialist');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Health Care Professional');
+values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','f6833b84e13b10b6185323b9117c7f8352016b788b4bda9fe87f4b114d0c412a', 'V33qAk8La7ZncEff4K1ipai+xoJHk4MNK/iT8pUb840=','Health Care Professional');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Hiring Manager');
+values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','b8baca6f17a499ed440162c8cce6fe6c10e1bdd64710611278645a60d68f2521', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Hiring Manager');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Software Engineer');
+values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','0bbb251acad14f46d04d12b26e574c77be42dc1a7f1e8591b21156bb3e61e8ea', 'zXBxr8AYFi2Tu5JsySHDhxWQ6H/ZSG4PBYDQeqXYAvA=','Software Engineer');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','17d4063d5cf51dafc104d67427b91fc64ad987de4233bfc99b0f2d2c50493b3c', '3rcfjNzKUPmNsQH+avlc93xaxraDDYjigodbpBHDIx4=','Technology analyst');
+values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','1374fdac46614f635ac1f88eff8f82ab38326edaf581f3c0692bfafd4def81fc', 'kKyCEuMFt3z/FkaGSa3wqaHvdNBFB2wbQcZsBhxmgT0=','Technology analyst');
 
 commit;
 
