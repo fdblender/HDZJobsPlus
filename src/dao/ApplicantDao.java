@@ -29,6 +29,19 @@ public class ApplicantDao {
 			em.close();
 		}
 	}
+	public static void update(HdzApplicant applicant) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(applicant);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
 
 	public static void insert(HdzApplication app) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
