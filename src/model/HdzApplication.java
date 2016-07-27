@@ -22,6 +22,8 @@ public class HdzApplication implements Serializable {
 	private String appstatus;
 
 	private String codingtest;
+	
+	private String comments;
 
 	//bi-directional many-to-one association to HdzApplicant
 	@ManyToOne
@@ -75,5 +77,14 @@ public class HdzApplication implements Serializable {
 	public void setHdzJob(HdzJob hdzJob) {
 		this.hdzJob = hdzJob;
 	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+	
 
 }
