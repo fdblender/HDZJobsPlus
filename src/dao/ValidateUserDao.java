@@ -38,9 +38,9 @@ public class ValidateUserDao {
 				// then set user to null
 				if (!PasswordUtil.compareSaltedHashWithUserEnteredPwd(user.getSalt(), password, expectedHash)) {
 					user = null;
-					System.out.println("ValidateUserDao: password does not compare, setting user to null");
+					//System.out.println("ValidateUserDao: password does not compare, setting user to null");
 				} else {
-					System.out.println("ValidateUserDao: password validated: " + password);
+					//System.out.println("ValidateUserDao: password validated: " + password);
 				}
 	
 			} catch (NoSuchAlgorithmException e) {
@@ -78,9 +78,9 @@ public class ValidateUserDao {
 				// then set user to null
 				if (!PasswordUtil.compareSaltedHashWithUserEnteredPwd(user.getSalt(), password, expectedHash)) {
 					user = null;
-					System.out.println("ValidateUserDao: password does not compare, setting user to null");
+					//System.out.println("ValidateUserDao: password does not compare, setting user to null");
 				} else {
-					System.out.println("ValidateUserDao: password validated: " + password);
+					//System.out.println("ValidateUserDao: password validated: " + password);
 				}
 	
 			} catch (NoSuchAlgorithmException e) {
