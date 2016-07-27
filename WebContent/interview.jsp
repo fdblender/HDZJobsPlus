@@ -136,9 +136,9 @@
 											<c:set var="coding" scope="session" value="${coding}" />
 											<c:if test="${coding == 'N'}">
 												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=P">Coding
-													Interview Pass</a></td></tr>
+													Test Pass</a></td></tr>
 												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=F">Coding
-													Interview Fail</a></td></tr>
+													Test Fail</a></td></tr>
 											</c:if>
 
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterview=Pass">Group
@@ -146,16 +146,19 @@
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
 												Interview Fail</a></td></tr>
 										</c:if> <c:if test="${type == 'HM Interview'}">
+										<c:set var="coding" scope="session" value="${coding}" />
+											<c:if test="${coding == 'N'}">
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=P">Coding
-												Interview Pass</a></td></tr>
+												Test Pass</a></td></tr>
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=F">Coding
-												Interview Fail</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">Fail</a></td></tr>
+												Test Fail</a></td></tr>
+												</c:if>
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">HM Pass</a></td></tr>
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">HM Fail</a></td></tr>
 										</c:if> <c:if test="${type == 'HR Interview'}">
 
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Pass">Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">Fail</a></td></tr>
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Pass">HR Pass</a></td></tr>
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">HR Fail</a></td></tr>
 										</c:if></table>
 										</td>
 										
@@ -164,7 +167,7 @@
 						<c:set var="comments" scope="session" value="${application.comments}" />
 						<c:if test="${comments != null && application != ''}">
 							<p>
-								<c:out value="${application.comments}"></c:out>
+								${application.comments}
 							</p>
 						</c:if>
 

@@ -43,7 +43,7 @@ public class InterviewReportSubmission extends HttpServlet {
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
 		String url = "/PendingAction";
-		String comment = (String) session.getAttribute("commentInterview") + "\n";
+		String comment = (String) session.getAttribute("commentInterview");
 		System.out.println("Interview comment: " + comment);
 		
 		if (employee == null) {
@@ -51,7 +51,11 @@ public class InterviewReportSubmission extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			if (comment != null && !comment.equals("")) {
-				comment +=  InterviewService.getComment(hdzApplication);
+				String x = InterviewService.getComment(hdzApplication);
+				if (x != null) {
+					comment +=   "<br/>" + x;
+				}
+				
 				hdzApplication.setComments(employee.getEmpname() + " ("+ 
 						employee.getPosition()+"): " + comment);
 			}

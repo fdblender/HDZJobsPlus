@@ -38,8 +38,10 @@ public class PendingAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("in pending Action");
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
+		session.setAttribute("app", null);
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -57,6 +59,7 @@ public class PendingAction extends HttpServlet {
 			} else if (role.equals("HRManager")) {
 				session.setAttribute("HR", "Yes");
 				hdzapplication = RoleActionService.getActionsHRManager();
+				//System.out.println(hdzapplication.get(0).getAppstatus());
 				
 			} else if (role.equals("HRSpecialist")) {
 				session.setAttribute("HR", "Yes");

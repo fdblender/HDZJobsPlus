@@ -34,8 +34,14 @@ public class CommentSubmit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("in com sub");
-		String comment = request.getParameter("commentInterview");
-		request.getSession().setAttribute("commentInterview", comment);
+		String comment = request.getParameter("commentInterview"); 
+				if (comment != null && !comment.equals("")) {
+					comment += "<br/>";
+					request.getSession().setAttribute("commentInterview", comment);
+				} else {
+					request.getSession().setAttribute("commentInterview", null);
+				}
+		
 		System.out.println("com sub" + comment);
 	}
 
