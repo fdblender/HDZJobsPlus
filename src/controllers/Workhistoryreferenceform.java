@@ -68,6 +68,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				session.setAttribute("hiremessage", "This applicant is hired!!");
+				
 				dao.PendingActionsDao.update(myapplication);
 			}
 			
@@ -98,6 +100,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				session.setAttribute("hiremessage", "This applicant is hired!!");
+				
 				dao.PendingActionsDao.update(myapplication);
 			}
 			
@@ -126,6 +130,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
+				
+				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 			}
@@ -170,6 +176,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			myapplication.setAppstatus("Fail");
 			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
 			dao.PendingActionsDao.update(myapplication);
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -197,6 +205,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			myapplication.setAppstatus("Fail");
 			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
 			dao.PendingActionsDao.update(myapplication);
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -222,6 +232,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			dao.PendingActionsDao.update(myapplicant);
 			
 			myapplication.setAppstatus("Fail");
+			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
 			

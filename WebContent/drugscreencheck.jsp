@@ -36,6 +36,13 @@ function limitText(limitField, limitCount, limitNum) {
 <form action="DrugCheckForm" method="get" >
 <div class="container">
 
+<c:set var="mesL" scope="session" value="${hiremessage}" />
+			<c:if test="${mesL != null}">
+				<div class="alert alert-success">
+					<strong>${hiremessage}</strong> <span id="showSearchTerm"></span>
+				</div>
+			</c:if>
+
 <br /><br />
 
 <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Nationality</div>

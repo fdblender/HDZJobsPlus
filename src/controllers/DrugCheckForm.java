@@ -63,6 +63,8 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
+				
 				dao.PendingActionsDao.update(myapplication);
 			}
 			
@@ -98,9 +100,13 @@ public class DrugCheckForm extends HttpServlet {
 			
 			myapplication.setAppstatus("Fail");
 			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
 			dao.PendingActionsDao.update(myapplication);
 			
 			session.setAttribute("DrugApplication",myapplication);	
+			
+			
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
 			
