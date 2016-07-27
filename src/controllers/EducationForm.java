@@ -59,6 +59,8 @@ public class EducationForm extends HttpServlet {
 			
 			myeducation.setEducationflag("Y");
 			
+			
+			dao.PendingActionsDao.update(myeducation);
 
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
@@ -95,6 +97,8 @@ public class EducationForm extends HttpServlet {
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
 			
 			myeducation.setEducationflag("N");
+			
+			dao.PendingActionsDao.update(myeducation);
 			
 			myapplication.setAppstatus("Fail");
 			

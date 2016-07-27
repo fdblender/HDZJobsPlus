@@ -45,18 +45,17 @@ function limitText(limitField, limitCount, limitNum) {
 
 <br /><br />
 
-<div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Nationality</div>
+<div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Drug Screen Test</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
 <tr align="center">
 <th align="center"><div align="center">App ID</div></th>
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
-<th align="center"><div align="center">Drug Test</div></th>
 <th align="center"><div align="center">STD Panel</div></th>
 <th align="center"><div align="center">DOT Test</div></th>
 <th align="center"><div align="center">Alcohol Test</div></th>
-<th align="center"><div align="center">Actions</div></th>
+<th align="center"><div align="center">Drug Test</div></th>
 </tr>
 </thead>
  <tbody>
@@ -75,31 +74,31 @@ function limitText(limitField, limitCount, limitNum) {
         <c:out value="${DrugApplication.hdzJob.position}"/>
     
  	</td> 
-	<td align="center">
-    <c:out value="${DrugApplication.hdzApplicant.drugtest}"/>  
+   
+   <td align="center">
+   
+    <input type="button" class="PositiveStd" name="PositiveStd${DrugApplication.hdzApplicant.applicantid}" id="PositiveStd${DrugApplication.hdzApplicant.applicantid}" value="Positive" />
+	<input type="button" class="NegativeStd" name="NegativeStd${DrugApplication.hdzApplicant.applicantid}" id="NegativeStd${DrugApplication.hdzApplicant.applicantid}" value="Negative" />
     
    </td>
    
    <td align="center">
-    <c:out value="${DrugApplication.hdzApplicant.stdpanel}"/>  
-    
-   </td>
    
-   <td align="center">
-    <c:out value="${DrugApplication.hdzApplicant.dottest}"/>  
+   
+     <input type="button" class="PositiveDot" name="PositiveDot${DrugApplication.hdzApplicant.applicantid}" id="PositiveDot${DrugApplication.hdzApplicant.applicantid}" value="Positive" />
+	<input type="button" class="NegativeDot" name="NegativeDot${DrugApplication.hdzApplicant.applicantid}" id="NegativeDot${DrugApplication.hdzApplicant.applicantid}" value="Negative" />
     
    </td>
    <td align="center">
-    <c:out value="${DrugApplication.hdzApplicant.alcoholtest}"/>  
+     <input type="button" class="PositiveAlcohol" name="PositiveAlcohol${DrugApplication.hdzApplicant.applicantid}" id="PositiveAlcohol${DrugApplication.hdzApplicant.applicantid}" value="Positive" />
+	<input type="button" class="NegativeAlcohol" name="NegativeAlcohol${DrugApplication.hdzApplicant.applicantid}" id="NegativeAlcohol${DrugApplication.hdzApplicant.applicantid}" value="Negative" />  
     
    </td>
    
    
    <td align="center">
    
-   <input type="button" class="ValidateDrug" name="ValidateDrug${DrugApplication.hdzApplicant.applicantid}" id="ValidateDrug${DrugApplication.hdzApplicant.applicantid}" value="Validate" />
-   
-    <input type="button" class="FailDrug" name="FailDrug${DrugApplication.hdzApplicant.applicantid}" id="FailDrug${DrugApplication.hdzApplicant.applicantid}" value="Fail"/> 
+   <c:out value="${DrugApplicant.drugtestflag}"/>  
        
     
    </td> 
