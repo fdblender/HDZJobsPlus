@@ -104,7 +104,6 @@ public class InterviewReportSubmission extends HttpServlet {
 					if (InterviewService.getCodingTest(hdzApplication.getApplicationid()).equals("N")) {
 						request.setAttribute("message", "Coding Test has to be completed");
 						url = "/InterviewForm";
-						System.out.println("N");
 					} else {
 						hdzApplication.setAppstatus("GroupInterviewDone");					
 						InterviewService.updateApplication(hdzApplication);
