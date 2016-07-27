@@ -13,11 +13,15 @@ public class testInsert {
 //		job.setDescription("great test job");
 //		job.setPosition("manager");
 //		AddjobsDao.addjobs(job);
-		HdzApplicant applicant =new HdzApplicant();
-		applicant.setFirstname("Test");
-		applicant.setLastname("Subject");
-		applicant.setEmail("tes@test.com");
+		HdzApplicant applicant = new HdzApplicant();
+		applicant.setFirstname("Test42");
+		applicant.setLastname("Subject42");
+		applicant.setEmail("test42subject42@test.com");
 	ApplicantDao.insert(applicant);
+	applicant.setBday("42-42-42");
+	ApplicantDao.update(applicant);
+	applicant=ApplicantDao.getApplicantByName("Test42", "Subject42");
+	assertNotNull(applicant);
 	}
 	
 
