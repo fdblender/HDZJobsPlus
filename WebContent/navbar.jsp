@@ -2,21 +2,25 @@
 <nav class="navbar navbar-default" style="background-color: #01579b">
   <div class="container-fluid ">
     <div class="navbar-header" >
-      <a class="navbar-brand " href="login.jsp" style="color: #fff; font-weight: bold;font-size:22px">HDZ Jobs</a>
+      <a class="navbar-brand " href="login.jsp" style="color: #fff;font-weight: bold;font-size: 20px">HDZ Jobs</a>
     </div>
     <ul class="nav navbar-nav">   	  
-      <c:if test="${userrole == 1}">
-      <li ><a href="yourapplications.jsp" style="color: #fff; font-weight: bold;font-size:16px" >Your Applications</a></li> 
-      <li ><a href="./Jobs" style="color: #fff; font-weight: bold;font-size:16px" >Jobs</a></li>
-      </c:if>
-      <c:if test="${userrole == 2}">
-      <li><a href="pendingAction.jsp" style="color: #fff; font-weight: bold;font-size:16px" >Pending Actions
+       <c:if test="${role =='applicant'}">  
+      <li ><a href="yourapplications.jsp" style="color: #fff; font-weight: bold;font-size: 16px" >Your Applications</a></li> 
+      <li ><a href="./Jobs" style="color: #fff;font-weight: bold;font-size: 16px" >Jobs</a></li>
+    </c:if>
+      <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager' or role=='ComplianceOfficer' or role=='HealthCareProfessional'}">
+      <li><a href="pendingAction.jsp" style="color: #fff;font-weight: bold;font-size: 16px" >Pending Actions
       </a></li>
-      <li> <a href="viewapplications.jsp" style="color: #fff; font-weight: bold;font-size:16px" >View Applications
-      </a></li>        
-      </c:if>      
-      <li ><a href="<%=request.getContextPath() %>/Logout"  style="color: #fff; font-weight: bold;font-size:16px">Log Out</a></li>
+      </c:if>
+    
+        <c:if test="${user != null}">  
+      <li ><a href="<%=request.getContextPath() %>/Logout"  style="color: #fff;font-weight: bold;font-size: 16px">Log Out</a></li>
+    </c:if>
+    <c:if test="${user == null}"> 
+     <li ><a href="login.jsp"  style="color: #fff;font-weight: bold;font-size: 16px">Log Out</a></li>
+    </c:if>
     </ul>
-  
+ 
   </div>
 </nav>
