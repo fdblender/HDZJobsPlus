@@ -45,7 +45,7 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">App ID</div></th>
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
-<th align="center"><div align="center">Nationality</div></th>
+<th align="center"><div align="center">Citizen</div></th>
 <th align="center"><div align="center">Visa</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
