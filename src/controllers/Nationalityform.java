@@ -61,6 +61,8 @@ public class Nationalityform extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				session.setAttribute("hiremessage", "The Applicant is Hired!!!!");
+				
 				dao.PendingActionsDao.update(myapplication);
 			}
 			
@@ -93,6 +95,8 @@ public class Nationalityform extends HttpServlet {
 			dao.PendingActionsDao.update(myapplicant);
 			
 			nationalityapplication.setAppstatus("Fail");
+			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(nationalityapplication);
 			

@@ -35,6 +35,13 @@ function limitText(limitField, limitCount, limitNum) {
 
 <form action="EducationForm" method="get" >
 <div class="container">
+<c:set var="mesL" scope="session" value="${hiremessage}" />
+			<c:if test="${mesL != null}">
+				<div class="alert alert-success">
+					<strong>${hiremessage}</strong> <span id="showSearchTerm"></span>
+				</div>
+			</c:if>
+
 
 <br /><br />
 
