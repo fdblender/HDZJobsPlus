@@ -76,8 +76,8 @@ public class RoleActionDao {
         List<HdzApplication> hdzApplications = null;
         String qString = "select b from HdzApplication b where b.appstatus <> :status"
         		+ " and b.hdzApplicant.applicantid in "
-        		+ " (select b.applicantid from HdzEducation "
-        		+ " where b.hdzEducations.educationflag is null)";
+        		+ " (select a.hdzApplicant.applicantid from HdzEducation a"
+        		+ " where a.educationflag is null)";
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
