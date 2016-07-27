@@ -35,6 +35,7 @@ public class EducationForm extends HttpServlet {
 		HttpSession session = request.getSession();	
 		String eduid=request.getParameter("eduid");	
 		String applicationid=request.getParameter("applicationid");
+		String comment=request.getParameter("addcomment");
 		
 		if(applicationid!=null)
 		{
@@ -53,6 +54,7 @@ public class EducationForm extends HttpServlet {
 		
 		if(eduid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzEducation myeducation=dao.PendingActionsDao.getEdubyEduid(eduid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
@@ -69,6 +71,27 @@ public class EducationForm extends HttpServlet {
 				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+					dao.PendingActionsDao.update(myapplication);
+					
+				}
+				
+			}
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -89,9 +112,11 @@ public class EducationForm extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession();	
-		String eduid=request.getParameter("eduid");	
+		String eduid=request.getParameter("eduid");
+		String comment=request.getParameter("addcomment");
 		if(eduid!=null)
 		{
+			
 			HdzEducation myeducation=dao.PendingActionsDao.getEdubyEduid(eduid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
@@ -105,6 +130,16 @@ public class EducationForm extends HttpServlet {
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			

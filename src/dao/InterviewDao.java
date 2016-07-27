@@ -59,6 +59,25 @@ public class InterviewDao {
         }
 		
 	}
+
+	public static String getComment(HdzApplication hdzApplication) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		String comment = null;
+        String qString = "select b.comments from HdzApplication b where b.applicationid = :id";
+        
+        try{
+            TypedQuery<String> query = em.createQuery(qString,String.class);
+            query.setParameter("id", hdzApplication.getApplicationid());
+            comment = query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return comment;
+		
+	}
 	
 
 

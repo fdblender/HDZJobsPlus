@@ -5,6 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
+		 
+		 
 		 var dataString ='stdid='+ id;
 		 $.ajax({  
 			    type: "GET",  

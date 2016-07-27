@@ -34,6 +34,8 @@ public class Nationalityform extends HttpServlet {
 		String applicantid=request.getParameter("applicantid");	
 		String applicationid=request.getParameter("applicationid");
 		
+		String comment=request.getParameter("addcomment");
+		
 		if(applicationid!=null)
 		{
 			session.setAttribute("Nationalityapplicationid", applicationid);
@@ -47,7 +49,7 @@ public class Nationalityform extends HttpServlet {
 		if(applicantid!=null)
 		{
 			//Validate nationality
-			
+			session.setAttribute("hiremessage", null);	
 			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(applicantid);
 			
 			myapplicant.setCitizenflag("Y");
@@ -63,6 +65,28 @@ public class Nationalityform extends HttpServlet {
 				session.setAttribute("hiremessage", "The Applicant is Hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+					dao.PendingActionsDao.update(myapplication);
+					
+				}
+				session.setAttribute("NationalityCheck", myapplication);
+				
+			}
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			session.setAttribute("NationalityCheck", myapplication);
@@ -83,6 +107,7 @@ public class Nationalityform extends HttpServlet {
 		String applicantid=request.getParameter("applicantid");	
 		String applicationid=session.getAttribute("Nationalityapplicationid").toString();
 		
+		String comment=request.getParameter("addcomment");
 		
 		if(applicantid!=null)
 		{
@@ -98,6 +123,17 @@ public class Nationalityform extends HttpServlet {
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(nationalityapplication);
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				nationalityapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(nationalityapplication);
+				
+			}
+			
 			
 			session.setAttribute("NationalityCheck", nationalityapplication);
 			

@@ -140,7 +140,7 @@
 								</table>
 								</c:if>
 								<c:if test="${application == null}">
-								<h2>No Records!!</h2>
+								<h4>No records found!</h4>
 								</c:if>
 							</form>
 						</div>
@@ -154,8 +154,8 @@
 										<th>Job ID</th>
 										<th>Job Title</th>
 										<th>Job Desc</th>
-										<th>Applicatnt Name</th>
-										<th>Applicatnt Status</th>
+										<th>Applicant Name</th>
+										<th>Applicant Status</th>
 										<th>Take Action</th>
 									</tr>
 								</thead>

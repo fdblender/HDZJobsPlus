@@ -38,6 +38,10 @@ public class Workhistoryreferenceform extends HttpServlet {
 		String veteranid=request.getParameter("veteranid");
 		String applicationid=request.getParameter("applicationid");
 		
+		String comment=request.getParameter("addcomment");
+		
+		
+		
 		if(applicationid!=null)
 		{
 			session.setAttribute("WorkApplicationid", applicationid);
@@ -56,6 +60,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 		
 		if(refid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzReftable myref=dao.PendingActionsDao.getrefbyrefid(refid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
@@ -71,6 +76,30 @@ public class Workhistoryreferenceform extends HttpServlet {
 				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+					dao.PendingActionsDao.update(myapplication);
+					
+				}
+			}
+			
+			if(comment!=null)
+			{
+				System.out.println(comment);
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+			
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -88,6 +117,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 		
 		if(workid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzJobhistory myjob=dao.PendingActionsDao.getjobhisbyjobhisid(workid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
@@ -103,6 +133,26 @@ public class Workhistoryreferenceform extends HttpServlet {
 				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+					dao.PendingActionsDao.update(myapplication);
+					
+				}
+			}
+			
+			if(comment!=null)
+			{
+				System.out.println(comment);
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -119,6 +169,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 		}
 		if(veteranid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(veteranid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
@@ -134,6 +185,26 @@ public class Workhistoryreferenceform extends HttpServlet {
 				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+					dao.PendingActionsDao.update(myapplication);
+					
+				}
+			}
+			System.out.println(comment);
+			if(comment!=null)
+			{
+				System.out.println(comment);
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -163,6 +234,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 		String refid=request.getParameter("refid");	
 		String workid=request.getParameter("workid");
 		String veteranid=request.getParameter("veteranid");
+		String comment=request.getParameter("addcomment");
 		
 		if(refid!=null)
 		{
@@ -179,6 +251,17 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -209,6 +292,16 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			
@@ -236,6 +329,16 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
