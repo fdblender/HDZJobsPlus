@@ -91,7 +91,9 @@
 										id="login" value="Login »">
 								</form>
 								<div class="login-help">
-									<a href="./newapplicant.jsp">Create New Applicant Account</a>
+									<h4>
+										<a href="./newapplicant.jsp">Create New Applicant Account</a>
+									</h4>
 								</div>
 							</fieldset>
 						</div>
@@ -124,9 +126,9 @@
 
 				</form>
 				<br />
-				<h4>
+				<h2>
 					<a href="./newapplicant.jsp">Create New Applicant Account</a>
-				</h4>
+				</h2>
 			</div>
 			<div class="col-sm-3"></div>
 		</div> -->
