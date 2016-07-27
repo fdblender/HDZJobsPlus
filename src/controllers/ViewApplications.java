@@ -43,12 +43,16 @@ public class ViewApplications extends HttpServlet {
 		
 		try {
 			
-			HttpSession session = request.getSession();
+			//HttpSession session = request.getSession();
 			String position = request.getParameter("position");
-			List<HdzApplication> app = ApplicationsDao.getapplications(position);
-		
-			session.setAttribute("app", app);
-			request.getRequestDispatcher("viewapplications.jsp").forward(request, response);
+			List<HdzApplication> apps = ApplicationsDao.getapplications(position);
+			if (apps== null || apps.size() ==0) {
+				request.setAttribute("message", "No Results!!");
+				request.setAttribute("applicationsSearch", null);
+			} else {
+				request.setAttribute("applicationsSearch", apps);
+			}
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

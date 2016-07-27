@@ -38,17 +38,15 @@ public class AddJobs extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
-			String id = request.getParameter("jobsid");
 			String posit = request.getParameter("position");
 			String desc = request.getParameter("description");
 			HdzJob jobs = new HdzJob();
-			jobs.setJobsid(Long.parseLong(id));
 			jobs.setPosition(posit);
 			jobs.setDescription(desc);
 			AddjobsDao.addjobs(jobs);
 			request.setAttribute("message", "Updated Successfully");
 		
-			request.getRequestDispatcher("addjobs.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 			
 		} catch (NullPointerException e) {
 			e.printStackTrace();
