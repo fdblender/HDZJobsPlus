@@ -2,7 +2,8 @@
  * 
  */
 $(document).ready(function(){
-     $('.actionSubmit').click(function (event) {
+	 $( "#accordion" ).accordion();
+     /*$('.actionSubmit').click(function (event) {
     	 alert("in");
 			 var id = $(this).attr('id');
 			 var dataString ='applicationid='+ id;
@@ -16,5 +17,5 @@ $(document).ready(function(){
 	            	 window.location = data.url;
 	               }                
 			 });		 		 
-	 });
+	 });*/
 });

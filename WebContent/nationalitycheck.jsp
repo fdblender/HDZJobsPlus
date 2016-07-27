@@ -42,10 +42,10 @@ function limitText(limitField, limitCount, limitNum) {
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
 <tr align="center">
-<th align="center"><div align="center">Application ID</div></th>
+<th align="center"><div align="center">App ID</div></th>
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
-<th align="center"><div align="center">Nationality</div></th>
+<th align="center"><div align="center">Citizen</div></th>
 <th align="center"><div align="center">Visa</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>

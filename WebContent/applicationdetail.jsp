@@ -34,7 +34,7 @@ function limitText(limitField, limitCount, limitNum) {
 
 
 <form action="ApplicationDetail" method="get" >
-<div class="container">
+<div class="container" Style="width:600px">
 
 <br /><br /> 
  
