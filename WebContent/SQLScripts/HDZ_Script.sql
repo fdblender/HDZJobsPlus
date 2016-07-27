@@ -224,7 +224,7 @@ insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
 values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','efe23baaeab3beb3e20fe2f5b685954c91eb20dbd32f249a874222a7206bd328', 'bn7XeEdjscm0UG2BN/kMSsjyvjXhr6Hb77ylnzV+daA=','Hiring Manager');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','0bbb251acad14f46d04d12b26e574c77be42dc1a7f1e8591b21156bb3e61e8ea', 'zXBxr8AYFi2Tu5JsySHDhxWQ6H/ZSG4PBYDQeqXYAvA=','Software Engineer');
+values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','d282629e2143c410906d323e34e4e590b59f208ea4e6c75c33f01d25f17d99c5', 'OBoalEdLrRKcUoWUOs/XyZGs6RLBjjwkY6SjAHshLfE=','Software Engineer');
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
 values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','9f0904b141429568059b455e923cc773f17c549f60c07a40316bbcb184df64d4', 'RNPmzBI6B4O+r+FUnPcKt1RNP/UdrrEF+KTmbQyUAjM=','Technology analyst');
