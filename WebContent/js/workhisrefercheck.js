@@ -5,7 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='refid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='refid='+ id+ "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "Workhistoryreferenceform",
@@ -22,7 +23,8 @@ $(document).ready(function() {
 	$('.FailRef').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(7);
-		 var dataString ='refid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='refid='+ id + "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  
@@ -39,7 +41,8 @@ $(document).ready(function() {
 		
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(12);
-		 var dataString ='workid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='workid='+ id + "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "Workhistoryreferenceform",
@@ -57,8 +60,9 @@ $(document).ready(function() {
 	$('.FailWork').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(8);
-		 var dataString ='workid='+ id;
 		 
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='workid='+ id+ "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "POST",  
 			    url: "Workhistoryreferenceform",
@@ -74,7 +78,8 @@ $(document).ready(function() {
 		
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(15);
-		 var dataString ='veteranid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='veteranid='+ id + "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "Workhistoryreferenceform",
@@ -92,7 +97,8 @@ $(document).ready(function() {
 	$('.FailVeteran').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='veteranid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='veteranid='+ id+ "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  

@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%
-
 	
 %> 
 <fmt:setLocale value="en_US"/>
@@ -26,8 +25,6 @@ function limitText(limitField, limitCount, limitNum) {
 		limitCount.value = limitNum - limitField.value.length;
 	}
 }
-
-
 </script>
 
 <jsp:include page="navbar.jsp" />
@@ -54,7 +51,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr style="backgroundcolor:#4db6ac ">
 
 <td >Please enter comment:</td></tr>
-<tr align="center"><td><input type="text" name="addcomment" value=""/></td></tr>
+<tr align="center"><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
 
 </tbody>
 </table>
@@ -244,5 +241,3 @@ function limitText(limitField, limitCount, limitNum) {
 
 </body>
 </html>
-
-

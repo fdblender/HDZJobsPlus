@@ -5,7 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='stdid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='stdid='+ id+ "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "DrugCheckForm",
@@ -22,7 +23,8 @@ $(document).ready(function() {
 	$('.NegativeStd').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='stdid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='stdid='+ id+ "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  
@@ -39,7 +41,8 @@ $(document).ready(function() {
 		
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='dotid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='dotid='+ id+ "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "DrugCheckForm",
@@ -56,7 +59,8 @@ $(document).ready(function() {
 	$('.NegativeDot').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='dotid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='dotid='+ id+ "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  
@@ -73,7 +77,8 @@ $(document).ready(function() {
 		
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(15);
-		 var dataString ='alcoholid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='alcoholid='+ id+ "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "DrugCheckForm",
@@ -90,7 +95,8 @@ $(document).ready(function() {
 	$('.NegativeAlcohol').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(15);
-		 var dataString ='alcoholid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='alcoholid='+ id+ "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  

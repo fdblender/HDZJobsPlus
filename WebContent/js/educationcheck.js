@@ -5,7 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);
-		 var dataString ='eduid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='eduid='+ id + "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "EducationForm",
@@ -22,7 +23,8 @@ $(document).ready(function() {
 	$('.FailEdu').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(7);
-		 var dataString ='eduid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='eduid='+ id + "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  

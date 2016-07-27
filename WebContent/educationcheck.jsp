@@ -54,7 +54,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr style="backgroundcolor:#4db6ac ">
 
 <td >Please enter comment:</td></tr>
-<tr align="center"><td><input type="text" name="addcomment" value=""/></td></tr>
+<tr align="center"><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
 
 </tbody>
 </table>

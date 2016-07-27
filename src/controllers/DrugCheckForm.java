@@ -39,6 +39,8 @@ public class DrugCheckForm extends HttpServlet {
 		String alcoholid=request.getParameter("alcoholid");	
 		String applicationid=request.getParameter("applicationid");
 		
+		String comment=request.getParameter("addcomment");
+		
 		if(applicationid!=null)
 		{
 			session.setAttribute("DrugApplicationid", applicationid);
@@ -52,6 +54,7 @@ public class DrugCheckForm extends HttpServlet {
 		
 		if(stdid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(stdid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
@@ -71,20 +74,37 @@ public class DrugCheckForm extends HttpServlet {
 			
 				session.setAttribute("DrugApplicant",applicant);
 				
-				session.setAttribute("hiremessage", "The drug test is passed!!!!");
-				
-				
+				session.setAttribute("hiremessage", "The drug test is passed!!!!");			
 			}
 			}
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
 				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+				}
+				
 				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				session.setAttribute("DrugApplication",myapplication);	
 			}
 			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+				
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
@@ -93,6 +113,7 @@ public class DrugCheckForm extends HttpServlet {
 		
 		if(dotid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(dotid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
@@ -121,10 +142,27 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+				}
+				
 				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				session.setAttribute("DrugApplication",myapplication);	
 				
+			}
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
 				
 			}
 			
@@ -135,6 +173,7 @@ public class DrugCheckForm extends HttpServlet {
 		}
 		if(alcoholid!=null)
 		{
+			session.setAttribute("hiremessage", null);	
 			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(alcoholid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
@@ -163,9 +202,28 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				myapplication.setAppstatus("Hired");
 				
+				if(comment!=null)
+				{
+					
+					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					
+				}
+				
 				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				session.setAttribute("DrugApplication",myapplication);	
+				
+			}
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
 			}
 			
 			session.setAttribute("DrugApplication",myapplication);	
@@ -188,6 +246,7 @@ public class DrugCheckForm extends HttpServlet {
 		String alcoholid=request.getParameter("alcoholid");	
 		String applicationid=session.getAttribute("DrugApplicationid").toString();
 		
+		String comment=request.getParameter("addcomment");
 		
 		if(stdid!=null)
 		{
@@ -207,7 +266,15 @@ public class DrugCheckForm extends HttpServlet {
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
-			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			session.setAttribute("DrugApplication",myapplication);	
 			
@@ -235,7 +302,15 @@ public class DrugCheckForm extends HttpServlet {
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
-			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			session.setAttribute("DrugApplication",myapplication);	
 			
@@ -263,6 +338,16 @@ public class DrugCheckForm extends HttpServlet {
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
+			
+			if(comment!=null)
+			{
+				
+				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
+				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			session.setAttribute("DrugApplication",myapplication);	
 			

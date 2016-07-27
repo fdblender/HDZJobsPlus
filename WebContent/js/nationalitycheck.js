@@ -5,7 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(14);
-		 var dataString ='applicantid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='applicantid='+ id + "&addcomment=" + comment;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "Nationalityform",
@@ -22,7 +23,8 @@ $(document).ready(function() {
 	$('.FailNationality').click(function (event) {
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(10);
-		 var dataString ='applicantid='+ id;
+		 var comment=document.getElementById('addcomment').value;
+		 var dataString ='applicantid='+ id+ "&addcomment=" + comment;
 		 
 		 $.ajax({  
 			    type: "POST",  
