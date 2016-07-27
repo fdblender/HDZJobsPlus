@@ -29,6 +29,24 @@ public class ApplicantDao {
 			em.close();
 		}
 	}
+	public static HdzApplicant getApplicantByName(String firstname, String lastname){
+		 EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+	        HdzApplicant applicant = null;
+	        String qString = "select a from HdzApplicant a "
+	                + "where a.firstname = :firstname  and a.lastname= :lastname ";
+	        
+	        try{
+	            TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
+	            query.setParameter("firstname",firstname);
+	            query.setParameter("lastname", lastname);
+	             applicant= query.getSingleResult();
+	        }catch (Exception e){
+	            e.printStackTrace();
+	        }finally{
+	            em.close();
+	        }return applicant;
+		
+	}
 	public static void update(HdzApplicant applicant) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();

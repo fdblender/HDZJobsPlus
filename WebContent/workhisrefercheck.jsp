@@ -36,6 +36,13 @@ function limitText(limitField, limitCount, limitNum) {
 <form action="Workhistoryreferenceform" method="get" >
 <div class="container">
 
+<c:set var="mesL" scope="session" value="${hiremessage}" />
+			<c:if test="${mesL != null}">
+				<div class="alert alert-success">
+					<strong>${hiremessage}</strong> <span id="showSearchTerm"></span>
+				</div>
+			</c:if>
+
 <br /><br /> 
  
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Veteran</div>
@@ -57,7 +64,7 @@ function limitText(limitField, limitCount, limitNum) {
  
         
          <c:set var="myveteranid" value="${VeteranApplication.applicationid}"/>
-        <a href="ApplicationDetail?applicationid=<c:out value="${myveteranid}"/>" >${VeteranApplication.applicationid}</a>
+        <c:out value="${myveteranid}"/>
         
     <td align="center"> 
 	
@@ -109,7 +116,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">      
         <c:set var="myworkid" value="${WorkApplicationid}"/>
-        <a href="ApplicationDetail?applicationid=<c:out value="${myworkid}"/>" >${WorkApplicationid}</a>
+        <c:out value="${myworkid}"/>
         
     <td align="center"> 
 	
@@ -172,7 +179,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tr>   
     <td align="center">      
         <c:set var="myreferid" value="${WorkApplicationid}"/>
-        <a href="ApplicationDetail?applicationid=<c:out value="${myreferid}"/>" >${WorkApplicationid}</a>
+        <c:out value="${myreferid}"/>
         
     <td align="center"> 
 	

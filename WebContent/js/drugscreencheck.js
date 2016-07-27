@@ -1,17 +1,17 @@
 $(document).ready(function() {
 	
 	
-	$('.ValidateDrug').click(function (event) {
+	$('.PositiveStd').click(function (event) {
 	
 		 var idItem = $(this).attr('id');
-		 var id = idItem.substring(12);
-		 var dataString ='drugid='+ id;
+		 var id = idItem.substring(11);
+		 var dataString ='stdid='+ id;
 		 $.ajax({  
 			    type: "GET",  
 			    url: "DrugCheckForm",
            data: dataString,
            success: function(data){
-        	   alert("Drug Screen Validated!");
+        	   alert("STD is Positive!");
                window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
              }                
 			  });
@@ -19,24 +19,91 @@ $(document).ready(function() {
 	 
 	 
 });            
-	$('.FailDrug').click(function (event) {
+	$('.NegativeStd').click(function (event) {
 		 var idItem = $(this).attr('id');
-		 var id = idItem.substring(8);
-		 var dataString ='drugid='+ id;
+		 var id = idItem.substring(11);
+		 var dataString ='stdid='+ id;
 		 
 		 $.ajax({  
 			    type: "POST",  
 			    url: "DrugCheckForm",
           data: dataString,
           success: function(data){
-        	  alert("Failed to Verify Drug Screen");
+        	  alert("STD is Negative");
               window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
             }                
 			  });
 	}); 
 		 
+	$('.PositiveDot').click(function (event) {
+		
+		 var idItem = $(this).attr('id');
+		 var id = idItem.substring(11);
+		 var dataString ='dotid='+ id;
+		 $.ajax({  
+			    type: "GET",  
+			    url: "DrugCheckForm",
+          data: dataString,
+          success: function(data){
+       	   alert("DOT is Positive!");
+              window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
+            }                
+			  });
 		
 	 
+	 
+});            
+	$('.NegativeDot').click(function (event) {
+		 var idItem = $(this).attr('id');
+		 var id = idItem.substring(11);
+		 var dataString ='dotid='+ id;
+		 
+		 $.ajax({  
+			    type: "POST",  
+			    url: "DrugCheckForm",
+         data: dataString,
+         success: function(data){
+       	  alert("DOT is Negative");
+             window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
+           }                
+			  });
+	}); 	
+	 
+	$('.PositiveAlcohol').click(function (event) {
+		
+		 var idItem = $(this).attr('id');
+		 var id = idItem.substring(15);
+		 var dataString ='alcoholid='+ id;
+		 $.ajax({  
+			    type: "GET",  
+			    url: "DrugCheckForm",
+         data: dataString,
+         success: function(data){
+      	   alert("Alcohol is Positive!");
+             window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
+           }                
+			  });
+		
+	 
+	 
+});            
+	$('.NegativeAlcohol').click(function (event) {
+		 var idItem = $(this).attr('id');
+		 var id = idItem.substring(15);
+		 var dataString ='alcoholid='+ id;
+		 
+		 $.ajax({  
+			    type: "POST",  
+			    url: "DrugCheckForm",
+        data: dataString,
+        success: function(data){
+      	  alert("Alcohol is Negative");
+            window.location = 'http://localhost:8080/HDZJobs/drugscreencheck.jsp';
+          }                
+			  });
+	}); 
+	
+	
 	             
 		  
 	

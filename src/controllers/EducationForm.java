@@ -59,10 +59,14 @@ public class EducationForm extends HttpServlet {
 			
 			myeducation.setEducationflag("Y");
 			
+			
+			dao.PendingActionsDao.update(myeducation);
 
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
+				
+				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 			}
@@ -94,7 +98,11 @@ public class EducationForm extends HttpServlet {
 			
 			myeducation.setEducationflag("N");
 			
+			dao.PendingActionsDao.update(myeducation);
+			
 			myapplication.setAppstatus("Fail");
+			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
 			

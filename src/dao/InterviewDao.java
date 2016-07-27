@@ -9,7 +9,7 @@ import util.DBUtil;
 
 public class InterviewDao {
 
-	public static Object getCosingTest(long id) {
+	public static String getCosingTest(long id) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		String coding = null;
         String qString = "select b.codingtest from HdzApplication b where b.applicationid = :id";

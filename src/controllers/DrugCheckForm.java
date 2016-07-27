@@ -32,7 +32,11 @@ public class DrugCheckForm extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
-		String drugid=request.getParameter("drugid");	
+		String stdid=request.getParameter("stdid");	
+		
+		String dotid=request.getParameter("dotid");	
+		
+		String alcoholid=request.getParameter("alcoholid");	
 		String applicationid=request.getParameter("applicationid");
 		
 		if(applicationid!=null)
@@ -46,22 +50,37 @@ public class DrugCheckForm extends HttpServlet {
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
 		}
 		
-		if(drugid!=null)
+		if(stdid!=null)
 		{
-			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(drugid);
+			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(stdid);
 			
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
 			
-			applicant.setDrugtestflag("Y");
-			applicant.setAlcoholtestflag("Y");
-			applicant.setDottestflag("Y");
 			applicant.setStdpanelflag("Y");
 			
 			dao.PendingActionsDao.update(applicant);
-
+			
+			session.setAttribute("DrugApplicant",applicant);
+			
+			if(applicant.getAlcoholtestflag()!=null&&applicant.getStdpanelflag()!=null&&applicant.getDottestflag()!=null)
+			{
+			if(applicant.getAlcoholtestflag().equals("Y")&&applicant.getStdpanelflag().equals("Y")&&applicant.getDottestflag().equals("Y"))
+			{
+				applicant.setDrugtestflag("Y");
+				dao.PendingActionsDao.update(applicant);
+			
+				session.setAttribute("DrugApplicant",applicant);
+				
+				session.setAttribute("hiremessage", "The drug test is passed!!!!");
+				
+				
+			}
+			}
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
+				
+				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 			}
@@ -72,6 +91,88 @@ public class DrugCheckForm extends HttpServlet {
 			
 		}
 		
+		if(dotid!=null)
+		{
+			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(dotid);
+			
+			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
+			
+			applicant.setDottestflag("Y");
+			
+			
+			dao.PendingActionsDao.update(applicant);
+			session.setAttribute("DrugApplicant",applicant);
+			
+			if(applicant.getAlcoholtestflag()!=null&&applicant.getStdpanelflag()!=null&&applicant.getDottestflag()!=null)
+			{
+			if(applicant.getAlcoholtestflag().equals("Y")&&applicant.getStdpanelflag().equals("Y")&&applicant.getDottestflag().equals("Y"))
+			{
+				applicant.setDrugtestflag("Y");
+				dao.PendingActionsDao.update(applicant);
+				
+				session.setAttribute("DrugApplicant",applicant);
+				session.setAttribute("hiremessage", "The drug test is passed!!!!");
+				
+				
+			}
+			}
+
+			if(dao.PendingActionsDao.checkAppStatus(myapplication))
+			{
+				myapplication.setAppstatus("Hired");
+				
+				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+				
+			}
+			
+			session.setAttribute("DrugApplication",myapplication);	
+			
+			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
+			
+		}
+		if(alcoholid!=null)
+		{
+			HdzApplicant applicant=dao.PendingActionsDao.getapplicantbyapplicantid(alcoholid);
+			
+			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("DrugApplicationid").toString());
+			
+			applicant.setAlcoholtestflag("Y");
+					
+			dao.PendingActionsDao.update(applicant);
+			
+			session.setAttribute("DrugApplicant",applicant);
+			
+			if(applicant.getAlcoholtestflag()!=null&&applicant.getStdpanelflag()!=null&&applicant.getDottestflag()!=null)
+			{
+				if(applicant.getAlcoholtestflag().equals("Y")&&applicant.getStdpanelflag().equals("Y")&&applicant.getDottestflag().equals("Y"))
+			{
+				applicant.setDrugtestflag("Y");
+				dao.PendingActionsDao.update(applicant);
+				
+				
+				session.setAttribute("DrugApplicant",applicant);
+				session.setAttribute("hiremessage", "The drug test is passed!!!!");
+				
+				
+			}
+			}
+			if(dao.PendingActionsDao.checkAppStatus(myapplication))
+			{
+				myapplication.setAppstatus("Hired");
+				
+				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
+				
+				dao.PendingActionsDao.update(myapplication);
+			}
+			
+			session.setAttribute("DrugApplication",myapplication);	
+			
+			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
+			
+		}
 		
 	}
 
@@ -80,27 +181,92 @@ public class DrugCheckForm extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();	
-		String drugid=request.getParameter("drugid");	
+		String stdid=request.getParameter("stdid");	
+		
+		String dotid=request.getParameter("dotid");	
+		
+		String alcoholid=request.getParameter("alcoholid");	
 		String applicationid=session.getAttribute("DrugApplicationid").toString();
 		
 		
-		if(drugid!=null)
+		if(stdid!=null)
 		{
-			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(drugid);
+			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(stdid);
 			HdzApplication myapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
 			
-			myapplicant.setDottestflag("N");
-			myapplicant.setAlcoholtestflag("N");
+			
+			myapplicant.setStdpanelflag("N");
+			myapplicant.setDrugtestflag("N");
+			
+			dao.PendingActionsDao.update(myapplicant);
+			
+			session.setAttribute("DrugApplicant",myapplicant);
+			
+			myapplication.setAppstatus("Fail");
+			dao.PendingActionsDao.update(myapplication);
+			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
+			
+			
+			session.setAttribute("DrugApplication",myapplication);	
+			
+			
+			
+			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
+			
+		}
+		
+		if(dotid!=null)
+		{
+			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(dotid);
+			HdzApplication myapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			
+			
 			myapplicant.setDottestflag("N");
 			myapplicant.setDrugtestflag("N");
 			
 			dao.PendingActionsDao.update(myapplicant);
 			
+			session.setAttribute("DrugApplicant",myapplicant);
 			myapplication.setAppstatus("Fail");
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
+			
+			
 			session.setAttribute("DrugApplication",myapplication);	
+			
+			
+			
+			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
+			
+		}
+		
+		if(alcoholid!=null)
+		{
+			HdzApplicant myapplicant=dao.PendingActionsDao.getapplicantbyapplicantid(alcoholid);
+			HdzApplication myapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			
+			
+			myapplicant.setAlcoholtestflag("N");
+			myapplicant.setDrugtestflag("N");
+			
+			dao.PendingActionsDao.update(myapplicant);
+			
+			session.setAttribute("DrugApplicant",myapplicant);
+			
+			myapplication.setAppstatus("Fail");
+			
+			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
+			dao.PendingActionsDao.update(myapplication);
+			
+			session.setAttribute("DrugApplication",myapplication);	
+			
+			
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
 			
