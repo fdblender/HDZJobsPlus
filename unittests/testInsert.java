@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import model.HdzApplicant;
@@ -9,16 +11,25 @@ public class testInsert {
 
 	@Test
 	public void test() {
-//		HdzJob job= new HdzJob(); 
-//		job.setDescription("great test job");
-//		job.setPosition("manager");
-//		AddjobsDao.addjobs(job);
-		HdzApplicant applicant =new HdzApplicant();
-		applicant.setFirstname("Test");
-		applicant.setLastname("Subject");
-		applicant.setEmail("tes@test.com");
+
+	HdzApplicant applicant = new HdzApplicant();
+	applicant.setFirstname("Test42");
+	applicant.setLastname("Subject42");
+	applicant.setEmail("test42subject42@test.com");
 	ApplicantDao.insert(applicant);
+	applicant.setBday("42-42-42");
+	ApplicantDao.update(applicant);
+	applicant=ApplicantDao.getApplicantByName("Test42", "Subject42");
+	assertNotNull(applicant);
 	}
-	
+	@Test 
+	public void testAddJob(){
+		HdzJob job= new HdzJob(); 
+		job.setDescription("great test job 42");
+		job.setPosition("manager");
+		AddjobsDao.addjobs(job);
+		List<HdzJob> jobs = ApplicantDao.searchJobs("great test job 42");
+		assertNotNull(jobs);
+	}
 
 }
