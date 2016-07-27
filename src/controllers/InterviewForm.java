@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import model.HdzApplication;
 import model.HdzEmployee;
 import services.InterviewService;
-import services.RoleActionService;
 
 /**
  * Servlet implementation class InterviewForm
@@ -43,6 +42,8 @@ public class InterviewForm extends HttpServlet {
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
+		hdzApplication.setCodingtest(InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+		session.setAttribute("app", hdzApplication);
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -55,6 +56,7 @@ public class InterviewForm extends HttpServlet {
 			} else {
 				request.setAttribute("interviewType", "Group Interview");
 				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+				System.out.println(InterviewService.getCodingTest(hdzApplication.getApplicationid()));
 			} 
 			request.getRequestDispatcher("interview.jsp").forward(request, response);
 		}

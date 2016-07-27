@@ -102,8 +102,8 @@
 				</div>
 			</c:if>
 			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-8">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-10">
 					<div id="accordion">
 					<h3 style="background-color: #01579b; color: #ffffff;">Search Applications</h3>
 						<div>
@@ -125,6 +125,7 @@
 											<th>AppId</th>
 											<th>Status</th>
 											<th>Job Id</th>
+											<th>Job Title</th>
 											<th>Job description</th>
 										</tr>
 									</thead>
@@ -133,6 +134,7 @@
 											<td><c:out value="${app.applicationid}"></c:out></td>
 											<td><c:out value="${app.appstatus}"></c:out></td>
 											<td><c:out value="${app.hdzJob.jobsid}"></c:out></td>
+											<td><c:out value="${app.hdzJob.position}"></c:out></td>
 											<td><c:out value="${app.hdzJob.description}"></c:out></td>
 									</c:forEach>
 								</table>
@@ -150,16 +152,18 @@
 								<thead>
 									<tr>
 										<th>Job ID</th>
+										<th>Job Title</th>
 										<th>Job Desc</th>
 										<th>Applicatnt Name</th>
 										<th>Applicatnt Status</th>
-										<th></th>
+										<th>Take Action</th>
 									</tr>
 								</thead>
 								<c:forEach var="action" items="${actionList}">
 									<tbody>
 										<tr>
 											<td><c:out value="${action.hdzJob.jobsid}"></c:out></td>
+											<td><c:out value="${action.hdzJob.position}"></c:out></td>
 											<td><c:out value="${action.hdzJob.description}"></c:out>
 											</td>
 											<td><c:out value="${action.hdzApplicant.firstname}"></c:out>
@@ -237,7 +241,7 @@
 						</div>
 					</div> --%>
 				</div>
-				<div class="col-sm-2"></div>
+				<div class="col-sm-1"></div>
 			</div>
 		</div>
 	</div>
