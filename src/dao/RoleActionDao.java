@@ -75,7 +75,9 @@ public class RoleActionDao {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
         String qString = "select b from HdzApplication b where b.appstatus <> :status"
-        		+ " and b.hdzApplicant.hdzEducations.educationflag is null";
+        		+ " and b.hdzApplicant.applicantid in "
+        		+ " (select b.applicantid from HdzEducation "
+        		+ " where b.hdzEducations.educationflag is null)";
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);

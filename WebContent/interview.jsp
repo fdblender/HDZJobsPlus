@@ -156,6 +156,13 @@
 										</td>
 						</tr>
 						</table>
+						<c:set var="comments" scope="session" value="${application.comments}" />
+					<c:if test="${comments != null && application != ''}">
+						<textarea rows="10" cols="10"><c:out value="${application.comments}"></c:out> </textarea>
+						</c:if>
+						<textarea rows="10" cols="10" id="commentInterview" name="commentInterview">
+						
+						</textarea>
 					</c:if>
 					<c:if test="${application == null}">
 						<h2>No Records!!</h2>
