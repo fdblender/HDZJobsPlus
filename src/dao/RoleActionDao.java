@@ -22,9 +22,6 @@ public class RoleActionDao {
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
             query.setParameter("status", "Fail");
             hdzApplications = query.getResultList();
-            for(HdzApplication h: hdzApplications) {
-            	System.out.println(h.getHdzApplicant().getCitizenflag());
-            }
         }catch (Exception e){
             e.printStackTrace();
         }
