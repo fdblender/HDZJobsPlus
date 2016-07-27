@@ -66,7 +66,13 @@ public class InterviewReportSubmission extends HttpServlet {
 			}
 			if (hmInterviewCoding != null) {
 				hdzApplication.setCodingtest(hmInterviewCoding);
-				InterviewService.updateApplication(hdzApplication);
+				if (hmInterviewCoding.equals("F")) {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+					request.setAttribute("message", "Letter sent to Applicant");
+				} else {
+					InterviewService.updateApplication(hdzApplication);
+				}
 				
 			} 
 			
@@ -83,7 +89,13 @@ public class InterviewReportSubmission extends HttpServlet {
 			}
 			if (groupInterviewCoding != null) {
 				hdzApplication.setCodingtest(groupInterviewCoding);
-				InterviewService.updateApplication(hdzApplication);
+				if (groupInterviewCoding.equals("F")) {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+					request.setAttribute("message", "Letter sent to Applicant");
+				} else {
+					InterviewService.updateApplication(hdzApplication);
+				}
 				
 			} 
 			

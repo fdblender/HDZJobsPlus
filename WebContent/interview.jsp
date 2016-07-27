@@ -131,9 +131,9 @@
 											test="${type == 'Group Interview'}">
 											<c:set var="coding" scope="session" value="${coding}" />
 											<c:if test="${coding == 'N'}">
-												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=Y">Coding
+												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=P">Coding
 													Interview Pass</a></td></tr>
-												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=N">Coding
+												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=F">Coding
 													Interview Fail</a></td></tr>
 											</c:if>
 
@@ -142,9 +142,9 @@
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
 												Interview Fail</a></td></tr>
 										</c:if> <c:if test="${type == 'HM Interview'}">
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=Y">Coding
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=P">Coding
 												Interview Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=N">Coding
+											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=F">Coding
 												Interview Fail</a></td></tr>
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">Pass</a></td></tr>
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">Fail</a></td></tr>
