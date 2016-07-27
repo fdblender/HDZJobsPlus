@@ -37,7 +37,7 @@ function limitText(limitField, limitCount, limitNum) {
 <div class="container" Style="width:600px">
 
 <br /><br /> 
- 
+ <c:if test="${role=='HRManager' or role=='HiringManager'}">
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Application Details</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
@@ -79,7 +79,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>	
      </tr>
      
-     <c:if test="${role=='HRManager' or role=='HiringManager'}">
+    
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -90,7 +90,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.codingtest}"/>
  		</td>	
      </tr>
-     </c:if>
+    
      
      
      <tr>
@@ -128,7 +128,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>	
      </tr>
      
-  <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+ 
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -139,7 +139,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.citizenflag}"/>
  		</td>	
      </tr>
-     </c:if>
+    
      
      <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -152,7 +152,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>	
      </tr>
      
-     <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+    
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -163,7 +163,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.visaflag}"/>
  		</td>	
      </tr>
-     </c:if>
+     
      <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -174,7 +174,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.veteran}"/>
  		</td>	
      </tr>
-     <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+    
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -185,7 +185,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.veteranflag}"/>
  		</td>	
      </tr>
-     </c:if>
+   
      
       <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -197,7 +197,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.drugtest}"/>
  		</td>	
      </tr>
-      <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+      
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -208,7 +208,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.drugtestflag}"/>
  		</td>	
      </tr>
-     </c:if>
+     
      
      <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -220,7 +220,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.stdpanel}"/>
  		</td>	
      </tr>
-         <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+         
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -231,7 +231,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.stdpanelflag}"/>
  		</td>	
      </tr>
-     </c:if>
+    
      
       <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -244,7 +244,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>	
      </tr>
      
-       <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+       
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -255,7 +255,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.dottestflag}"/>
  		</td>	
      </tr>
-     </c:if>
+    
      
      <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -268,7 +268,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>	
      </tr>
      
-     <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager'}">
+     
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
@@ -279,7 +279,7 @@ function limitText(limitField, limitCount, limitNum) {
  		<c:out value="${myapplicaitondetail.hdzApplicant.alcoholtestflag}"/>
  		</td>	
      </tr>
-     </c:if>
+     
      
      
      
@@ -314,9 +314,16 @@ function limitText(limitField, limitCount, limitNum) {
  
  
  
+ </c:if>
  
+ <c:if test="${role!='HRManager' and role!='HiringManager'}">
+			
+				<div class="alert alert-success">
+					<strong>You are not allowed to see this page!!</strong> <span id="showSearchTerm"></span>
+				</div>
+			
  
- 
+ </c:if>
 
  </div> 
  
