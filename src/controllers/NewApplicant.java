@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ValidateUserDao;
 import model.HdzApplicant;
 import model.HdzEducation;
 import model.HdzJobhistory;
@@ -116,17 +117,31 @@ public class NewApplicant extends HttpServlet {
 
 		HdzApplicant applicant = new HdzApplicant();
 		applicant.setBday(bday);
+		
 		applicant.setEmail(email);
 		applicant.setFirstname(firstname);
 		applicant.setLastname(lastname);
 		applicant.setHashedpwd(hashedPwd);
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
-		//applicant.setHdzEducations(edhist);
-		//applicant.setHdzJobhistories(jobhist);
+		System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+" "+" "+citizen+" "+veteran);
 		applicant.setSalt(salt);
-		//applicant.setHdzReftables(references);
 		NewApplicantService.insertApplicant(applicant);
+		applicant = ValidateUserDao.getValidApplicant(email, password);
+		applicant.setHdzEducations(edhist);
+		applicant.setHdzJobhistories(jobhist);
+		applicant.setHdzReftables(references);
+		for (HdzEducation e:edhist){
+			e.setHdzApplicant(applicant);
+		}
+		for(HdzJobhistory j:jobhist){
+			j.setHdzApplicant(applicant);
+		}
+		for (HdzReftable r:references){
+			r.setHdzApplicant(applicant);
+		}
+		NewApplicantService.updateApplicant(applicant);
+		
 		String nextURL = "/login.jsp";
 		request.getRequestDispatcher(nextURL).forward(request, response);
 	}

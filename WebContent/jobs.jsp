@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="bootstrap.jsp" />
 <title>Job Openings</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"></jsp:include>
 <h2>Job Openings</h2>
 <h4>${query}</h4>
 <form action="JobSearch">

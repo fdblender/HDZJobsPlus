@@ -8,4 +8,7 @@ public class NewApplicantService {
 	public static void insertApplicant(HdzApplicant applicant){
 		ApplicantDao.insert(applicant);
 	}
+	public static void updateApplicant(HdzApplicant applicant){
+		ApplicantDao.update(applicant);
+	}
 }
