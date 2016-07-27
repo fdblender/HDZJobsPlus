@@ -8,6 +8,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -17,7 +19,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script src="javascripts/home.js"></script>
-
+<script src="js/pendingAction.js"></script>
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -91,6 +93,8 @@
 </head>
 <body id="body" class="ui-widget-content" style="border: 0;">
 	<jsp:include page="navbar.jsp"></jsp:include>
+	
+	<div ng-app="myApp" ng-controller="myCtrl">
 	<div class="container">
 		<div style="background-color: white;" class="panel-body">
 			<c:set var="mesL" scope="session" value="${message}" />
@@ -154,15 +158,18 @@
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">Fail</a></td></tr>
 										</c:if></table>
 										</td>
+										
 						</tr>
 						</table>
 						<c:set var="comments" scope="session" value="${application.comments}" />
-					<c:if test="${comments != null && application != ''}">
-						<textarea rows="10" cols="10"><c:out value="${application.comments}"></c:out> </textarea>
+						<c:if test="${comments != null && application != ''}">
+							<p>
+								<c:out value="${application.comments}"></c:out>
+							</p>
 						</c:if>
-						<textarea rows="10" cols="10" id="commentInterview" name="commentInterview">
+
+						Comment: <input type="text" id="commentInterview" name="commentInterview"/>
 						
-						</textarea>
 					</c:if>
 					<c:if test="${application == null}">
 						<h2>No Records!!</h2>
@@ -172,7 +179,7 @@
 			</div>
 		</div>
 	</div>
-
-
+	</div>
+	
 </body>
 </html>

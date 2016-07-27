@@ -3,19 +3,17 @@
  */
 $(document).ready(function(){
 	 $( "#accordion" ).accordion();
-     /*$('.actionSubmit').click(function (event) {
-    	 alert("in");
-			 var id = $(this).attr('id');
-			 var dataString ='applicationid='+ id;
-			 alert(dataString);
+     $('.buttonLink').click(function (event) {
+    	 
+			 var id = $("#commentInterview").val();
+			 var dataString ='commentInterview='+ id;
+			 
 			 $.ajax({  
 				    type: "POST",  
-				    url: "ActionSubmit",
+				    url: "CommentSubmit",
 	             data: dataString,
 	             success: function(data){
-	                 //window.location = 'http://localhost:8080/BlueHorn/home.jsp';
-	            	 window.location = data.url;
 	               }                
 			 });		 		 
-	 });*/
+	 });
 });

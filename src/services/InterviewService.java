@@ -18,4 +18,8 @@ public class InterviewService {
 		
 	}
 
+	public static String getComment(HdzApplication hdzApplication) {
+		return InterviewDao.getComment(hdzApplication);
+	}
+
 }
