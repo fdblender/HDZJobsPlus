@@ -5,8 +5,8 @@ $(document).ready(function() {
 	
 		 var idItem = $(this).attr('id');
 		 var id = idItem.substring(11);	
-		 alert($('#addcomment').val());
-		 var comment=$('#addcomment').val();
+		 var comment=document.getElementById("addcomment").value;	 
+		 alert(comment);
 		 var dataString ='stdid='+ id;
 		 $.ajax({  
 			    type: "GET",  

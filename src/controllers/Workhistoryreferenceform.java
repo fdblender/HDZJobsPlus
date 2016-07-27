@@ -69,6 +69,15 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myref);
 			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
+			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
@@ -132,6 +141,15 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myjob);
 			
+			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
@@ -191,6 +209,14 @@ public class Workhistoryreferenceform extends HttpServlet {
 			myapplicant.setVeteranflag("Y");
 			
 			dao.PendingActionsDao.update(myapplicant);
+			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
 			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
