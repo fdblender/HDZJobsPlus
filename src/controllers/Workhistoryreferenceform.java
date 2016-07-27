@@ -69,6 +69,15 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myref);
 			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
+			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
@@ -76,6 +85,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				session.setAttribute("ApplicationComment", myapplication);
 				
 				
 				if(comment!=null)
@@ -86,6 +97,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 					
 					dao.PendingActionsDao.update(myapplication);
 					
+					session.setAttribute("ApplicationComment", myapplication);
 				}
 			}
 			
@@ -99,6 +111,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 				
 				dao.PendingActionsDao.update(myapplication);
+				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
@@ -109,6 +122,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 			
@@ -126,6 +141,15 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myjob);
 			
+			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
@@ -134,6 +158,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 				if(comment!=null)
 				{
 					
@@ -141,6 +167,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
+					
+					session.setAttribute("ApplicationComment", myapplication);
 					
 				}
 			}
@@ -153,6 +181,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -162,6 +192,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 			
@@ -178,6 +210,14 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplicant);
 			
+			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
+			{
+				myapplication.setAppstatus("WorkRefChecked");
+				
+				dao.PendingActionsDao.update(myapplication);
+				
+			}
+			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				myapplication.setAppstatus("Hired");
@@ -186,6 +226,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 				if(comment!=null)
 				{
 					
@@ -193,6 +235,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
+					
+					session.setAttribute("ApplicationComment", myapplication);
 					
 				}
 			}
@@ -205,6 +249,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 			}
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
@@ -214,6 +260,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 		}
@@ -252,6 +300,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			session.setAttribute("ApplicationComment", myapplication);
+			
 			if(comment!=null)
 			{
 				
@@ -259,6 +309,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
@@ -270,6 +322,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 			
@@ -292,6 +346,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			session.setAttribute("ApplicationComment", myapplication);
+			
 			if(comment!=null)
 			{
 				
@@ -299,6 +355,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
@@ -309,6 +367,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 			
@@ -330,6 +390,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			session.setAttribute("ApplicationComment", myapplication);
+			
 			if(comment!=null)
 			{
 				
@@ -337,6 +399,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
+				
+				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
@@ -347,6 +411,8 @@ public class Workhistoryreferenceform extends HttpServlet {
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
 			session.setAttribute("ReferenceCheck", myreferences);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
 		}

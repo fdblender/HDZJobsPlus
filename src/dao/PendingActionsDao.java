@@ -296,5 +296,51 @@ public class PendingActionsDao {
 		return appstatus;
 
 	}
+	
+	public static boolean checkWorkStatus(HdzApplication myapplication) {
+		boolean appstatus = false;
+		List<HdzReftable> references = dao.PendingActionsDao
+				.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
+		
+		List<HdzJobhistory> jobs = dao.PendingActionsDao
+				.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
+
+		HdzApplicant myapplicant = myapplication.getHdzApplicant();
+
+		boolean refcheck = true;
+		
+		boolean jobcheck = true;
+		for (HdzReftable ref : references) {
+			if (ref.getRefflag() != null) {
+				if (ref.getRefflag().equals("N")) {
+					refcheck = false;
+					break;
+				}
+			}
+		}
+
+		
+
+		for (HdzJobhistory job : jobs) {
+			if (job.getJobhistoryflag() != null) {
+
+				if (job.getJobhistoryflag().equals("N")) {
+					jobcheck = false;
+					break;
+				}
+			}
+		}
+		if ( myapplicant.getVeteranflag() != null ) {
+			if (myapplicant.getVeteranflag().equals("Y") ) {
+				if (refcheck && jobcheck) {
+					
+						appstatus = true;
+					
+				}
+			}
+		}
+		return appstatus;
+
+	}
 
 }

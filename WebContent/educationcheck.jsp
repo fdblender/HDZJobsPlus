@@ -68,7 +68,9 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">School Name</div></th>
 <th align="center"><div align="center">Degree</div></th>
 <th align="center"><div align="center">Date</div></th>
+<th align="center"><div align="center">Comment</div></th>
 <th align="center"><div align="center">Actions</div></th>
+
 </tr>
 </thead>
  <tbody>
@@ -95,6 +97,11 @@ function limitText(limitField, limitCount, limitNum) {
    </td>
    <td align="center">
     <c:out value="${edu.datecompleted}"/>  
+    
+   </td>
+   
+    <td align="center">
+    <c:out value="${ApplicationComment.comments}"/>  
     
    </td>
     

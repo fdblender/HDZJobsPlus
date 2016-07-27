@@ -64,6 +64,7 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
 <th align="center"><div align="center">Veteran</div></th>
+<th align="center"><div align="center">Comments</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
 </thead>
@@ -91,6 +92,11 @@ function limitText(limitField, limitCount, limitNum) {
     <c:out value="${VeteranApplication.hdzApplicant.veteran}"/>  
     
    </td>
+   <td align="center">
+    <c:out value="${VeteranApplication.comments}"/>  
+    
+   </td>
+   
   
    <td align="center">
    
@@ -119,6 +125,7 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">Start Date</div></th>
 <th align="center"><div align="center">End Date</div></th>
 <th align="center"><div align="center">Description</div></th>
+<th align="center"><div align="center">Comments</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
 </thead>
@@ -157,6 +164,11 @@ function limitText(limitField, limitCount, limitNum) {
     <c:out value="${work.description}"/>  
     
    </td>
+   
+    <td align="center">
+    <c:out value="${VeteranApplication.comments}"/>  
+    
+   </td>
     
    <td align="center">
    
@@ -182,6 +194,8 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">Reference Email</div></th>
 <th align="center"><div align="center">Reference Phone</div></th>
 <th align="center"><div align="center">Reference Position</div></th>
+
+<th align="center"><div align="center">Comments</div></th>
 <th align="center"><div align="center">Actions</div></th>
 </tr>
 </thead>
@@ -214,6 +228,12 @@ function limitText(limitField, limitCount, limitNum) {
    <td align="center">
     <c:out value="${refer.refposition}"/>  
     
+    </td>
+    
+     <td align="center">
+    <c:out value="${VeteranApplication.comments}"/>  
+    
+   </td>
     
    <td align="center">
    

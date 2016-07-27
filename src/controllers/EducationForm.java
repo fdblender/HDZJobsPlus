@@ -47,7 +47,7 @@ public class EducationForm extends HttpServlet {
 			
 			session.setAttribute("EducationCheck", educations);
 			
-			
+			session.setAttribute("ApplicationComment", application);
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 		}
@@ -72,6 +72,8 @@ public class EducationForm extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 				if(comment!=null)
 				{
 					
@@ -79,6 +81,8 @@ public class EducationForm extends HttpServlet {
 					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
+					
+					session.setAttribute("ApplicationComment", myapplication);
 					
 				}
 				
@@ -91,12 +95,14 @@ public class EducationForm extends HttpServlet {
 				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
+				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			
 			session.setAttribute("EducationCheck", educations);
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 			
@@ -131,6 +137,8 @@ public class EducationForm extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplication);
 			
+			session.setAttribute("ApplicationComment", myapplication);
+			
 			if(comment!=null)
 			{
 				
@@ -139,11 +147,15 @@ public class EducationForm extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
+				session.setAttribute("ApplicationComment", myapplication);
+				
 			}
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			
 			session.setAttribute("EducationCheck", educations);
+			
+			session.setAttribute("ApplicationComment", myapplication);
 			
 			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 			
