@@ -45,6 +45,20 @@ function limitText(limitField, limitCount, limitNum) {
 
 <br /><br />
 
+<table align="center" border="0" class="table">
+<thead>
+<tr ><th>Add comment</th></tr>
+</thead>
+<tbody>
+
+<tr style="backgroundcolor:#4db6ac ">
+
+<td >Please enter comment:</td></tr>
+<tr align="center"><td><input type="text" name="addcomment" value=""/></td></tr>
+
+</tbody>
+</table>
+
 <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Education</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
