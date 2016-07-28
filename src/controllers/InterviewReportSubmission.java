@@ -51,8 +51,9 @@ public class InterviewReportSubmission extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
-		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
+		HdzApplication hdzApplication = InterviewService.getHdzApplication((String) request.getParameter("applicationInt"));
 		String url = "/PendingAction";
+		System.out.println(hdzApplication.getApplicationid());
 		try {
 
 			if (employee == null) {
@@ -61,7 +62,8 @@ public class InterviewReportSubmission extends HttpServlet {
 			} else {
 				String comment = (String) request.getParameter("commentInterview");
 				String result = request.getParameter("result");
-				BigDecimal score = new BigDecimal(request.getParameter("score"));
+				System.out.println((String)request.getParameter("score"));
+				BigDecimal score = new BigDecimal((String)request.getParameter("score"));
 
 				if (comment != null && !comment.equals("")) {
 					String x = InterviewService.getComment(hdzApplication);
@@ -83,6 +85,7 @@ public class InterviewReportSubmission extends HttpServlet {
 					List<HdzJobquestion> questions = InterviewService.getQuestions(hdzApplication, "HM");
 					for (HdzJobquestion h : questions) {
 						HdzTest test = new HdzTest();
+						test.setHdzApplication(hdzApplication);
 						test.setTestresponse(request.getParameter("response" + h.getJobquestionsid()));
 						test.setHdzJobquestion(h);
 						InterviewService.InsertResponse(test);
@@ -100,11 +103,19 @@ public class InterviewReportSubmission extends HttpServlet {
 					} else {
 						hdzApplication.setAppstatus("HMInterviewDone");
 						InterviewService.updateApplication(hdzApplication);
+						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+								"Application status Info",
+								"<html>Hi Hiring Manager,<br/> "
+										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared HR round and moved to the Hiring manager Interview round."
+										+ "<br/> Thanks,<br/>HDZ Team</html>",
+								true);
 					}
 				} else if (role.equals("HRManager")) {
 					List<HdzJobquestion> questions = InterviewService.getQuestions(hdzApplication, "HR");
 					for (HdzJobquestion h : questions) {
+						System.out.println(h.getJobquestionsid());
 						HdzTest test = new HdzTest();
+						test.setHdzApplication(hdzApplication);
 						test.setTestresponse(request.getParameter("response" + h.getJobquestionsid()));
 						test.setHdzJobquestion(h);
 						InterviewService.InsertResponse(test);
@@ -121,6 +132,12 @@ public class InterviewReportSubmission extends HttpServlet {
 					} else {
 						hdzApplication.setAppstatus("HRInterviewDone");
 						InterviewService.updateApplication(hdzApplication);
+						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+								"Application status Info",
+								"<html>Hi Hiring Manager,<br/> "
+										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared HR round and moved to the Hiring manager Interview round."
+										+ "<br/> Thanks,<br/>HDZ Team</html>",
+								true);
 					}
 				} else {
 					List<HdzJobquestion> questions = InterviewService.getQuestions(hdzApplication, "GI");
@@ -128,6 +145,7 @@ public class InterviewReportSubmission extends HttpServlet {
 						HdzTest test = new HdzTest();
 						test.setTestresponse(request.getParameter("response" + h.getJobquestionsid()));
 						test.setHdzJobquestion(h);
+						test.setHdzApplication(hdzApplication);
 						InterviewService.InsertResponse(test);
 					}
 					if (result.equals("F")) {
@@ -145,6 +163,12 @@ public class InterviewReportSubmission extends HttpServlet {
 							hdzApplication.setAppstatus("Hired");
 						}
 						InterviewService.updateApplication(hdzApplication);
+						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+								"Application status Info",
+								"<html>Hi Hiring Manager,<br/> "
+										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared HR round and moved to the Hiring manager Interview round."
+										+ "<br/> Thanks,<br/>HDZ Team</html>",
+								true);
 					}
 				}
 				/*

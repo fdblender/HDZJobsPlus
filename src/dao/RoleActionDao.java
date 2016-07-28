@@ -144,6 +144,7 @@ public class RoleActionDao {
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("status", "HMInterviewDone");
             query.setParameter("test", "C");
             hdzApplications = query.getResultList();
         }catch (Exception e){

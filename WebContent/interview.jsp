@@ -108,24 +108,26 @@
 					<div class="col-sm-1"></div>
 					<div class="col-sm-10">
 
-						<table>
+						<table class="table table-bordered">
 							<thead>
 								<tr>
-									<th>Question</th>
-									<th>Response</th>
+									<th >Question</th>
+									<th >Response</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="question" items="${questions}">
 									<tr>
-										<td>${question.question}</td>
-										<td><input type="text" id="response${question.id}">
+										<td >${question.jobquestion}</td>
+										<td ><input type="text" id="response${question.jobquestionsid}" 
+										name="response${question.jobquestionsid}">
 										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-
+						<br/>
+						<input type="hidden" id="applicationInt" name="applicationInt" value="${app.applicationid}">
 						<c:set var="application" scope="session" value="${app}" />
 						<c:if test="${application == null}">
 							<h2>No Records!!</h2>
@@ -157,6 +159,7 @@
 
 								</tr>
 							</table>
+							<br/>
 							<c:set var="type" scope="session" value="${interviewType}" />
 							<c:set var="coding" scope="session" value="${coding}" />
 							 <c:if test="${type == 'Group Interview' || type == 'HM Interview'}">
@@ -170,7 +173,7 @@
 								<tr>
 									<td><c:set var="comments" scope="session"
 											value="${application.comments}" /> <c:if
-											test="${comments != null && application != ''}"> Comments:
+											test="${comments != null && application != ''}"> <b> Comments </b>
 							<p>${application.comments}</p>
 										</c:if></td>
 								</tr>
@@ -194,7 +197,7 @@
 												Interview Pass</a>
 											<a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
 												Interview Fail</a> -->
-										<%-- </c:if> --%> <input type="text" id="result" name="result" placeholder="Result"> 
+										<%-- </c:if> --%> Result: <input type="text" id="result" name="result"> 
 										<input type="submit" id="submit" value="Submit" name="Submit"> 
 										
 										<%-- <c:if test="${type == 'HM Interview'}">
