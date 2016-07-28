@@ -92,10 +92,9 @@
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								Skill 1<br /> <input type="text" name="skill1" id="skill1" /><br />
-								Skill 2<br /> <input type="text" name="skill2" id="skill2" /><br />
-								Skill 3<br /> <input type="text" name="skill3" id="skill3" /><br />
-								Skill 4<br /> <input type="text" name="skill4" id="skill4" /><br />
+								Skills<br /> <textarea form="applicant" name="skills" id="skills" maxlength="200" rows="10" cols="60"/></textarea><br/>
+						Years of experience<br/>
+						<input type="number" name="experience" id="experience"/>
 							</fieldset>
 						</div>
 					</div>
@@ -109,7 +108,7 @@
 								<table>
 									<tr>
 										<td>Institution 1:<br /> <input type="text" name="edu1"
-											id="edu1" /><br /> Degree 1:<br /> <input type="text"
+											id="edu1" /> <br /> Degree 1:<br /> <input type="text"
 											name="degree1" id="degree1" /><br /> Date completed 1:<br />
 											<input type="text" name="date1" id="date1" /> <br />
 										</td>

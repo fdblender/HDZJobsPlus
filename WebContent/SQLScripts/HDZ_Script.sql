@@ -293,8 +293,11 @@ CONSTRAINT fk_applicantskills_applicantID FOREIGN KEY (applicantID) references H
 );
 
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1, 'Java, HTML, CSS, JSP, Servelets', 2.5);
-
+values (hdz_applicantskills_id_seq.nextval, 1, 'JSP', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'Java', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1,  'HTML', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'CSS', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'Servelets', 2.5);
 
 create table HDZ_jobquestions(
 jobquestionsid integer primary key,
