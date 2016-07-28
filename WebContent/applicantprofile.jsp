@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- Joshua Tucker-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,9 +16,15 @@
 <!--Here we put user info-->
 <!--resume data provide a button to print and one to apply and one to edit-->
 <div>
-<button>Print</button>
-<button>Apply</button>
-<button>Edit</button>
+<table>
+<thead></thead>
+<tbody></tbody>
+</table>
+</div>
+<div>
+<button type="button">Print</button>
+<button type="button">Apply</button>
+<button type ="button">Edit</button>
 </div>
 <!-- pending applications -->
 <div>
