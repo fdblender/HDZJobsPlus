@@ -1,5 +1,6 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.HdzApplication;
+import model.HdzJobquestion;
+import model.HdzTest;
 import util.DBUtil;
 
 public class InterviewDao {
@@ -81,14 +84,55 @@ public class InterviewDao {
 		
 	}
 
-	public static List<HdzQuestions> getQuestions(HdzApplication hdzApplication, String role) {
-		// TODO Auto-generated method stub
-		return null;
+	public static List<HdzJobquestion> getQuestions(HdzApplication hdzApplication, String role) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		List<HdzJobquestion> questions = null;
+        String qString = "select b from HdzJobquestion b where b.interviewtype = :type";
+        
+        try{
+            TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);
+            query.setParameter("type", role);
+            questions = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return questions;
 	}
 
-	public static Double getScore(HdzApplication hdzApplication) {
-		// TODO Auto-generated method stub
-		return null;
+	public static BigDecimal getScore(HdzApplication hdzApplication) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		BigDecimal score = null;
+        String qString = "select b.score from HdzApplication b where b.applicationid = :id";
+        
+        try{
+            TypedQuery<BigDecimal> query = em.createQuery(qString,BigDecimal.class);
+            query.setParameter("id", hdzApplication.getApplicationid());
+            score = query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return score;
+	}
+
+	public static void InsertResponse(HdzTest test) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.persist(test);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+		
 	}
 	
 

@@ -85,7 +85,7 @@ function limitText(limitField, limitCount, limitNum) {
  	</td> 
     <td align="center"> 
 	
-        <c:out value="${NationalityCheck.hdzJob.position}"/>
+        <c:out value="${NationalityCheck.hdzJob.hdzPosition.position}"/>
     
  	</td> 
 	<td align="center">

@@ -26,7 +26,7 @@ public class testInsert {
 	public void testAddJob(){
 		HdzJob job= new HdzJob(); 
 		job.setDescription("great test job 42");
-		job.setPosition("manager");
+		job.getHdzPosition().setPosition("manager");
 		AddjobsDao.addjobs(job);
 		List<HdzJob> jobs = ApplicantDao.searchJobs("great test job 42");
 		assertNotNull(jobs);

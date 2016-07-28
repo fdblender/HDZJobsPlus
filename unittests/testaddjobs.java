@@ -10,7 +10,7 @@ public class testaddjobs {
 	@Test
 	public void test() {
 		HdzJob jobs = new HdzJob();
-		jobs.setPosition("Design Engineer");
+		jobs.getHdzPosition().setPosition("Design Engineer");
 		jobs.setDescription("Database");
 		AddjobsDao.addjobs(jobs);
 	}

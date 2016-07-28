@@ -290,7 +290,7 @@ function limitText(limitField, limitCount, limitNum) {
  		</td>
  	 <td align="center" Style="font-size:16px; " >   
        
- 		<c:out value="${myapplicaitondetail.hdzJob.position}"/>
+ 		<c:out value="${myapplicaitondetail.hdzJob.hdzPosition.position}"/>
  		</td>	
      </tr>
      <tr>

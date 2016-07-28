@@ -134,7 +134,7 @@
 											<td><c:out value="${app.applicationid}"></c:out></td>
 											<td><c:out value="${app.appstatus}"></c:out></td>
 											<td><c:out value="${app.hdzJob.jobsid}"></c:out></td>
-											<td><c:out value="${app.hdzJob.position}"></c:out></td>
+											<td><c:out value="${app.hdzJob.hdzPosition.position}"></c:out></td>
 											<td><c:out value="${app.hdzJob.description}"></c:out></td>
 									</c:forEach>
 								</table>
@@ -163,7 +163,7 @@
 									<tbody>
 										<tr>
 											<td><c:out value="${action.hdzJob.jobsid}"></c:out></td>
-											<td><c:out value="${action.hdzJob.position}"></c:out></td>
+											<td><c:out value="${action.hdzJob.hdzPosition.position}"></c:out></td>
 											<td><c:out value="${action.hdzJob.description}"></c:out>
 											</td>
 											<td><c:out value="${action.hdzApplicant.firstname}"></c:out>
@@ -202,17 +202,24 @@
 						<c:if test="${role == 'HiringManager'}">
 						<h3 style="background-color: #01579b;color: #ffffff;">Choose Applicants</h3>
 						<div>
-							<form id="target" action="AddJobs" method="post">
+							<form id="target" action="ChooseApplicants" method="post">
 								
-								<div class="form-group">
-									<label for="typeAssgn">Position:</label> <input type="text"
-										name="position" id="position" value="" class="form-control">
-								</div>
-								<div class="form-group">
-									<label for="typeAssgn">Description:</label> <input type="text"
-										name="description" id="description" value=""
-										class="form-control">
-								</div>
+								<c:forEach var="action" items="${actionList}">
+									<tbody>
+										<tr>
+											<td><c:out value="${action.hdzJob.jobsid}"></c:out></td>
+											<td><c:out value="${action.hdzJob.hdzPosition.position}"></c:out></td>
+											<td><c:out value="${action.hdzJob.description}"></c:out>
+											</td>
+											<td><c:out value="${action.hdzApplicant.firstname}"></c:out>
+											</td>
+											<td><c:out value="${action.appstatus}"></c:out></td>
+											<td><a
+												href="ActionSubmit?applicationid=${action.applicationid}">
+													Take Action</a></td>
+										</tr>
+									</tbody>
+								</c:forEach>
 
 								<input type="submit" name="submit" id="submit" value="Add">
 

@@ -23,7 +23,7 @@
 </tr>
 <c:forEach var="job" items="${jobs}">
 <tr>
-<td>${job.position}</td>
+<td>${job.hdzPosition.position}</td>
 <td>
 <form action="Apply">
 <input type="hidden" name="jobid" id="jobid" value="${job.jobsid}"/>

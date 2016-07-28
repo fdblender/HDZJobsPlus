@@ -150,7 +150,7 @@
 												value="${application.applicationid}"></c:out></a></td>
 									<td><c:out value="${application.appstatus}"></c:out></td>
 									<td><c:out value="${application.hdzJob.jobsid}"></c:out></td>
-									<td><c:out value="${application.hdzJob.position}"></c:out></td>
+									<td><c:out value="${application.hdzJob.hdzPosition.position}"></c:out></td>
 									<td><c:out value="${application.hdzJob.description}"></c:out></td>
 									<td><c:out value="${application.codingtest}"></c:out></td>
 

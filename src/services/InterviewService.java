@@ -1,9 +1,12 @@
 package services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import dao.InterviewDao;
 import model.HdzApplication;
+import model.HdzJobquestion;
+import model.HdzTest;
 
 public class InterviewService {
 
@@ -24,12 +27,17 @@ public class InterviewService {
 		return InterviewDao.getComment(hdzApplication);
 	}
 
-	public static List<HdzQuestions> getQuestions(HdzApplication hdzApplication, String role) {
+	public static List<HdzJobquestion> getQuestions(HdzApplication hdzApplication, String role) {
 		return InterviewDao.getQuestions(hdzApplication, role);
 	}
 
-	public static Double getScore(HdzApplication hdzApplication) {
+	public static BigDecimal getScore(HdzApplication hdzApplication) {
 		return InterviewDao.getScore(hdzApplication);
+	}
+
+	public static void InsertResponse(HdzTest test) {
+		InterviewDao.InsertResponse(test);
+		
 	}
 
 }

@@ -14,6 +14,6 @@ public class applicantTest {
 		
 		List<HdzJob> jobs = ApplicantDao.searchJobs("Hardware");
 		
-		assertTrue(jobs.get(0).getPosition().contains("Hardware"));
+		assertTrue(jobs.get(0).getHdzPosition().getPosition().contains("Hardware"));
 	}
 }
