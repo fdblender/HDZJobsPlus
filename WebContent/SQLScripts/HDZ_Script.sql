@@ -282,12 +282,19 @@ CONSTRAINT fk_HDZ_jobskills_jobsid FOREIGN KEY (jobsID) references HDZ_jobs(jobs
 
 insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Java', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'JSP', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'HTML', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'XML', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'CSS', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Javascript', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Jquery', 2.0, 1);
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Bootstrap', 2.0, 1);
 create table HDZ_applicantskills(
 applicantskillsid integer primary key,
@@ -299,9 +306,13 @@ CONSTRAINT fk_applicantskills_applicantID FOREIGN KEY (applicantID) references H
 
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 1, 'JSP', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 1, 'Java', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 1,  'HTML', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 1, 'CSS', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 1, 'Servelets', 2.5);
 
 create table HDZ_jobquestions(
@@ -340,3 +351,4 @@ values (hdz_tests_id_seq.nextval, 1, null, '2 years', 4);
 commit;
 
 select * from HDZ_employee;
+
