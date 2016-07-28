@@ -93,9 +93,14 @@
 						<div class="panel-body">
 							<fieldset>
 								Skill 1<br /> <input type="text" name="skill1" id="skill1" /><br />
+								Experience:<br/>
+								<input type="number" name="exp1" id =exp1 /><br />
 								Skill 2<br /> <input type="text" name="skill2" id="skill2" /><br />
+								Experience:<br/>
+								<input type="number" name="exp2" id =exp2 /><br />
 								Skill 3<br /> <input type="text" name="skill3" id="skill3" /><br />
-								Skill 4<br /> <input type="text" name="skill4" id="skill4" /><br />
+								Experience:<br/>
+								<input type="number" name="exp3" id =exp3 /><br />
 							</fieldset>
 						</div>
 					</div>
@@ -117,10 +122,15 @@
 											id="edu2" /><br /> Degree 2:<br /> <input type="text"
 											name="degree2" id="degree2" /><br /> Date completed 2:<br />
 											<input type="text" name="date2" id="date2" /> <br />
-										<td>Institution 3: <input type="text" name="edu3"
-											id="edu3" /> Degree 3: <input type="text" name="degree3"
-											id="degree3" /><br /> Date completed 3: <input type="text"
-											name="date3" id="date3" />
+										<td>Institution 3:<br/> 
+										<input type="text" name="edu3"
+											id="edu3" /> 
+											Degree 3:<br/> 
+											<input type="text" name="degree3"
+											id="degree3" /><br /> 
+											Date completed 3:<br/> 
+											<input type="text"
+											name="date3" id="date3" /><br/>
 										</td>
 									</tr>
 								</table>

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.ValidateUserDao;
 import model.HdzApplicant;
+import model.HdzApplicantskill;
 import model.HdzEducation;
 import model.HdzJobhistory;
 import model.HdzReftable;
@@ -53,6 +55,7 @@ public class NewApplicant extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
@@ -60,17 +63,19 @@ public class NewApplicant extends HttpServlet {
 		String bday = request.getParameter("dob");
 		String veteran = request.getParameter("veteran");
 		String citizen = request.getParameter("citizen");
+		List<HdzApplicantskill> skills =new ArrayList<HdzApplicantskill>();
 		List<HdzEducation> edhist = new ArrayList<HdzEducation>();
 		List<HdzJobhistory> jobhist = new ArrayList<HdzJobhistory>();
 		List<HdzReftable> references = new ArrayList<HdzReftable>();
 		for (int i = 1; i <= 3; i++) {
+			HdzApplicantskill skill=new HdzApplicantskill();
 			HdzEducation edu = new HdzEducation();
 			HdzJobhistory job = new HdzJobhistory();
 			HdzReftable reference = new HdzReftable();
 			String schoolname = request.getParameter("edu" + i);
 			String degree = request.getParameter("degree" + i);
 			String datecomp = request.getParameter("date" + i);
-
+			
 			if (!schoolname.equals("") && !degree.equals("") && !datecomp.equals("")) {
 				edu.setDegreecompleted(degree);
 				edu.setDatecompleted(datecomp);
@@ -105,6 +110,12 @@ public class NewApplicant extends HttpServlet {
 				reference.setRefposition(refposition);
 				references.add(reference);
 			}
+			String applicantskill=request.getParameter("skill"+i);
+			String exp=request.getParameter("exp"+i);
+			BigDecimal experience = new BigDecimal(exp);
+			skill.setExperience(experience);
+			skill.setSkills(applicantskill);
+			skills.add(skill);
 		}
 
 		String salt = PasswordUtil.getSalt();
@@ -125,14 +136,14 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHashedpwd(hashedPwd);
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
-		// System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+"
-		// "+" "+citizen+" "+veteran);
 		applicant.setSalt(salt);
 		NewApplicantService.insertApplicant(applicant);
 		applicant = ValidateUserDao.getValidApplicant(email, password);
 		applicant.setHdzEducations(edhist);
 		applicant.setHdzJobhistories(jobhist);
 		applicant.setHdzReftables(references);
+		
+
 		for (HdzEducation e : edhist) {
 			e.setHdzApplicant(applicant);
 		}
@@ -142,6 +153,11 @@ public class NewApplicant extends HttpServlet {
 		for (HdzReftable r : references) {
 			r.setHdzApplicant(applicant);
 		}
+		for (HdzApplicantskill s :skills){
+			s.setHdzApplicant(applicant);
+		}
+		
+		
 		NewApplicantService.updateApplicant(applicant);
 
 		String nextURL = "/login.jsp";

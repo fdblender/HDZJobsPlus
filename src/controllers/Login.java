@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ApplicantDao;
 import dao.ValidateUserDao;
 import model.HdzApplicant;
 import model.HdzEmployee;
@@ -41,29 +42,42 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		String loginrole = request.getParameter("loginrole");		
 
+		// validate an applicant login
 		if (loginrole.equals("applicant")) {
-		// validate an applicant
-			System.out.println("Login: validating an applicant"+ email + " " + password);
-			applicant = ValidateUserDao.getValidApplicant(email, password);
+		
+			System.out.println("Login: validating an applicant "+ email + " " + password);
+			applicant = ValidateUserDao.getValidApplicant(email, password);	
+			
+				
 			if (applicant != null) {
-				System.out.println("found valid user" + email + " " + password);
+				System.out.println("found valid user " + email + " " + password);
 				session.setAttribute("user", applicant);
 				session.setAttribute("role",  "applicant");
 				session.setAttribute("userrole",  1);
 				nextURL = "/yourapplications.jsp";
 			} else {
-				System.out.println("user not found: " + email + " " + password);
-				request.setAttribute("message",  "Applicant not found. Please login again or create a new account.");
-				nextURL = "/login.jsp";
+				
+				// if the applicant is not found, check to see if he/she is an employee
+				employee = ValidateUserDao.getValidEmployee(email, password);
+				if (employee != null) {
+					// add the employee as an applicant with same email & password
+					ApplicantDao.AddApplicantAsEmployee(employee);
+					nextURL = "/yourapplications.jsp";
+				} else {
+				
+					System.out.println("user not found: " + email + " " + password);
+					request.setAttribute("message",  "Applicant not found. Please login again or create a new account.");
+					nextURL = "/login.jsp";
+				}
 			}
 			
-			
+		// validate an employee login		
 		} else {
-			// validate an employee user	
-			System.out.println("Login: validating an employee"+ email + " " + password);
+			
+			System.out.println("Login: validating an employee "+ email + " " + password);
 			employee = ValidateUserDao.getValidEmployee(email, password);		
 			if (employee != null) {
-				System.out.println("found valid user" + email + " " + password);
+				System.out.println("found valid user " + email + " " + password);
 				session.setAttribute("user", employee);
 				session.setAttribute("role",  employee.getPosition().replaceAll(" ", ""));
 				session.setAttribute("userrole",  2);
