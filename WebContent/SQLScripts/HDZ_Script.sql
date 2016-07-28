@@ -281,9 +281,14 @@ CONSTRAINT fk_HDZ_jobskills_jobsid FOREIGN KEY (jobsID) references HDZ_jobs(jobs
 );
 
 insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
-values (hdz_jobskills_id_seq.nextval, 'Java, JSP, HTML, XML, CSS, Javascript, Jquery, Bootstrap', 2.0, 1);
-
-
+values (hdz_jobskills_id_seq.nextval, 'Java', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'JSP', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'HTML', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'XML', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'CSS', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'Javascript', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'Jquery', 2.0, 1);
+values (hdz_jobskills_id_seq.nextval, 'Bootstrap', 2.0, 1);
 create table HDZ_applicantskills(
 applicantskillsid integer primary key,
 applicantid integer ,
