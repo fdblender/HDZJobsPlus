@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -22,12 +23,22 @@ public class HdzJob implements Serializable {
 
 	private String description;
 
-	@Column(name="\"POSITION\"")
-	private String position;
+	private BigDecimal numberopenings;
+
+	private BigDecimal overallexperience;
 
 	//bi-directional many-to-one association to HdzApplication
 	@OneToMany(mappedBy="hdzJob")
 	private List<HdzApplication> hdzApplications;
+
+	//bi-directional many-to-one association to HdzPosition
+	@ManyToOne
+	@JoinColumn(name="POSITIONID")
+	private HdzPosition hdzPosition;
+
+	//bi-directional many-to-one association to HdzJobskill
+	@OneToMany(mappedBy="hdzJob")
+	private List<HdzJobskill> hdzJobskills;
 
 	public HdzJob() {
 	}
@@ -48,12 +59,20 @@ public class HdzJob implements Serializable {
 		this.description = description;
 	}
 
-	public String getPosition() {
-		return this.position;
+	public BigDecimal getNumberopenings() {
+		return this.numberopenings;
 	}
 
-	public void setPosition(String position) {
-		this.position = position;
+	public void setNumberopenings(BigDecimal numberopenings) {
+		this.numberopenings = numberopenings;
+	}
+
+	public BigDecimal getOverallexperience() {
+		return this.overallexperience;
+	}
+
+	public void setOverallexperience(BigDecimal overallexperience) {
+		this.overallexperience = overallexperience;
 	}
 
 	public List<HdzApplication> getHdzApplications() {
@@ -76,6 +95,36 @@ public class HdzJob implements Serializable {
 		hdzApplication.setHdzJob(null);
 
 		return hdzApplication;
+	}
+
+	public HdzPosition getHdzPosition() {
+		return this.hdzPosition;
+	}
+
+	public void setHdzPosition(HdzPosition hdzPosition) {
+		this.hdzPosition = hdzPosition;
+	}
+
+	public List<HdzJobskill> getHdzJobskills() {
+		return this.hdzJobskills;
+	}
+
+	public void setHdzJobskills(List<HdzJobskill> hdzJobskills) {
+		this.hdzJobskills = hdzJobskills;
+	}
+
+	public HdzJobskill addHdzJobskill(HdzJobskill hdzJobskill) {
+		getHdzJobskills().add(hdzJobskill);
+		hdzJobskill.setHdzJob(this);
+
+		return hdzJobskill;
+	}
+
+	public HdzJobskill removeHdzJobskill(HdzJobskill hdzJobskill) {
+		getHdzJobskills().remove(hdzJobskill);
+		hdzJobskill.setHdzJob(null);
+
+		return hdzJobskill;
 	}
 
 }

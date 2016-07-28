@@ -1,10 +1,16 @@
-drop table HDZ_employee;
-drop table HDZ_application;
+
 drop table HDZ_jobhistory;
-drop table HDZ_Education;
+drop table HDZ_education;
 drop table HDZ_reftable;
+drop table HDZ_jobskills;
+drop table HDZ_applicantskills;
+drop table HDZ_tests;
+drop table HDZ_jobquestions;
+drop table HDZ_application;
 drop table HDZ_jobs;
-drop table HDZ_Applicant;
+drop table HDZ_positions;
+drop table HDZ_applicant;
+drop table HDZ_employee;
 
 
 drop sequence hdz_employee_id_seq;
@@ -14,6 +20,11 @@ drop sequence hdz_education_id_seq;
 drop sequence hdz_reftable_id_seq;
 drop sequence hdz_jobs_id_seq;
 drop sequence hdz_applicant_id_seq;
+drop sequence hdz_jobskills_id_seq;
+drop sequence hdz_applicantskills_id_seq;
+drop sequence hdz_jobquestions_id_seq;
+drop sequence hdz_tests_id_seq;
+drop sequence hdz_positions_id_seq;
 
 create sequence  hdz_applicant_id_seq start with 1 increment by 1 nocache;
 create sequence  hdz_education_id_seq start with 1 increment by 1 nocache;
@@ -22,9 +33,15 @@ create sequence  hdz_reftable_id_seq start with 1 increment by 1 nocache;
 create sequence  hdz_jobs_id_seq start with 1 increment by 1 nocache;
 create sequence  hdz_application_id_seq start with 1 increment by 1 nocache;
 create sequence  hdz_employee_id_seq start with 1 increment by 1 nocache;
+create sequence  hdz_jobskills_id_seq start with 1 increment by 1 nocache;
+create sequence  hdz_applicantskills_id_seq start with 1 increment by 1 nocache;
+create sequence  hdz_jobquestions_id_seq start with 1 increment by 1 nocache;
+create sequence  hdz_tests_id_seq  start with 1 increment by 1 nocache;
+create sequence  hdz_positions_id_seq start with 1 increment by 1 nocache;
+
 
 create table HDZ_Applicant (
-applicantID integer primary key,
+applicantid integer primary key,
 email varchar2(50) unique ,
 hashedpwd varchar2(200) ,
 salt varchar2(200),
@@ -38,31 +55,32 @@ visa varchar2(100) ,
 veteranflag varchar2(1),
 veteran varchar2(100) ,
 drugtestflag varchar2(1),
-drugtest varchar2(100) ,
 stdpanelflag varchar2(1),
-stdpanel varchar2(100) ,
 dottestflag varchar2(1),
-dottest varchar2(100) ,
 alcoholtestflag varchar2(1),
-alcoholtest varchar2(100) 
-
+employeeflag varchar2(1),
+invitedflag varchar2(1),
+codingflag varchar2(1),
+gravatarurl varchar2(200),
+resumesummary varchar(200),
+resumeobjective varchar(200)
 );
 
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '8f23afaa0ec822bef56b4e71da62d1d19cb569b7957124b57816463fb952fbdf', 'cDxst4bFuL7tqMdGPSy+RgCW+1EJ2F40LsNh+uHwHUs=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective) 
+values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '8f23afaa0ec822bef56b4e71da62d1d19cb569b7957124b57816463fb952fbdf', 'cDxst4bFuL7tqMdGPSy+RgCW+1EJ2F40LsNh+uHwHUs=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '447903c4bddf950b8fed39041d3f786a04601be1107de2667cb3369e1ee420ce', '6GxvpU56PKnpNC5OddEAgKhJz252pAkITHKO7Hz2r+s=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '447903c4bddf950b8fed39041d3f786a04601be1107de2667cb3369e1ee420ce', '6GxvpU56PKnpNC5OddEAgKhJz252pAkITHKO7Hz2r+s=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '634becb83a351b7201e75d8e69eabe64be3f9d8bb1f4c5cb86da00bdf6cb123d', '7rRh4eqTNh+LJL0Iqp3o3n3ZwU/Ektm7xwsK1TczFQE=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null,'no',null,'no',null,'no',null,'no');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '634becb83a351b7201e75d8e69eabe64be3f9d8bb1f4c5cb86da00bdf6cb123d', '7rRh4eqTNh+LJL0Iqp3o3n3ZwU/Ektm7xwsK1TczFQE=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, null, null, null);
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df0661cd9ea573e91626b8c1dd92026fe05a67196360c', 'o6uSUE7IKGUMAQ1mrj+k8Ggf5CHlmfxGAiWoHv8rzok=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null,'no',null,'no',null,'yes',null,'yes');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df0661cd9ea573e91626b8c1dd92026fe05a67196360c', 'o6uSUE7IKGUMAQ1mrj+k8Ggf5CHlmfxGAiWoHv8rzok=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
 
-insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, drugtest, stdpanelflag, stdpanel, dottestflag, dottest, alcoholtestflag,alcoholtest) 
-values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null,'yes',null,'yes',null,'yes',null,'yes');
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, null, null, null);
 
 create table HDZ_Education(
 educationid integer primary key,
@@ -87,7 +105,7 @@ insert into HDZ_Education (educationid,educationflag, applicantid, schoolname, d
 values (hdz_education_id_seq.nextval,null,4, 'ASU', 'MS', '05/05/2014');
 
 insert into HDZ_Education (educationid,educationflag, applicantid, schoolname, degreecompleted, datecompleted ) 
-values (hdz_education_id_seq.nextval,null,5, 'UTD', 'PHD', '05/10/2013');
+values (hdz_education_id_seq.nextval,null,2, 'UTD', 'PHD', '05/10/2013');
 
 create table HDZ_jobhistory(
 jobhistoryid integer primary key,
@@ -142,58 +160,82 @@ insert into HDZ_reftable (refid,refflag, applicantID,refname, refemail, refphone
 values (hdz_reftable_id_seq.nextval,null, 4,'he', 'he@gmail.com', '5467893212','Senior Software Engineer');
 
 insert into HDZ_reftable (refid,refflag, applicantID,refname, refemail, refphone,refposition ) 
-values (hdz_reftable_id_seq.nextval,null, 5,'su', 'su@gmail.com', '2015897844','Senior Software Engineer');
+values (hdz_reftable_id_seq.nextval,null, 1,'su', 'su@gmail.com', '2015897844','Senior Software Engineer');
 
-create table HDZ_Jobs(
-jobsid integer primary key,
-position varchar2(50) ,
-description varchar2(200) 
+create table HDZ_positions(
+positionid integer primary key,
+positiontype varchar2(50),
+position varchar2(50)
 );
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Software Engineer', 'Entry Level Java Programming and testing');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Software Engineer');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Hardware Engineer');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Quality Assurance');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Cybersecurity');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Senior Software Engineer');
+insert into HDZ_positions(positionid, position)
+values (hdz_positions_id_seq.nextval, 'Entry level graduate');
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Hardware Engineer', 'ASIC CPU Design and Testing');
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Quality Assurance', 'Software testing and configuration');
+create table HDZ_jobs(
+jobsid integer primary key,
+positionid integer,
+numberopenings number,
+description varchar2(200),
+overallexperience number,
+CONSTRAINT fk_HDZ_jobs_positionid FOREIGN KEY (positionid) references HDZ_positions (positionid)
+);
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Cyber security', 'Software development and networking ');
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 1, 5, 'Entry Level Java Programming and testing', 0);
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Senior Software Engineer', 'Java, Adop');
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 2, 5, 'ASIC CPU Design and Testing', 2);
 
-insert into HDZ_Jobs (jobsid, position, description)
-values (hdz_jobs_id_seq.nextval, 'Entry level graduate', 'Java, Python');
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 3, 5, 'Software testing and configuration', 2);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 4, 5, 'Software development and networking ', 3);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 5, 5, 'Java, Adop', 4);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 6, 5, 'Java, Python', 5);
+
 
 create table HDZ_application(
 applicationid integer primary key,
 applicantid integer ,
-codingtest varchar2(1) ,
+codingtest varchar2(1),
+score number,
 jobsid integer ,
 appstatus varchar2(50) ,
 comments varchar2(500) ,
 CONSTRAINT fk_HDZ_application_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID),
-CONSTRAINT fk_HDZ_application_jobsID FOREIGN KEY (jobsID) references HDZ_jobs(jobsID)
+CONSTRAINT fk_HDZ_application_jobsid FOREIGN KEY (jobsid) references HDZ_jobs(jobsid)
 );
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 1,'N', 1,'New',null);
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 1,'N', null, 1,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 2,'N', 2,'New',null);
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 2,'N', null, 2,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 3,'N', 3,'New',null);
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 3,'N', null, 3,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 4,'N', 4,'New',null);
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 4,'N', null, 4,'New',null);
 
-insert into HDZ_application (applicationid, applicantID,codingtest, jobsID,appstatus,comments)
-values (hdz_application_id_seq.nextval, 5,'N', 5,'New',null);
-
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 5,'N', null, 5,'New',null);
 
 
 create table HDZ_employee(
@@ -228,6 +270,64 @@ values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','d282629e2143c410906d3
 
 insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
 values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','9f0904b141429568059b455e923cc773f17c549f60c07a40316bbcb184df64d4', 'RNPmzBI6B4O+r+FUnPcKt1RNP/UdrrEF+KTmbQyUAjM=','Technology analyst');
+
+
+create table HDZ_jobskills(
+jobskillsid integer primary key,
+jobskills varchar2(200),
+jobexperience number,
+jobsid integer ,
+CONSTRAINT fk_HDZ_jobskills_jobsid FOREIGN KEY (jobsID) references HDZ_jobs(jobsID)
+);
+
+insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
+values (hdz_jobskills_id_seq.nextval, 'Java, JSP, HTML, XML, CSS, Javascript, Jquery, Bootstrap', 2.0, 1);
+
+
+create table HDZ_applicantskills(
+applicantskillsid integer primary key,
+applicantid integer ,
+skills varchar2(200),
+experience number,
+CONSTRAINT fk_applicantskills_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID)
+);
+
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 1, 'Java, HTML, CSS, JSP, Servelets', 2.5);
+
+
+create table HDZ_jobquestions(
+jobquestionsid integer primary key,
+positionid integer,
+interviewtype varchar2(50),
+jobquestion varchar2(1000),
+CONSTRAINT fk_HDZ_jobquestions_positionid FOREIGN KEY (positionid) references HDZ_positions (positionid)
+);
+
+insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
+values (hdz_jobquestions_id_seq.nextval, 1, 'coding', 'Write the code for the fibinacci series.');
+
+insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
+values (hdz_jobquestions_id_seq.nextval, 1, 'HM', 'How much experience have you had with Oracle SQL?');
+
+insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
+values (hdz_jobquestions_id_seq.nextval, 1, 'GI', 'How much experience have you had configuring eclipse?');
+insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
+values (hdz_jobquestions_id_seq.nextval, 1, 'HR', 'How much experience have you had with Bootstrap?');
+
+
+create table HDZ_tests(
+testsid integer primary key,
+applicationid integer,
+codinglanguage varchar2(50),
+testresponse varchar2(2000),
+jobquestionsid integer,
+CONSTRAINT fk_HDZ_tests_applicationid FOREIGN KEY (applicationid) references HDZ_application(applicationid),
+CONSTRAINT fk_HDZ_tests_jobquestionsid FOREIGN KEY (jobquestionsid) references HDZ_jobquestions(jobquestionsid)
+);
+
+insert into HDZ_tests (testsid, applicationid, codinglanguage, testresponse,jobquestionsid)
+values (hdz_tests_id_seq.nextval, 1, null, '2 years', 4);
 
 commit;
 

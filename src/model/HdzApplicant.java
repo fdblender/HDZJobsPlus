@@ -20,8 +20,6 @@ public class HdzApplicant implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_APPLICANT_APPLICANTID_GENERATOR")
 	private long applicantid;
 
-	private String alcoholtest;
-
 	private String alcoholtestflag;
 
 	private String bday;
@@ -30,25 +28,31 @@ public class HdzApplicant implements Serializable {
 
 	private String citizenflag;
 
-	private String dottest;
+	private String codingflag;
 
 	private String dottestflag;
-
-	private String drugtest;
 
 	private String drugtestflag;
 
 	private String email;
 
+	private String employeeflag;
+
 	private String firstname;
+
+	private String gravatarurl;
+
+	private String hashedpwd;
+
+	private String invitedflag;
 
 	private String lastname;
 
-	private String hashedpwd;
-	
-	private String salt;
+	private String resumeobjective;
 
-	private String stdpanel;
+	private String resumesummary;
+
+	private String salt;
 
 	private String stdpanelflag;
 
@@ -76,6 +80,10 @@ public class HdzApplicant implements Serializable {
 	@OneToMany(mappedBy="hdzApplicant")
 	private List<HdzReftable> hdzReftables;
 
+	//bi-directional many-to-one association to HdzApplicantskill
+	@OneToMany(mappedBy="hdzApplicant")
+	private List<HdzApplicantskill> hdzApplicantskills;
+
 	public HdzApplicant() {
 	}
 
@@ -85,14 +93,6 @@ public class HdzApplicant implements Serializable {
 
 	public void setApplicantid(long applicantid) {
 		this.applicantid = applicantid;
-	}
-
-	public String getAlcoholtest() {
-		return this.alcoholtest;
-	}
-
-	public void setAlcoholtest(String alcoholtest) {
-		this.alcoholtest = alcoholtest;
 	}
 
 	public String getAlcoholtestflag() {
@@ -127,12 +127,12 @@ public class HdzApplicant implements Serializable {
 		this.citizenflag = citizenflag;
 	}
 
-	public String getDottest() {
-		return this.dottest;
+	public String getCodingflag() {
+		return this.codingflag;
 	}
 
-	public void setDottest(String dottest) {
-		this.dottest = dottest;
+	public void setCodingflag(String codingflag) {
+		this.codingflag = codingflag;
 	}
 
 	public String getDottestflag() {
@@ -141,14 +141,6 @@ public class HdzApplicant implements Serializable {
 
 	public void setDottestflag(String dottestflag) {
 		this.dottestflag = dottestflag;
-	}
-
-	public String getDrugtest() {
-		return this.drugtest;
-	}
-
-	public void setDrugtest(String drugtest) {
-		this.drugtest = drugtest;
 	}
 
 	public String getDrugtestflag() {
@@ -167,12 +159,44 @@ public class HdzApplicant implements Serializable {
 		this.email = email;
 	}
 
+	public String getEmployeeflag() {
+		return this.employeeflag;
+	}
+
+	public void setEmployeeflag(String employeeflag) {
+		this.employeeflag = employeeflag;
+	}
+
 	public String getFirstname() {
 		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
+	}
+
+	public String getGravatarurl() {
+		return this.gravatarurl;
+	}
+
+	public void setGravatarurl(String gravatarurl) {
+		this.gravatarurl = gravatarurl;
+	}
+
+	public String getHashedpwd() {
+		return this.hashedpwd;
+	}
+
+	public void setHashedpwd(String hashedpwd) {
+		this.hashedpwd = hashedpwd;
+	}
+
+	public String getInvitedflag() {
+		return this.invitedflag;
+	}
+
+	public void setInvitedflag(String invitedflag) {
+		this.invitedflag = invitedflag;
 	}
 
 	public String getLastname() {
@@ -183,28 +207,28 @@ public class HdzApplicant implements Serializable {
 		this.lastname = lastname;
 	}
 
-	public String getHashedpwd() {
-		return hashedpwd;
+	public String getResumeobjective() {
+		return this.resumeobjective;
 	}
 
-	public void setHashedpwd(String hashedpwd) {
-		this.hashedpwd = hashedpwd;
+	public void setResumeobjective(String resumeobjective) {
+		this.resumeobjective = resumeobjective;
+	}
+
+	public String getResumesummary() {
+		return this.resumesummary;
+	}
+
+	public void setResumesummary(String resumesummary) {
+		this.resumesummary = resumesummary;
 	}
 
 	public String getSalt() {
-		return salt;
+		return this.salt;
 	}
 
 	public void setSalt(String salt) {
 		this.salt = salt;
-	}
-
-	public String getStdpanel() {
-		return this.stdpanel;
-	}
-
-	public void setStdpanel(String stdpanel) {
-		this.stdpanel = stdpanel;
 	}
 
 	public String getStdpanelflag() {
@@ -333,6 +357,28 @@ public class HdzApplicant implements Serializable {
 		hdzReftable.setHdzApplicant(null);
 
 		return hdzReftable;
+	}
+
+	public List<HdzApplicantskill> getHdzApplicantskills() {
+		return this.hdzApplicantskills;
+	}
+
+	public void setHdzApplicantskills(List<HdzApplicantskill> hdzApplicantskills) {
+		this.hdzApplicantskills = hdzApplicantskills;
+	}
+
+	public HdzApplicantskill addHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
+		getHdzApplicantskills().add(hdzApplicantskill);
+		hdzApplicantskill.setHdzApplicant(this);
+
+		return hdzApplicantskill;
+	}
+
+	public HdzApplicantskill removeHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
+		getHdzApplicantskills().remove(hdzApplicantskill);
+		hdzApplicantskill.setHdzApplicant(null);
+
+		return hdzApplicantskill;
 	}
 
 }

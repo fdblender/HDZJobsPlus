@@ -31,5 +31,9 @@ public class testInsert {
 		List<HdzJob> jobs = ApplicantDao.searchJobs("great test job 42");
 		assertNotNull(jobs);
 	}
-
+ @Test
+ public void testAddSkill(){
+	 System.out.println("Feature not yet implemented");
+	 fail();
+ }
 }
