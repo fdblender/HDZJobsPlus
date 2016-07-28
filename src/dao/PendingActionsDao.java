@@ -283,9 +283,7 @@ public class PendingActionsDao {
 				&& myapplicant.getStdpanelflag() != null && myapplicant.getDottestflag() != null
 				&& myapplicant.getAlcoholtest() != null) {
 			if (myapplicant.getCitizenflag().equals("Y") && myapplicant.getVisaflag().equals("Y")
-					&& myapplicant.getVeteranflag().equals("Y") && myapplicant.getDrugtestflag().equals("Y")
-					&& myapplicant.getStdpanelflag().equals("N") && myapplicant.getDottestflag().equals("N")
-					&& myapplicant.getAlcoholtest().equals("N")) {
+					&& myapplicant.getVeteranflag().equals("Y") && myapplicant.getDrugtestflag().equals("Y")) {
 				if (refcheck && educheck && jobcheck) {
 					if (myapplication.getAppstatus().equals("GroupInterviewDone")) {
 						appstatus = true;
