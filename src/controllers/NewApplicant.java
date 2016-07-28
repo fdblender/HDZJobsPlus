@@ -20,7 +20,8 @@ import model.HdzReftable;
 import services.NewApplicantService;
 import util.PasswordUtil;
 
-/**
+/**Joshua Tucker
+ * 
  * Servlet implementation class NewApplicant
  */
 @WebServlet("/NewApplicant")
