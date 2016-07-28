@@ -61,7 +61,7 @@ public class NewApplicant extends HttpServlet {
 		String citizen = request.getParameter("citizen");
 		List<HdzEducation> edhist = new ArrayList<HdzEducation>();
 		List<HdzJobhistory> jobhist = new ArrayList<HdzJobhistory>();
-		List<HdzReftable> references=new ArrayList<HdzReftable>();
+		List<HdzReftable> references = new ArrayList<HdzReftable>();
 		for (int i = 1; i <= 3; i++) {
 			HdzEducation edu = new HdzEducation();
 			HdzJobhistory job = new HdzJobhistory();
@@ -69,20 +69,20 @@ public class NewApplicant extends HttpServlet {
 			String schoolname = request.getParameter("edu" + i);
 			String degree = request.getParameter("degree" + i);
 			String datecomp = request.getParameter("date" + i);
-			
+
 			if (!schoolname.equals("") && !degree.equals("") && !datecomp.equals("")) {
 				edu.setDegreecompleted(degree);
 				edu.setDatecompleted(datecomp);
 				edu.setSchoolname(schoolname);
 				edhist.add(edu);
 			}
-			
+
 			String jobTitle = request.getParameter("job" + i);
 			String company = request.getParameter("company" + i);
 			String jobdesc = request.getParameter("jobdesc" + i);
-			String startdate=request.getParameter("start"+i);
-			String enddate=request.getParameter("leave"+i);
-			
+			String startdate = request.getParameter("start" + i);
+			String enddate = request.getParameter("leave" + i);
+
 			if (!jobTitle.equals("") && !company.equals("") && !jobdesc.equals("")) {
 				job.setCompanyname(company);
 				job.setDescription(jobdesc);
@@ -91,13 +91,13 @@ public class NewApplicant extends HttpServlet {
 				job.setEnddate(enddate);
 				jobhist.add(job);
 			}
-			
-			String refname=request.getParameter("refname"+i);
-			String refnumber=request.getParameter("refphone"+i);
-			String refemail=request.getParameter("refemail"+i);
-			String refposition=request.getParameter("refpos"+i);
-			
-			if(!refname.equals("")&&!refnumber.equals("")&&!refemail.equals("")&&!refposition.equals("")){
+
+			String refname = request.getParameter("refname" + i);
+			String refnumber = request.getParameter("refphone" + i);
+			String refemail = request.getParameter("refemail" + i);
+			String refposition = request.getParameter("refpos" + i);
+
+			if (!refname.equals("") && !refnumber.equals("") && !refemail.equals("") && !refposition.equals("")) {
 				reference.setRefemail(refemail);
 				reference.setRefname(refname);
 				reference.setRefphone(refnumber);
@@ -117,35 +117,34 @@ public class NewApplicant extends HttpServlet {
 
 		HdzApplicant applicant = new HdzApplicant();
 		applicant.setBday(bday);
-		
+
 		applicant.setEmail(email);
 		applicant.setFirstname(firstname);
 		applicant.setLastname(lastname);
 		applicant.setHashedpwd(hashedPwd);
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
-		//System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+" "+" "+citizen+" "+veteran);
+		// System.out.println(email+" "+firstname+" "+lastname+" "+hashedPwd+"
+		// "+" "+citizen+" "+veteran);
 		applicant.setSalt(salt);
 		NewApplicantService.insertApplicant(applicant);
 		applicant = ValidateUserDao.getValidApplicant(email, password);
 		applicant.setHdzEducations(edhist);
 		applicant.setHdzJobhistories(jobhist);
 		applicant.setHdzReftables(references);
-		for (HdzEducation e:edhist){
+		for (HdzEducation e : edhist) {
 			e.setHdzApplicant(applicant);
 		}
-		for(HdzJobhistory j:jobhist){
+		for (HdzJobhistory j : jobhist) {
 			j.setHdzApplicant(applicant);
 		}
-		for (HdzReftable r:references){
+		for (HdzReftable r : references) {
 			r.setHdzApplicant(applicant);
 		}
 		NewApplicantService.updateApplicant(applicant);
-		
+
 		String nextURL = "/login.jsp";
 		request.getRequestDispatcher(nextURL).forward(request, response);
 	}
-	
-	
-	
+
 }
