@@ -23,10 +23,11 @@ public class HdzEmployee implements Serializable {
 
 	private String empname;
 
+	private String hashedpwd;
+
 	@Column(name="\"POSITION\"")
 	private String position;
 
-	private String hashedpwd;
 	private String salt;
 
 	public HdzEmployee() {
@@ -56,6 +57,14 @@ public class HdzEmployee implements Serializable {
 		this.empname = empname;
 	}
 
+	public String getHashedpwd() {
+		return this.hashedpwd;
+	}
+
+	public void setHashedpwd(String hashedpwd) {
+		this.hashedpwd = hashedpwd;
+	}
+
 	public String getPosition() {
 		return this.position;
 	}
@@ -64,22 +73,12 @@ public class HdzEmployee implements Serializable {
 		this.position = position;
 	}
 
-	public String getHashedpwd() {
-		return hashedpwd;
-	}
-
-	public void setHashedpwd(String hashedpwd) {
-		this.hashedpwd = hashedpwd;
-	}
-
 	public String getSalt() {
-		return salt;
+		return this.salt;
 	}
 
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-
-
 
 }

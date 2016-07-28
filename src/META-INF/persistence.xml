@@ -9,6 +9,11 @@
 		<class>model.HdzJobhistory</class>
 		<class>model.HdzJob</class>
 		<class>model.HdzReftable</class>
+		<class>model.HdzApplicantskill</class>
+		<class>model.HdzJobquestion</class>
+		<class>model.HdzJobskill</class>
+		<class>model.HdzPosition</class>
+		<class>model.HdzTest</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>

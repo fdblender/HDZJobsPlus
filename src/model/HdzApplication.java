@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -22,8 +24,10 @@ public class HdzApplication implements Serializable {
 	private String appstatus;
 
 	private String codingtest;
-	
+
 	private String comments;
+
+	private BigDecimal score;
 
 	//bi-directional many-to-one association to HdzApplicant
 	@ManyToOne
@@ -34,6 +38,10 @@ public class HdzApplication implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="JOBSID")
 	private HdzJob hdzJob;
+
+	//bi-directional many-to-one association to HdzTest
+	@OneToMany(mappedBy="hdzApplication")
+	private List<HdzTest> hdzTests;
 
 	public HdzApplication() {
 	}
@@ -62,6 +70,22 @@ public class HdzApplication implements Serializable {
 		this.codingtest = codingtest;
 	}
 
+	public String getComments() {
+		return this.comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	public BigDecimal getScore() {
+		return this.score;
+	}
+
+	public void setScore(BigDecimal score) {
+		this.score = score;
+	}
+
 	public HdzApplicant getHdzApplicant() {
 		return this.hdzApplicant;
 	}
@@ -78,13 +102,26 @@ public class HdzApplication implements Serializable {
 		this.hdzJob = hdzJob;
 	}
 
-	public String getComments() {
-		return comments;
+	public List<HdzTest> getHdzTests() {
+		return this.hdzTests;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setHdzTests(List<HdzTest> hdzTests) {
+		this.hdzTests = hdzTests;
 	}
-	
+
+	public HdzTest addHdzTest(HdzTest hdzTest) {
+		getHdzTests().add(hdzTest);
+		hdzTest.setHdzApplication(this);
+
+		return hdzTest;
+	}
+
+	public HdzTest removeHdzTest(HdzTest hdzTest) {
+		getHdzTests().remove(hdzTest);
+		hdzTest.setHdzApplication(null);
+
+		return hdzTest;
+	}
 
 }

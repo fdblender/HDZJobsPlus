@@ -41,7 +41,7 @@ public class AddJobs extends HttpServlet {
 			String posit = request.getParameter("position");
 			String desc = request.getParameter("description");
 			HdzJob jobs = new HdzJob();
-			jobs.setPosition(posit);
+			jobs.getHdzPosition().setPosition(posit);
 			jobs.setDescription(desc);
 			AddjobsDao.addjobs(jobs);
 			request.setAttribute("message", "Updated Successfully");
