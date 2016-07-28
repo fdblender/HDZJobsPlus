@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import dao.PendingActionsDao;
 import model.HdzApplication;
 import model.HdzEmployee;
 import services.InterviewService;
+import util.Email;
 
 /**
  * Servlet implementation class InterviewReportSubmission
@@ -43,13 +46,19 @@ public class InterviewReportSubmission extends HttpServlet {
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
 		String url = "/PendingAction";
-		String comment = (String) session.getAttribute("commentInterview");
-		System.out.println("Interview comment: " + comment);
+		
 		
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
+			String comment = (String) request.getParameter("commentInterview");
+			String result = request.getParameter("result");
+			Double score = Double.parseDouble(request.getParameter("score"));
+			String hmInterviewCoding = request.getParameter("hmInterviewCoding");
+			String hmInterview = request.getParameter("hmInterview");
+			String hrInterview = request.getParameter("hrInterview");
+			
 			if (comment != null && !comment.equals("")) {
 				String x = InterviewService.getComment(hdzApplication);
 				if (x != null) {
@@ -59,12 +68,77 @@ public class InterviewReportSubmission extends HttpServlet {
 				hdzApplication.setComments(employee.getEmpname() + " ("+ 
 						employee.getPosition()+"): " + comment);
 			}
-			
-			String groupInterviewCoding = request.getParameter("groupInterviewCoding");
-			String groupInterview = request.getParameter("groupInterview");
-			String hmInterviewCoding = request.getParameter("hmInterviewCoding");
-			String hmInterview = request.getParameter("hmInterview");
-			String hrInterview = request.getParameter("hrInterview");
+			if (score != null) {
+				Double x = InterviewService.getScore(hdzApplication);
+				if (x != null) {
+					score += x;
+				}				
+				hdzApplication.setScores(score);
+			}
+			String role = (String) session.getAttribute("role");
+			if (role.equals("HiringManager")) {
+				List<HdzQuestions> questions = request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HM"));
+				for (HdzQuestions h: questions) {
+					HdzTest test = new HdzTest();
+					test.setResponse(request.getParameter("response" + h.getId()));
+					test.setQuestionId(h.getId());
+					InterviewService.InsertResponse(test);
+				}
+				hdzApplication.setCodingtest("G");
+				if (result.equals("F")) {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+					Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com", "Application status Info", 
+							"<html>Hi " + hdzApplication.getHdzApplicant().getFirstname()+ ",<br/> "
+									+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+									+ "<br/> Thanks,<br/>HDZ Team</html>", true);
+				} else {
+					hdzApplication.setAppstatus("HMInterviewDone");		
+					InterviewService.updateApplication(hdzApplication);
+				}
+			} else if (role.equals("HRManager")) {
+				List<HdzQuestions> questions = request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HM"));
+				for (HdzQuestions h: questions) {
+					HdzTest test = new HdzTest();
+					test.setResponse(request.getParameter("response" + h.getId()));
+					test.setQuestionId(h.getId());
+					InterviewService.InsertResponse(test);
+				}	
+				if (result.equals("F")) {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+					Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com", "Application status Info", 
+							"<html>Hi " + hdzApplication.getHdzApplicant().getFirstname()+ ",<br/> "
+									+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+									+ "<br/> Thanks,<br/>HDZ Team</html>", true);
+				} else {
+					hdzApplication.setAppstatus("HRInterviewDone");		
+					InterviewService.updateApplication(hdzApplication);
+				}
+			} else {
+				List<HdzQuestions> questions = request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HM"));
+				for (HdzQuestions h: questions) {
+					HdzTest test = new HdzTest();
+					test.setResponse(request.getParameter("response" + h.getId()));
+					test.setQuestionId(h.getId());
+					InterviewService.InsertResponse(test);
+				}	
+				if (result.equals("F")) {
+					hdzApplication.setAppstatus("Fail");					
+					InterviewService.updateApplication(hdzApplication);
+					Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com", "Application status Info", 
+							"<html>Hi " + hdzApplication.getHdzApplicant().getFirstname()+ ",<br/> "
+									+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+									+ "<br/> Thanks,<br/>HDZ Team</html>", true);
+				} else {
+					hdzApplication.setAppstatus("GroupInterviewDone");	
+					if (PendingActionsDao.checkAppStatus(hdzApplication)) {
+						hdzApplication.setAppstatus("Hired");			
+					}
+					InterviewService.updateApplication(hdzApplication);
+				}
+			} 
+			/*
 			if (hrInterview != null) {
 				if (hrInterview.equals("Pass")) {
 					hdzApplication.setAppstatus("HRInterviewDone");					
@@ -76,8 +150,8 @@ public class InterviewReportSubmission extends HttpServlet {
 				}
 				
 				
-			}
-			if (hmInterviewCoding != null) {
+			}*/
+			/*if (hmInterviewCoding != null) {
 				hdzApplication.setCodingtest(hmInterviewCoding);
 				if (hmInterviewCoding.equals("F")) {
 					hdzApplication.setAppstatus("Fail");					
@@ -87,9 +161,9 @@ public class InterviewReportSubmission extends HttpServlet {
 					InterviewService.updateApplication(hdzApplication);
 				}
 				
-			} 
+			} */
 			
-			if (hmInterview != null) {
+			/*if (hmInterview != null) {
 				if (hmInterview.equals("Pass")) {
 					hdzApplication.setAppstatus("HMInterviewDone");					
 					InterviewService.updateApplication(hdzApplication);
@@ -99,8 +173,8 @@ public class InterviewReportSubmission extends HttpServlet {
 					request.setAttribute("message", "Letter sent to Applicant");
 				}
 				
-			}
-			if (groupInterviewCoding != null) {
+			}*/
+			/*if (groupInterviewCoding != null) {
 				hdzApplication.setCodingtest(groupInterviewCoding);
 				if (groupInterviewCoding.equals("F")) {
 					hdzApplication.setAppstatus("Fail");					
@@ -110,9 +184,9 @@ public class InterviewReportSubmission extends HttpServlet {
 					InterviewService.updateApplication(hdzApplication);
 				}
 				
-			} 
+			} */
 			
-			if (groupInterview != null) {
+			/*if (groupInterview != null) {
 				if (groupInterview.equals("Pass")) {
 					if (InterviewService.getCodingTest(hdzApplication.getApplicationid()).equals("N")) {
 						request.setAttribute("message", "Coding Test has to be completed");
@@ -134,7 +208,7 @@ public class InterviewReportSubmission extends HttpServlet {
 					
 				}
 				
-			}
+			}*/
 			request.getRequestDispatcher(url).forward(request, response);
 			
 		}

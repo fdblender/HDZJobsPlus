@@ -47,7 +47,7 @@ public class ActionSubmit extends HttpServlet {
 		String urlToRedirect = null;
 		String appid = request.getParameter("applicationid");
 		HdzApplication hdzApplication = InterviewService.getHdzApplication(appid);
-		session.setAttribute("app", hdzApplication);
+		request.setAttribute("app", hdzApplication);
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);

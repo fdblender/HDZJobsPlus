@@ -41,20 +41,23 @@ public class InterviewForm extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
-		HdzApplication hdzApplication = (HdzApplication) session.getAttribute("app");
+		HdzApplication hdzApplication = (HdzApplication) request.getAttribute("app");
 		hdzApplication.setCodingtest(InterviewService.getCodingTest(hdzApplication.getApplicationid()));
-		session.setAttribute("app", hdzApplication);
+		request.setAttribute("app", hdzApplication);
 		if (employee == null) {
 			request.setAttribute("message", "Log in!!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
 			if (role.equals("HiringManager")) {
+				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HM"));
 				request.setAttribute("interviewType", "HM Interview");
 				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
 			} else if (role.equals("HRManager")) {
+				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HR"));
 				request.setAttribute("interviewType", "HR Interview");				
 			} else {
+				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"GI"));
 				request.setAttribute("interviewType", "Group Interview");
 				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
 				

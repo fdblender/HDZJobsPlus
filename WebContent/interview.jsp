@@ -8,7 +8,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -93,96 +94,140 @@
 </head>
 <body id="body" class="ui-widget-content" style="border: 0;">
 	<jsp:include page="navbar.jsp"></jsp:include>
-	
-	<div ng-app="myApp" ng-controller="myCtrl">
-	<div class="container">
-		<div style="background-color: white;" class="panel-body">
-			<c:set var="mesL" scope="session" value="${message}" />
-			<c:if test="${mesL != null}">
-				<div class="alert alert-success">
-					<strong>${message}</strong> <span id="showSearchTerm"></span>
-				</div>
-			</c:if>
+	<form action="InterviewReportSubmission" method="post">
+		<div class="container">
+			<div style="background-color: white;" class="panel-body">
+				<c:set var="mesL" scope="session" value="${message}" />
+				<c:if test="${mesL != null}">
+					<div class="alert alert-success">
+						<strong>${message}</strong> <span id="showSearchTerm"></span>
+					</div>
+				</c:if>
 
-			<div class="row">
-				<div class="col-sm-1"></div>
-				<div class="col-sm-10">
-					<c:set var="application" scope="session" value="${app}" />
-					<c:if test="${application != null && application != ''}">
+				<div class="row">
+					<div class="col-sm-1"></div>
+					<div class="col-sm-10">
 
-						<table class="table table-bordered">
-
+						<table>
 							<thead>
 								<tr>
-									<th>AppId</th>
-									<th>Status</th>
-									<th>Job Id</th>
-									<th>Job Title</th>
-									<th>Job description</th>
-									<th>Coding Test</th>
-									<th>Actions</th>
+									<th>Question</th>
+									<th>Response</th>
 								</tr>
 							</thead>
+							<tbody>
+								<c:forEach var="question" items="${questions}">
+									<tr>
+										<td>${question.question}</td>
+										<td><input type="text" id="response${question.id}">
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+						<c:set var="application" scope="session" value="${app}" />
+						<c:if test="${application == null}">
+							<h2>No Records!!</h2>
+						</c:if>
+						<c:if test="${application != null && application != ''}">
+
+							<table class="table table-bordered">
+
+								<thead>
+									<tr>
+										<th>AppId</th>
+										<th>Status</th>
+										<th>Job Id</th>
+										<th>Job Title</th>
+										<th>Job description</th>
+										<th>Coding Test</th>
+									</tr>
+								</thead>
 								<tr>
-									<td><a href="ApplicationDetail?applicationid=${application.applicationid}" ><c:out value="${application.applicationid}"></c:out></a></td>
+									<td><a
+										href="ApplicationDetail?applicationid=${application.applicationid}"><c:out
+												value="${application.applicationid}"></c:out></a></td>
 									<td><c:out value="${application.appstatus}"></c:out></td>
 									<td><c:out value="${application.hdzJob.jobsid}"></c:out></td>
 									<td><c:out value="${application.hdzJob.position}"></c:out></td>
 									<td><c:out value="${application.hdzJob.description}"></c:out></td>
 									<td><c:out value="${application.codingtest}"></c:out></td>
-									<td><table><c:set var="type" scope="session"
-											value="${interviewType}" /> <c:if
-											test="${type == 'Group Interview'}">
-											<c:set var="coding" scope="session" value="${coding}" />
-											<c:if test="${coding == 'N'}">
-												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=P">Coding
+
+
+								</tr>
+							</table>
+							<c:set var="type" scope="session" value="${interviewType}" />
+							<c:set var="coding" scope="session" value="${coding}" />
+							 <c:if test="${type == 'Group Interview' || type == 'HM Interview'}">
+							<c:if test="${coding == 'C'}">
+							Question: <c:out value="${application.hdztest.question}"></c:out>
+							Language: <c:out value="${application.hdztest.language}"></c:out>				
+							Response: <c:out value="${application.hdztest.response}"></c:out>	
+							</c:if>
+							</c:if>
+							<table>
+								<tr>
+									<td><c:set var="comments" scope="session"
+											value="${application.comments}" /> <c:if
+											test="${comments != null && application != ''}"> Comments:
+							<p>${application.comments}</p>
+										</c:if></td>
+								</tr>
+								<tr>
+									<td>Comment: <input type="text" id="commentInterview" name="commentInterview" /> Score: 
+										<input type="text" id="score" name="score"> 
+										<%--  <c:if test="${type == 'Group Interview' || type == 'HM Interview'}"> --%>
+											
+											<%-- <c:if test="${coding == 'N'}"> --%>
+												<!-- <tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=P">Coding
 													Test Pass</a></td></tr>
 												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=F">Coding
-													Test Fail</a></td></tr>
-											</c:if>
+													Test Fail</a></td></tr> -->
+												<%-- <input type="checkbox" id="CodingTestGiven"
+													name="CodingTestGiven" value="GiveCodingTest"> Give Coding test
+											</c:if> --%>
+											
+											
 
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterview=Pass">Group
-												Interview Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
-												Interview Fail</a></td></tr>
-										</c:if> <c:if test="${type == 'HM Interview'}">
+											<!-- <a class="buttonLink" href="InterviewReportSubmission?groupInterview=Pass">Group
+												Interview Pass</a>
+											<a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
+												Interview Fail</a> -->
+										<%-- </c:if> --%> <input type="text" id="result" name="result" placeholder="Result"> 
+										<input type="submit" id="submit" value="Submit" name="Submit"> 
+										
+										<%-- <c:if test="${type == 'HM Interview'}">
 										<c:set var="coding" scope="session" value="${coding}" />
 											<c:if test="${coding == 'N'}">
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=P">Coding
+											<!-- <tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=P">Coding
 												Test Pass</a></td></tr>
 											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=F">Coding
-												Test Fail</a></td></tr>
+												Test Fail</a></td></tr> -->
+												<input type="checkbox" id="CodingTestGivenHM" name="CodingTestGivenHM" value="GiveCodingTestHM"> Give Coding test
 												</c:if>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">HM Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">HM Fail</a></td></tr>
-										</c:if> <c:if test="${type == 'HR Interview'}">
-
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Pass">HR Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">HR Fail</a></td></tr>
-										</c:if></table>
-										</td>
+											<a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">HM Pass</a>
+											<a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">HM Fail</a>
+										</c:if> 
 										
-						</tr>
-						</table>
-						<c:set var="comments" scope="session" value="${application.comments}" />
-						<c:if test="${comments != null && application != ''}">
-							<p>
-								${application.comments}
-							</p>
-						</c:if>
+										<c:if test="${type == 'HR Interview'}">
 
-						Comment: <input type="text" id="commentInterview" name="commentInterview"/>
-						
-					</c:if>
-					<c:if test="${application == null}">
-						<h2>No Records!!</h2>
-					</c:if>
+											<a class="buttonLink" href="InterviewReportSubmission?hrInterview=Pass">HR Pass</a>
+											<a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">HR Fail</a>
+										</c:if> --%>
+
+
+									</td>
+								</tr>
+							</table>
+
+						</c:if>
+					</div>
+					<div class="col-sm-1"></div>
 				</div>
-				<div class="col-sm-1"></div>
 			</div>
 		</div>
-	</div>
-	</div>
-	
+
+	</form>
 </body>
 </html>

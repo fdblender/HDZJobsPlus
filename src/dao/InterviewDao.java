@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -77,6 +79,16 @@ public class InterviewDao {
             }
         return comment;
 		
+	}
+
+	public static List<HdzQuestions> getQuestions(HdzApplication hdzApplication, String role) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Double getScore(HdzApplication hdzApplication) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

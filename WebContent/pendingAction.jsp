@@ -199,6 +199,26 @@
 
 							</form>
 						</div>
+						<c:if test="${role == 'HiringManager'}">
+						<h3 style="background-color: #01579b;color: #ffffff;">Choose Applicants</h3>
+						<div>
+							<form id="target" action="AddJobs" method="post">
+								
+								<div class="form-group">
+									<label for="typeAssgn">Position:</label> <input type="text"
+										name="position" id="position" value="" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="typeAssgn">Description:</label> <input type="text"
+										name="description" id="description" value=""
+										class="form-control">
+								</div>
+
+								<input type="submit" name="submit" id="submit" value="Add">
+
+							</form>
+						</div>
+						</c:if>
 						
 					</div>
 					<%-- <div class="panel panel-primary">
