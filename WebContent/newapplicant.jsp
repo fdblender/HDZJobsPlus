@@ -122,10 +122,15 @@
 											id="edu2" /><br /> Degree 2:<br /> <input type="text"
 											name="degree2" id="degree2" /><br /> Date completed 2:<br />
 											<input type="text" name="date2" id="date2" /> <br />
-										<td>Institution 3: <input type="text" name="edu3"
-											id="edu3" /> Degree 3: <input type="text" name="degree3"
-											id="degree3" /><br /> Date completed 3: <input type="text"
-											name="date3" id="date3" />
+										<td>Institution 3:<br/> 
+										<input type="text" name="edu3"
+											id="edu3" /> 
+											Degree 3:<br/> 
+											<input type="text" name="degree3"
+											id="degree3" /><br /> 
+											Date completed 3:<br/> 
+											<input type="text"
+											name="date3" id="date3" /><br/>
 										</td>
 									</tr>
 								</table>
