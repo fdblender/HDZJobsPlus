@@ -1,5 +1,6 @@
 package dao;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,9 +8,11 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import util.DBUtil;
+import util.PasswordUtil;
 import model.HdzApplicant;
 import model.HdzApplication;
 import model.HdzEducation;
+import model.HdzEmployee;
 import model.HdzJob;
 import model.HdzJobhistory;
 import model.HdzReftable;
@@ -115,6 +118,34 @@ public class ApplicantDao {
 		} finally {
 			em.close();
 		}
+	}
+	
+	public static HdzApplicant AddApplicantAsEmployee(HdzEmployee employee) {		
+		
+		HdzApplicant applicant = new HdzApplicant();
+		
+		applicant.setEmail(employee.getEmail());
+		applicant.setHashedpwd(employee.getHashedpwd());
+		applicant.setSalt(employee.getSalt());
+		
+		// TO DO: add last name to employee table
+		applicant.setFirstname(employee.getEmpname());
+		applicant.setLastname("");		
+		
+		
+		// set background check to completed		
+		applicant.setCitizenflag("Y");
+		applicant.setVeteranflag("Y");
+		applicant.setVisaflag("Y");
+		applicant.setDrugtestflag("Y");
+		applicant.setStdpanelflag("Y");
+		applicant.setDottestflag("Y");		
+		applicant.setAlcoholtestflag("Y");
+		applicant.setEmployeeflag("Y");
+		
+				
+		insert(applicant);
+		return applicant;
 	}
 	
 	public static List<HdzJob> getAllJobs (){

@@ -13,8 +13,8 @@
 <jsp:include page="navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
 			
 				<h2>Your Applications</h2>
 				<table class="table table-bordered table-striped table-hover">
@@ -29,8 +29,12 @@
 						</tr>
 					</c:forEach>
 				</table>
-
+				<br />
+				<form id="target" action="ShowPendingTests" method="get">
+					<input type="button" class="" name="showtests" id="showtests" value="Complete Outstanding Tests"/>
+				</form>
 			</div>
-		<div class="col-sm-2"></div>
+		<div class="col-sm-1"></div>
+		
 </body>
 </html>
