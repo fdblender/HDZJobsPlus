@@ -35,7 +35,7 @@ function limitText(limitField, limitCount, limitNum) {
 
 <form action="ApplicationDetail" method="get" >
 <div class="container" Style="width:600px">
-<c:if test="${questionlist!= null }">
+<c:if test="${questionlist != null }">
 <div>
 <table>
 <thead>
@@ -47,7 +47,7 @@ function limitText(limitField, limitCount, limitNum) {
 <tbody>
 <c:forEach var="question" items="${questionlist}">
 <tr>
-<td><c:out value="${question.jobquestion }"/></td>
+<td><c:out value="${question.hdzJobquestion.jobquestion }"/></td>
 <td><c:out value="${question.testresponse}"/></td>
 </tr>
 </c:forEach>

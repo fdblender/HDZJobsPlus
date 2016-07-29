@@ -35,16 +35,16 @@ public class ApplicationDetail extends HttpServlet {
 		String applicationid=request.getParameter("applicationid");
 		String role = (String) session.getAttribute("role");
 		String gi = (String) session.getAttribute("GI");
-		List<HdzJobquestion> questionlist=null;
+		List<HdzTest> questionlist=null;
 		if(role.equals("HRManager")) {
-			questionlist=QuestionsDao.getQuestionList("HR");
+			questionlist=QuestionsDao.getQuestionList("HR",applicationid);
 			
 			
 		} else if (role.equals("HiringManager")) {
-			questionlist=QuestionsDao.getQuestionList("HM");
+			questionlist=QuestionsDao.getQuestionList("HM",applicationid);
 			
 		} else if (gi.equals("Yes")) {
-			questionlist=QuestionsDao.getQuestionList("GI");
+			questionlist=QuestionsDao.getQuestionList("GI", applicationid);
 		}
 		
 		HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
