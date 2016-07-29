@@ -80,9 +80,6 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
-				
-				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -152,9 +149,6 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
-				
-				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -220,9 +214,6 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
-				
-				session.setAttribute("hiremessage", "This applicant is hired!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				

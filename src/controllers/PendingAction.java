@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.HdzApplication;
 import model.HdzEmployee;
+import model.HdzJob;
 import services.RoleActionService;
 
 /**
@@ -38,7 +39,6 @@ public class PendingAction extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("in pending Action");
 		HttpSession session = request.getSession();
 		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
 		session.setAttribute("app", null);
@@ -80,11 +80,12 @@ public class PendingAction extends HttpServlet {
 				
 			}
 			if (hdzapplication== null || hdzapplication.size() ==0) {
-				session.setAttribute("actionList", null);
+				request.setAttribute("actionList", null);
 			} else {
-				session.setAttribute("actionList", hdzapplication);
+				request.setAttribute("actionList", hdzapplication);
 			}
-				
+			List<HdzJob> jobs = RoleActionService.getActiveJobs();
+			request.setAttribute("jobList", jobs);
 			request.getRequestDispatcher("pendingAction.jsp").forward(request, response);
 		}
 	}

@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.HdzApplication;
+import model.HdzJob;
 import model.HdzJobquestion;
 import model.HdzTest;
 import util.DBUtil;
@@ -126,6 +127,21 @@ public class InterviewDao {
         try {
             trans.begin();
             em.persist(test);
+            trans.commit();
+        } catch (Exception e) {
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+		
+	}
+
+	public static void updateJob(HdzJob jobUpdate) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        try {
+            trans.begin();
+            em.merge(jobUpdate);
             trans.commit();
         } catch (Exception e) {
             trans.rollback();

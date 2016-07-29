@@ -200,73 +200,41 @@
 							</form>
 						</div>
 						<c:if test="${role == 'HiringManager'}">
-						<h3 style="background-color: #01579b;color: #ffffff;">Choose Applicants</h3>
+						<h3 style="background-color: #01579b;color: #ffffff;">Select Applicants</h3>
 						<div>
 							<form id="target" action="ChooseApplicants" method="post">
+								<table class="table table-bordered">
+								<tr>
+								<thead>
+									<tr>
+										<th>Job ID</th>
+										<th>Job Title</th>
+										<th>Job Desc</th>
+										<th>Choose</th>
+									</tr>
+								</thead>
 								
-								<c:forEach var="action" items="${actionList}">
+								<c:forEach var="job" items="${jobList}">
 									<tbody>
 										<tr>
-											<td><c:out value="${action.hdzJob.jobsid}"></c:out></td>
-											<td><c:out value="${action.hdzJob.hdzPosition.position}"></c:out></td>
-											<td><c:out value="${action.hdzJob.description}"></c:out>
+											<td><c:out value="${job.jobsid}"></c:out></td>
+											<td><c:out value="${job.hdzPosition.position}"></c:out></td>
+											<td><c:out value="${job.description}"></c:out>
 											</td>
-											<td><c:out value="${action.hdzApplicant.firstname}"></c:out>
-											</td>
-											<td><c:out value="${action.appstatus}"></c:out></td>
-											<td><a
-												href="ActionSubmit?applicationid=${action.applicationid}">
-													Take Action</a></td>
+											<td><a class="btn btn-default btn-lg"
+											 href="ApplicantSelection?jobid=${job.jobsid}">
+													Select</a></td>
 										</tr>
 									</tbody>
 								</c:forEach>
-
-								<input type="submit" name="submit" id="submit" value="Add">
+								</table>
 
 							</form>
 						</div>
 						</c:if>
 						
 					</div>
-					<%-- <div class="panel panel-primary">
-						<div class="panel-heading">
-							<div align="left">Pending Actions</div>
-
-						</div>
-						<div class="panel-body">
-
-							<table>
-								<thead>
-									<tr>
-										<th>Job ID</th>
-										<th>Job Desc</th>
-										<th>Applicatnt Name</th>
-										<th>Applicatnt Status</th>
-										<th></th>
-									</tr>
-								</thead>
-								<c:forEach var="action" items="${actionList}">
-									<tbody>
-										<tr>
-											<td><c:out value="${action.hdzJob.jobsid}"></c:out></td>
-											<td><c:out value="${action.hdzJob.description}"></c:out>
-											</td>
-											<td><c:out value="${action.hdzApplicant.firstname}"></c:out>
-											</td>
-											<td><c:out value="${action.appstatus}"></c:out></td>
-											<td><a
-												href="ActionSubmit?applicationid=${action.applicationid}">
-													Take Action</a></td>
-										</tr>
-									</tbody>
-								</c:forEach>
-							</table>
-						</div>
-						<div class="panel-footer">
-							<div id="text"></div>
-							<div align="right"></div>
-						</div>
-					</div> --%>
+					
 				</div>
 				<div class="col-sm-1"></div>
 			</div>

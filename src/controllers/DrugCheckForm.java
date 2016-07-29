@@ -207,8 +207,7 @@ public class DrugCheckForm extends HttpServlet {
 			}
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
-				
+								
 				if(stdcomment!=null)
 				{
 					
@@ -217,7 +216,7 @@ public class DrugCheckForm extends HttpServlet {
 					
 				}
 				
-				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
+				
 				
 				dao.PendingActionsDao.update(myapplication);
 				session.setAttribute("DrugApplication",myapplication);	
@@ -278,7 +277,6 @@ public class DrugCheckForm extends HttpServlet {
 
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
 				
 				if(dotcomment!=null)
 				{
@@ -288,7 +286,6 @@ public class DrugCheckForm extends HttpServlet {
 					
 				}
 				
-				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				session.setAttribute("DrugApplication",myapplication);	
@@ -349,7 +346,6 @@ public class DrugCheckForm extends HttpServlet {
 			}
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
 				
 				if(alcoholcomment!=null)
 				{
@@ -359,7 +355,6 @@ public class DrugCheckForm extends HttpServlet {
 					
 				}
 				
-				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				session.setAttribute("DrugApplication",myapplication);	

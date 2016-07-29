@@ -66,9 +66,7 @@ public class EducationForm extends HttpServlet {
 
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
-				myapplication.setAppstatus("Hired");
 				
-				session.setAttribute("hiremessage", "The Applicant is hired!!!!");
 				
 				dao.PendingActionsDao.update(myapplication);
 				

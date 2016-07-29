@@ -159,9 +159,7 @@ public class InterviewReportSubmission extends HttpServlet {
 								true);
 					} else {
 						hdzApplication.setAppstatus("GroupInterviewDone");
-						if (PendingActionsDao.checkAppStatus(hdzApplication)) {
-							hdzApplication.setAppstatus("Hired");
-						}
+						
 						InterviewService.updateApplication(hdzApplication);
 						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
 								"Application status Info",

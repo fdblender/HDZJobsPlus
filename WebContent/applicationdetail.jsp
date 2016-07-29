@@ -192,10 +192,10 @@ function limitText(limitField, limitCount, limitNum) {
        
  		<c:out value="Drug Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.drugtest}"/>
- 		</td>	
+ 		</td> --%>	
      </tr>
       
        <tr>
@@ -215,10 +215,10 @@ function limitText(limitField, limitCount, limitNum) {
        
  		<c:out value="STD Panel"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.stdpanel}"/>
- 		</td>	
+ 		</td> --%>	
      </tr>
          
        <tr>
@@ -238,10 +238,10 @@ function limitText(limitField, limitCount, limitNum) {
        
  		<c:out value="DOT Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.dottest}"/>
- 		</td>	
+ 		</td>	 --%>
      </tr>
      
        
@@ -262,10 +262,10 @@ function limitText(limitField, limitCount, limitNum) {
        
  		<c:out value="Alcohol Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.alcoholtest}"/>
- 		</td>	
+ 		</td> --%>	
      </tr>
      
      

@@ -3,6 +3,7 @@ package dao;
 
 import model.HdzApplication;
 import model.HdzEmployee;
+import model.HdzJob;
 import util.DBUtil;
 
 import java.util.List;
@@ -173,6 +174,59 @@ public class RoleActionDao {
                 em.close();
             }
         return hdzEmployee;  
+	}
+
+	public static List<HdzJob> getActiveJobs() {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		List<HdzJob> jobs = null;
+        String qString = "select distinct b.hdzJob from HdzApplication b "
+        		+ "where b.hdzJob.numberopenings <> 0";        
+        try{
+            TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
+            jobs = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return jobs;
+	}
+
+	public static List<HdzApplication> getActiveApplications(String jobId) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		List<HdzApplication> applications = null;
+        String qString = "select b from HdzApplication b where b.hdzJob.jobsid = :id";
+        
+        try{
+            TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
+            query.setParameter("id", Long.parseLong(jobId));
+            applications = query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return applications;
+	}
+
+	public static HdzJob getJob(String jobId) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		HdzJob job = null;
+        String qString = "select b from HdzJob b where b.jobsid = :id";
+        
+        try{
+            TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
+            query.setParameter("id", Long.parseLong(jobId));
+            job = query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return job;
 	}
 
 }

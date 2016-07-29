@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.InterviewDao;
 import model.HdzApplication;
+import model.HdzJob;
 import model.HdzJobquestion;
 import model.HdzTest;
 
@@ -37,6 +38,11 @@ public class InterviewService {
 
 	public static void InsertResponse(HdzTest test) {
 		InterviewDao.InsertResponse(test);
+		
+	}
+
+	public static void updateJob(HdzJob jobUpdate) {
+		InterviewDao.updateJob(jobUpdate);
 		
 	}
 
