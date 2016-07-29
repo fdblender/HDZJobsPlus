@@ -12,6 +12,6 @@
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
-	
+	<h1>Feature Not Implemented</h1>
 </body>
 </html>

@@ -6,7 +6,7 @@ import model.HdzJobquestion;
 
 public class QuestionsDao {
 
-	public static List<HdzJobquestion> getQuestioList(String string) {
+	public static List<HdzJobquestion> getQuestionList(String string) {
 		return null;
 	}
 
