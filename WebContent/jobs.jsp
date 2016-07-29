@@ -25,10 +25,12 @@
 <tr>
 <td>${job.hdzPosition.position}</td>
 <td>
+<c:if test="${role =='applicant'}">  
 <form action="Apply">
 <input type="hidden" name="jobid" id="jobid" value="${job.jobsid}"/>
 <input type="submit" name="submit" id="submit" value="Apply"/>
 </form>
+</c:if>
 </td>
 </tr>
 </c:forEach>
