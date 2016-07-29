@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("user", applicant);
 				session.setAttribute("role",  "applicant");
 				session.setAttribute("userrole",  1);
-				nextURL = "yourapplications.jsp";
+				nextURL = "YourApplications";
 			} else {
 				
 				// if the applicant is not found, check to see if he/she is an employee
@@ -62,7 +62,7 @@ public class Login extends HttpServlet {
 				if (employee != null) {
 					// add the employee as an applicant with same email & password
 					ApplicantDao.AddApplicantAsEmployee(employee);
-					nextURL = "/yourapplications.jsp";
+					nextURL = "YourApplications";
 				} else {
 				
 					System.out.println("user not found: " + email + " " + password);

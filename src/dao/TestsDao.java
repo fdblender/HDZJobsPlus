@@ -27,15 +27,14 @@ public class TestsDao {
 	}
 	
 	// This method returns the first question for the given position and interview type
-	public static HdzJobquestion getPendingTests(String positionid, String interviewtype){
+	public static HdzJobquestion getPendingTest(String interviewtype){
 		 EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		 HdzJobquestion question = null;
 	        String qString = "select a from HdzJobquestion a "
-	                + "where a.hdzPosition.positionid = :positionid  and a.interviewtype= :interviewtype ";
+	                + "where a.interviewtype= :interviewtype ";
 	        
 	        try{
-	            TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);
-	            query.setParameter("positionid", Long.parseLong(positionid));
+	            TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);	            
 	            query.setParameter("interviewtype", interviewtype);
 	            question = query.getSingleResult();
 	        }catch (Exception e){
@@ -45,7 +44,7 @@ public class TestsDao {
 	        }
 
 	        return question;
-	}
+	}	
 	
 	// get a job question for a selected job questions id
 	public static HdzJobquestion getJobQuestion(String jobquestionsid){

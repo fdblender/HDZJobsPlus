@@ -30,9 +30,11 @@
 					</c:forEach>
 				</table>
 				<br />
-				<form id="target" action="ShowPendingTests" method="get">
-					<input type="submit" class="" name="showtests" id="showtests" value="Complete Outstanding Tests"/>
-				</form>
+				<c:if test="${pendingcodingtest == 'yes'}"> 
+					<form id="target" action="ShowCodingTest" method="get">
+						<input type="submit" class="" name="showtests" id="showtests" value="Complete Outstanding Coding Test"/>
+					</form>
+				</c:if>
 			</div>
 		<div class="col-sm-1"></div>
 		
