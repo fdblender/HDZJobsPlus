@@ -15,7 +15,7 @@ public class HdzEmployee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR", sequenceName="HDZ_EMPLOYEE_ID_SEQ")
+	@SequenceGenerator(name="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR", sequenceName="HDZ_EMPLOYEE_ID_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR")
 	private long employeeid;
 

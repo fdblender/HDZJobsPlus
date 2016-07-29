@@ -17,7 +17,7 @@ public class HdzApplication implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDZ_APPLICATION_APPLICATIONID_GENERATOR", sequenceName="HDZ_APPLICATION_ID_SEQ")
+	@SequenceGenerator(name="HDZ_APPLICATION_APPLICATIONID_GENERATOR", sequenceName="HDZ_APPLICATION_ID_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_APPLICATION_APPLICATIONID_GENERATOR")
 	private long applicationid;
 
