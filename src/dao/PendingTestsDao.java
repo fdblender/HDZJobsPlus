@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import model.HdzApplicant;
 import model.HdzTest;
+import model.HdzJobquestion;
 import util.DBUtil;
 
 public class PendingTestsDao {
@@ -25,23 +26,26 @@ public class PendingTestsDao {
 		}
 	}
 	
-	// TO DO: CODE THIS TO GET THE PENDING TESTS FROM JOBQUESTIONS TABLE
-	public static HdzApplicant getPendingTests(String firstname, String lastname){
+	// TO DO: TEST THIS METHOD TO GET PENDING TESTS FROM JOBQUESTIONS TABLE
+	// This method returns the first question for the given position and interview type
+	public static HdzJobquestion getPendingTests(String positionid, String interviewtype){
 		 EntityManager em = DBUtil.getEmfFactory().createEntityManager();
-	        HdzApplicant applicant = null;
-	        String qString = "select a from HdzApplicant a "
-	                + "where a.firstname = :firstname  and a.lastname= :lastname ";
+		 HdzJobquestion question = null;
+	        String qString = "select a from HdzJobquestion a "
+	                + "where a.HdzPosition.positionid = :positionid  and a.interviewtype= :interviewtype ";
 	        
 	        try{
-	            TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
-	            query.setParameter("firstname",firstname);
-	            query.setParameter("lastname", lastname);
-	             applicant= query.getSingleResult();
+	            TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);
+	            query.setParameter("positionid",positionid);
+	            query.setParameter("interviewtype", interviewtype);
+	            question = query.getSingleResult();
 	        }catch (Exception e){
 	            e.printStackTrace();
 	        }finally{
 	            em.close();
 	        }
-	        return applicant;
+
+	        return question;
 	}
+	        
 }
