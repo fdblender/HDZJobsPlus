@@ -35,7 +35,26 @@ function limitText(limitField, limitCount, limitNum) {
 
 <form action="ApplicationDetail" method="get" >
 <div class="container" Style="width:600px">
-
+<c:if test="${questionlist!= null }">
+<div>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<c:forEach var="question" items="${questionlist}">
+<tr>
+<td><c:out value="${question.jobquestion }"/></td>
+<td><c:out value="${question.testresponse}"/></td>
+</tr>
+</c:forEach>
+</tbody>
+</table>
+</div>
+</c:if>
 <br /><br /> 
  <c:if test="${role=='HRManager' or role=='HiringManager'}">
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Application Details</div>

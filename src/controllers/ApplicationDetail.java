@@ -41,15 +41,16 @@ public class ApplicationDetail extends HttpServlet {
 			
 			
 		} else if (role.equals("HiringManager")) {
-			QuestionsDao.getQuestionList("HM");
+			questionlist=QuestionsDao.getQuestionList("HM");
 			
 		} else if (gi.equals("Yes")) {
-			QuestionsDao.getQuestionList("GI");
+			questionlist=QuestionsDao.getQuestionList("GI");
 		}
 		
 		HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
 		
 		session.setAttribute("myapplicaitondetail", myapplication);
+		session.setAttribute("questionlist", questionlist);
 		
 		request.getRequestDispatcher("applicationdetail.jsp").forward(request, response);
 		
