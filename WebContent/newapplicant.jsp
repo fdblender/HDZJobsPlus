@@ -55,13 +55,13 @@
 </script>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"/>
+	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">
 				<form action="NewApplicant" onsubmit="return validateForm()"
-					name="applicant">
+					name="applicant" id="applicant">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div align="left">Personal</div>
@@ -73,9 +73,9 @@
 								First name:<br /> <input type="text" name="firstname"
 									id="firstname" /><br /> Last name: <br /> <input type="text"
 									name="lastname" id="lastname" /><br /> Email: <br /> <input
-									type="text" name="email" id="email" /><br /> Password:<br /> <input
-									type="password" name="password" id="password" /><br /> Date
-								of Birth:<br /> <input type="text" name="dob" id="dob" /><br />
+									type="text" name="email" id="email" /><br /> Password:<br />
+								<input type="password" name="password" id="password" /><br />
+								Date of Birth:<br /> <input type="text" name="dob" id="dob" /><br />
 								Veteran Status: <br /> <select name="veteran">
 									<option value="yes">Veteran</option>
 									<option value="no">Non-veteran</option>
@@ -88,19 +88,41 @@
 					</div>
 					<div class="panel panel-primary">
 						<div class="panel-heading">
+							<div align="left">Initial Resume Data</div>
+						</div>
+
+						<div class="panel-body">
+
+							<fieldset align="center">
+							Resume Objective :<br/>
+							<textarea form="applicant" id ="objective" name ="objective"rows="7" cols="55" maxlength="200"></textarea>
+							Resume Summary :<br/>
+							<textarea form="applicant" name ="summary" id="summary" rows="7" cols="55" maxlength="200"></textarea>
+							</fieldset>
+						</div>
+					</div>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
 							<div align="left">Skills</div>
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								Skill 1<br /> <input type="text" name="skill1" id="skill1" /><br />
-								Experience:<br/>
-								<input type="number" name="exp1" id =exp1 /><br />
-								Skill 2<br /> <input type="text" name="skill2" id="skill2" /><br />
-								Experience:<br/>
-								<input type="number" name="exp2" id =exp2 /><br />
-								Skill 3<br /> <input type="text" name="skill3" id="skill3" /><br />
-								Experience:<br/>
-								<input type="number" name="exp3" id =exp3 /><br />
+								<table>
+									<tr>
+										<td>Skill 1<br /> <input type="text" name="skill1"
+											id="skill1" /><br /> Experience:<br /> <input type="number"
+											name="exp1" id=exp1 /><br />
+										</td>
+										<td>Skill 2<br /> <input type="text" name="skill2"
+											id="skill2" /><br /> Experience:<br /> <input type="number"
+											name="exp2" id=exp2 /><br />
+										</td>
+										<td>Skill 3<br /> <input type="text" name="skill3"
+											id="skill3" /><br /> Experience:<br /> <input type="number"
+											name="exp3" id=exp3 /><br />
+										</td>
+									</tr>
+								</table>
 							</fieldset>
 						</div>
 					</div>
@@ -122,15 +144,10 @@
 											id="edu2" /><br /> Degree 2:<br /> <input type="text"
 											name="degree2" id="degree2" /><br /> Date completed 2:<br />
 											<input type="text" name="date2" id="date2" /> <br />
-										<td>Institution 3:<br/> 
-										<input type="text" name="edu3"
-											id="edu3" /> 
-											Degree 3:<br/> 
-											<input type="text" name="degree3"
-											id="degree3" /><br /> 
-											Date completed 3:<br/> 
-											<input type="text"
-											name="date3" id="date3" /><br/>
+										<td>Institution 3:<br /> <input type="text" name="edu3"
+											id="edu3" /> Degree 3:<br /> <input type="text"
+											name="degree3" id="degree3" /><br /> Date completed 3:<br />
+											<input type="text" name="date3" id="date3" /><br />
 										</td>
 									</tr>
 								</table>

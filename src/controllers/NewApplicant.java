@@ -55,7 +55,8 @@ public class NewApplicant extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
+		String objective=request.getParameter("objective");
+		String summary=request.getParameter("summary");
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String email = request.getParameter("email");
@@ -142,7 +143,8 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHdzEducations(edhist);
 		applicant.setHdzJobhistories(jobhist);
 		applicant.setHdzReftables(references);
-		
+		applicant.setResumeobjective(objective);
+		applicant.setResumesummary(summary);
 
 		for (HdzEducation e : edhist) {
 			e.setHdzApplicant(applicant);
