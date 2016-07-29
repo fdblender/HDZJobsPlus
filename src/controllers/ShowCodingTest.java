@@ -21,14 +21,14 @@ import model.HdzPosition;
 /**
  * Servlet implementation class ShowPendingTests
  */
-@WebServlet("/ShowPendingTests")
-public class ShowPendingTests extends HttpServlet {
+@WebServlet("/ShowCodingTest")
+public class ShowCodingTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowPendingTests() {
+    public ShowCodingTest() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,12 +62,14 @@ public class ShowPendingTests extends HttpServlet {
 					if (position.getPositiontype() != null) {	
 						if (position.getPositiontype().equals("developer")) {		
 							//get the first question for the positionid and interviewtype = 'coding'
-							question = TestsDao.getPendingTests(position.getPositionid()+"", "coding");
-							System.out.println("Coding question: "+question.getJobquestion());
-							request.setAttribute("question",  question);
-							notestsfound = false;
-							nextURL = "showcodingtest.jsp";
-							break;
+							question = TestsDao.getPendingTest("coding");
+							if (question != null) {
+								System.out.println("Coding question: "+question.getJobquestion());
+								request.setAttribute("question",  question);
+								notestsfound = false;
+								nextURL = "showcodingtest.jsp";
+								break;
+							}
 							}
 					}
 				}

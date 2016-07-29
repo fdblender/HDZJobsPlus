@@ -206,16 +206,16 @@ function limitText(limitField, limitCount, limitNum) {
      </tr>
    
      
-      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+<!--       <tr> -->
+<!--      <td align="center" Style="font-weight: bold;font-size:16px; " >    -->
        
- 		<c:out value="Drug Test"/>
- 		</td>
+<%--  		<c:out value="Drug Test"/> --%>
+<!--  		</td> -->
  	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.drugtest}"/>
  		</td> --%>	
-     </tr>
+<!--      </tr> -->
       
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -229,16 +229,16 @@ function limitText(limitField, limitCount, limitNum) {
      </tr>
      
      
-     <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+<!--      <tr> -->
+<!--      <td align="center" Style="font-weight: bold;font-size:16px; " >    -->
        
- 		<c:out value="STD Panel"/>
- 		</td>
+<%--  		<c:out value="STD Panel"/> --%>
+<!--  		</td> -->
  	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.stdpanel}"/>
  		</td> --%>	
-     </tr>
+<!--      </tr> -->
          
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
@@ -252,22 +252,22 @@ function limitText(limitField, limitCount, limitNum) {
      </tr>
     
      
-      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+<!--       <tr> -->
+<!--      <td align="center" Style="font-weight: bold;font-size:16px; " >    -->
        
- 		<c:out value="DOT Test"/>
- 		</td>
+<%--  		<c:out value="DOT Test"/> --%>
+<!--  		</td> -->
  	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.dottest}"/>
  		</td>	 --%>
-     </tr>
+<!--      </tr> -->
      
        
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
- 		<c:out value="STD Panel Test"/>
+ 		<c:out value="DOT Test"/>
  		</td>
  	 <td align="center" Style="font-size:16px; " >   
        
@@ -277,10 +277,10 @@ function limitText(limitField, limitCount, limitNum) {
     
      
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+<!--      <td align="center" Style="font-weight: bold;font-size:16px; " >    -->
        
- 		<c:out value="Alcohol Test"/>
- 		</td>
+<%--  		<c:out value="Alcohol Test"/> --%>
+<!--  		</td> -->
  	<%--  <td align="center" Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.alcoholtest}"/>
@@ -291,7 +291,7 @@ function limitText(limitField, limitCount, limitNum) {
        <tr>
      <td align="center" Style="font-weight: bold;font-size:16px; " >   
        
- 		<c:out value="STD Panel Test"/>
+ 		<c:out value="Alchohol Test"/>
  		</td>
  	 <td align="center" Style="font-size:16px; " >   
        
