@@ -113,8 +113,8 @@ function printMe() {
 	</div>
 	<div>
 		<button type="button" value="Print" onclick="printMe()">Print</button>
-		<button type="button" ><a href="./jobs.jsp">Apply</a></button>
-		<button type="button"><a href="./editprofile.jsp">Edit Profile</a></button>
+		<button type="button" onclick="location.href = './Jobs';">Apply</button>
+		<button type="button" onclick="location.href = './editprofile.jsp';">Edit Profile</a></button>
 	</div>
 </body>
 </html>
