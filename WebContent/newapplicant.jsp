@@ -70,10 +70,10 @@
 						<div class="panel-body">
 
 							<fieldset align="center">
-								First name:<br /> <input type="text" name="firstname"
-									id="firstname" /><br /> Last name: <br /> <input type="text"
+								First name:<br /> <input type="text" maxlength="100" name="firstname"
+									id="firstname" /><br /> Last name: <br /> <input type="text" maxlength="100"
 									name="lastname" id="lastname" /><br /> Email: <br /> <input
-									type="text" name="email" id="email" /><br /> Password:<br />
+									type="text" maxlength="50" name="email" id="email" /><br /> Password:<br />
 								<input type="password" name="password" id="password" /><br />
 								Date of Birth:<br /> <input type="text" name="dob" id="dob" /><br />
 								Veteran Status: <br /> <select name="veteran">

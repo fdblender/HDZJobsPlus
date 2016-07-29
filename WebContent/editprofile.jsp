@@ -11,7 +11,19 @@
 <jsp:include page="bootstrap.jsp" />
 </head>
 <body>
-<jsp:include page="navbar.jsp"></jsp:include>
-
+	<jsp:include page="navbar.jsp" />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+				<form action="EditProfile" onsubmit="return validateForm()"
+					name="applicant" id="applicant">
+					
+				
+				</form>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>
+	</div>
 </body>
 </html>

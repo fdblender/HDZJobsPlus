@@ -114,7 +114,7 @@ function printMe() {
 	<div>
 		<button type="button" value="Print" onclick="printMe()">Print</button>
 		<button type="button" ><a href="./jobs.jsp">Apply</a></button>
-		<button type="button">Edit</button>
+		<button type="button"><a href="#">Apply</a></button>
 	</div>
 </body>
 </html>
