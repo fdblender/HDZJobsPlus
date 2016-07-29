@@ -15,7 +15,7 @@ public class HdzEducation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDZ_EDUCATION_EDUCATIONID_GENERATOR", sequenceName="HDZ_EDUCATION_ID_SEQ", allocationSize=1)
+	@SequenceGenerator(name="HDZ_EDUCATION_EDUCATIONID_GENERATOR", sequenceName="HDZ_EDUCATION_ID_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_EDUCATION_EDUCATIONID_GENERATOR")
 	private long educationid;
 
