@@ -114,6 +114,7 @@
 											<th>Job Id</th>
 											<th>Job Title</th>
 											<th>Job description</th>
+											<th>Skills Required</th>
 											<th>Number Of Openings</th>
 										</tr>
 									</thead>
@@ -121,6 +122,10 @@
 											<td><c:out value="${job.jobsid}"></c:out></td>
 											<td><c:out value="${job.hdzPosition.position}"></c:out></td>
 											<td><c:out value="${job.description}"></c:out></td>
+											<td><c:forEach var="skill" items="${job.hdzJobskills}">
+											<c:out value="${skill.jobskills}"></c:out><br/>
+											</c:forEach>
+											</td>
 											<td><c:out value="${job.numberopenings}"></c:out></td>
 											
 									

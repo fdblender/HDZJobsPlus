@@ -272,7 +272,7 @@ public class ApplicantDao {
 	        
 	        try{
 	            TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
-	            query.setParameter("id",appid);
+	            query.setParameter("id",Long.parseLong(appid));
 	             applicant= query.getSingleResult();
 	        }catch (Exception e){
 	            e.printStackTrace();
