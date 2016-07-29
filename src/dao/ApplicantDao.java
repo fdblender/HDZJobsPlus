@@ -264,5 +264,22 @@ public class ApplicantDao {
             em.close();
         }return searchposts;
     }
+	public static HdzApplicant getApplicantById(String appid) {
+		 EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+	        HdzApplicant applicant = null;
+	        String qString = "select a from HdzApplicant a "
+	                + "where a.applicantid = :id";
+	        
+	        try{
+	            TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
+	            query.setParameter("id",appid);
+	             applicant= query.getSingleResult();
+	        }catch (Exception e){
+	            e.printStackTrace();
+	        }finally{
+	            em.close();
+	        }
+	        return applicant;
+	}
 	
 }

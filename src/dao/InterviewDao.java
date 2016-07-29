@@ -155,12 +155,12 @@ public class InterviewDao {
 	public static List<HdzApplicant> getSkilledApplicants(String jobId) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzApplicant> applicants = null;
-        String qString = "select distinct b from HdzApplicant b where bhdzApplicantskill.skills in"
-        		+ " (select a.hdzJobskill.jobskills from HdzJob a where a.jobsid = :id)";
+        String qString = "select distinct b.hdzApplicant from HdzApplicantskill b where b.skills in"
+        		+ " (select a.jobskills from HdzJobskill a where a.hdzJob.jobsid = :id)";
         
         try{
             TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
-            query.setParameter("id", jobId);
+            query.setParameter("id", Long.parseLong(jobId));
             applicants = query.getResultList();
         }catch (Exception e){
             e.printStackTrace();
@@ -174,13 +174,13 @@ public class InterviewDao {
 	public static List<HdzApplicant> getSearchedApplicants(String skill, String experience) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzApplicant> applicants = null;
-        String qString = "select b from HdzApplicant b where b.skills = :skill"
-        		+ " and b.experience = :experience";
+        String qString = "select distinct b.hdzApplicant from HdzApplicantskill b where b.skills = :skill"
+        		+ " and b.experience >= :experience";
         
         try{
             TypedQuery<HdzApplicant> query = em.createQuery(qString,HdzApplicant.class);
             query.setParameter("skill", skill);
-            query.setParameter("experience", experience);
+            query.setParameter("experience", new BigDecimal(experience));
             applicants = query.getResultList();
         }catch (Exception e){
             e.printStackTrace();

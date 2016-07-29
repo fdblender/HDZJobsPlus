@@ -12,11 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.ApplicantDao;
 import model.HdzApplicant;
-import model.HdzApplication;
 import model.HdzEmployee;
 import model.HdzJob;
 import services.InterviewService;
-import services.RoleActionService;
 
 /**
  * Servlet implementation class FindApplicants
@@ -56,13 +54,32 @@ public class FindApplicants extends HttpServlet {
 				request.setAttribute("applicantList", applicants);
 				HdzJob job = ApplicantDao.getJobById(jobId);
 				request.setAttribute("job", job);
+				if (applicants == null || applicants.size() == 0) {
+					request.setAttribute("message", "No Records!!");
+					request.getRequestDispatcher("/PendingAction").forward(request, response);
+				} else {
+					request.getRequestDispatcher("applicantsHM.jsp").forward(request, response);
+				}
 			} else {
 				String skill = request.getParameter("skill");
 				String experience = request.getParameter("experience");
-				List<HdzApplicant> applicants =  InterviewService.getSearchedApplicants(skill,experience);
-				request.setAttribute("applicantList", applicants);
+				if (skill == null || experience == null) {
+					request.setAttribute("message", "Both Skill and experience are required for search!!");
+					request.getRequestDispatcher("/PendingAction").forward(request, response);
+				} else {
+					request.setAttribute("job", null);
+					List<HdzApplicant> applicants =  InterviewService.getSearchedApplicants(skill,experience);
+					request.setAttribute("applicantList", applicants);					
+					if (applicants == null || applicants.size() == 0) {
+						request.setAttribute("message", "No Records!!");
+						request.getRequestDispatcher("/PendingAction").forward(request, response);
+					} else {
+						request.getRequestDispatcher("applicantsHM.jsp").forward(request, response);
+					}
+				}
+				
 			}			
-			request.getRequestDispatcher("applicantsHM.jsp").forward(request, response);
+			
 		}
 	}
 

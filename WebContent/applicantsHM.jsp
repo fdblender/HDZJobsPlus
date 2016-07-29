@@ -106,6 +106,7 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
 				<input type="hidden" id="jobid" name="jobid" value="${job.jobsid}">
+				<c:if test="${job != null}">
 								<table class="table table-bordered">
 
 									<thead>
@@ -124,7 +125,9 @@
 											
 									
 								</table>
+								</c:if>
 								<br/>
+								
 				<table class="table table-bordered">
 
 									<thead>
@@ -146,71 +149,15 @@
 											</c:forEach></td>
 											<c:if test="${job != null}">
 											<td><a class="btn btn-default btn-lg"
-											 href="Apply?jobid=${job.jobsid}">
-													Select</a></td></c:if>
+											 href="Apply?applicantid=${applicant.applicantid}">
+													Apply Job</a></td></c:if>
 									</c:forEach>
 								</table>
 				
 				
 				
 				
-					<div id="accordion">
-					<h3 style="background-color: #01579b; color: #ffffff;"> Applications</h3>
-						<div>
-							<form action="ApplicantsHired" method="post">
-									
-								<c:set var="application" scope="request" value="${applicationList}" />
-								<c:if test="${application != null && application != ''}">
-								<input type="hidden" id="jobid" name="jobid" value="${job.jobsid}">
-								<table class="table table-bordered">
-
-									<thead>
-										<tr>											
-											<th>Job Id</th>
-											<th>Job Title</th>
-											<th>Job description</th>
-											<th>Number Of Openings</th>
-										</tr>
-									</thead>
-										<tr>
-											<td><c:out value="${job.jobsid}"></c:out></td>
-											<td><c:out value="${job.hdzPosition.position}"></c:out></td>
-											<td><c:out value="${job.description}"></c:out></td>
-											<td><c:out value="${job.numberopenings}"></c:out></td>
-											
-									
-								</table>
-								<table class="table table-bordered">
-
-									<thead>
-										<tr>
-											<th></th>
-											<th>AppId</th>
-											<th>Applicant Name</th>
-											<th>Applicant Score</th>
-											<th>Status</th>
-											
-										</tr>
-									</thead>
-									<c:forEach var="app" items="${applicationList}">
-										<tr>
-											<td><input type="checkbox" name="appCheck" value="choose${app.applicationid}"></td>
-											<td><c:out value="${app.applicationid}"></c:out></td>
-											<td><c:out value="${app.hdzApplicant.firstname}"></c:out></td>
-											<td><c:out value="${app.score}"></c:out></td>
-											<td><c:out value="${app.appstatus}"></c:out></td>
-									</c:forEach>
-								</table>
-								<input type="submit" id="submit" name="submit" value="Submit">
-								</c:if>
-								<c:if test="${application == null}">
-								<h4>No records found!</h4>
-								</c:if>
-							</form>
-						</div>
-						
-						
-					</div>
+				
 					
 				</div>
 				<div class="col-sm-1"></div>

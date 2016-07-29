@@ -36,25 +36,48 @@ public class Apply extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String jobid = request.getParameter("jobid");
-		
-		HdzApplicant applicant = (HdzApplicant)session.getAttribute("user");
-		HdzJob job = ApplicantDao.getJobById(jobid);
-		HdzApplication application = new HdzApplication();
-		List<HdzApplication> myapps = applicant.getHdzApplications();
-		if(applicant.getEmployeeflag().equals("Y")){
-			application.setAppstatus("WorkRefChecked");
-		}else{
-		application.setAppstatus("New");
+		String appid = request.getParameter("applicantid");
+		HdzApplicant applicant =null;
+		if (appid != null) {
+			applicant = ApplicantDao.getApplicantById(appid);			
+			HdzJob job = ApplicantDao.getJobById(jobid);
+			HdzApplication application = new HdzApplication();
+			List<HdzApplication> myapps = applicant.getHdzApplications();
+			if(applicant.getEmployeeflag().equals("Y")){
+				application.setAppstatus("WorkRefChecked");
+			}else{
+			application.setAppstatus("New");
+			}
+			application.setCodingtest("N");
+			application.setHdzJob(job);
+			application.setHdzApplicant(applicant);
+			myapps.add(application);
+			applicant.setHdzApplications(myapps);
+			ApplicantDao.insert(application);
+			request.setAttribute("message", "Job Applied");
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
+		}else {
+			applicant = (HdzApplicant)session.getAttribute("user");
+			HdzJob job = ApplicantDao.getJobById(jobid);
+			HdzApplication application = new HdzApplication();
+			List<HdzApplication> myapps = applicant.getHdzApplications();
+			if(applicant.getEmployeeflag().equals("Y")){
+				application.setAppstatus("WorkRefChecked");
+			}else{
+			application.setAppstatus("New");
+			}
+			application.setCodingtest("N");
+			application.setHdzJob(job);
+			application.setHdzApplicant(applicant);
+			myapps.add(application);
+			applicant.setHdzApplications(myapps);
+			ApplicantDao.insert(application);
+			session.setAttribute("user", applicant);
+			
+			request.getRequestDispatcher("/yourapplications.jsp").forward(request, response);
 		}
-		application.setCodingtest("N");
-		application.setHdzJob(job);
-		application.setHdzApplicant(applicant);
-		myapps.add(application);
-		applicant.setHdzApplications(myapps);
-		ApplicantDao.insert(application);
-		session.setAttribute("user", applicant);
 		
-		request.getRequestDispatcher("/yourapplications.jsp").forward(request, response);
+		
 	}
 
 	/**
