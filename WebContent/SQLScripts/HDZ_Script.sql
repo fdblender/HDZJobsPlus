@@ -68,19 +68,19 @@ resumeobjective varchar(200)
 
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective) 
-values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '8f23afaa0ec822bef56b4e71da62d1d19cb569b7957124b57816463fb952fbdf', 'cDxst4bFuL7tqMdGPSy+RgCW+1EJ2F40LsNh+uHwHUs=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
+values (hdz_applicant_id_seq.nextval, 'sal@gmail.com', '8f23afaa0ec822bef56b4e71da62d1d19cb569b7957124b57816463fb952fbdf', 'cDxst4bFuL7tqMdGPSy+RgCW+1EJ2F40LsNh+uHwHUs=', 'sal', 'snooze', '08/01/1992', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', null, null);
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
-values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '447903c4bddf950b8fed39041d3f786a04601be1107de2667cb3369e1ee420ce', '6GxvpU56PKnpNC5OddEAgKhJz252pAkITHKO7Hz2r+s=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
+values (hdz_applicant_id_seq.nextval, 'roy@gmail.com', '447903c4bddf950b8fed39041d3f786a04601be1107de2667cb3369e1ee420ce', '6GxvpU56PKnpNC5OddEAgKhJz252pAkITHKO7Hz2r+s=', 'roy', 'cook', '07/05/1988', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', null, null);
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
-values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '634becb83a351b7201e75d8e69eabe64be3f9d8bb1f4c5cb86da00bdf6cb123d', '7rRh4eqTNh+LJL0Iqp3o3n3ZwU/Ektm7xwsK1TczFQE=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, null, null, null);
+values (hdz_applicant_id_seq.nextval, 'jerry@gmail.com', '634becb83a351b7201e75d8e69eabe64be3f9d8bb1f4c5cb86da00bdf6cb123d', '7rRh4eqTNh+LJL0Iqp3o3n3ZwU/Ektm7xwsK1TczFQE=', 'jerry', 'wu', '03/09/1980', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', null, null);
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
-values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df0661cd9ea573e91626b8c1dd92026fe05a67196360c', 'o6uSUE7IKGUMAQ1mrj+k8Ggf5CHlmfxGAiWoHv8rzok=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, null, null, null);
+values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df0661cd9ea573e91626b8c1dd92026fe05a67196360c', 'o6uSUE7IKGUMAQ1mrj+k8Ggf5CHlmfxGAiWoHv8rzok=', 'volker', 'sorger', '08/06/1989', null,'yes', null,'no', null,'yes', null, null, null, null, null, null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', null, null);
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
-values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, null, null, null);
+values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'robert', 'tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, null, null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', null, null);
 
 create table HDZ_Education(
 educationid integer primary key,
@@ -168,18 +168,18 @@ positiontype varchar2(50),
 position varchar2(50)
 );
 
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Software Engineer');
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Hardware Engineer');
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Quality Assurance');
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Cybersecurity');
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Senior Software Engineer');
-insert into HDZ_positions(positionid, position)
-values (hdz_positions_id_seq.nextval, 'Entry level graduate');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, 'developer', 'Software Engineer');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, null, 'Hardware Engineer');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, null, 'Quality Assurance');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, null, 'Cybersecurity');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, 'developer', 'Senior Software Engineer');
+insert into HDZ_positions(positionid, positiontype, position)
+values (hdz_positions_id_seq.nextval, 'developer', 'Entry level graduate');
 
 
 create table HDZ_jobs(
@@ -223,19 +223,22 @@ CONSTRAINT fk_HDZ_application_jobsid FOREIGN KEY (jobsid) references HDZ_jobs(jo
 );
 
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
-values (hdz_application_id_seq.nextval, 1,'N', null, 1,'New',null);
+values (hdz_application_id_seq.nextval, 1,'G', null, 1,'New',null);
 
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
-values (hdz_application_id_seq.nextval, 2,'N', null, 2,'New',null);
+values (hdz_application_id_seq.nextval, 1,'G', null, 6,'New',null);
 
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
-values (hdz_application_id_seq.nextval, 3,'N', null, 3,'New',null);
+values (hdz_application_id_seq.nextval, 2, 'N', null, 2,'New',null);
 
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
-values (hdz_application_id_seq.nextval, 4,'N', null, 4,'New',null);
+values (hdz_application_id_seq.nextval, 3, 'N', null, 3,'New',null);
 
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
-values (hdz_application_id_seq.nextval, 5,'N', null, 5,'New',null);
+values (hdz_application_id_seq.nextval, 4,'G', null, 4,'New',null);
+
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 5,'G', null, 5,'New',null);
 
 
 create table HDZ_employee(
@@ -244,32 +247,33 @@ empname varchar2(50) ,
 email varchar2(100) ,
 hashedpwd varchar2(200) ,
 salt varchar2(200),
-position varchar2(100) 
+position varchar2(100),
+gravatarurl varchar2(200)
 );
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd, salt, position)
-values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','e95a5ad51f4af4ea83c652fbc74796ed413cff1fde20b01e29b7b749ad109d49', 'sFr6YJz/jKBZi8GPvtVz576kytszrhcj/kaSp9MZ2q0=', 'HR Manager');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd, salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Dave','dave@gmail.com','e95a5ad51f4af4ea83c652fbc74796ed413cff1fde20b01e29b7b749ad109d49', 'sFr6YJz/jKBZi8GPvtVz576kytszrhcj/kaSp9MZ2q0=', 'HR Manager', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','ea46ff538d38fce90d9f6a177cb2c538e25f44a5deb47725115913ffc93ceaf2', 'W7BnXZhU/efVeOCaXEnfkI3L9s1vOfEZCYfE7+93D0k=','Compliance Officer');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Sam','sam@gmail.com','ea46ff538d38fce90d9f6a177cb2c538e25f44a5deb47725115913ffc93ceaf2', 'W7BnXZhU/efVeOCaXEnfkI3L9s1vOfEZCYfE7+93D0k=','Compliance Officer', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','8d9bd9192e2eed579d92ca4995289febcee969fa57979dde0feb5f6477427620', 'zYWAq2b39MEkGgcA1oXK5owfdtVFQad++2tK7futvAA=','HR Assistant');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Juli','juli@gmail.com','8d9bd9192e2eed579d92ca4995289febcee969fa57979dde0feb5f6477427620', 'zYWAq2b39MEkGgcA1oXK5owfdtVFQad++2tK7futvAA=','HR Assistant', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','34f78a77941dacb64b5010a3cd3971295982d9b6583fc8dbe770311c4f24b5b4', 'cFcwYn6sDNpz75L8qaLsqzZ2tqoz5BnqUdRw3JqYnNw=','HR Specialist');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Sue','sue@gmail.com','34f78a77941dacb64b5010a3cd3971295982d9b6583fc8dbe770311c4f24b5b4', 'cFcwYn6sDNpz75L8qaLsqzZ2tqoz5BnqUdRw3JqYnNw=','HR Specialist', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','f6833b84e13b10b6185323b9117c7f8352016b788b4bda9fe87f4b114d0c412a', 'V33qAk8La7ZncEff4K1ipai+xoJHk4MNK/iT8pUb840=','Health Care Professional');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Dan','dan@gmail.com','f6833b84e13b10b6185323b9117c7f8352016b788b4bda9fe87f4b114d0c412a', 'V33qAk8La7ZncEff4K1ipai+xoJHk4MNK/iT8pUb840=','Health Care Professional', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','efe23baaeab3beb3e20fe2f5b685954c91eb20dbd32f249a874222a7206bd328', 'bn7XeEdjscm0UG2BN/kMSsjyvjXhr6Hb77ylnzV+daA=','Hiring Manager');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Alton','alton@gmail.com','efe23baaeab3beb3e20fe2f5b685954c91eb20dbd32f249a874222a7206bd328', 'bn7XeEdjscm0UG2BN/kMSsjyvjXhr6Hb77ylnzV+daA=','Hiring Manager', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','d282629e2143c410906d323e34e4e590b59f208ea4e6c75c33f01d25f17d99c5', 'OBoalEdLrRKcUoWUOs/XyZGs6RLBjjwkY6SjAHshLfE=','Software Engineer');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Ann','ann@gmail.com','d282629e2143c410906d323e34e4e590b59f208ea4e6c75c33f01d25f17d99c5', 'OBoalEdLrRKcUoWUOs/XyZGs6RLBjjwkY6SjAHshLfE=','Software Engineer', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
-insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position)
-values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','9f0904b141429568059b455e923cc773f17c549f60c07a40316bbcb184df64d4', 'RNPmzBI6B4O+r+FUnPcKt1RNP/UdrrEF+KTmbQyUAjM=','Technology analyst');
+insert into HDZ_employee (employeeid, empname,email,hashedpwd,salt, position, gravatarurl)
+values (hdz_employee_id_seq.nextval,'Tim','tim@gmail.com','9f0904b141429568059b455e923cc773f17c549f60c07a40316bbcb184df64d4', 'RNPmzBI6B4O+r+FUnPcKt1RNP/UdrrEF+KTmbQyUAjM=','Technology analyst', 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50');
 
 
 create table HDZ_jobskills(

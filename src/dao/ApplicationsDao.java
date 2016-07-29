@@ -1,18 +1,36 @@
 /**
  * @author Frances Blendermann
+ * TO DO: TEST
  */
 package dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import model.HdzApplicant;
 import model.HdzApplication;
 import util.DBUtil;
 
 
 public class ApplicationsDao {
+	
+	public static void update(HdzApplication application) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(application);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	
 	public static List<HdzApplication> getapplications(String position) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzApplication> app = null;
@@ -41,7 +59,7 @@ public class ApplicationsDao {
 		try {
 			
 			TypedQuery<HdzApplication> query = em.createQuery(qString, HdzApplication.class);
-			query.setParameter("applicantid", applicantid);
+			query.setParameter("applicantid", Long.parseLong(applicantid));
 			app = query.getResultList();
 
 		} catch (Exception e) {

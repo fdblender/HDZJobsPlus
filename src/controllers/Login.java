@@ -32,11 +32,11 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("in");
 		HttpSession session = request.getSession();
 		HdzApplicant applicant = null;
 		HdzEmployee employee = null;
-		String nextURL = "/error.jsp";
+		String nextURL = "error.jsp";
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("user", applicant);
 				session.setAttribute("role",  "applicant");
 				session.setAttribute("userrole",  1);
-				nextURL = "/yourapplications.jsp";
+				nextURL = "yourapplications.jsp";
 			} else {
 				
 				// if the applicant is not found, check to see if he/she is an employee

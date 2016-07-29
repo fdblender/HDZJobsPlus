@@ -31,7 +31,7 @@
 				</table>
 				<br />
 				<form id="target" action="ShowPendingTests" method="get">
-					<input type="button" class="" name="showtests" id="showtests" value="Complete Outstanding Tests"/>
+					<input type="submit" class="" name="showtests" id="showtests" value="Complete Outstanding Tests"/>
 				</form>
 			</div>
 		<div class="col-sm-1"></div>
