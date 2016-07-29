@@ -43,5 +43,5 @@ public class PendingTestsDao {
 	            em.close();
 	        }
 	        return applicant;
-	        
+	}
 }

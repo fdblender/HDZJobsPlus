@@ -140,12 +140,13 @@ public class RoleActionDao {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
         String qString = "select b from HdzApplication b where b.appstatus = :status"
-        		+ " and b.codingtest = :test";
+        		+ " and (b.codingtest = :test or b.hdzJob.hdzPosition.positiontype <> :position)";
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
             query.setParameter("status", "HMInterviewDone");
             query.setParameter("test", "C");
+            query.setParameter("position", "developer");
             hdzApplications = query.getResultList();
         }catch (Exception e){
             e.printStackTrace();
