@@ -9,6 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="bootstrap.jsp" />
 <title>Applicant Profile</title>
+<script>
+function printMe() {
+    window.print()
+}
+</script>
 </head>
 <body>
 	<jsp:include page="navbar.jsp"></jsp:include>
@@ -24,7 +29,7 @@
 	<h2>Summary</h2>
 	<p>${user.resumesummary}</p>
 	<h2>Objective</h2>
-	<p>${user.resumeObjective}</p>
+	<p>${user.resumeobjective}</p>
 	<h2>Education History</h2>
 		<table >
 			<thead>
@@ -107,8 +112,8 @@
 		</table>
 	</div>
 	<div>
-		<button type="button">Print</button>
-		<button type="button">Apply</button>
+		<button type="button" value="Print" onclick="printMe()">Print</button>
+		<button type="button" ><a href="./jobs.jsp">Apply</a></button>
 		<button type="button">Edit</button>
 	</div>
 </body>

@@ -8,6 +8,7 @@
        <c:if test="${role =='applicant'}">  
       <li ><a href="yourapplications.jsp" style="color: #fff; font-weight: bold;font-size: 16px" >Your Applications</a></li> 
       <li ><a href="./Jobs" style="color: #fff;font-weight: bold;font-size: 16px" >Jobs</a></li>
+      <li><a href="./applicantprofile.jsp">My Profile</a></li>
     </c:if>
       <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager' or role=='ComplianceOfficer' or role=='HealthCareProfessional'}">
       <li><a href="./PendingAction" style="color: #fff;font-weight: bold;font-size: 16px" >Pending Actions
