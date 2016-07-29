@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 import util.DBUtil;
 import util.PasswordUtil;
 import model.HdzApplicant;
+import model.HdzApplicantskill;
 import model.HdzApplication;
 import model.HdzEducation;
 import model.HdzEmployee;
@@ -91,7 +92,19 @@ public class ApplicantDao {
 			em.close();
 		}
 	}
-	
+	public static void update(HdzEducation edu) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(edu);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
 	public static void insert(HdzJobhistory job) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
@@ -105,7 +118,19 @@ public class ApplicantDao {
 			em.close();
 		}
 	}
-	
+	public static void update(HdzJobhistory job) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(job);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
 	public static void insert(HdzReftable ref) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
@@ -119,7 +144,45 @@ public class ApplicantDao {
 			em.close();
 		}
 	}
-	
+	public static void update(HdzReftable ref) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(ref);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	public static void insert(HdzApplicantskill skill) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.persist(skill);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	public static void update(HdzApplicantskill skill) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		try {
+			trans.begin();
+			em.merge(skill);
+			trans.commit();
+		} catch (Exception e) {
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
 	public static HdzApplicant AddApplicantAsEmployee(HdzEmployee employee) {		
 		
 		HdzApplicant applicant = new HdzApplicant();

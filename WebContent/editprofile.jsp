@@ -7,24 +7,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Edit Profile</title>
 <jsp:include page="bootstrap.jsp" />
-<title>Applicant Profile</title>
-<script>
-function printMe() {
-    window.print()
-}
-</script>
 </head>
 <body>
-	<jsp:include page="navbar.jsp"></jsp:include>
-	<h1>Welcome ${user.firstname}</h1>
-	<p>Your current email address is: ${user.email}</p>
-	<!--Here we put user info-->
-	<!--resume data provide a button to print and one to apply and one to edit-->
-	<img alt="Profile Picture" src="${user.gravatarurl}" width="100"
-		height="100" align="left" />
-		
-	<div>
+	<jsp:include page="navbar.jsp" />
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+				<form action="EditProfile" name="updateapplicant"
+					id="updateapplicant">
+						<div>
 	<h1>Resume Data</h1>
 	<h2>Summary</h2>
 	<p>${user.resumesummary}</p>
@@ -102,7 +96,7 @@ function printMe() {
 			<tbody>
 				<c:forEach var="reference" items="${user.hdzReftables }">
 					<tr>
-						<td><c:out value="${reference.refname }" /></td>
+						<td><input type="text" id="refname" name="refname" value="${reference.refname }" /></td>
 						<td><c:out value="${reference.refposition}" /></td>
 						<td><c:out value="${reference.refemail}" /></td>
 						<td><c:out value="${reference.refphone}" /></td>
@@ -112,9 +106,10 @@ function printMe() {
 		</table>
 	</div>
 	<div>
-		<button type="button" value="Print" onclick="printMe()">Print</button>
-		<button type="button" onclick="location.href = './Jobs';">Apply</button>
-		<button type="button" onclick="location.href = './editprofile.jsp';">Edit Profile</a></button>
+					</form>
+			</div>
+			<div class="col-sm-1"></div>
+		</div>
 	</div>
 </body>
 </html>
