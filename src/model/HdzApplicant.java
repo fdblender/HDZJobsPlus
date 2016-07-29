@@ -16,7 +16,7 @@ public class HdzApplicant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDZ_APPLICANT_APPLICANTID_GENERATOR", sequenceName="HDZ_APPLICANT_ID_SEQ", allocationSize=1)
+	@SequenceGenerator(name="HDZ_APPLICANT_APPLICANTID_GENERATOR", sequenceName="HDZ_APPLICANT_ID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_APPLICANT_APPLICANTID_GENERATOR")
 	private long applicantid;
 
@@ -64,6 +64,10 @@ public class HdzApplicant implements Serializable {
 
 	private String visaflag;
 
+	//bi-directional many-to-one association to HdzApplicantskill
+	@OneToMany(mappedBy="hdzApplicant")
+	private List<HdzApplicantskill> hdzApplicantskills;
+
 	//bi-directional many-to-one association to HdzApplication
 	@OneToMany(mappedBy="hdzApplicant")
 	private List<HdzApplication> hdzApplications;
@@ -79,10 +83,6 @@ public class HdzApplicant implements Serializable {
 	//bi-directional many-to-one association to HdzReftable
 	@OneToMany(mappedBy="hdzApplicant")
 	private List<HdzReftable> hdzReftables;
-
-	//bi-directional many-to-one association to HdzApplicantskill
-	@OneToMany(mappedBy="hdzApplicant")
-	private List<HdzApplicantskill> hdzApplicantskills;
 
 	public HdzApplicant() {
 	}
@@ -271,6 +271,28 @@ public class HdzApplicant implements Serializable {
 		this.visaflag = visaflag;
 	}
 
+	public List<HdzApplicantskill> getHdzApplicantskills() {
+		return this.hdzApplicantskills;
+	}
+
+	public void setHdzApplicantskills(List<HdzApplicantskill> hdzApplicantskills) {
+		this.hdzApplicantskills = hdzApplicantskills;
+	}
+
+	public HdzApplicantskill addHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
+		getHdzApplicantskills().add(hdzApplicantskill);
+		hdzApplicantskill.setHdzApplicant(this);
+
+		return hdzApplicantskill;
+	}
+
+	public HdzApplicantskill removeHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
+		getHdzApplicantskills().remove(hdzApplicantskill);
+		hdzApplicantskill.setHdzApplicant(null);
+
+		return hdzApplicantskill;
+	}
+
 	public List<HdzApplication> getHdzApplications() {
 		return this.hdzApplications;
 	}
@@ -357,28 +379,6 @@ public class HdzApplicant implements Serializable {
 		hdzReftable.setHdzApplicant(null);
 
 		return hdzReftable;
-	}
-
-	public List<HdzApplicantskill> getHdzApplicantskills() {
-		return this.hdzApplicantskills;
-	}
-
-	public void setHdzApplicantskills(List<HdzApplicantskill> hdzApplicantskills) {
-		this.hdzApplicantskills = hdzApplicantskills;
-	}
-
-	public HdzApplicantskill addHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
-		getHdzApplicantskills().add(hdzApplicantskill);
-		hdzApplicantskill.setHdzApplicant(this);
-
-		return hdzApplicantskill;
-	}
-
-	public HdzApplicantskill removeHdzApplicantskill(HdzApplicantskill hdzApplicantskill) {
-		getHdzApplicantskills().remove(hdzApplicantskill);
-		hdzApplicantskill.setHdzApplicant(null);
-
-		return hdzApplicantskill;
 	}
 
 }

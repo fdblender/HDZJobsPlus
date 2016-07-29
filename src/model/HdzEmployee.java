@@ -15,7 +15,7 @@ public class HdzEmployee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR", sequenceName="HDZ_EMPLOYEE_ID_SEQ", allocationSize=1)
+	@SequenceGenerator(name="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR", sequenceName="HDZ_EMPLOYEE_ID_SEQ")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="HDZ_EMPLOYEE_EMPLOYEEID_GENERATOR")
 	private long employeeid;
 
@@ -24,6 +24,8 @@ public class HdzEmployee implements Serializable {
 	private String empname;
 
 	private String hashedpwd;
+	
+	private String gravatarurl;
 
 	@Column(name="\"POSITION\"")
 	private String position;
@@ -79,6 +81,14 @@ public class HdzEmployee implements Serializable {
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+
+	public String getGravatarurl() {
+		return gravatarurl;
+	}
+
+	public void setGravatarurl(String gravatarurl) {
+		this.gravatarurl = gravatarurl;
 	}
 
 }
