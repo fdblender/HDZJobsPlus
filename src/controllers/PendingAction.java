@@ -47,6 +47,7 @@ public class PendingAction extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {
 			String role = (String) session.getAttribute("role");
+			session.setAttribute("GI", "No");
 			List<HdzApplication> hdzapplication = null;
 			if (role.equals("ComplianceOfficer")) {
 				session.setAttribute("HR", "No");
@@ -76,6 +77,7 @@ public class PendingAction extends HttpServlet {
 				
 			} else {
 				session.setAttribute("HR", "No");
+				session.setAttribute("GI", "Yes");
 				hdzapplication = RoleActionService.getActionsEmployee();
 				
 			}
