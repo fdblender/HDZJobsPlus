@@ -202,7 +202,6 @@
 						<c:if test="${role == 'HiringManager'}">
 						<h3 style="background-color: #01579b;color: #ffffff;">Select Applicants</h3>
 						<div>
-							<form id="target" action="ChooseApplicants" method="post">
 								<table class="table table-bordered">
 								<tr>
 								<thead>
@@ -229,7 +228,47 @@
 								</c:forEach>
 								</table>
 
-							</form>
+						</div>
+						<h3 style="background-color: #01579b;color: #ffffff;">Find Applicants</h3>
+						<div>
+						<form action="FindApplicants" method="post">
+						<div class="form-group">
+									<label for="typeAssgn">Skill:</label> 
+									<input type="text"
+										name="skill" id="skill" value="" class="form-control">
+										
+									<label for="typeAssgn">Experience:</label> 
+									<input type="text"
+										name="experience" id="experience" value="" class="form-control">
+									<input type="submit" id="submit" name="submit" value="Submit">
+								</div>
+								</form>
+								
+								<table class="table table-bordered">
+								<tr>
+								<thead>
+									<tr>
+										<th>Job ID</th>
+										<th>Job Title</th>
+										<th>Job Desc</th>
+										<th>Choose</th>
+									</tr>
+								</thead>
+								
+								<c:forEach var="job" items="${jobList}">
+									<tbody>
+										<tr>
+											<td><c:out value="${job.jobsid}"></c:out></td>
+											<td><c:out value="${job.hdzPosition.position}"></c:out></td>
+											<td><c:out value="${job.description}"></c:out>
+											</td>
+											<td><a class="btn btn-default btn-lg"
+											 href="FindApplicants?jobid=${job.jobsid}">
+													Select</a></td>
+										</tr>
+									</tbody>
+								</c:forEach>
+								</table>
 						</div>
 						</c:if>
 						

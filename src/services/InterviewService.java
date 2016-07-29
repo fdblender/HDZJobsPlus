@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import dao.InterviewDao;
+import model.HdzApplicant;
 import model.HdzApplication;
 import model.HdzJob;
 import model.HdzJobquestion;
@@ -44,6 +45,15 @@ public class InterviewService {
 	public static void updateJob(HdzJob jobUpdate) {
 		InterviewDao.updateJob(jobUpdate);
 		
+	}
+
+	public static List<HdzApplicant> getSkilledApplicants(String jobId) {
+		return InterviewDao.getSkilledApplicants(jobId);
+		
+	}
+
+	public static List<HdzApplicant> getSearchedApplicants(String skill, String experience) {
+		return InterviewDao.getSearchedApplicants(skill, experience);
 	}
 
 }
