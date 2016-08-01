@@ -95,9 +95,9 @@
 
 							<fieldset align="center">
 							Resume Objective :<br/>
-							<textarea form="applicant" id ="objective" name ="objective"rows="7" cols="55" maxlength="200"></textarea>
+							<textarea form="applicant" id ="objective" name ="objective"rows="7" cols="55" maxlength="200"></textarea><br/>
 							Resume Summary :<br/>
-							<textarea form="applicant" name ="summary" id="summary" rows="7" cols="55" maxlength="200"></textarea>
+							<textarea form="applicant" name ="summary" id="summary" rows="7" cols="55" maxlength="200"></textarea><br/>
 							</fieldset>
 						</div>
 					</div>
@@ -140,12 +140,12 @@
 											name="degree1" id="degree1" /><br /> Date completed 1:<br />
 											<input type="text" name="date1" id="date1" /> <br />
 										</td>
-										<td>Institution 2: <input type="text" name="edu2"
+										<td>Institution 2:<br/> <input type="text" name="edu2"
 											id="edu2" /><br /> Degree 2:<br /> <input type="text"
 											name="degree2" id="degree2" /><br /> Date completed 2:<br />
 											<input type="text" name="date2" id="date2" /> <br />
 										<td>Institution 3:<br /> <input type="text" name="edu3"
-											id="edu3" /> Degree 3:<br /> <input type="text"
+											id="edu3" /><br/> Degree 3:<br /> <input type="text"
 											name="degree3" id="degree3" /><br /> Date completed 3:<br />
 											<input type="text" name="date3" id="date3" /><br />
 										</td>
@@ -181,11 +181,11 @@
 											name="leave2" id="leave2" /><br />
 										</td>
 										<td>Job title: <br /> <input type="text" name="job3"
-											id="job3" /> Company: <br /> <input type="text"
+											id="job3" /><br/> Company: <br /> <input type="text"
 											name="company3" id="company3" /><br /> Job Description: <br />
 											<input type="text" name="jobdesc3" id="jobdesc3" /><br />
 											Start date: <br /> <input type="text" name="start3"
-											id="start3" /> End date:<br /> <input type="text"
+											id="start3" /><br/> End date:<br /> <input type="text"
 											name="leave3" id="leave3" /> <br />
 										</td>
 									</tr>
@@ -210,15 +210,15 @@
 											id="refpos1" /><br />
 										</td>
 										<td>Name: <br /> <input type="text" name="refname2"
-											id="refname2" /> Phone:<br /> <input type="text"
+											id="refname2" /><br/> Phone:<br /> <input type="text"
 											name="refphone2" id="refphone2" /><br /> Email: <br /> <input
-											type="text" name="refemail2" id="refemail2" /> Position:<br />
+											type="text" name="refemail2" id="refemail2" /><br/> Position:<br />
 											<input type="text" name="refpos2" id="refpos2" /><br />
 										</td>
 										<td>Name:<br /> <input type="text" name="refname3"
-											id="refname3" /> Phone:<br /> <input type="text"
+											id="refname3" /><br/> Phone:<br /> <input type="text"
 											name="refphone3" id="refphone3" /><br /> Email:<br /> <input
-											type="text" name="refemail3" id="refemail3" /> Position:<br />
+											type="text" name="refemail3" id="refemail3" /><br/> Position:<br />
 											<input type="text" name="refpos3" id="refpos3" /><br />
 										</td>
 									</tr>
