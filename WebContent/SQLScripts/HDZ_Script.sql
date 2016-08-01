@@ -193,22 +193,46 @@ CONSTRAINT fk_HDZ_jobs_positionid FOREIGN KEY (positionid) references HDZ_positi
 );
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 1, 5, 'Entry Level Java Programming and testing', 0);
+values (hdz_jobs_id_seq.nextval, 1, 5, 'Mid-level Java Software Engineer', 0);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 1, 5, 'Java Software Engineer', 0);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 1, 5, 'Web Developer 1', 0);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
 values (hdz_jobs_id_seq.nextval, 2, 5, 'ASIC CPU Design and Testing', 2);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 3, 5, 'Software testing and configuration', 2);
+values (hdz_jobs_id_seq.nextval, 3, 5, 'Software testing', 2);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 4, 5, 'Software development and networking ', 3);
+values (hdz_jobs_id_seq.nextval, 3, 5, 'Quality Assurance', 2);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 5, 5, 'Java, Adop', 4);
+values (hdz_jobs_id_seq.nextval, 3, 5, 'Quality Assurance Analyst', 2);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 6, 5, 'Java, Python', 5);
+values (hdz_jobs_id_seq.nextval, 4, 5, 'Cybersecurity Analyst 1', 3);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 4, 5, 'Digital Forensics Specialist', 3);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 4, 5, 'Cybersecurity Threat Senior Analyst', 3);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 5, 5, 'Senior Java Developer', 4);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 5, 5, 'Full Stack Senior Software Engineer', 4);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 6, 5, 'Entry level Java Programmer', 5);
+
+insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
+values (hdz_jobs_id_seq.nextval, 6, 5, 'Entry level web development', 5);
 
 
 create table HDZ_application(
@@ -330,16 +354,7 @@ jobquestion varchar2(1000),
 CONSTRAINT fk_HDZ_jobquestions_positionid FOREIGN KEY (positionid) references HDZ_positions (positionid)
 );
 
-insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
-values (hdz_jobquestions_id_seq.nextval, 1, 'coding', 'Write the code for the fibinacci series.');
-
-insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
-values (hdz_jobquestions_id_seq.nextval, 1, 'HM', 'How much experience have you had with Oracle SQL?');
-
-insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
-values (hdz_jobquestions_id_seq.nextval, 1, 'GI', 'How much experience have you had configuring eclipse?');
-insert into HDZ_jobquestions(jobquestionsid, positionid, interviewtype, jobquestion)
-values (hdz_jobquestions_id_seq.nextval, 1, 'HR', 'How much experience have you had with Bootstrap?');
+-- run the jobsquestions script separately
 
 
 create table HDZ_tests(
@@ -352,9 +367,6 @@ CONSTRAINT fk_HDZ_tests_applicationid FOREIGN KEY (applicationid) references HDZ
 CONSTRAINT fk_HDZ_tests_jobquestionsid FOREIGN KEY (jobquestionsid) references HDZ_jobquestions(jobquestionsid)
 );
 
-insert into HDZ_tests (testsid, applicationid, codinglanguage, testresponse,jobquestionsid)
-values (hdz_tests_id_seq.nextval, 1, null, '2 years', 4);
-
 commit;
 
 select * from HDZ_employee;
@@ -365,4 +377,6 @@ select * from HDZ_applicant;
 
 
 select * from HDZ_Applicantskills;
+
+-- run the jobsquestions script separately
 

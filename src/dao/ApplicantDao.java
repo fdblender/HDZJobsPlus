@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import util.DBUtil;
+import util.Gravatar;
 import util.PasswordUtil;
 import model.HdzApplicant;
 import model.HdzApplicantskill;
@@ -195,6 +196,8 @@ public class ApplicantDao {
 		applicant.setFirstname(employee.getEmpname());
 		applicant.setLastname("");		
 		applicant.setGravatarurl(employee.getGravatarurl());
+		// change to below if not working
+		//applicant.setGravatarurl(Gravatar.setGravatarURL(email, 80));
 		
 		// set background check to completed		
 		applicant.setCitizenflag("Y");
