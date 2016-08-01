@@ -178,46 +178,12 @@
 										</c:if></td>
 								</tr>
 								<tr>
-									<td>Comment: <input type="text" id="commentInterview" name="commentInterview" /> Score: 
-										<input type="text" id="score" name="score"> 
-										<%--  <c:if test="${type == 'Group Interview' || type == 'HM Interview'}"> --%>
-											
-											<%-- <c:if test="${coding == 'N'}"> --%>
-												<!-- <tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=P">Coding
-													Test Pass</a></td></tr>
-												<tr><td><a class="buttonLink" href="InterviewReportSubmission?groupInterviewCoding=F">Coding
-													Test Fail</a></td></tr> -->
-												<%-- <input type="checkbox" id="CodingTestGiven"
-													name="CodingTestGiven" value="GiveCodingTest"> Give Coding test
-											</c:if> --%>
-											
-											
-
-											<!-- <a class="buttonLink" href="InterviewReportSubmission?groupInterview=Pass">Group
-												Interview Pass</a>
-											<a class="buttonLink" href="InterviewReportSubmission?groupInterview=Fail">Group
-												Interview Fail</a> -->
-										<%-- </c:if> --%> Result: <input type="text" id="result" name="result"> 
-										<input type="submit" id="submit" value="Submit" name="Submit"> 
+									<td>Comment: <input type="text" id="commentInterview" name="commentInterview" /> 
+									Score: <input type="text" id="score" name="score"> 
+										 Result: <input type="text" id="result" name="result"> 
+										<input type="submit" id="submitIn" value="Submit" name="SubmitIn"> 
 										
-										<%-- <c:if test="${type == 'HM Interview'}">
-										<c:set var="coding" scope="session" value="${coding}" />
-											<c:if test="${coding == 'N'}">
-											<!-- <tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=P">Coding
-												Test Pass</a></td></tr>
-											<tr><td><a class="buttonLink" href="InterviewReportSubmission?hmInterviewCoding=F">Coding
-												Test Fail</a></td></tr> -->
-												<input type="checkbox" id="CodingTestGivenHM" name="CodingTestGivenHM" value="GiveCodingTestHM"> Give Coding test
-												</c:if>
-											<a class="buttonLink" href="InterviewReportSubmission?hmInterview=Pass">HM Pass</a>
-											<a class="buttonLink" href="InterviewReportSubmission?hmInterview=Fail">HM Fail</a>
-										</c:if> 
 										
-										<c:if test="${type == 'HR Interview'}">
-
-											<a class="buttonLink" href="InterviewReportSubmission?hrInterview=Pass">HR Pass</a>
-											<a class="buttonLink" href="InterviewReportSubmission?hrInterview=Fail">HR Fail</a>
-										</c:if> --%>
 
 
 									</td>
