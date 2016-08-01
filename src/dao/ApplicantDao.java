@@ -305,8 +305,8 @@ public class ApplicantDao {
 				pass = false;
 			}
 		}
-		if (applicant.getAlcoholtestflag().equals("N") || applicant.getDottestflag().equals("N")
-				|| applicant.getDrugtestflag().equals("N") || applicant.getStdpanelflag().equals("N")) {
+		if (applicant.getAlcoholtestflag().equals("Y") || applicant.getDottestflag().equals("Y")
+			 || applicant.getStdpanelflag().equals("Y")) {
 
 			pass = false;
 		}
