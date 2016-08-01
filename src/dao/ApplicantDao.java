@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import util.DBUtil;
+import util.Gravatar;
 import util.PasswordUtil;
 import model.HdzApplicant;
 import model.HdzApplicantskill;
@@ -205,7 +206,11 @@ public class ApplicantDao {
 		applicant.setLastname("");
 		applicant.setGravatarurl(employee.getGravatarurl());
 
-		// set background check to completed
+		// change to below if not working
+		//applicant.setGravatarurl(Gravatar.setGravatarURL(email, 80));
+		
+		// set background check to completed		
+
 		applicant.setCitizenflag("Y");
 		applicant.setVeteranflag("Y");
 		applicant.setVisaflag("Y");
@@ -290,29 +295,33 @@ public class ApplicantDao {
 	public static boolean checkFlags(HdzApplicant applicant) {
 		// TODO Auto-generated method stub
 		boolean pass = true;
+		System.out.println(applicant.getAlcoholtestflag());
 		for (HdzEducation edu : applicant.getHdzEducations()) {
-			if (edu.getEducationflag().equals("N")) {
+			if (edu.getEducationflag() != null && edu.getEducationflag().equals("N")) {
 				pass = false;
 			}
 		}
 		for (HdzJobhistory job : applicant.getHdzJobhistories()) {
-			if (job.getJobhistoryflag().equals("N")) {
+			if (job.getJobhistoryflag() != null && job.getJobhistoryflag().equals("N")) {
 				pass = false;
 			}
 		}
 		for (HdzReftable ref : applicant.getHdzReftables()) {
-			if (ref.getRefflag().equals("N")) {
+			if (ref.getRefflag() != null && ref.getRefflag().equals("N")) {
 				pass = false;
 			}
 		}
-		if (applicant.getAlcoholtestflag().equals("N") || applicant.getDottestflag().equals("N")
-				|| applicant.getDrugtestflag().equals("N") || applicant.getStdpanelflag().equals("N")) {
+		if ((applicant.getAlcoholtestflag() != null && applicant.getAlcoholtestflag().equals("Y"))
+				|| (applicant.getDottestflag() != null && applicant.getDottestflag().equals("Y"))
+				|| (applicant.getStdpanelflag() != null && applicant.getStdpanelflag().equals("Y"))) {
+			System.out.println("in condn");
 
 			pass = false;
 		}
-		if (applicant.getCitizenflag().equals("N") || applicant.getVeteranflag().equals("N")
-				|| applicant.getVisaflag().equals("N")) {
-
+		if ((applicant.getCitizenflag() != null && applicant.getCitizenflag().equals("N"))
+				|| (applicant.getVeteranflag() != null && applicant.getVeteranflag().equals("N"))
+				|| (applicant.getVisaflag() != null && applicant.getVisaflag().equals("N"))) {
+			pass = false;
 		}
 
 		return pass;

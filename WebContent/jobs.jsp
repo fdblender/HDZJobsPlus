@@ -58,7 +58,7 @@
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<div class="container">
 		<div class="col-sm-1"></div>
-		<div class="col-sm-10">
+		<div class="col-sm-6">
 			<h3 class="sectionheader">Job Openings</h3>			
 			<h4>${query}</h4>
 			<form action="JobSearch">
@@ -85,7 +85,7 @@
 				</c:forEach>
 			</table>
 		</div>
-		<div class="col-sm-1"></div>
+		<div class="col-sm-5"></div>
 	</div>
 </body>
 
