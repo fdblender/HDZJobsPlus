@@ -94,7 +94,7 @@ public class InterviewDao {
         try{
             TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);
             query.setParameter("type", role);
-            questions = query.getResultList();
+            questions = query.setFirstResult(0).setMaxResults(10).getResultList();
         }catch (Exception e){
             e.printStackTrace();
         }
