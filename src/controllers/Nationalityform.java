@@ -57,7 +57,7 @@ public class Nationalityform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(myapplicant);	
 			HdzApplication myapplication=(HdzApplication)session.getAttribute("NationalityCheck");
-			
+			myapplication.setHdzApplicant(myapplicant);
 			if(dao.PendingActionsDao.checkAppStatus(myapplication))
 			{
 				
@@ -68,7 +68,7 @@ public class Nationalityform extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
 					
@@ -115,7 +115,7 @@ public class Nationalityform extends HttpServlet {
 			myapplicant.setCitizenflag("N");
 			myapplicant.setVisaflag("N");
 			dao.PendingActionsDao.update(myapplicant);
-			
+			nationalityapplication.setHdzApplicant(myapplicant);
 			nationalityapplication.setAppstatus("Fail");
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
@@ -126,7 +126,7 @@ public class Nationalityform extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				nationalityapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				nationalityapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(nationalityapplication);
 				

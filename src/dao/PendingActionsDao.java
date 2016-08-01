@@ -317,6 +317,9 @@ public class PendingActionsDao {
 					refcheck = false;
 					break;
 				}
+			} else {
+				refcheck = false;
+				break;
 			}
 		}
 
@@ -329,6 +332,9 @@ public class PendingActionsDao {
 					jobcheck = false;
 					break;
 				}
+			} else {
+				jobcheck = false;
+				break;
 			}
 		}
 		if ( myapplicant.getVeteranflag() != null ) {
@@ -339,7 +345,7 @@ public class PendingActionsDao {
 					
 				}
 			}
-		}
+		} 
 		return appstatus;
 
 	}
@@ -347,7 +353,7 @@ public class PendingActionsDao {
 	public static HdzApplication getapplicationbyappidNationality(String applicationid) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		String qString = "Select u from HdzApplication u " + "where u.applicationid=:applicationid"
-				+ " and (u.hdzApplicant.citizenflag is null || u.hdzApplicant.visaflag is null)";
+				+ " and (u.hdzApplicant.citizenflag is null or u.hdzApplicant.visaflag is null)";
 		TypedQuery<HdzApplication> q = em.createQuery(qString, HdzApplication.class);
 		q.setParameter("applicationid", Long.parseLong(applicationid));
 		HdzApplication hdzApplication = null;
@@ -394,5 +400,7 @@ public class PendingActionsDao {
 		}
 		return hdzApplication;
 	}
+
+	
 
 }

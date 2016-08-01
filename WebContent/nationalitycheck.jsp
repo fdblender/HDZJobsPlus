@@ -44,7 +44,10 @@ function limitText(limitField, limitCount, limitNum) {
 			</c:if>
 
 <br /><br />
-
+<c:if test="${NationalityCheck.hdzApplicant.citizenflag != null}">
+<div align="center"><h3>Validation Complete!!</h3></div>
+</c:if>
+ <c:if test="${NationalityCheck.hdzApplicant.citizenflag == null}">
 <table align="center" border="0" class="table">
 <thead>
 <tr ><th>Add comment</th></tr>
@@ -115,7 +118,7 @@ function limitText(limitField, limitCount, limitNum) {
 	 
 	  </tbody> 
  </table> 
-
+</c:if>
  </div> 
   <script  src="js/nationalitycheck.js"></script>
 </form>

@@ -70,6 +70,7 @@ public class EducationForm extends HttpServlet {
 				
 				
 				dao.PendingActionsDao.update(myapplication);
+				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 				
 				session.setAttribute("ApplicationComment", myapplication);
 				
@@ -80,7 +81,7 @@ public class EducationForm extends HttpServlet {
 					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
-					
+					myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 					session.setAttribute("ApplicationComment", myapplication);
 					
 				}
@@ -94,12 +95,13 @@ public class EducationForm extends HttpServlet {
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"):"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
+				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 				session.setAttribute("ApplicationComment", myapplication);
 				
 			}
 			
 			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("EducationCheck", educations);
 			session.setAttribute("ApplicationComment", myapplication);
 			

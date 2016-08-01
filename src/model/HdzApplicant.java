@@ -63,6 +63,8 @@ public class HdzApplicant implements Serializable {
 	private String visa;
 
 	private String visaflag;
+	
+	private String workrefflag;
 
 	//bi-directional many-to-one association to HdzApplicantskill
 	@OneToMany(mappedBy="hdzApplicant")
@@ -381,4 +383,12 @@ public class HdzApplicant implements Serializable {
 		return hdzReftable;
 	}
 
+	public String getWorkrefflag() {
+		return workrefflag;
+	}
+
+	public void setWorkrefflag(String workrefflag) {
+		this.workrefflag = workrefflag;
+	}
+	
 }

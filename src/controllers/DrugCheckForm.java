@@ -80,7 +80,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-				
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
@@ -113,7 +113,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
@@ -145,7 +145,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			request.getRequestDispatcher("drugscreencheck.jsp").forward(request, response);
@@ -214,6 +214,7 @@ public class DrugCheckForm extends HttpServlet {
 				
 				
 				dao.PendingActionsDao.update(myapplication);
+				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 				session.setAttribute("DrugApplication",myapplication);	
 			}
 			
@@ -229,7 +230,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			
@@ -249,7 +250,7 @@ public class DrugCheckForm extends HttpServlet {
 			
 			
 			dao.PendingActionsDao.update(applicant);
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplicant",applicant);
 			
 			
@@ -283,6 +284,7 @@ public class DrugCheckForm extends HttpServlet {
 				
 				
 				dao.PendingActionsDao.update(myapplication);
+				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 				session.setAttribute("DrugApplication",myapplication);	
 				
 			}
@@ -296,7 +298,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			
@@ -352,6 +354,7 @@ public class DrugCheckForm extends HttpServlet {
 				
 				
 				dao.PendingActionsDao.update(myapplication);
+				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 				session.setAttribute("DrugApplication",myapplication);	
 				
 			}
@@ -365,7 +368,7 @@ public class DrugCheckForm extends HttpServlet {
 				dao.PendingActionsDao.update(myapplication);
 				
 			}
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
 			session.setAttribute("DrugApplication",myapplication);	
 			
 			

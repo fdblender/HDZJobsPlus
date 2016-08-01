@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import model.HdzApplicant;
-import model.HdzJob;
+import model.*;
 import dao.*;
 public class testInsert {
 
