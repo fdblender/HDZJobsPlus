@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.*;
+import util.Email;
 
 /**
  * Servlet implementation class DrugCheckForm
@@ -69,6 +72,18 @@ public class DrugCheckForm extends HttpServlet {
 			myapplication.setAppstatus("Fail");
 			dao.PendingActionsDao.update(myapplication);
 			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			if(stdcomment!=null)
@@ -102,6 +117,18 @@ public class DrugCheckForm extends HttpServlet {
 			myapplication.setAppstatus("Fail");
 			dao.PendingActionsDao.update(myapplication);
 			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			if(dotcomment!=null)
@@ -133,6 +160,18 @@ public class DrugCheckForm extends HttpServlet {
 			session.setAttribute("DrugApplicant",applicant);
 			myapplication.setAppstatus("Fail");
 			dao.PendingActionsDao.update(myapplication);
+			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
