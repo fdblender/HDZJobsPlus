@@ -73,8 +73,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 			if(dao.PendingActionsDao.checkWorkStatus(myapplication))
 			{
 				myapplication.setAppstatus("WorkRefChecked");
-				
 				dao.PendingActionsDao.update(myapplication);
+				HdzApplicant applicant = myapplication.getHdzApplicant();
+				applicant.setWorkrefflag("Y");
+				dao.PendingActionsDao.update(applicant);
+				
+				
 				
 			}
 			
@@ -145,6 +149,9 @@ public class Workhistoryreferenceform extends HttpServlet {
 				myapplication.setAppstatus("WorkRefChecked");
 				
 				dao.PendingActionsDao.update(myapplication);
+				HdzApplicant applicant = myapplication.getHdzApplicant();
+				applicant.setWorkrefflag("Y");
+				dao.PendingActionsDao.update(applicant);
 				
 			}
 			
@@ -210,6 +217,9 @@ public class Workhistoryreferenceform extends HttpServlet {
 				myapplication.setAppstatus("WorkRefChecked");
 				
 				dao.PendingActionsDao.update(myapplication);
+				HdzApplicant applicant = myapplication.getHdzApplicant();
+				applicant.setWorkrefflag("Y");
+				dao.PendingActionsDao.update(applicant);
 				
 			}
 			
@@ -287,6 +297,9 @@ public class Workhistoryreferenceform extends HttpServlet {
 			dao.PendingActionsDao.update(myref);
 			
 			myapplication.setAppstatus("Fail");
+			HdzApplicant applicant = myapplication.getHdzApplicant();
+			applicant.setWorkrefflag("N");
+			dao.PendingActionsDao.update(applicant);
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
@@ -333,6 +346,9 @@ public class Workhistoryreferenceform extends HttpServlet {
 			dao.PendingActionsDao.update(myjob);
 			
 			myapplication.setAppstatus("Fail");
+			HdzApplicant applicant = myapplication.getHdzApplicant();
+			applicant.setWorkrefflag("N");
+			dao.PendingActionsDao.update(applicant);
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
@@ -377,6 +393,9 @@ public class Workhistoryreferenceform extends HttpServlet {
 			dao.PendingActionsDao.update(myapplicant);
 			
 			myapplication.setAppstatus("Fail");
+			HdzApplicant applicant = myapplication.getHdzApplicant();
+			applicant.setWorkrefflag("N");
+			dao.PendingActionsDao.update(applicant);
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			

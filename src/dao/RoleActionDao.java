@@ -36,7 +36,8 @@ public class RoleActionDao {
 		// get all applicants where status is new
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
-        String qString = "select b from HdzApplication b where b.appstatus = :status";
+        String qString = "select b from HdzApplication b where b.appstatus = :status "
+        		+ "and b.hdzApplicant.workrefflag is null";
         
         try{
             TypedQuery<HdzApplication> query = em.createQuery(qString,HdzApplication.class);
