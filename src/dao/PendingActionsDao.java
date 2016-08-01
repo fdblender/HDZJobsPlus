@@ -169,7 +169,8 @@ public class PendingActionsDao {
 
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 
-		String qString = "Select p from HdzJobhistory p where p.hdzApplicant.applicantid=:applicantid";
+		String qString = "Select p from HdzJobhistory p where p.hdzApplicant.applicantid=:applicantid"
+				+ " and p.jobhistoryflag is null";
 
 		Query q = em.createQuery(qString);
 		q.setParameter("applicantid", applicantid);
@@ -193,7 +194,8 @@ public class PendingActionsDao {
 
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 
-		String qString = "Select p from HdzEducation p where p.hdzApplicant.applicantid=:applicantid";
+		String qString = "Select p from HdzEducation p where p.hdzApplicant.applicantid=:applicantid"
+				+ " and p.educationflag is null";
 
 		Query q = em.createQuery(qString);
 		q.setParameter("applicantid", applicantid);
@@ -217,7 +219,8 @@ public class PendingActionsDao {
 
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 
-		String qString = "Select p from HdzReftable p where p.hdzApplicant.applicantid=:applicantid";
+		String qString = "Select p from HdzReftable p where p.hdzApplicant.applicantid=:applicantid"
+				+ " and p.refflag is null";
 
 		Query q = em.createQuery(qString);
 		q.setParameter("applicantid", applicantid);
@@ -339,6 +342,57 @@ public class PendingActionsDao {
 		}
 		return appstatus;
 
+	}
+
+	public static HdzApplication getapplicationbyappidNationality(String applicationid) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		String qString = "Select u from HdzApplication u " + "where u.applicationid=:applicationid"
+				+ " and (u.hdzApplicant.citizenflag is null || u.hdzApplicant.visaflag is null)";
+		TypedQuery<HdzApplication> q = em.createQuery(qString, HdzApplication.class);
+		q.setParameter("applicationid", Long.parseLong(applicationid));
+		HdzApplication hdzApplication = null;
+		try {
+			hdzApplication = q.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		return hdzApplication;
+	}
+
+	public static HdzApplication getapplicationbyappifDrugTest(String applicationid) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		String qString = "Select u from HdzApplication u " + "where u.applicationid=:applicationid"
+				+ " and u.hdzApplicant.drugtestflag is null";
+		TypedQuery<HdzApplication> q = em.createQuery(qString, HdzApplication.class);
+		q.setParameter("applicationid", Long.parseLong(applicationid));
+		HdzApplication hdzApplication = null;
+		try {
+			hdzApplication = q.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		return hdzApplication;
+	}
+
+	public static HdzApplication getapplicationbyappidVet(String applicationid) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		String qString = "Select u from HdzApplication u " + "where u.applicationid=:applicationid"
+				+ " and u.hdzApplicant.veteranflag is null";
+		TypedQuery<HdzApplication> q = em.createQuery(qString, HdzApplication.class);
+		q.setParameter("applicationid", Long.parseLong(applicationid));
+		HdzApplication hdzApplication = null;
+		try {
+			hdzApplication = q.getSingleResult();
+		} catch (NoResultException e) {
+			System.out.println(e);
+		} finally {
+			em.close();
+		}
+		return hdzApplication;
 	}
 
 }

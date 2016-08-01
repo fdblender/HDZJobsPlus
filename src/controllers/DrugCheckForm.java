@@ -1,8 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +45,7 @@ public class DrugCheckForm extends HttpServlet {
 		{
 			session.setAttribute("DrugApplicationid", applicationid);
 			
-			HdzApplication application=dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			HdzApplication application=dao.PendingActionsDao.getapplicationbyappifDrugTest(applicationid);
 			
 			session.setAttribute("DrugApplication",application);	
 			
@@ -77,7 +75,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+stdcomment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+stdcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -110,7 +108,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+dotcomment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+dotcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -142,7 +140,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+alcoholcomment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+alcoholcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -186,10 +184,7 @@ public class DrugCheckForm extends HttpServlet {
 			dao.PendingActionsDao.update(applicant);
 			
 			session.setAttribute("DrugApplicant",applicant);
-			
-			
-			
-			
+						
 			
 			
 			
@@ -212,7 +207,7 @@ public class DrugCheckForm extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+stdcomment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+stdcomment);	
 					
 				}
 				
@@ -229,7 +224,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+stdcomment);	
+				myapplication.setComments(user.getEmpname()+"("+user.getPosition()+"): "+stdcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -282,7 +277,7 @@ public class DrugCheckForm extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+dotcomment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+dotcomment);	
 					
 				}
 				
@@ -296,7 +291,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+dotcomment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+dotcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -351,7 +346,7 @@ public class DrugCheckForm extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+alcoholcomment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+alcoholcomment);	
 					
 				}
 				
@@ -365,7 +360,7 @@ public class DrugCheckForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+alcoholcomment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+alcoholcomment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				

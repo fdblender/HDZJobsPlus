@@ -45,6 +45,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 		if(applicationid!=null)
 		{
 			session.setAttribute("WorkApplicationid", applicationid);
+			System.out.println(applicationid);
 			HdzApplication application=dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(application.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(application.getHdzApplicant().getApplicantid());
@@ -90,7 +91,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
 					
@@ -103,7 +104,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 				System.out.println(comment);
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 			
 				
@@ -158,7 +159,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
 					
@@ -171,7 +172,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				System.out.println(comment);
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -223,7 +224,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
 					
@@ -236,7 +237,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				System.out.println(comment);
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -297,7 +298,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -316,7 +317,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 			
 			
 		}
@@ -343,7 +344,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -361,7 +362,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 			
 			
 		}
@@ -387,7 +388,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -405,7 +406,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			request.getRequestDispatcher("workhisrefercheck.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 		}
 		
 	}

@@ -56,6 +56,7 @@ function limitText(limitField, limitCount, limitNum) {
 </tbody>
 </table>
  
+ <c:if test="${VeteranApplication.hdzApplicant.veteranflag == null}">
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Veteran</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
@@ -111,7 +112,7 @@ function limitText(limitField, limitCount, limitNum) {
 	 
 	  </tbody> 
  </table> 
- 
+ </c:if>
  
  
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Job History</div>
@@ -131,6 +132,7 @@ function limitText(limitField, limitCount, limitNum) {
 </thead>
  <tbody>
  <c:forEach var="work" items="${WorkHistoryCheck}">
+ <c:if test="${work.jobhistoryflag == null}">
 <tr>   
     <td align="center">      
         <c:set var="myworkid" value="${WorkApplicationid}"/>
@@ -180,6 +182,7 @@ function limitText(limitField, limitCount, limitNum) {
    </td> 
    
 	 </tr> 
+	 </c:if>
 	 </c:forEach>
 	  </tbody> 
  </table> 
@@ -201,6 +204,7 @@ function limitText(limitField, limitCount, limitNum) {
 </thead>
  <tbody>
  <c:forEach var="refer" items="${ReferenceCheck}">
+  <c:if test="${refer.refflag == null}">
 <tr>   
     <td align="center">      
         <c:set var="myreferid" value="${WorkApplicationid}"/>
@@ -245,6 +249,7 @@ function limitText(limitField, limitCount, limitNum) {
    </td> 
    
 	 </tr> 
+	 </c:if>
 	 </c:forEach>
 	  </tbody> 
  </table> 

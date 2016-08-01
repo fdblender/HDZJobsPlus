@@ -37,6 +37,7 @@ public class EducationForm extends HttpServlet {
 		String applicationid=request.getParameter("applicationid");
 		String comment=request.getParameter("addcomment");
 		
+		
 		if(applicationid!=null)
 		{
 			session.setAttribute("EduApplicationid", applicationid);
@@ -76,7 +77,7 @@ public class EducationForm extends HttpServlet {
 				{
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
 					dao.PendingActionsDao.update(myapplication);
 					
@@ -90,7 +91,7 @@ public class EducationForm extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"):"+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				session.setAttribute("ApplicationComment", myapplication);
@@ -131,7 +132,7 @@ public class EducationForm extends HttpServlet {
 			
 			myapplication.setAppstatus("Fail");
 			
-			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			session.setAttribute("hiremessage", "The Applicant Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
 			
@@ -155,7 +156,7 @@ public class EducationForm extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 			
 		}
 		

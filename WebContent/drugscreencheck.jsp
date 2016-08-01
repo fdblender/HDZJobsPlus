@@ -59,7 +59,10 @@ function limitText(limitField, limitCount, limitNum) {
 
 </tbody>
 </table>
-
+<c:set var="STD" scope="session" value="${DrugApplication.hdzApplicant.stdpanelflag}" />
+<c:set var="DOT" scope="session" value="${DrugApplication.hdzApplicant.dottestflag}" />
+<c:set var="Alcohol" scope="session" value="${DrugApplication.hdzApplicant.alcoholtestflag}" />
+	
 <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Drug Screen Test</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
@@ -67,9 +70,15 @@ function limitText(limitField, limitCount, limitNum) {
 <th align="center"><div align="center">App ID</div></th>
 <th align="center"><div align="center">Applicant Name</div></th>
 <th align="center"><div align="center">Applying</div></th>
+<c:if test="${STD == null}">
 <th align="center"><div align="center">STD Panel</div></th>
+</c:if>
+<c:if test="${DOT == null}">
 <th align="center"><div align="center">DOT Test</div></th>
+</c:if>
+<c:if test="${Alcohol == null}">
 <th align="center"><div align="center">Alcohol Test</div></th>
+</c:if>
 <th align="center"><div align="center">Drug Test</div></th>
 <th align="center"><div align="center">Comment</div></th>
 </tr>
@@ -90,14 +99,15 @@ function limitText(limitField, limitCount, limitNum) {
         <c:out value="${DrugApplication.hdzJob.hdzPosition.position}"/>
     
  	</td> 
-   
+   <c:if test="${STD == null}">
    <td align="center">
    
     <input type="button" class="PositiveStd" name="PositiveStd${DrugApplication.hdzApplicant.applicantid}" id="PositiveStd${DrugApplication.hdzApplicant.applicantid}" value="Positive" />
 	<input type="button" class="NegativeStd" name="NegativeStd${DrugApplication.hdzApplicant.applicantid}" id="NegativeStd${DrugApplication.hdzApplicant.applicantid}" value="Negative" />
     
    </td>
-   
+   </c:if>
+   <c:if test="${DOT == null}">
    <td align="center">
    
    
@@ -105,12 +115,14 @@ function limitText(limitField, limitCount, limitNum) {
 	<input type="button" class="NegativeDot" name="NegativeDot${DrugApplication.hdzApplicant.applicantid}" id="NegativeDot${DrugApplication.hdzApplicant.applicantid}" value="Negative" />
     
    </td>
+   </c:if>
+   <c:if test="${Alcohol == null}">
    <td align="center">
      <input type="button" class="PositiveAlcohol" name="PositiveAlcohol${DrugApplication.hdzApplicant.applicantid}" id="PositiveAlcohol${DrugApplication.hdzApplicant.applicantid}" value="Positive" />
 	<input type="button" class="NegativeAlcohol" name="NegativeAlcohol${DrugApplication.hdzApplicant.applicantid}" id="NegativeAlcohol${DrugApplication.hdzApplicant.applicantid}" value="Negative" />  
     
    </td>
-   
+   </c:if>
    
    <td align="center">
    

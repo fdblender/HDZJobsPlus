@@ -39,7 +39,7 @@ public class Nationalityform extends HttpServlet {
 		if(applicationid!=null)
 		{
 			session.setAttribute("Nationalityapplicationid", applicationid);
-			HdzApplication nationalityapplication= dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+			HdzApplication nationalityapplication= dao.PendingActionsDao.getapplicationbyappidNationality(applicationid);
 			
 			session.setAttribute("NationalityCheck", nationalityapplication);
 			
@@ -81,7 +81,7 @@ public class Nationalityform extends HttpServlet {
 			{
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
+				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 				
 				dao.PendingActionsDao.update(myapplication);
 				
@@ -89,7 +89,7 @@ public class Nationalityform extends HttpServlet {
 			
 			session.setAttribute("NationalityCheck", myapplication);
 			
-			request.getRequestDispatcher("nationalitycheck.jsp").forward(request, response);
+			request.getRequestDispatcher("/PendingAction").forward(request, response);
 			
 		}
 		
