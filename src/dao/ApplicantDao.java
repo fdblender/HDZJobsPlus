@@ -304,9 +304,7 @@ public class ApplicantDao {
 			
 		pass =false;
 		}
-		
-		
-		
+
 		return pass;
 	}
 	
