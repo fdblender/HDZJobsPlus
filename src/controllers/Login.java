@@ -61,7 +61,11 @@ public class Login extends HttpServlet {
 				employee = ValidateUserDao.getValidEmployee(email, password);
 				if (employee != null) {
 					// add the employee as an applicant with same email & password
-					ApplicantDao.AddApplicantAsEmployee(employee);
+					System.out.println("in empl");
+					HdzApplicant hdzApplicant = ApplicantDao.AddApplicantAsEmployee(employee);
+					session.setAttribute("user", hdzApplicant);
+					session.setAttribute("role",  "applicant");
+					session.setAttribute("userrole",  1);
 					nextURL = "YourApplications";
 				} else {
 				

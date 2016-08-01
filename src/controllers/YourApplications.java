@@ -53,13 +53,9 @@ public class YourApplications extends HttpServlet {
 		} else {	
 			// get all applications for applicantid
 			applications = ApplicationsDao.getapplicationsByApplicantid(applicant.getApplicantid()+"");		
-			for (HdzApplication application : applications) {	
-				//System.out.println("application: "+application.getHdzJob().getHdzPosition().getPosition());
-				
-				// if the application has not failed and the application coding flag = 'G' (assigned)				
+			for (HdzApplication application : applications) {					
 				if (!application.getAppstatus().equals("Fail") && application.getCodingtest().equals("G")) {
 					position = application.getHdzJob().getHdzPosition();
-					//System.out.println("Position type: "+position.getPositiontype());
 					if (position.getPositiontype() != null) {	
 						if (position.getPositiontype().equals("developer")) {	
 							request.setAttribute("pendingcodingtest", "yes");
@@ -70,12 +66,13 @@ public class YourApplications extends HttpServlet {
 					}
 				}
 			}		
+			if (notestsfound) {
+				request.setAttribute("message", "No tests found.");
+			}
+			request.getRequestDispatcher(nextURL).forward(request, response);	
 		}
 		
-		if (notestsfound) {
-			request.setAttribute("message", "No tests found.");
-		}
-		request.getRequestDispatcher(nextURL).forward(request, response);	
+		
 	}
 
 	/**
