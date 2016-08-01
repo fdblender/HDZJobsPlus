@@ -43,17 +43,18 @@ public class Apply extends HttpServlet {
 			HdzJob job = ApplicantDao.getJobById(jobid);
 			HdzApplication application = new HdzApplication();
 			List<HdzApplication> myapps = applicant.getHdzApplications();
-			if(applicant.getEmployeeflag().equals("Y")){
-				application.setAppstatus("WorkRefChecked");
-			}else{
-			application.setAppstatus("New");
-			}
-			application.setCodingtest("N");
-			application.setHdzJob(job);
-			application.setHdzApplicant(applicant);
-			myapps.add(application);
-			applicant.setHdzApplications(myapps);
+			
 			if (ApplicantDao.checkFlags(applicant)) {
+				if(applicant.getEmployeeflag().equals("Y")){
+					application.setAppstatus("WorkRefChecked");
+				}else{
+				application.setAppstatus("New");
+				}
+				application.setCodingtest("N");
+				application.setHdzJob(job);
+				application.setHdzApplicant(applicant);
+				myapps.add(application);
+				applicant.setHdzApplications(myapps);
 				ApplicantDao.insert(application);
 				request.setAttribute("message", "Job Applied");
 			} else {
@@ -66,17 +67,18 @@ public class Apply extends HttpServlet {
 			HdzJob job = ApplicantDao.getJobById(jobid);
 			HdzApplication application = new HdzApplication();
 			List<HdzApplication> myapps = applicant.getHdzApplications();
-			if(applicant.getEmployeeflag() != null &&  applicant.getEmployeeflag().equals("Y")){
-				application.setAppstatus("WorkRefChecked");
-			}else{
-			application.setAppstatus("New");
-			}
-			application.setCodingtest("N");
-			application.setHdzJob(job);
-			application.setHdzApplicant(applicant);
-			myapps.add(application);
-			applicant.setHdzApplications(myapps);
+			
 			if (ApplicantDao.checkFlags(applicant)) {
+				if(applicant.getEmployeeflag() != null &&  applicant.getEmployeeflag().equals("Y")){
+					application.setAppstatus("WorkRefChecked");
+				}else{
+				application.setAppstatus("New");
+				}
+				application.setCodingtest("N");
+				application.setHdzJob(job);
+				application.setHdzApplicant(applicant);
+				myapps.add(application);
+				applicant.setHdzApplications(myapps);
 				ApplicantDao.insert(application);
 				request.setAttribute("message", "Job Applied");
 			} else {
