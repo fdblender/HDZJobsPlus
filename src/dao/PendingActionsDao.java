@@ -23,6 +23,7 @@ public class PendingActionsDao {
 			em.merge(user);
 			trans.commit();
 		} catch (Exception e) {
+		e.printStackTrace();
 			trans.rollback();
 		} finally {
 			em.close();
