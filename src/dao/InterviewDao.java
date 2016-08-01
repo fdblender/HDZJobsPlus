@@ -190,6 +190,25 @@ public class InterviewDao {
             }
         return applicants;
 	}
+
+	public static boolean checkPosition(HdzApplication hdzApplication) {
+		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
+		String position = null;
+        String qString = "select  b.hdzJob.hdzPosition.positiontype from HdzApplication b "
+        		+ "where b.applicationid = :id";
+        
+        try{
+            TypedQuery<String> query = em.createQuery(qString,String.class);
+            query.setParameter("id", hdzApplication.getApplicationid());
+            position = query.getSingleResult();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        finally{
+                em.close();
+            }
+        return (position.equals("developer"));
+	}
 	
 
 

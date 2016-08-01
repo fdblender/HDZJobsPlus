@@ -32,13 +32,13 @@ function limitText(limitField, limitCount, limitNum) {
 
 <form action="Workhistoryreferenceform" method="get" >
 <div class="container">
-
+<%-- 
 <c:set var="mesL" scope="session" value="${hiremessage}" />
 			<c:if test="${mesL != null}">
 				<div class="alert alert-success">
 					<strong>${hiremessage}</strong> <span id="showSearchTerm"></span>
 				</div>
-			</c:if>
+			</c:if> --%>
 
 <br /><br /> 
 

@@ -21,7 +21,7 @@
 
 </head>
 <body class="">
-
+<form class="form-signin" action="SaveCodingTest" method="get">
 	<div class="container">
 		<c:set var="mesL" scope="session" value="${message}" />
 		<c:if test="${mesL != null}">
@@ -37,9 +37,10 @@
 				<h3>Coding Test</h3>
 				<br />
 				<h4>Question: ${question.jobquestion}</h4>
+				--<c:out value="${question.jobquestionsid}"></c:out>--
 				<input type="hidden" id="questionid" name="questionid"
 					value="${question.jobquestionsid}"> <br />
-				<form class="form-signin" action="SaveCodingTest" method="get">
+				
 
 					<div class="dropdown">
 						<label for="comment">Enter your response</label> 
@@ -57,10 +58,11 @@
 					<br />
 					<br /> <input class="btn btn-lg btn-success btn-block"
 						type="submit" id="submit" value="Submit »">
-				</form>
+				
 			</div>
 			<div class="col-md-1"></div>
-
+</div>
 		</div>
+		</form>
 </body>
 </html>

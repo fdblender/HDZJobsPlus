@@ -68,9 +68,10 @@ public class SaveCodingTest extends HttpServlet {
 						test.setCodinglanguage(request.getParameter("codinglanguage"));
 						test.setHdzApplication(application);
 						test.setTestresponse(request.getParameter("response"));	
-						
+						System.out.println(request.getParameter("questionid"));
 						// get and set the job question for the job question id parameter
 						HdzJobquestion question = TestsDao.getJobQuestion(request.getParameter("questionid"));
+						
 						test.setHdzJobquestion(question);
 						
 						// add the response to the tests table											

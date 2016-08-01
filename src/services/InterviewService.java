@@ -56,4 +56,8 @@ public class InterviewService {
 		return InterviewDao.getSearchedApplicants(skill, experience);
 	}
 
+	public static boolean checkPosition(HdzApplication hdzApplication) {
+		return InterviewDao.checkPosition(hdzApplication);
+	}
+
 }

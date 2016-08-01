@@ -59,6 +59,7 @@ public class YourApplications extends HttpServlet {
 					if (position.getPositiontype() != null) {	
 						if (position.getPositiontype().equals("developer")) {	
 							request.setAttribute("pendingcodingtest", "yes");
+							System.out.println("in pending test");
 							notestsfound = false;
 							nextURL = "yourapplications.jsp";
 							break;						

@@ -143,7 +143,6 @@
 										<th>Job Id</th>
 										<th>Job Title</th>
 										<th>Job description</th>
-										<th>Coding Test</th>
 									</tr>
 								</thead>
 								<tr>
@@ -154,7 +153,7 @@
 									<td><c:out value="${application.hdzJob.jobsid}"></c:out></td>
 									<td><c:out value="${application.hdzJob.hdzPosition.position}"></c:out></td>
 									<td><c:out value="${application.hdzJob.description}"></c:out></td>
-									<td><c:out value="${application.codingtest}"></c:out></td>
+									
 
 
 								</tr>
@@ -164,9 +163,17 @@
 							<c:set var="coding" scope="session" value="${coding}" />
 							 <c:if test="${type == 'Group Interview' || type == 'HM Interview'}">
 							<c:if test="${coding == 'C'}">
-							Question: <c:out value="${application.hdztest.question}"></c:out>
-							Language: <c:out value="${application.hdztest.language}"></c:out>				
-							Response: <c:out value="${application.hdztest.response}"></c:out>	
+							<c:forEach var="test" items="${application.hdzTests}">
+							<c:if test="${test.hdzJobquestion.interviewtype == 'coding'}">
+							<h3>Coding Challenge Details</h3>
+							<table class="table"> <tr><td>
+							<b>Question:</b> <c:out value="${test.hdzJobquestion.jobquestion}"></c:out><br/></td></tr>
+							<tr><td><b>Language:</b> <c:out value="${test.codinglanguage}"></c:out>	<br/></td></tr>			
+							<tr><td><b>Response:</b> 
+							<p style="border: dotted;"><br/><c:out value="${test.testresponse}"></c:out>
+							<br/><br/></p>	<br/></td> </tr></table>
+							</c:if>
+							</c:forEach>
 							</c:if>
 							</c:if>
 							<table>
@@ -180,7 +187,7 @@
 								<tr>
 									<td>Comment: <input type="text" id="commentInterview" name="commentInterview" /> 
 									Score: <input type="text" id="score" name="score"> 
-										 Result: <input type="text" id="result" name="result"> 
+										 Result (P/F): <input type="text" id="result" name="result"> 
 										<input type="submit" id="submitIn" value="Submit" name="SubmitIn"> 
 										
 										

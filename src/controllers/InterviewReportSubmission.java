@@ -90,7 +90,16 @@ public class InterviewReportSubmission extends HttpServlet {
 						test.setHdzJobquestion(h);
 						InterviewService.InsertResponse(test);
 					}
-					hdzApplication.setCodingtest("G");
+					if (InterviewService.checkPosition(hdzApplication)) {
+						hdzApplication.setCodingtest("G");
+						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+								"Coding Test Challenge",
+								"<html>Hi " + hdzApplication.getHdzApplicant().getFirstname() + ",<br/><br/> "
+										+ "You are assigned a coding challenge. Pleae take it."
+										+ "<br/><br/> Thanks,<br/>HDZ Team</html>",
+								true);
+					}
+					
 					if (result.equals("F")) {
 						hdzApplication.setAppstatus("Fail");
 						InterviewService.updateApplication(hdzApplication);

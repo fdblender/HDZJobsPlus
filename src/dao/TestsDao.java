@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -29,21 +31,25 @@ public class TestsDao {
 	// This method returns the first question for the given position and interview type
 	public static HdzJobquestion getPendingTest(String interviewtype){
 		 EntityManager em = DBUtil.getEmfFactory().createEntityManager();
-		 HdzJobquestion question = null;
+		 List<HdzJobquestion> question = null;
 	        String qString = "select a from HdzJobquestion a "
 	                + "where a.interviewtype= :interviewtype ";
 	        
 	        try{
 	            TypedQuery<HdzJobquestion> query = em.createQuery(qString,HdzJobquestion.class);	            
 	            query.setParameter("interviewtype", interviewtype);
-	            question = query.getSingleResult();
+	            question = query.setFirstResult(0).setMaxResults(1).getResultList();
 	        }catch (Exception e){
 	            e.printStackTrace();
 	        }finally{
 	            em.close();
 	        }
-
-	        return question;
+	        if (question != null) {
+	        	return question.get(0);
+	        }else {
+	        	return null;
+	        }
+	        
 	}	
 	
 	// get a job question for a selected job questions id
