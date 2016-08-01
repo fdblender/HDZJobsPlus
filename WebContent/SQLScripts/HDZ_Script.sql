@@ -63,7 +63,8 @@ invitedflag varchar2(1),
 codingflag varchar2(1),
 gravatarurl varchar2(200),
 resumesummary varchar(200),
-resumeobjective varchar(200)
+resumeobjective varchar(200),
+workrefflag varchar2(1)
 );
 
 
