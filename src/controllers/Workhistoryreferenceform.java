@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.*;
+import util.Email;
 
 /**
  * Servlet implementation class Workhistoryreferenceform
@@ -301,6 +303,18 @@ public class Workhistoryreferenceform extends HttpServlet {
 			applicant.setWorkrefflag("N");
 			dao.PendingActionsDao.update(applicant);
 			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
 			dao.PendingActionsDao.update(myapplication);
@@ -352,6 +366,18 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
 			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			dao.PendingActionsDao.update(myapplication);
 			
 			session.setAttribute("ApplicationComment", myapplication);
@@ -394,10 +420,23 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			myapplication.setAppstatus("Fail");
 			HdzApplicant applicant = myapplication.getHdzApplicant();
+			applicant.setVeteranflag("N");
 			applicant.setWorkrefflag("N");
 			dao.PendingActionsDao.update(applicant);
 			
 			session.setAttribute("hiremessage", "The Application is Failed!!!!");
+			
+			try {
+				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+						"Application status Info",
+						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+								+ "<br/> Thanks,<br/>HDZ Team</html>",
+						true);
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			dao.PendingActionsDao.update(myapplication);
 			

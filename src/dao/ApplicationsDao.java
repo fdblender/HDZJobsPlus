@@ -34,7 +34,7 @@ public class ApplicationsDao {
 	public static List<HdzApplication> getapplications(String position) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzApplication> app = null;
-		String qString = "select b from HdzApplication b where b.hdzJob.position like :position";
+		String qString = "select b from HdzApplication b where b.hdzJob.hdzPosition.position like :position";
        
 		try {
 			

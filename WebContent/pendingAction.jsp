@@ -131,7 +131,8 @@
 									</thead>
 									<c:forEach var="app" items="${applicationsSearch}">
 										<tr>
-											<td><c:out value="${app.applicationid}"></c:out></td>
+											<td><a href="ApplicationDetail?applicationid=${app.applicationid}">
+											<c:out value="${app.applicationid}"></c:out></a></td>
 											<td><c:out value="${app.appstatus}"></c:out></td>
 											<td><c:out value="${app.hdzJob.jobsid}"></c:out></td>
 											<td><c:out value="${app.hdzJob.hdzPosition.position}"></c:out></td>
