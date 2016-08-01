@@ -53,8 +53,13 @@ public class Apply extends HttpServlet {
 			application.setHdzApplicant(applicant);
 			myapps.add(application);
 			applicant.setHdzApplications(myapps);
-			ApplicantDao.insert(application);
-			request.setAttribute("message", "Job Applied");
+			if (ApplicantDao.checkFlags(applicant)) {
+				ApplicantDao.insert(application);
+				request.setAttribute("message", "Job Applied");
+			} else {
+				request.setAttribute("message", "Background Check Failed");
+			}
+			
 			request.getRequestDispatcher("/PendingAction").forward(request, response);
 		}else {
 			applicant = (HdzApplicant)session.getAttribute("user");
@@ -71,7 +76,12 @@ public class Apply extends HttpServlet {
 			application.setHdzApplicant(applicant);
 			myapps.add(application);
 			applicant.setHdzApplications(myapps);
-			ApplicantDao.insert(application);
+			if (ApplicantDao.checkFlags(applicant)) {
+				ApplicantDao.insert(application);
+				request.setAttribute("message", "Job Applied");
+			} else {
+				request.setAttribute("message", "Background Check Failed");
+			}
 			session.setAttribute("user", applicant);
 			
 			request.getRequestDispatcher("/yourapplications.jsp").forward(request, response);

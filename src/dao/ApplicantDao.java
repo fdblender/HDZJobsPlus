@@ -281,5 +281,33 @@ public class ApplicantDao {
 	        }
 	        return applicant;
 	}
+	public static boolean checkFlags(HdzApplicant applicant) {
+		// TODO Auto-generated method stub
+		boolean pass=true;
+		for(HdzEducation edu : applicant.getHdzEducations()){
+			if(edu.getEducationflag().equals("N")){
+				pass=false;
+			}
+		}
+		for(HdzJobhistory job: applicant.getHdzJobhistories()){
+			if(job.getJobhistoryflag().equals("N")){
+				pass=false;
+			}
+		}
+		for(HdzReftable ref : applicant.getHdzReftables()){
+			if(ref.getRefflag().equals("N")){
+				pass=false;
+			}
+		}
+		if(applicant.getAlcoholtestflag().equals("N")||applicant.getDottestflag().equals("N")||
+			applicant.getDrugtestflag().equals("N")||applicant.getStdpanelflag().equals("N")){
+			
+		pass =false;
+		}
+		
+		
+		
+		return pass;
+	}
 	
 }
