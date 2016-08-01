@@ -194,7 +194,7 @@ public class ApplicantDao {
 		// TO DO: add last name to employee table
 		applicant.setFirstname(employee.getEmpname());
 		applicant.setLastname("");		
-		
+		applicant.setGravatarurl(employee.getGravatarurl());
 		
 		// set background check to completed		
 		applicant.setCitizenflag("Y");
