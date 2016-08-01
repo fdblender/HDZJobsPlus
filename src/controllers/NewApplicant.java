@@ -112,12 +112,16 @@ public class NewApplicant extends HttpServlet {
 				reference.setRefposition(refposition);
 				references.add(reference);
 			}
+			
 			String applicantskill=request.getParameter("skill"+i);
 			String exp=request.getParameter("exp"+i);
+			if(!applicantskill.equals("")||!exp.equals("")){
+			System.out.println("-" +exp + "-");
 			BigDecimal experience = new BigDecimal(exp);
 			skill.setExperience(experience);
 			skill.setSkills(applicantskill);
 			skills.add(skill);
+			}
 		}
 
 		String salt = PasswordUtil.getSalt();
