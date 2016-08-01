@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import util.Gravatar;
 import dao.ValidateUserDao;
 import model.HdzApplicant;
 import model.HdzApplicantskill;
@@ -146,7 +147,7 @@ public class NewApplicant extends HttpServlet {
 		applicant.setHdzReftables(references);
 		applicant.setResumeobjective(objective);
 		applicant.setResumesummary(summary);
-
+		applicant.setGravatarurl(Gravatar.setGravatarURL(email, 80));
 		for (HdzEducation e : edhist) {
 			e.setHdzApplicant(applicant);
 		}
