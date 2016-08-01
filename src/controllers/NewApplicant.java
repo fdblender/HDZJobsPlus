@@ -138,6 +138,7 @@ public class NewApplicant extends HttpServlet {
 		applicant.setCitizen(citizen);
 		applicant.setVeteran(veteran);
 		applicant.setSalt(salt);
+		applicant.setEmployeeflag("N");
 		NewApplicantService.insertApplicant(applicant);
 		applicant = ValidateUserDao.getValidApplicant(email, password);
 		applicant.setHdzEducations(edhist);
