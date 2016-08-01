@@ -215,10 +215,10 @@ public class ApplicantDao {
 		applicant.setVeteranflag("Y");
 		applicant.setVisaflag("Y");
 		applicant.setDrugtestflag("Y");
-		applicant.setStdpanelflag("Y");
-		applicant.setDottestflag("Y");
-		applicant.setAlcoholtestflag("Y");
-		applicant.setEmployeeflag("Y");
+		applicant.setStdpanelflag("N");
+		applicant.setDottestflag("N");
+		applicant.setAlcoholtestflag("N");
+		applicant.setEmployeeflag("N");
 
 		insert(applicant);
 		return applicant;
