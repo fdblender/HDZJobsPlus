@@ -389,7 +389,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
 			
 			myapplicant.setVeteranflag("N");
-			
+			System.out.println(myapplicant.getApplicantid());
 			dao.PendingActionsDao.update(myapplicant);
 			
 			myapplication.setAppstatus("Fail");
