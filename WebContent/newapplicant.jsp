@@ -69,7 +69,7 @@
 
 						<div class="panel-body">
 
-							<fieldset align="center">
+							<fieldset align="left">
 								First name:<br /> <input type="text" maxlength="100" name="firstname"
 									id="firstname" /><br /> Last name: <br /> <input type="text" maxlength="100"
 									name="lastname" id="lastname" /><br /> Email: <br /> <input
