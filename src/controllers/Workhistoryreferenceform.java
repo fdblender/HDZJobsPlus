@@ -119,7 +119,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid("" +myapplication.getApplicationid());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
@@ -189,7 +189,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid("" +myapplication.getApplicationid());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
@@ -257,7 +257,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
@@ -322,7 +322,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid("" +myapplication.getApplicationid());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
@@ -370,7 +370,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid("" +myapplication.getApplicationid());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			
@@ -417,7 +417,7 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			List<HdzJobhistory> myjobs=dao.PendingActionsDao.getjobhistorybyapplicantid(myapplication.getHdzApplicant().getApplicantid());
 			List<HdzReftable> myreferences=dao.PendingActionsDao.getRefbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
+			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("WorkApplicationid").toString());
 			session.setAttribute("VeteranApplication", myapplication);
 			session.setAttribute("WorkHistoryCheck", myjobs);
 			

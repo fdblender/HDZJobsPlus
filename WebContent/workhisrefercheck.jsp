@@ -42,6 +42,10 @@ function limitText(limitField, limitCount, limitNum) {
 
 <br /><br /> 
 
+<c:if test="${VeteranApplication.hdzApplicant.workrefflag != null}">
+<div align="center"><h3>Validation Complete!!</h3></div>
+</c:if>
+<c:if test="${VeteranApplication.hdzApplicant.workrefflag == null}">
 <table align="center" border="0" class="table">
 <thead>
 <tr ><th>Add comment</th></tr>
@@ -55,7 +59,7 @@ function limitText(limitField, limitCount, limitNum) {
 
 </tbody>
 </table>
- 
+
  <c:if test="${VeteranApplication.hdzApplicant.veteranflag == null}">
  <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Veteran</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
@@ -75,7 +79,7 @@ function limitText(limitField, limitCount, limitNum) {
     <td align="center">   
        
  
-        
+       
          <c:set var="myveteranid" value="${VeteranApplication.applicationid}"/>
         <c:out value="${myveteranid}"/>
         
@@ -255,7 +259,7 @@ function limitText(limitField, limitCount, limitNum) {
  </table> 
  
  
- 
+ </c:if>
  
 
  </div> 
