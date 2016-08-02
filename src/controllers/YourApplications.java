@@ -37,7 +37,7 @@ public class YourApplications extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("in if your apps");
 		HttpSession session = request.getSession();
 		String nextURL = "yourapplications.jsp";
 		HdzApplicant applicant = (HdzApplicant)session.getAttribute("user");		
@@ -54,6 +54,7 @@ public class YourApplications extends HttpServlet {
 			// get all applications for applicantid
 			applications = ApplicationsDao.getapplicationsByApplicantid(applicant.getApplicantid()+"");
 			request.setAttribute("yourApps", applications);
+			System.out.println(applications.size());
 			for (HdzApplication application : applications) {		
 				System.out.println("Your application: "+application.getHdzJob().getDescription());
 				if (!application.getAppstatus().equals("Fail") && application.getCodingtest().equals("G")) {
@@ -69,9 +70,9 @@ public class YourApplications extends HttpServlet {
 					}
 				}
 			}		
-			if (notestsfound) {
+			/*if (notestsfound) {
 				request.setAttribute("message", "No tests found.");
-			}
+			}*/
 			request.getRequestDispatcher(nextURL).forward(request, response);	
 		}
 		

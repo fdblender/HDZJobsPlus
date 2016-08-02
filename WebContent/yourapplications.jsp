@@ -12,6 +12,13 @@
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
 	<div class="container">
+	<c:set var="mesL" scope="session" value="${message}" />
+		<c:if test="${mesL != null}">
+			<div class="alert alert-success">
+				<strong>${message}</strong> <span id="showSearchTerm"></span>
+			</div>
+		</c:if>
+	
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10">

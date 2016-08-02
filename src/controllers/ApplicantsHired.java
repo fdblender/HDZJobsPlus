@@ -71,8 +71,7 @@ public class ApplicantsHired extends HttpServlet {
 								"Application status Info",
 								"<html>Hi " + application.getHdzApplicant().getFirstname() + ",<br/><br/> "
 										+ "Conratulation!! You have been hired for the position:  "
-										+ application.getHdzJob().getHdzPosition().getPosition()
-										+ " cleared HR round and moved to the Hiring manager Interview round."
+										+ application.getHdzJob().getHdzPosition().getPosition() + "."
 										+ "<br/><br/> Thanks,<br/>HDZ Team</html>",
 								true);
 
