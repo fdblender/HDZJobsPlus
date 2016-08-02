@@ -14,9 +14,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Application Details</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="css/mycss.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/mycss.css" /> -->
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 </head>
-<body >
+<body style="color: #262626;">
 
 <script language="javascript" type="text/javascript">
 function limitText(limitField, limitCount, limitNum) {
@@ -35,9 +39,9 @@ function limitText(limitField, limitCount, limitNum) {
 
 <form action="ApplicationDetail" method="get" >
 <div class="container" Style="width:600px">
-<c:if test="${questionlist != null }">
+<c:if test="${questionlist != null}">
 <div>
-<table>
+<table class="table table-bordered table-striped table-hover">
 <thead>
 <tr>
 <th>Question</th>
@@ -57,42 +61,42 @@ function limitText(limitField, limitCount, limitNum) {
 </c:if>
 <br /><br /> 
  <c:if test="${role=='HRManager' or role=='HiringManager'}">
- <div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Application Details</div>
+ <div align="center" Style="background-color: #fadddc;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Application Details</div>
 <table border="1" align="center" class="table responstable table-bordered table-hover">
 <thead align="center">
 <tr align="center">
-<th align="center"><div align="center">Fields</div></th>
-<th align="center"><div align="center">Results</div></th>
+<th ><div >Fields</div></th>
+<th ><div >Results</div></th>
 </tr>
 </thead>
  <tbody>
  <c:set var="role" value="${role}"/>
 <tr>   
-    <td align="center" Style="background-color: #01579b ;color: #fff;font-weight: bold;font-size:16px; " >   
+    <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Application ID"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.applicationid}"/>
  		</td>	   
         </tr>
         <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Application Status"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.appstatus}"/>
  		</td>	
      </tr>
         <tr>
-     <td align="center" Style="background-color: #01579b ;color: #fff;font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Applicant Name"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.firstname} ${myapplicationdetail.hdzApplicant.lastname}"/>
  		</td>	
@@ -100,11 +104,11 @@ function limitText(limitField, limitCount, limitNum) {
      
     
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Coding Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.codingtest}"/>
  		</td>	
@@ -115,33 +119,33 @@ function limitText(limitField, limitCount, limitNum) {
      <tr>
      
      
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Email"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.email}"/>
  		</td>	
      </tr>
      
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Birthday"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.bday}"/>
  		</td>	
      </tr>
      
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Citizen"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.citizen}"/>
  		</td>	
@@ -149,11 +153,11 @@ function limitText(limitField, limitCount, limitNum) {
      
  
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Citizen Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.citizenflag}"/>
  		</td>	
@@ -161,11 +165,11 @@ function limitText(limitField, limitCount, limitNum) {
     
      
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Visa"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.visa}"/>
  		</td>	
@@ -173,33 +177,33 @@ function limitText(limitField, limitCount, limitNum) {
      
     
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Visa Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.visaflag}"/>
  		</td>	
      </tr>
      
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Veteran"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.veteran}"/>
  		</td>	
      </tr>
     
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Veteran Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.veteranflag}"/>
  		</td>	
@@ -218,11 +222,11 @@ function limitText(limitField, limitCount, limitNum) {
 <!--      </tr> -->
       
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Drug Test Result"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.drugtestflag}"/>
  		</td>	
@@ -241,11 +245,11 @@ function limitText(limitField, limitCount, limitNum) {
 <!--      </tr> -->
          
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="STD Panel Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.stdpanelflag}"/>
  		</td>	
@@ -265,11 +269,11 @@ function limitText(limitField, limitCount, limitNum) {
      
        
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="DOT Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.dottestflag}"/>
  		</td>	
@@ -289,11 +293,11 @@ function limitText(limitField, limitCount, limitNum) {
      
      
        <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Alchohol Test"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzApplicant.alcoholtestflag}"/>
  		</td>	
@@ -303,21 +307,21 @@ function limitText(limitField, limitCount, limitNum) {
      
      
          <tr>
-     <td align="center" Style="background-color: #01579b ;color: #fff; font-weight: bold;font-size:16px; " >   
+     <td  Style=" font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Job"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzJob.hdzPosition.position}"/>
  		</td>	
      </tr>
      <tr>
-     <td align="center" Style="font-weight: bold;font-size:16px; " >   
+     <td  Style="font-weight: bold;font-size:16px; " >   
        
  		<c:out value="Job Description"/>
  		</td>
- 	 <td align="center" Style="font-size:16px; " >   
+ 	 <td  Style="font-size:16px; " >   
        
  		<c:out value="${myapplicaitondetail.hdzJob.description}"/>
  		</td>	
@@ -348,7 +352,7 @@ function limitText(limitField, limitCount, limitNum) {
  
 </form>
 
-
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

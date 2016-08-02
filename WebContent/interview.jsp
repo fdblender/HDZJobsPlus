@@ -90,9 +90,13 @@
 	border-color: #01579b;
 }
 </style>
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 <title>Interview</title>
 </head>
-<body id="body" class="ui-widget-content" style="border: 0;">
+<body id="body" class="ui-widget-content" style="border: 0;color: #262626">
 	<jsp:include page="navbar.jsp"></jsp:include>
 	<form action="InterviewReportSubmission" method="post">
 		<div class="container">
@@ -108,7 +112,7 @@
 					<div class="col-sm-1"></div>
 					<div class="col-sm-10">
 
-						<table class="table table-bordered">
+						<table class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
 									<th >Question</th>
@@ -134,7 +138,7 @@
 						</c:if>
 						<c:if test="${application != null && application != ''}">
 
-							<table class="table table-bordered">
+							<table class="table table-bordered table-striped table-hover">
 
 								<thead>
 									<tr>
@@ -166,21 +170,21 @@
 							<c:forEach var="test" items="${application.hdzTests}">
 							<c:if test="${test.hdzJobquestion.interviewtype == 'coding'}">
 							<h3>Coding Challenge Details</h3>
-							<table class="table"> <tr><td>
+							<table class="table table-bordered table-striped table-hover"> <tr><td>
 							<b>Question:</b> <c:out value="${test.hdzJobquestion.jobquestion}"></c:out><br/></td></tr>
 							<tr><td><b>Language:</b> <c:out value="${test.codinglanguage}"></c:out>	<br/></td></tr>			
 							<tr><td><b>Response:</b> 
-							<p style="border: dotted;"><br/><c:out value="${test.testresponse}"></c:out>
+							<p style="border: dotted;"><br/>${test.testresponse}"
 							<br/><br/></p>	<br/></td> </tr></table>
 							</c:if>
 							</c:forEach>
 							</c:if>
 							</c:if>
-							<table>
+							<table class="table table-bordered table-striped table-hover">
 								<tr>
 									<td><c:set var="comments" scope="session"
 											value="${application.comments}" /> <c:if
-											test="${comments != null && application != ''}"> <b> Comments </b>
+											test="${comments != null && application != ''}"> <b> Comments: </b>
 							<p>${application.comments}</p>
 										</c:if></td>
 								</tr>
@@ -194,6 +198,7 @@
 
 
 									</td>
+									
 								</tr>
 							</table>
 
@@ -205,5 +210,7 @@
 		</div>
 
 	</form>
+	
+	 <div id="footer"><jsp:include page="footer.jsp"></jsp:include></div>
 </body>
 </html>
