@@ -115,7 +115,7 @@ public class InterviewReportSubmission extends HttpServlet {
 						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
 								"Application status Info",
 								"<html>Hi Hiring Manager,<br/> "
-										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared HR round and moved to the Hiring manager Interview round."
+										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared Hiring Manager round and moved to the Group Interview round."
 										+ "<br/> Thanks,<br/>HDZ Team</html>",
 								true);
 					}
@@ -173,7 +173,7 @@ public class InterviewReportSubmission extends HttpServlet {
 						Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
 								"Application status Info",
 								"<html>Hi Hiring Manager,<br/> "
-										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared HR round and moved to the Hiring manager Interview round."
+										+ "The Applicant "+ hdzApplication.getHdzApplicant().getFirstname() +" cleared the Group Interview."
 										+ "<br/> Thanks,<br/>HDZ Team</html>",
 								true);
 					}

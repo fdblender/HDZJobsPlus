@@ -34,12 +34,12 @@ public class ApplicationsDao {
 	public static List<HdzApplication> getapplications(String position) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzApplication> app = null;
-		String qString = "select b from HdzApplication b where b.hdzJob.hdzPosition.position like :position";
+		String qString = "select b from HdzApplication b where lower(b.hdzJob.description) like :position";
        
 		try {
 			
 			TypedQuery<HdzApplication> query = em.createQuery(qString, HdzApplication.class);
-			query.setParameter("position", "%" + position + "%");
+			query.setParameter("position", "%" + position.toLowerCase() + "%");
 			app = query.getResultList();
 
 		} catch (Exception e) {

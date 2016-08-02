@@ -44,7 +44,7 @@ public class TestsDao {
 	        }finally{
 	            em.close();
 	        }
-	        if (question != null) {
+	        if (question != null && question.size()>0) {
 	        	return question.get(0);
 	        }else {
 	        	return null;
