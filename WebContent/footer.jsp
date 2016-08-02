@@ -6,8 +6,10 @@
 </footer>
  -->
 <br/><br/>
+<nav class="navbar navbar-default navbar-static-bottom">
 <footer class="container-fluid bg-4 text-center" style="background-color: #999999; color: #ffffff;   ">
  
   <p>HDZ Jobs <a href="http://localhost:8080/HDZJobs/">www.hdz.com</a></p>
  
 </footer>
+</nav>
