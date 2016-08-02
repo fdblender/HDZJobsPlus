@@ -89,6 +89,7 @@ public class Apply extends HttpServlet {
 				List<HdzApplication> myapps = applicant.getHdzApplications();
 				System.out.println(jobid + "-> ->");
 				if (ApplicantDao.checkPreviouslyApplied(applicant, jobid)) {
+					System.out.println("in true");
 					request.setAttribute("message", "Already Applied for the Job");
 					request.getRequestDispatcher("/YourApplications").forward(request, response);
 				} else {

@@ -364,21 +364,22 @@ public class ApplicantDao {
 	public static boolean checkPreviouslyApplied(HdzApplicant applicant, String jobid) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		HdzApplication application = null;
-		String qString = "select a from HdzApplication a " + "where a.applicationid = :id"
+		String qString = "select a from HdzApplication a " + "where a.hdzApplicant.applicantid = :id"
 				+ " and a.hdzJob.jobsid = :jobid";
 
 		try {
 			TypedQuery<HdzApplication> query = em.createQuery(qString, HdzApplication.class);
 			query.setParameter("id", applicant.getApplicantid());
 			query.setParameter("jobid", Long.parseLong(jobid));
+			System.out.println(applicant.getApplicantid());
 			application = query.getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return true;
+			return false;
 		} finally {
 			em.close();
 		}
-		return (application == null);
+		return (application != null);
 	}
 
 }
