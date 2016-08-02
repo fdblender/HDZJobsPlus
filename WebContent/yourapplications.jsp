@@ -20,11 +20,13 @@
 				<table class="table table-bordered table-striped table-hover">
 					<tr>
 						<th>Position</th>
+						<th>Job Description</th>
 						<th>Status</th>
 					</tr>
 					<c:forEach var="app" items="${user.hdzApplications}">
 						<tr>
 							<td><c:out value="${app.hdzJob.hdzPosition.position}" /></td>
+							<td><c:out value="${app.hdzJob.description}" /></td>
 							<td><c:out value="${app.appstatus}" /></td>
 						</tr>
 					</c:forEach>
@@ -36,7 +38,9 @@
 					</form>
 				</c:if>
 			</div>
-		<div class="col-sm-1"></div>
+			<div class="col-sm-1"></div>
+		</div>
+	</div>
 		
 </body>
 </html>

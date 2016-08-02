@@ -69,11 +69,17 @@
 			<table class="table table-bordered">
 				<tr>
 					<th>Position</th>
+					<th>Job Description</th>
+					<th>Required Experience</th>
+					<th>Number of Openings</th>
 					<th>Action</th>
 				</tr>
 				<c:forEach var="job" items="${jobs}">
 					<tr>
 						<td>${job.hdzPosition.position}</td>
+						<td>${job.description}</td>
+						<td>${job.overallexperience}</td>
+						<td>${job.numberopenings}</td>
 						<td><c:if test="${role =='applicant'}">
 								<form action="Apply">
 									<input type="hidden" name="jobid" id="jobid"
