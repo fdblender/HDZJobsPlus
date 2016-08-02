@@ -328,9 +328,9 @@ public class ApplicantDao {
 
 	public static boolean checkPositive(HdzApplicant applicant) {
 		boolean pass = true;
-		System.out.println(applicant.getAlcoholtestflag());
 		for (HdzEducation edu : applicant.getHdzEducations()) {
 			if (edu.getEducationflag() == null || !edu.getEducationflag().equals("Y")) {
+				System.out.println("failed as getEducationflag");
 				pass = false;
 			}
 		}
@@ -341,18 +341,20 @@ public class ApplicantDao {
 		}
 		for (HdzReftable ref : applicant.getHdzReftables()) {
 			if (ref.getRefflag() == null || !ref.getRefflag().equals("Y")) {
+				System.out.println("failed as getRefflag");
 				pass = false;
 			}
 		}
 		if ((applicant.getAlcoholtestflag() == null || !applicant.getAlcoholtestflag().equals("N"))
 				|| (applicant.getDottestflag() == null || !applicant.getDottestflag().equals("N"))
 				|| (applicant.getStdpanelflag() == null || !applicant.getStdpanelflag().equals("N"))) {
-
+			System.out.println("failed as getAlcoholtestflag");
 			pass = false;
 		}
 		if ((applicant.getCitizenflag() == null || !applicant.getCitizenflag().equals("Y"))
 				|| (applicant.getVeteranflag() == null || !applicant.getVeteranflag().equals("Y"))
 				|| (applicant.getVisaflag() == null && !applicant.getVisaflag().equals("Y"))) {
+			System.out.println("failed as getCitizenflag");
 			pass = false;
 		}
 
