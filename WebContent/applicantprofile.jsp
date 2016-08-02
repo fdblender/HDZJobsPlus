@@ -90,161 +90,178 @@
 
 .pageheader {
 	text-align: center;
-	color: #3333ff;
-	}
-	
+	font-weight: bold;		
+}
+
 .subheader {
-	text-align: center;	
-	}
+	text-align: center;
+}
 
 .sectionheader {
-	font-weight: bold;
-	color: #3333ff;
-	}
+	font-weight: bold;	
+}
+
 .theader {
 	background-color: #f2f2f2;
-	}
-
+}
 </style>
 <script src="js/pendingAction.js"></script>
-<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
 <!-- <link rel="stylesheet" href="css/style.css" /> -->
 <link rel="stylesheet" href="css/theme.css" />
 
 <title>Applicant Profile</title>
 <script>
-function printMe() {
-    window.print()
-}
+	function printMe() {
+		window.print()
+	}
 </script>
 </head>
-<body id="body" class="ui-widget-content" style="border: 0;">	
-	<jsp:include page="navbar.jsp"></jsp:include>	
-	<!--Here we put user info-->
-	<!--resume data provide a button to print and one to apply and one to edit-->	
-	<div class="container">	
-	
-	</div>
-		
-	<div class="container">
-	<div style="background-color: white;" class="panel-body">
-	<div class="row">	
-		<div class="col-sm-1"></div>	
-		<div class="col-sm-2">				
-			<img alt="Profile Picture" src="${user.gravatarurl}" width="100"		
-				height="100" align="left" /> 
-		</div>	
-		<div class="col-sm-6">								
-				<h2 class="pageheader">${user.firstname} ${user.lastname}</h2>
-				<h4 class="subheader">${user.email}<br/><br/></h4>			
+
+
+<body style="color: #262626;" class="ui-widget-content">
+	<div id="container">
+		<div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
+		<div id="body">
+			<div class="container" style="height: 100%">
+
+				<div style="background-color: white;" class="panel-body">
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-2">
+							<img alt="Profile Picture" src="${user.gravatarurl}" width="100"
+								height="100" align="left" />
+						</div>
+						<div class="col-sm-6">
+							<h2 class="pageheader">${user.firstname} ${user.lastname}</h2>
+							<h4 class="subheader">${user.email}<br /> <br />
+							</h4>
+						</div>
+						<div class="col-sm-1"></div>
+						<br /> <br />
+						<div class="col-sm-2"></div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-9">
+							<h4 class="sectionheader">SUMMARY OF QUALIFICATIONS</h4>
+							<table class="table table-bordered">
+								<tr>
+									<td colspan="3">${user.resumesummary}</td>
+								</tr>
+								<tr>
+									<th class="theader" colspan="3">OBJECTIVE</th>
+								</tr>
+								<tr>
+									<td colspan="3">${user.resumeobjective}</td>
+								</tr>
+							</table>
+
+							<h4 class="sectionheader">EDUCATION</h4>
+							<table class="table table-bordered">
+								<tr>
+									<th class="theader" style="width: 20%">School Name</th>
+									<th class="theader">Degree awarded</th>
+									<th class="theader" style="width: 24%">Date Completed</th>
+								</tr>
+								<tbody>
+									<c:forEach var="school" items="${user.hdzEducations }">
+										<tr>
+											<td style="width: 20%"><c:out
+													value="${school.schoolname }" /></td>
+											<td><c:out value="${school.degreecompleted}" /></td>
+											<td style="width: 24%"><c:out
+													value="${school.datecompleted}" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+							<h4 class="sectionheader">SKILLS</h4>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th class="theader">Skill</th>
+										<th class="theader" style="width: 24%">Years of
+											experience</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="skill" items="${user.hdzApplicantskills }">
+										<tr>
+											<td><c:out value="${skill.skills }" /></td>
+											<td style="width: 24%"><c:out
+													value="${skill.experience}" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+							<h4 class="sectionheader">JOB HISTORY</h4>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th class="theader" style="width: 20%">Company name</th>
+										<th class="theader" style="width: 25%">Position</th>
+										<th class="theader">Description</th>
+										<th class="theader style="width:12%"">Start Date</th>
+										<th class="theader style="width:12%"">End Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="job" items="${user.hdzJobhistories }">
+										<tr>
+											<td style="width: 20%"><c:out value="${job.companyname}" /></td>
+											<td style="width: 25%"><c:out value="${job.position}" /></td>
+											<td><c:out value="${job.description}" /></td>
+											<td style="width: 12%"><c:out value="${job.startdate}" /></td>
+											<td style="width: 12%"><c:out value="${job.enddate}" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+							<h4 class="sectionheader">REFERENCES</h4>
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th class="theader" style="width: 20%">Name</th>
+										<th class="theader" style="width: 25%">Position</th>
+										<th class="theader">Email</th>
+										<th class="theader" style="width: 24%">Phone Number</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="reference" items="${user.hdzReftables }">
+										<tr>
+											<td style="width: 20%"><c:out
+													value="${reference.refname }" /></td>
+											<td style="width: 25%"><c:out
+													value="${reference.refposition}" /></td>
+											<td><c:out value="${reference.refemail}" /></td>
+											<td style="width: 24%"><c:out
+													value="${reference.refphone}" /></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<div>
+								<button type="button" value="Print" onclick="printMe()">Print</button>
+								<button type="button" onclick="location.href = './Jobs';">Apply</button>
+								<!--   <button type="button" onclick="location.href = './editprofile.jsp';">Edit Profile</button>-->
+							</div>
+						</div>
+
+						<div class="col-sm-2"></div>
+					</div>
+				</div>
+			</div>
+			<div id="footer"><jsp:include page="footer.jsp"></jsp:include></div>
 		</div>
-		<div class="col-sm-1"></div>
-		<br/><br/>
-		<div class="col-sm-2"></div>
-		</div>	
-		
-		<div class="row">	
-			<div class="col-sm-1"></div>
-			<div class="col-sm-9">
-				<h4 class="sectionheader">SUMMARY OF QUALIFICATIONS</h4>
-				<table class="table table-bordered">
-					<tr><td colspan="3">${user.resumesummary}</td></tr>
-					<tr><th class="theader" colspan="3">OBJECTIVE</th></tr>
-					<tr><td colspan="3">${user.resumeobjective}</td></tr> 
-				</table>
-				
-				<h4 class="sectionheader">EDUCATION</h4>
-				<table class="table table-bordered">		
-					<tr><th class="theader" style="width:20%">School Name</th>
-					<th class="theader">Degree awarded</th>
-					<th class="theader" style="width:24%">Date Completed</th>
-					</tr>				
-				<tbody>
-					<c:forEach var="school" items="${user.hdzEducations }">
-						<tr>
-							<td style="width:20%"><c:out value="${school.schoolname }" /></td>
-							<td><c:out value="${school.degreecompleted}" /></td>
-							<td style="width:24%"><c:out value="${school.datecompleted}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-				</table>
-				
-				<h4 class="sectionheader">SKILLS</h4>				
-				<table class="table table-bordered">
-				<thead>	
-					<tr>
-						<th class="theader">Skill</th>
-						<th class="theader"  style="width:24%">Years of experience</th>
-					</tr>	
-				</thead>
-				<tbody>
-					<c:forEach var="skill" items="${user.hdzApplicantskills }">
-						<tr>
-							<td><c:out value="${skill.skills }" /></td>
-							<td style="width:24%"><c:out value="${skill.experience}" /></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-				</table>
-			
-			<h4 class="sectionheader">JOB HISTORY</h4>
-			<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="theader" style="width:20%">Company name</th>
-					<th class="theader" style="width:25%">Position</th>
-					<th class="theader">Description</th>
-					<th class="theader style="width:12%"">Start Date</th>
-					<th class="theader style="width:12%"">End Date</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="job" items="${user.hdzJobhistories }">
-					<tr>
-						<td style="width:20%"><c:out value="${job.companyname}" /></td>
-						<td style="width:25%"><c:out value="${job.position}" /></td>
-						<td><c:out value="${job.description}" /></td>
-						<td style="width:12%"><c:out value="${job.startdate}" /></td>
-						<td style="width:12%"><c:out value="${job.enddate}" /></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-		<h4 class="sectionheader">REFERENCES</h4>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th class="theader" style="width:20%">Name</th>
-					<th class="theader" style="width:25%">Position</th>
-					<th class="theader">Email</th>
-					<th class="theader" style="width:24%">Phone Number</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="reference" items="${user.hdzReftables }">
-					<tr>
-						<td style="width:20%"><c:out value="${reference.refname }" /></td>
-						<td style="width:25%"><c:out value="${reference.refposition}" /></td>
-						<td><c:out value="${reference.refemail}" /></td>
-						<td style="width:24%"><c:out value="${reference.refphone}" /></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		<div>
-		<button type="button" value="Print" onclick="printMe()">Print</button>
-		<button type="button" onclick="location.href = './Jobs';">Apply</button>
-		<!--   <button type="button" onclick="location.href = './editprofile.jsp';">Edit Profile</button>-->
 	</div>
-	</div>
-	
-	<div class="col-sm-2"></div>
-	</div>
-	</div>
-	</div>
-	
 </body>
 </html>
