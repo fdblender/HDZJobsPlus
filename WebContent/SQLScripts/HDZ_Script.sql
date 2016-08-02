@@ -89,8 +89,16 @@ values (hdz_applicant_id_seq.nextval, 'volker@gmail.com', '85c4045386bcb895c66df
 '2 years of experience as a Quality Assurance Engineer', 'Gain a position in quality assurance');
 
 insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
-values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'Robert', 'Tommy', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, 'N', null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', 
-'3 years of Java development experience', 'Gain a challenging position in Java web development');
+values (hdz_applicant_id_seq.nextval, 'tommy@gmail.com', '0facf4210ee68bd39bdf1a55f24ea95ab40a387dfe8066a2f394e2434803635c', 'jdPz/JFmmyLhUif/3kcL1h7hR232Buv8GTOiniy0EUI=', 'Tommy', 'Robinson', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, 'N', null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', 
+'3 years of C# development experience', 'Gain a position in C# development');
+
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'dee@gmail.com', 'c07f310042e5a5251f3aed9b2bb8243f02bcb180a0aa23d9282106584cd445c1', '3A0m83e9MRfsLLlQJW3UTh7WjxuQO2SFsed/HyFfohI=', 'Dee', 'Smith', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, 'N', null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', 
+'1 years of C# development experience', 'Gain a position in C# development');
+
+insert into HDZ_Applicant (applicantid, email, hashedpwd, salt, firstname, lastname, bday, citizenflag, citizen, visaflag, visa, veteranflag, veteran, drugtestflag, stdpanelflag, dottestflag, alcoholtestflag, employeeflag, invitedflag, codingflag, gravatarurl, resumesummary, resumeobjective)
+values (hdz_applicant_id_seq.nextval, 'emma@gmail.com', '9a59d9a53750bd46745b249f5b15d1f7f9b8e06e7e4708f821d784bf409f5c67', 'S5jGIzsZGDvvOJqmrliZIgwhVYZtFg17V5roMHRjWTQ=', 'Emma', 'Enterman', '06/07/1985', null,'no', null,'yes', null,'yes', null, null, null, null, 'N', null, null, 'https://www.gravatar.com/avatar/f71c867b63a10eac797275abe231cb31?s=50', 
+'5 years of C# development experience', 'Gain a challenging position in C# development');
 
 create table HDZ_Education(
 educationid integer primary key,
@@ -189,7 +197,7 @@ values (hdz_positions_id_seq.nextval, 'non-developer', 'Cybersecurity');
 insert into HDZ_positions(positionid, positiontype, position)
 values (hdz_positions_id_seq.nextval, 'developer', 'Senior Software Engineer');
 insert into HDZ_positions(positionid, positiontype, position)
-values (hdz_positions_id_seq.nextval, 'developer', 'Entry level graduate');
+values (hdz_positions_id_seq.nextval, 'developer', 'Entry Level Programmer');
 
 
 create table HDZ_jobs(
@@ -235,13 +243,13 @@ insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallex
 values (hdz_jobs_id_seq.nextval, 5, 5, 'Senior Java Developer', 5);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 5, 5, 'Full Stack Senior Software Engineer', 5);
+values (hdz_jobs_id_seq.nextval, 5, 5, 'C# Senior Software Engineer', 5);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 6, 5, 'Entry level Java Programmer', 0);
+values (hdz_jobs_id_seq.nextval, 1, 5, 'C# Software Engineer', 0);
 
 insert into HDZ_Jobs (jobsid, positionid, numberopenings, description, overallexperience)
-values (hdz_jobs_id_seq.nextval, 6, 5, 'Entry level web development', 0);
+values (hdz_jobs_id_seq.nextval, 6, 5, 'C# Entry level development', 0);
 
 
 create table HDZ_application(
@@ -343,6 +351,10 @@ insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Jquery', 2.0, 1);
 insert into HDZ_jobskills (jobskillsid, jobskills, jobexperience, jobsid)
 values (hdz_jobskills_id_seq.nextval, 'Bootstrap', 2.0, 1);
+
+
+
+
 create table HDZ_applicantskills(
 applicantskillsid integer primary key,
 applicantid integer ,
@@ -351,21 +363,84 @@ experience number,
 CONSTRAINT fk_applicantskills_applicantID FOREIGN KEY (applicantID) references HDZ_applicant(applicantID)
 );
 
+-- java skills for applicants 1. 2, 3
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1, 'JSP', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'JSP', 5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1, 'Java', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'Java', 5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1,  'HTML', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1,  'HTML', 5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1, 'CSS', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'CSS', 5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 1, 'Servelets', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 1, 'Java', 4);
+
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 2, 'Java', 2.5);
-values (hdz_applicantskills_id_seq.nextval, 2, 'C#', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 2, 'JSP', 5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
-values (hdz_applicantskills_id_seq.nextval, 3, 'C#', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 2, 'Java', 5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 2,  'HTML', 5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 2, 'CSS', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 2, 'Java', 4.5);
+
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3, 'JSP', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3, 'Java', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3,  'HTML', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3, 'CSS', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3, 'Java', 5.5);
+
+-- HW skills for applicant 4
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 4, 'CPU Logic Design', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 4, 'Embedded systems', 2.5);
+
+-- QA skills for applicant 5
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 5, 'Selenium', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 5, 'Automated testing', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 5, 'integration testing', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 5, 'Junit testing', 2.5);
+
+-- C# skills for applicantss 6, 7, 8
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 6, 'C#', 3.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 6, 'ASP.NET', 3.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 6, 'XAML', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 6, 'Visual Studio', 3.5);
+
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 7, 'C#', 1.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 7, 'ASP.NET', 1.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 7, 'XAML', .5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 7, 'Visual Studio', 1.5);
+
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 8, 'C#', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 8, 'ASP.NET', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 8, 'XAML', 5.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 8, 'Visual Studio', 5.5);
+
 
 create table HDZ_jobquestions(
 jobquestionsid integer primary key,
