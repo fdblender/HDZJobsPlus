@@ -82,13 +82,15 @@ public class Apply extends HttpServlet {
 				}
 
 			} else {
+				System.out.println("in else appid");
 				applicant = (HdzApplicant) session.getAttribute("user");
 				HdzJob job = ApplicantDao.getJobById(jobid);
 				HdzApplication application = new HdzApplication();
 				List<HdzApplication> myapps = applicant.getHdzApplications();
+				System.out.println(jobid + "-> ->");
 				if (ApplicantDao.checkPreviouslyApplied(applicant, jobid)) {
 					request.setAttribute("message", "Already Applied for the Job");
-					request.getRequestDispatcher("/PendingAction").forward(request, response);
+					request.getRequestDispatcher("/YourApplications").forward(request, response);
 				} else {
 					if (ApplicantDao.checkFlags(applicant)) {
 						System.out.println("in all -- app");
