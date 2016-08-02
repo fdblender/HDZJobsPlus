@@ -1,3 +1,6 @@
+/**
+ * @author: Frances Blendermann
+ */
 package controllers;
 
 import java.io.IOException;
@@ -83,7 +86,7 @@ public class SaveCodingTest extends HttpServlet {
 									"Coding Test Challenge Completed",
 									"<html>Hi,<br/><br/> "
 											+  application.getHdzApplicant().getFirstname() + 
-											"completed his coding challenge. Pleae take it."
+											" completed his coding challenge. Pleae take it."
 											+ "<br/><br/> Thanks,<br/>HDZ Team</html>",
 									true);
 						} catch (MessagingException e) {
@@ -98,7 +101,7 @@ public class SaveCodingTest extends HttpServlet {
 		if (notestsfound) {
 			request.setAttribute("message", "No tests found.");
 		}
-		request.getRequestDispatcher("yourapplications.jsp").forward(request, response);		
+		request.getRequestDispatcher("YourApplications").forward(request, response);		
 		
 	}
 
