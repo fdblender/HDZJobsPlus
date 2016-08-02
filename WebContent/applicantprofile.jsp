@@ -220,7 +220,7 @@ function printMe() {
 				<c:forEach var="reference" items="${user.hdzReftables }">
 					<tr>
 						<td style="width:20%"><c:out value="${reference.refname }" /></td>
-						<td style="width:25%"><c:out value="${re10ference.refposition}" /></td>
+						<td style="width:25%"><c:out value="${reference.refposition}" /></td>
 						<td><c:out value="${reference.refemail}" /></td>
 						<td style="width:24%"><c:out value="${reference.refphone}" /></td>
 					</tr>
