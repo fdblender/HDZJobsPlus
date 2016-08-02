@@ -293,7 +293,6 @@ public class ApplicantDao {
 	}
 
 	public static boolean checkFlags(HdzApplicant applicant) {
-		// TODO Auto-generated method stub
 		boolean pass = true;
 		System.out.println(applicant.getAlcoholtestflag());
 		for (HdzEducation edu : applicant.getHdzEducations()) {
@@ -321,6 +320,39 @@ public class ApplicantDao {
 		if ((applicant.getCitizenflag() != null && applicant.getCitizenflag().equals("N"))
 				|| (applicant.getVeteranflag() != null && applicant.getVeteranflag().equals("N"))
 				|| (applicant.getVisaflag() != null && applicant.getVisaflag().equals("N"))) {
+			pass = false;
+		}
+
+		return pass;
+	}
+
+	public static boolean checkPositive(HdzApplicant applicant) {
+		boolean pass = true;
+		System.out.println(applicant.getAlcoholtestflag());
+		for (HdzEducation edu : applicant.getHdzEducations()) {
+			if (edu.getEducationflag() == null || !edu.getEducationflag().equals("Y")) {
+				pass = false;
+			}
+		}
+		for (HdzJobhistory job : applicant.getHdzJobhistories()) {
+			if (job.getJobhistoryflag() == null || !job.getJobhistoryflag().equals("Y")) {
+				pass = false;
+			}
+		}
+		for (HdzReftable ref : applicant.getHdzReftables()) {
+			if (ref.getRefflag() == null || !ref.getRefflag().equals("Y")) {
+				pass = false;
+			}
+		}
+		if ((applicant.getAlcoholtestflag() == null || !applicant.getAlcoholtestflag().equals("N"))
+				|| (applicant.getDottestflag() == null || !applicant.getDottestflag().equals("N"))
+				|| (applicant.getStdpanelflag() == null || !applicant.getStdpanelflag().equals("N"))) {
+
+			pass = false;
+		}
+		if ((applicant.getCitizenflag() == null || !applicant.getCitizenflag().equals("Y"))
+				|| (applicant.getVeteranflag() == null || !applicant.getVeteranflag().equals("Y"))
+				|| (applicant.getVisaflag() == null && !applicant.getVisaflag().equals("Y"))) {
 			pass = false;
 		}
 
