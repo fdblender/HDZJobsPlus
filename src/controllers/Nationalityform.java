@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.InterviewDao;
 import model.*;
 import util.Email;
 
@@ -67,8 +68,12 @@ public class Nationalityform extends HttpServlet {
 				
 				dao.PendingActionsDao.update(myapplication);
 				
-				if(comment!=null)
+				if(comment!=null && !comment.equals(""))
 				{
+					String old  = InterviewDao.getComment(myapplication);
+					if (old !=null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -80,8 +85,12 @@ public class Nationalityform extends HttpServlet {
 				
 			}
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -137,8 +146,12 @@ public class Nationalityform extends HttpServlet {
 			
 			dao.PendingActionsDao.update(nationalityapplication);
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(nationalityapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				nationalityapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	

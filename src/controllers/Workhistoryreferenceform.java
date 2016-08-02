@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.InterviewDao;
 import model.*;
 import util.Email;
 
@@ -93,9 +94,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				session.setAttribute("ApplicationComment", myapplication);
 				
 				
-				if(comment!=null)
+				if(comment!=null && !comment.equals(""))
 				{
-					
+					String old  = InterviewDao.getComment(myapplication);
+					if (old !=null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
 					
@@ -105,9 +109,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				}
 			}
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
-				System.out.println(comment);
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -164,8 +171,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				session.setAttribute("ApplicationComment", myapplication);
 				
-				if(comment!=null)
+				if(comment!=null && !comment.equals(""))
 				{
+					String old  = InterviewDao.getComment(myapplication);
+					if (old !=null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -177,8 +188,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				}
 			}
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				System.out.println(comment);
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -232,8 +247,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				
 				session.setAttribute("ApplicationComment", myapplication);
 				
-				if(comment!=null)
+				if(comment!=null && !comment.equals(""))
 				{
+					String old  = InterviewDao.getComment(myapplication);
+					if (old !=null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
 					
 					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -245,8 +264,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 				}
 			}
 			System.out.println(comment);
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				System.out.println(comment);
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -321,8 +344,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -382,8 +409,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
@@ -442,8 +473,12 @@ public class Workhistoryreferenceform extends HttpServlet {
 			
 			session.setAttribute("ApplicationComment", myapplication);
 			
-			if(comment!=null)
+			if(comment!=null && !comment.equals(""))
 			{
+				String old  = InterviewDao.getComment(myapplication);
+				if (old !=null && !old.equals("")) {
+					comment = comment + "<br/>" + old;
+				}
 				
 				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
 				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
