@@ -154,7 +154,7 @@
 											</c:forEach></td>
 											<c:if test="${job != null}">
 											<td><a class="btn btn-default btn-lg"
-											 href="Apply?applicantid=${applicant.applicantid}">
+											 href="Apply?applicantid=${applicant.applicantid}&jobid=${job.jobsid}">
 													Apply Job</a></td></c:if>
 									</c:forEach>
 								</table>

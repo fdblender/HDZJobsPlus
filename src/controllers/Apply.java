@@ -57,6 +57,15 @@ public class Apply extends HttpServlet {
 				applicant.setHdzApplications(myapps);
 				ApplicantDao.insert(application);
 				request.setAttribute("message", "Job Applied");
+			} else if (ApplicantDao.checkPositive(applicant)){
+				application.setAppstatus("WorkRefChecked");
+				application.setCodingtest("N");
+				application.setHdzJob(job);
+				application.setHdzApplicant(applicant);
+				myapps.add(application);
+				applicant.setHdzApplications(myapps);
+				ApplicantDao.insert(application);
+				request.setAttribute("message", "Job Applied");
 			} else {
 				request.setAttribute("message", "Background Check Failed");
 			}
