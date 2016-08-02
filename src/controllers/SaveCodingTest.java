@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import model.HdzApplication;
 import model.HdzJobquestion;
 import model.HdzPosition;
 import model.HdzTest;
+import util.Email;
 
 /**
  * Servlet implementation class EvaluateCompletedTest
@@ -76,7 +78,17 @@ public class SaveCodingTest extends HttpServlet {
 						
 						// add the response to the tests table											
 						TestsDao.insertTest(test);	
-						
+						try {
+							Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
+									"Coding Test Challenge Completed",
+									"<html>Hi,<br/><br/> "
+											+  application.getHdzApplicant().getFirstname() + 
+											"completed his coding challenge. Pleae take it."
+											+ "<br/><br/> Thanks,<br/>HDZ Team</html>",
+									true);
+						} catch (MessagingException e) {
+							e.printStackTrace();
+						}
 						notestsfound = false;
 					}
 				}
