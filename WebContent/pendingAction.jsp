@@ -97,7 +97,7 @@
 <body >
 <div id="container">
    <div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
-   <div id="body" style="height: 550px">
+   <div id="body">
    <div class="container" style="height: 100%">
 
 		<div style="background-color: white;" class="panel-body">
