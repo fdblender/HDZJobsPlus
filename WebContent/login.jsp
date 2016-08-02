@@ -49,7 +49,7 @@
 
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-<jsp:include page="navbar.jsp"></jsp:include>
+<jsp:include page="navbarLogin.jsp"></jsp:include>
 <div class="jumbotron text-center">
   <h1>HDZ</h1> 
   <p>We specialize in Web Development</p> 

@@ -88,11 +88,17 @@
 }
 </style>
 <script src="js/pendingAction.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 <title>Home</title>
 </head>
-<body id="body" class="ui-widget-content" style="border: 0;">
-	<jsp:include page="navbar.jsp"></jsp:include>
-	<div class="container">
+<body >
+<div id="container">
+   <div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
+   <div id="body" style="height: 550px">
+   <div class="container" style="height: 100%">
 
 		<div style="background-color: white;" class="panel-body">
 			<c:set var="mesL" scope="session" value="${message}" />
@@ -105,7 +111,7 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
 					<div id="accordion">
-					<h3 style="background-color: #01579b; color: #ffffff;">Search Applications</h3>
+					<h3 style="background-color: #24bdc2; color: #ffffff;"><b>Search Applications</b></h3>
 						<div>
 							<form action="ViewApplications" method="post">
 								<div class="form-group">
@@ -147,7 +153,7 @@
 								</c:if>
 							</form>
 						</div>
-						<h3 style="background-color: #01579b;color: #ffffff;">Pending Actions</h3>
+						<h3 style="background-color: #24bdc2;color: #ffffff;">Pending Actions</h3>
 						<div>
 						<c:set var="actions" scope="session" value="${actionList}" />
 								<c:if test="${actions != null}">
@@ -184,7 +190,7 @@
 								<h2>No Action Pending!!</h2>
 								</c:if>
 						</div>
-						<h3 style="background-color: #01579b;color: #ffffff;">Add Jobs</h3>
+						<h3 style="background-color: #24bdc2;color: #ffffff;">Add Jobs</h3>
 						<div>
 							<form id="target" action="AddJobs" method="post">
 								
@@ -203,7 +209,7 @@
 							</form>
 						</div>
 						<c:if test="${role == 'HiringManager'}">
-						<h3 style="background-color: #01579b;color: #ffffff;">Select Applicants</h3>
+						<h3 style="background-color: #24bdc2;color: #ffffff;">Hire Qualified Applicants</h3>
 						<div>
 								<table class="table table-bordered">
 								<tr>
@@ -232,7 +238,7 @@
 								</table>
 
 						</div>
-						<h3 style="background-color: #01579b;color: #ffffff;">Find Applicants</h3>
+						<h3 style="background-color: #24bdc2;color: #ffffff;">Find Applicants</h3>
 						<div>
 						<form action="FindApplicants" method="post">
 						<div class="form-group">
@@ -282,6 +288,12 @@
 			</div>
 		</div>
 	</div>
+	</div>
+   <div id="footer"><jsp:include page="footer.jsp"></jsp:include></div>
+</div>
+	
+	
+	
 
 </body>
 </html>
