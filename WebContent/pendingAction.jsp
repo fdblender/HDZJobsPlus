@@ -123,6 +123,7 @@
 									<thead>
 										<tr>
 											<th>AppId</th>
+											<th>Applicant Name</th>
 											<th>Status</th>
 											<th>Job Id</th>
 											<th>Job Title</th>
@@ -133,6 +134,7 @@
 										<tr>
 											<td><a href="ApplicationDetail?applicationid=${app.applicationid}">
 											<c:out value="${app.applicationid}"></c:out></a></td>
+											<td><c:out value="${app.hdzApplicant.firstname} ${app.hdzApplicant.lastname}"></c:out></td>
 											<td><c:out value="${app.appstatus}"></c:out></td>
 											<td><c:out value="${app.hdzJob.jobsid}"></c:out></td>
 											<td><c:out value="${app.hdzJob.hdzPosition.position}"></c:out></td>
