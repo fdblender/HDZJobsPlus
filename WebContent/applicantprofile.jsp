@@ -125,7 +125,7 @@ function printMe() {
 	<div class="row">	
 		<div class="col-sm-1"></div>	
 		<div class="col-sm-2">				
-			<img alt="Profile Picture" src="${user.gravatarurl}" width="50"		
+			<img alt="Profile Picture" src="${user.gravatarurl}" width="100"		
 				height="100" align="left" /> 
 		</div>	
 		<div class="col-sm-6">								
