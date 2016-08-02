@@ -172,11 +172,11 @@ position varchar2(50)
 insert into HDZ_positions(positionid, positiontype, position)
 values (hdz_positions_id_seq.nextval, 'developer', 'Software Engineer');
 insert into HDZ_positions(positionid, positiontype, position)
-values (hdz_positions_id_seq.nextval, null, 'Hardware Engineer');
+values (hdz_positions_id_seq.nextval, 'non-developer', 'Hardware Engineer');
 insert into HDZ_positions(positionid, positiontype, position)
-values (hdz_positions_id_seq.nextval, null, 'Quality Assurance');
+values (hdz_positions_id_seq.nextval, 'non-developer', 'Quality Assurance');
 insert into HDZ_positions(positionid, positiontype, position)
-values (hdz_positions_id_seq.nextval, null, 'Cybersecurity');
+values (hdz_positions_id_seq.nextval, 'non-developer', 'Cybersecurity');
 insert into HDZ_positions(positionid, positiontype, position)
 values (hdz_positions_id_seq.nextval, 'developer', 'Senior Software Engineer');
 insert into HDZ_positions(positionid, positiontype, position)
