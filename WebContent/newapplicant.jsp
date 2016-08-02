@@ -53,6 +53,10 @@
 		}
 	}
 </script>
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
 	<jsp:include page="navbar.jsp" />
