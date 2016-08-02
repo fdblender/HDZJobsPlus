@@ -23,7 +23,7 @@
 						<th>Job Description</th>
 						<th>Status</th>
 					</tr>
-					<c:forEach var="app" items="${user.hdzApplications}">
+					<c:forEach var="app" items="${yourApps}">
 						<tr>
 							<td><c:out value="${app.hdzJob.hdzPosition.position}" /></td>
 							<td><c:out value="${app.hdzJob.description}" /></td>

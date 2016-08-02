@@ -10,7 +10,7 @@
       <li ><a href="./YourApplications" style="color: #fff; font-weight: bold;font-size: 16px" >Your Applications</a></li> 
       <li><a href="./applicantprofile.jsp" style="color: #fff;font-weight: bold;font-size: 16px">My Profile</a></li>
     </c:if>
-      <c:if test="${role == 'HRAssistant'or role=='HRManager' or role=='HRSpecialist'or role=='HiringManager' or role=='ComplianceOfficer' or role=='HealthCareProfessional'}">
+      <c:if test="${role != 'applicant'}">
       <li><a href="./PendingAction" style="color: #fff;font-weight: bold;font-size: 16px" >Home
       </a></li>
       </c:if>

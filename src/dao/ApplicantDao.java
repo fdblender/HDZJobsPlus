@@ -226,7 +226,7 @@ public class ApplicantDao {
 
 	public static List<HdzJob> getAllJobs() {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
-		String qString = "select j from HdzJob j";
+		String qString = "select j from HdzJob j where j.numberopenings > 0";
 
 		List<HdzJob> jobs = null;
 		try {
