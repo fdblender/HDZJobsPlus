@@ -47,7 +47,7 @@
 							<select id="codinglanguage" name="codinglanguage">
 							<option value="java">Java</option>
 							<option value="python">Python</option>
-							<option value="c">C</option>
+							<option value="c">C#</option>
 						</select>
 					</div>
 					<div class="form-group">

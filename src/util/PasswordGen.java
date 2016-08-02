@@ -9,7 +9,7 @@ public class PasswordGen {
 		String password = firstname+"123";
 		String hashpwd = PasswordUtil.hashPasswordPlusSalt(password, salt);
 		String email = firstname+"123@gmail.com";
-		System.out.println(email+"  "+hashpwd+" "+salt+" "+firstname +" "+lastname);		
+		System.out.println(email+" hashed pwd: "+hashpwd+" salt: "+salt+" "+firstname +" "+lastname);		
 	}
 	
 	public static void main(String[] args) throws NoSuchAlgorithmException {		
@@ -46,9 +46,15 @@ public class PasswordGen {
 		String lastname7 = "smith";
 		printUserCredentials(firstname7, lastname7);
 		
-		String firstname8 = "don";
-		String lastname8 = "kristoff";
+		String firstname8 = "mick";
+		String lastname8 = "McClain";
 		printUserCredentials(firstname8, lastname8);
+		
+		String firstname9 = "zordon";
+		String lastname9 = "Zoom";
+		printUserCredentials(firstname9, lastname9);
+		
+		
 		
 	}
 
