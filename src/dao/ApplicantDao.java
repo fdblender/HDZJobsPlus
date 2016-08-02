@@ -244,11 +244,11 @@ public class ApplicantDao {
 	public static List<HdzJob> searchJobs(String search) {
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
 		List<HdzJob> searchposts = null;
-		String qString = "select j from HdzJob j " + "where j.position like :search";
+		String qString = "select j from HdzJob j " + "where lower(j.description) like :search";
 
 		try {
 			TypedQuery<HdzJob> query = em.createQuery(qString, HdzJob.class);
-			query.setParameter("search", "%" + search + "%");
+			query.setParameter("search", "%" + search.toLowerCase() + "%");
 			searchposts = query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();

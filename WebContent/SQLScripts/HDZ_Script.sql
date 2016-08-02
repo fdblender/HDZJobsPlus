@@ -288,6 +288,15 @@ values (hdz_application_id_seq.nextval, 4,'G', null, 4,'New',null);
 insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
 values (hdz_application_id_seq.nextval, 5,'G', null, 5,'New',null);
 
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 8,'G', null, 12,'New',null);
+
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 6,'G', null, 13,'New',null);
+
+insert into HDZ_application (applicationid, applicantID, codingtest, score, jobsID, appstatus, comments)
+values (hdz_application_id_seq.nextval, 7,'G', null, 14,'New',null);
+
 
 create table HDZ_employee(
 employeeid integer primary key,
