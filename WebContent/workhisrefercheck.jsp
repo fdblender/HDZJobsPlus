@@ -98,7 +98,7 @@ function limitText(limitField, limitCount, limitNum) {
     
    </td>
    <td align="center">
-    <c:out value="${VeteranApplication.comments}"/>  
+    ${VeteranApplication.comments}  
     
    </td>
    
@@ -172,7 +172,7 @@ function limitText(limitField, limitCount, limitNum) {
    </td>
    
     <td align="center">
-    <c:out value="${VeteranApplication.comments}"/>  
+    ${VeteranApplication.comments}
     
    </td>
     
@@ -239,7 +239,7 @@ function limitText(limitField, limitCount, limitNum) {
     </td>
     
      <td align="center">
-    <c:out value="${VeteranApplication.comments}"/>  
+    ${VeteranApplication.comments}
     
    </td>
     

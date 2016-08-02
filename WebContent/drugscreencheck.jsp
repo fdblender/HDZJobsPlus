@@ -133,7 +133,7 @@ function limitText(limitField, limitCount, limitNum) {
    
     <td align="center">
    
-   <c:out value="${DrugApplication.comments}"/>  
+   ${DrugApplication.comments}
        
     
    </td>  
