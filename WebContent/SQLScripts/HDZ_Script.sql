@@ -363,6 +363,9 @@ insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experien
 values (hdz_applicantskills_id_seq.nextval, 1, 'Servelets', 2.5);
 insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
 values (hdz_applicantskills_id_seq.nextval, 2, 'Java', 2.5);
+values (hdz_applicantskills_id_seq.nextval, 2, 'C#', 2.5);
+insert into HDZ_applicantskills(applicantskillsid, applicantid, skills, experience)
+values (hdz_applicantskills_id_seq.nextval, 3, 'C#', 2.5);
 
 create table HDZ_jobquestions(
 jobquestionsid integer primary key,

@@ -45,7 +45,8 @@ public class Apply extends HttpServlet {
 			List<HdzApplication> myapps = applicant.getHdzApplications();
 			
 			if (ApplicantDao.checkFlags(applicant)) {
-				if(applicant.getEmployeeflag().equals("Y")){
+				if((applicant.getEmployeeflag() != null && applicant.getEmployeeflag().equals("Y"))
+						|| ApplicantDao.checkPositive(applicant)){
 					application.setAppstatus("WorkRefChecked");
 				}else{
 				application.setAppstatus("New");
@@ -57,18 +58,10 @@ public class Apply extends HttpServlet {
 				applicant.setHdzApplications(myapps);
 				ApplicantDao.insert(application);
 				request.setAttribute("message", "Job Applied");
-			} else if (ApplicantDao.checkPositive(applicant)){
-				application.setAppstatus("WorkRefChecked");
-				application.setCodingtest("N");
-				application.setHdzJob(job);
-				application.setHdzApplicant(applicant);
-				myapps.add(application);
-				applicant.setHdzApplications(myapps);
-				ApplicantDao.insert(application);
-				request.setAttribute("message", "Job Applied");
 			} else {
 				request.setAttribute("message", "Background Check Failed");
-			}
+			} 
+		
 			
 			request.getRequestDispatcher("/PendingAction").forward(request, response);
 		}else {
@@ -78,7 +71,9 @@ public class Apply extends HttpServlet {
 			List<HdzApplication> myapps = applicant.getHdzApplications();
 			
 			if (ApplicantDao.checkFlags(applicant)) {
-				if(applicant.getEmployeeflag() != null &&  applicant.getEmployeeflag().equals("Y")){
+				System.out.println("in all -- app");
+				if((applicant.getEmployeeflag() != null &&  applicant.getEmployeeflag().equals("Y"))
+						|| ApplicantDao.checkPositive(applicant)){
 					application.setAppstatus("WorkRefChecked");
 				}else{
 				application.setAppstatus("New");

@@ -37,7 +37,7 @@ public class YourApplications extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("in YourApplications");
+		
 		HttpSession session = request.getSession();
 		String nextURL = "yourapplications.jsp";
 		HdzApplicant applicant = (HdzApplicant)session.getAttribute("user");		
@@ -52,7 +52,8 @@ public class YourApplications extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		} else {	
 			// get all applications for applicantid
-			applications = ApplicationsDao.getapplicationsByApplicantid(applicant.getApplicantid()+"");		
+			applications = ApplicationsDao.getapplicationsByApplicantid(applicant.getApplicantid()+"");
+			request.setAttribute("yourApps", applications);
 			for (HdzApplication application : applications) {		
 				System.out.println("Your application: "+application.getHdzJob().getDescription());
 				if (!application.getAppstatus().equals("Fail") && application.getCodingtest().equals("G")) {
@@ -81,7 +82,7 @@ public class YourApplications extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 
