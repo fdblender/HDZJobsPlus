@@ -101,7 +101,7 @@ function limitText(limitField, limitCount, limitNum) {
    </td>  
    
      <td align="center">
-    <c:out value="${NationalityCheck.comments}"/>  
+    ${NationalityCheck.comments}
     
    </td>
    
