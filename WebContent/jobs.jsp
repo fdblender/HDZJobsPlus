@@ -40,59 +40,70 @@
 	text-align: center;
 }
 
-.sectionheader {
-	font-weight: bold;
-	color: #3333ff;
-}
-
 .theader {
 	background-color: #f2f2f2;
 }
 </style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <jsp:include page="bootstrap.jsp" />
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
+
 <title>Job Openings</title>
 </head>
+<body style="color: #262626;">
+<div id="container">
+	<div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
+	<div id="body">
+		<div class="container" class="ui-widget-content" style="height: 100%">
 
-<body id="body" class="ui-widget-content" style="border: 0;">
-	<jsp:include page="navbar.jsp"></jsp:include>
-	<div class="container">
-		<div class="col-sm-1"></div>
-		<div class="col-sm-6">
-			<h3 class="sectionheader">Job Openings</h3>			
-			<h4>${query}</h4>
-			<form action="JobSearch">
-				<input type="text" name="search" id="search" /> <input
-					type="submit" name="submit" id="submit" value="Search" />
-			</form>
-			<br/>
-			<table class="table table-bordered">
-				<tr>
-					<th>Position</th>
-					<th>Job Description</th>
-					<th>Required Experience</th>
-					<th>Number of Openings</th>
-					<th>Action</th>
-				</tr>
-				<c:forEach var="job" items="${jobs}">
+			<!--   <body id="body" class="ui-widget-content" style="border: 0;">  -->
+
+
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<h2>Job Openings</h2>
+				<h4>${query}</h4>
+				<form action="JobSearch">
+					<input type="text" name="search" id="search" /> <input
+						type="submit" name="submit" id="submit" value="Search" />
+				</form>
+				<br />
+				<table class="table table-bordered table-striped table-hover" align="center" width="100%">
 					<tr>
-						<td>${job.hdzPosition.position}</td>
-						<td>${job.description}</td>
-						<td>${job.overallexperience}</td>
-						<td>${job.numberopenings}</td>
-						<td><c:if test="${role =='applicant'}">
-								<form action="Apply">
-									<input type="hidden" name="jobid" id="jobid"
-										value="${job.jobsid}" /> 
-									<input type="submit" name="submit" id="submit" value="Apply" />
-								</form>
-							</c:if></td>
+						<th>Position</th>
+						<th>Job Description</th>
+						<th>Required Experience</th>
+						<th>Number of Openings</th>
+						<th>Action</th>
 					</tr>
-				</c:forEach>
-			</table>
+					<c:forEach var="job" items="${jobs}">
+						<tr>
+							<td>${job.hdzPosition.position}</td>
+							<td>${job.description}</td>
+							<td>${job.overallexperience}</td>
+							<td>${job.numberopenings}</td>
+							<td><c:if test="${role =='applicant'}">
+									<form action="Apply">
+										<input type="hidden" name="jobid" id="jobid"
+											value="${job.jobsid}" /> <input type="submit" name="submit"
+											id="submit" value="Apply" />
+									</form>
+								</c:if></td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+			<div class="col-sm-2"></div>
+
 		</div>
-		<div class="col-sm-5"></div>
 	</div>
+	<div id="footer"><jsp:include page="footer.jsp"></jsp:include></div>
+</div>
+
 </body>
 
 </html>

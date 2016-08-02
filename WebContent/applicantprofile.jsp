@@ -30,6 +30,7 @@
 	href="https://jqueryui.com/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 <style>
 #draggable {
 	width: 0px;
@@ -105,6 +106,12 @@
 	}
 
 </style>
+<script src="js/pendingAction.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
+
 <title>Applicant Profile</title>
 <script>
 function printMe() {

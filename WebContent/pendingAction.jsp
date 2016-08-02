@@ -69,7 +69,7 @@
 
 #red .ui-slider-handle {
 	border-color: #ef2929;
-}
+}image
 
 #green .ui-slider-range {
 	background: #8ae234;
@@ -83,7 +83,7 @@
 	background: #01579b;
 }
 
-#blue .ui-slider-handle {
+#blue .ui-slider-handle {image
 	border-color: #01579b;
 }
 </style>
