@@ -53,7 +53,8 @@ public class YourApplications extends HttpServlet {
 		} else {	
 			// get all applications for applicantid
 			applications = ApplicationsDao.getapplicationsByApplicantid(applicant.getApplicantid()+"");		
-			for (HdzApplication application : applications) {					
+			for (HdzApplication application : applications) {		
+				System.out.println("Your application: "+application.getHdzJob().getDescription());
 				if (!application.getAppstatus().equals("Fail") && application.getCodingtest().equals("G")) {
 					position = application.getHdzJob().getHdzPosition();
 					if (position.getPositiontype() != null) {	
