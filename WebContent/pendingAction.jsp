@@ -88,7 +88,7 @@
 }
 </style>
 <script src="js/pendingAction.js"></script>
-<title>Pending Actions</title>
+<title>Home</title>
 </head>
 <body id="body" class="ui-widget-content" style="border: 0;">
 	<jsp:include page="navbar.jsp"></jsp:include>
