@@ -53,8 +53,33 @@
 		}
 	}
 </script>
-<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<script>
+	function validateEmailPswd() {
+		var email = $('#email').val();
+		// http://stackoverflow.com/a/46181/11236
+
+		// check the email
+		var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		var goodemail = re.test(email);
+		if (goodemail == false)
+			alert("Invalid Email! " + email);
+
+		// check the password and restrict the length to 4 - 15 characters
+		// the passsword must be lower case, upper case or a number
+		var password = $('#password').val();
+		var pword = new RegExp(/^[a-zA-Z0-9]{4,15}$/)
+		goodpassword = pword.test(password)
+		if (!goodpassword) {
+			alert("Invalid Password! " + password);
+		}
+
+		return (goodpassword && goodemail);
+	}
+</script>
+<link href="http://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato"
+	rel="stylesheet" type="text/css">
 <!-- <link rel="stylesheet" href="css/style.css" /> -->
 <link rel="stylesheet" href="css/theme.css" />
 </head>
@@ -63,9 +88,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-1"></div>
-			<div class="col-sm-10">
+			<div class="col-lg-7">
 				<form action="NewApplicant" onsubmit="return validateForm()"
-					name="applicant" id="applicant">
+					onsubmit="return validateEmailPswd" name="applicant" id="applicant">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div align="left">Personal</div>
@@ -74,19 +99,25 @@
 						<div class="panel-body">
 
 							<fieldset align="left">
-								First name:<br /> <input type="text" maxlength="100" name="firstname"
-									id="firstname" /><br /> Last name: <br /> <input type="text" maxlength="100"
-									name="lastname" id="lastname" /><br /> Email: <br /> <input
-									type="text" maxlength="50" name="email" id="email" /><br /> Password:<br />
-								<input type="password" name="password" id="password" /><br />
-								Date of Birth:<br /> <input type="text" name="dob" id="dob" /><br />
-								Veteran Status: <br /> <select name="veteran">
+							<div class="row">
+								<div class="col-sm-4">First name:<br /> <input type="text" maxlength="100"
+									name="firstname" id="firstname" /><br /> Last name: <br /> <input
+									type="text" maxlength="100" name="lastname" id="lastname" />
+									</div>
+								<div class="col-sm-4">Email: <br /> <input type="email" maxlength="50" name="email"
+									id="email" /><br /> Password:<br /> <input type="password"
+									name="password" id="password" /></div>
+								<div class="col-sm-4">Date of Birth:<br />
+								<input type="date" name="dob" id="dob" /><br /> Veteran
+								Status: <br /> <select name="veteran">
 									<option value="yes">Veteran</option>
 									<option value="no">Non-veteran</option>
 								</select> <br /> Citizenship<br /> <select name="citizen">
 									<option value="yes">Citizen</option>
 									<option value="no">Non-citizen</option>
-								</select>
+								</select></div>
+							</div>
+								
 							</fieldset>
 						</div>
 					</div>
@@ -98,10 +129,13 @@
 						<div class="panel-body">
 
 							<fieldset align="center">
-							Resume Objective :<br/>
-							<textarea form="applicant" id ="objective" name ="objective"rows="7" cols="55" maxlength="200"></textarea><br/>
-							Resume Summary :<br/>
-							<textarea form="applicant" name ="summary" id="summary" rows="7" cols="55" maxlength="200"></textarea><br/>
+								Resume Objective :<br />
+								<textarea form="applicant" id="objective" name="objective"
+									rows="7" cols="55" maxlength="200"></textarea>
+								<br /> Resume Summary :<br />
+								<textarea form="applicant" name="summary" id="summary" rows="7"
+									cols="55" maxlength="200"></textarea>
+								<br />
 							</fieldset>
 						</div>
 					</div>
@@ -111,19 +145,19 @@
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								<table>
+								<table class="table">
 									<tr>
 										<td>Skill 1<br /> <input type="text" name="skill1"
-											id="skill1" /><br /> Experience:<br /> <input type="number"
-											name="exp1" id=exp1 /><br />
+											id="skill1" /><br /> Experience:<br /> <input
+											type="number" name="exp1" id=exp1 /><br />
 										</td>
 										<td>Skill 2<br /> <input type="text" name="skill2"
-											id="skill2" /><br /> Experience:<br /> <input type="number"
-											name="exp2" id=exp2 /><br />
+											id="skill2" /><br /> Experience:<br /> <input
+											type="number" name="exp2" id=exp2 /><br />
 										</td>
 										<td>Skill 3<br /> <input type="text" name="skill3"
-											id="skill3" /><br /> Experience:<br /> <input type="number"
-											name="exp3" id=exp3 /><br />
+											id="skill3" /><br /> Experience:<br /> <input
+											type="number" name="exp3" id=exp3 /><br />
 										</td>
 									</tr>
 								</table>
@@ -137,21 +171,21 @@
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								<table>
+								<table class="table">
 									<tr>
 										<td>Institution 1:<br /> <input type="text" name="edu1"
 											id="edu1" /><br /> Degree 1:<br /> <input type="text"
 											name="degree1" id="degree1" /><br /> Date completed 1:<br />
-											<input type="text" name="date1" id="date1" /> <br />
+											<input type="date" name="date1" id="date1" /> <br />
 										</td>
-										<td>Institution 2:<br/> <input type="text" name="edu2"
+										<td>Institution 2:<br /> <input type="text" name="edu2"
 											id="edu2" /><br /> Degree 2:<br /> <input type="text"
 											name="degree2" id="degree2" /><br /> Date completed 2:<br />
-											<input type="text" name="date2" id="date2" /> <br />
+											<input type="date" name="date2" id="date2" /> <br />
 										<td>Institution 3:<br /> <input type="text" name="edu3"
-											id="edu3" /><br/> Degree 3:<br /> <input type="text"
+											id="edu3" /><br /> Degree 3:<br /> <input type="text"
 											name="degree3" id="degree3" /><br /> Date completed 3:<br />
-											<input type="text" name="date3" id="date3" /><br />
+											<input type="date" name="date3" id="date3" /><br />
 										</td>
 									</tr>
 								</table>
@@ -166,30 +200,30 @@
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								<table>
+								<table class="table">
 									<tr>
 										<td>Job title:<br /> <input type="text" name="job1"
 											id="job1" /> <br /> Company:<br /> <input type="text"
 											name="company1" id="company1" /><br /> Job Description: <br />
 											<input type="text" name="jobdesc1" id="jobdesc1" /><br />
-											Start date: <br /> <input type="text" name="start1"
-											id="start1" /><br /> End date: <br /> <input type="text"
+											Start date: <br /> <input type="date" name="start1"
+											id="start1" /><br /> End date: <br /> <input type="date"
 											name="leave1" id="leave1" /> <br />
 										</td>
 										<td>Job title: <br /> <input type="text" name="job2"
 											id="job2" /><br /> Company: <br /> <input type="text"
 											name="company2" id="company2" /><br /> Job Description: <br />
 											<input type="text" name="jobdesc2" id="jobdesc2" /> <br />
-											Start date:<br /> <input type="text" name="start2"
-											id="start2" /><br /> End date: <br /> <input type="text"
+											Start date:<br /> <input type="date" name="start2"
+											id="start2" /><br /> End date: <br /> <input type="date"
 											name="leave2" id="leave2" /><br />
 										</td>
 										<td>Job title: <br /> <input type="text" name="job3"
-											id="job3" /><br/> Company: <br /> <input type="text"
+											id="job3" /><br /> Company: <br /> <input type="text"
 											name="company3" id="company3" /><br /> Job Description: <br />
 											<input type="text" name="jobdesc3" id="jobdesc3" /><br />
-											Start date: <br /> <input type="text" name="start3"
-											id="start3" /><br/> End date:<br /> <input type="text"
+											Start date: <br /> <input type="date" name="start3"
+											id="start3" /><br /> End date:<br /> <input type="date"
 											name="leave3" id="leave3" /> <br />
 										</td>
 									</tr>
@@ -204,26 +238,28 @@
 						</div>
 						<div class="panel-body">
 							<fieldset>
-								<table>
+								<table class="table">
 									<tr>
 										<td>Name:<br /> <input type="text" name="refname1"
 											id="refname1" /><br /> Phone:<br /> <input type="text"
 											name="refphone1" id="refphone1" /><br /> Email:<br /> <input
-											type="text" name="refemail1" id="refemail1" /><br />
+											type="email" name="refemail1" id="refemail1" /><br />
 											Position:<br /> <input type="text" name="refpos1"
 											id="refpos1" /><br />
 										</td>
 										<td>Name: <br /> <input type="text" name="refname2"
-											id="refname2" /><br/> Phone:<br /> <input type="text"
+											id="refname2" /><br /> Phone:<br /> <input type="text"
 											name="refphone2" id="refphone2" /><br /> Email: <br /> <input
-											type="text" name="refemail2" id="refemail2" /><br/> Position:<br />
-											<input type="text" name="refpos2" id="refpos2" /><br />
+											type="email" name="refemail2" id="refemail2" /><br />
+											Position:<br /> <input type="text" name="refpos2"
+											id="refpos2" /><br />
 										</td>
 										<td>Name:<br /> <input type="text" name="refname3"
-											id="refname3" /><br/> Phone:<br /> <input type="text"
+											id="refname3" /><br /> Phone:<br /> <input type="text"
 											name="refphone3" id="refphone3" /><br /> Email:<br /> <input
-											type="text" name="refemail3" id="refemail3" /><br/> Position:<br />
-											<input type="text" name="refpos3" id="refpos3" /><br />
+											type="email" name="refemail3" id="refemail3" /><br />
+											Position:<br /> <input type="text" name="refpos3"
+											id="refpos3" /><br />
 										</td>
 									</tr>
 								</table>
