@@ -86,6 +86,11 @@
 #blue .ui-slider-handle {image
 	border-color: #01579b;
 }
+/* .accordion-section {
+autoHeight: false;
+/* height: auto; */
+} */
+
 </style>
 <script src="js/pendingAction.js"></script>
 <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -110,7 +115,7 @@
 			<div class="row">
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
-					<div id="accordion">
+					<div id="accordion" >
 					<h3 style="background-color:  #fadddc; color: #262626;"><b>Search Applications</b></h3>
 						<div>
 							<form action="ViewApplications" method="post">
@@ -149,7 +154,7 @@
 								</table>
 								</c:if>
 								<c:if test="${application == null}">
-								<h4>No records found!</h4>
+								<h3>No records found!</h3>
 								</c:if>
 							</form>
 						</div>
@@ -187,7 +192,7 @@
 							</table>
 							</c:if>
 							<c:if test="${actions == null}">
-								<h2>No Action Pending!!</h2>
+								<h3>No Action Pending!!</h3>
 								</c:if>
 						</div>
 						<h3 style="background-color:  #fadddc;color: #262626;"><b>Add Jobs</b></h3>
