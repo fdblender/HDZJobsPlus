@@ -9,7 +9,7 @@ public class PasswordGen {
 		String password = firstname+"123";
 		String hashpwd = PasswordUtil.hashPasswordPlusSalt(password, salt);
 		String email = firstname+"123@gmail.com";
-		System.out.println(email+" hashed pwd: "+hashpwd+" salt: "+salt+" "+firstname +" "+lastname);		
+		/*System.out.println(email+" hashed pwd: "+hashpwd+" salt: "+salt+" "+firstname +" "+lastname);*/		
 	}
 	
 	public static void main(String[] args) throws NoSuchAlgorithmException {		

@@ -23,7 +23,6 @@ public class PendingActionsDao {
 			em.merge(user);
 			trans.commit();
 		} catch (Exception e) {
-		e.printStackTrace();
 			trans.rollback();
 		} finally {
 			em.close();
@@ -95,7 +94,7 @@ public class PendingActionsDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -111,7 +110,7 @@ public class PendingActionsDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -127,7 +126,7 @@ public class PendingActionsDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -143,7 +142,7 @@ public class PendingActionsDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -159,7 +158,7 @@ public class PendingActionsDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -181,10 +180,9 @@ public class PendingActionsDao {
 			post = q.getResultList();
 
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} catch (Exception e) {
-
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -206,10 +204,9 @@ public class PendingActionsDao {
 			post = q.getResultList();
 
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} catch (Exception e) {
-
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -233,8 +230,7 @@ public class PendingActionsDao {
 		} catch (NoResultException e) {
 			System.out.println(e);
 		} catch (Exception e) {
-
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -361,7 +357,7 @@ public class PendingActionsDao {
 		try {
 			hdzApplication = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -378,7 +374,7 @@ public class PendingActionsDao {
 		try {
 			hdzApplication = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}
@@ -395,7 +391,7 @@ public class PendingActionsDao {
 		try {
 			hdzApplication = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
+			return null;
 		} finally {
 			em.close();
 		}

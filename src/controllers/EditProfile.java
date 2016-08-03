@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class EditProfile
+ * @author Josh
  */
 @WebServlet("/EditProfile")
 public class EditProfile extends HttpServlet {
@@ -26,7 +27,7 @@ public class EditProfile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doPost(request, response);
 	}
 
@@ -34,8 +35,8 @@ public class EditProfile extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String nextUrl="applicantprofile.jsp";
+		
+		
 				
 	}
 

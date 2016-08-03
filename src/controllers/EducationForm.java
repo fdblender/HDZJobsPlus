@@ -17,178 +17,185 @@ import util.Email;
 
 /**
  * Servlet implementation class EducationForm
+ * 
+ * @author Xiao
  */
 @WebServlet("/EducationForm")
 public class EducationForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EducationForm() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		HttpSession session = request.getSession();	
-		String eduid=request.getParameter("eduid");	
-		String applicationid=request.getParameter("applicationid");
-		String comment=request.getParameter("addcomment");
-		
-		
-		if(applicationid!=null)
-		{
-			session.setAttribute("EduApplicationid", applicationid);
-			
-			HdzApplication application=dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
-			
-			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(application.getHdzApplicant().getApplicantid());
-			
-			session.setAttribute("EducationCheck", educations);
-			
-			session.setAttribute("ApplicationComment", application);
-			
-			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
-		}
-		
-		if(eduid!=null)
-		{
-			session.setAttribute("hiremessage", null);	
-			HdzEducation myeducation=dao.PendingActionsDao.getEdubyEduid(eduid);
-			
-			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
-			
-			myeducation.setEducationflag("Y");
-			
-			
-			dao.PendingActionsDao.update(myeducation);
-
-			if(dao.PendingActionsDao.checkAppStatus(myapplication))
-			{
-				
-				
-				dao.PendingActionsDao.update(myapplication);
-				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
-				
-				session.setAttribute("ApplicationComment", myapplication);
-				
-				if(comment!=null && !comment.equals(""))
-				{
-					String old  = InterviewDao.getComment(myapplication);
-					if (old !=null && !old.equals("")) {
-						comment = comment + "<br/>" + old;
-					}
-					
-					HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-					myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"): "+comment);	
-					
-					dao.PendingActionsDao.update(myapplication);
-					myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
-					session.setAttribute("ApplicationComment", myapplication);
-					
-				}
-				
-			}
-			
-			if(comment!=null && !comment.equals(""))
-			{
-				String old  = InterviewDao.getComment(myapplication);
-				if (old !=null && !old.equals("")) {
-					comment = comment + "<br/>" + old;
-				}
-				
-				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+" ("+user.getPosition()+"):"+comment);	
-				
-				dao.PendingActionsDao.update(myapplication);
-				myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
-				session.setAttribute("ApplicationComment", myapplication);
-				
-			}
-			
-			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(myapplication.getApplicationid()+ "");
-			session.setAttribute("EducationCheck", educations);
-			session.setAttribute("ApplicationComment", myapplication);
-			
-			request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
-			
-		}
-		
-		
-		
-		
+	public EducationForm() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		HttpSession session = request.getSession();	
-		String eduid=request.getParameter("eduid");
-		String comment=request.getParameter("addcomment");
-		if(eduid!=null)
-		{
-			
-			HdzEducation myeducation=dao.PendingActionsDao.getEdubyEduid(eduid);
-			
-			HdzApplication myapplication=dao.PendingActionsDao.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
-			
-			myeducation.setEducationflag("N");
-			
-			dao.PendingActionsDao.update(myeducation);
-			
-			myapplication.setAppstatus("Fail");
-			
-			session.setAttribute("hiremessage", "The Applicant Failed!!!!");
-			
-			dao.PendingActionsDao.update(myapplication);
-			
-			session.setAttribute("ApplicationComment", myapplication);
-			
-			try {
-				Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com",
-						"Application status Info",
-						"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
-								+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
-								+ "<br/> Thanks,<br/>HDZ Team</html>",
-						true);
-			} catch (MessagingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			HttpSession session = request.getSession();
+			String eduid = request.getParameter("eduid");
+			String applicationid = request.getParameter("applicationid");
+			String comment = request.getParameter("addcomment");
+
+			if (applicationid != null) {
+				session.setAttribute("EduApplicationid", applicationid);
+
+				HdzApplication application = dao.PendingActionsDao.getapplicationbyapplicationid(applicationid);
+
+				List<HdzEducation> educations = dao.PendingActionsDao
+						.getEducationbyapplicantid(application.getHdzApplicant().getApplicantid());
+
+				session.setAttribute("EducationCheck", educations);
+
+				session.setAttribute("ApplicationComment", application);
+
+				request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
 			}
-			
-			if(comment!=null && !comment.equals(""))
-			{
-				String old  = InterviewDao.getComment(myapplication);
-				if (old !=null && !old.equals("")) {
-					comment = comment + "<br/>" + old;
+
+			if (eduid != null) {
+				session.setAttribute("hiremessage", null);
+				HdzEducation myeducation = dao.PendingActionsDao.getEdubyEduid(eduid);
+
+				HdzApplication myapplication = dao.PendingActionsDao
+						.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
+
+				myeducation.setEducationflag("Y");
+
+				dao.PendingActionsDao.update(myeducation);
+
+				if (dao.PendingActionsDao.checkAppStatus(myapplication)) {
+
+					dao.PendingActionsDao.update(myapplication);
+					myapplication = dao.PendingActionsDao
+							.getapplicationbyapplicationid(myapplication.getApplicationid() + "");
+
+					session.setAttribute("ApplicationComment", myapplication);
+
+					if (comment != null && !comment.equals("")) {
+						String old = InterviewDao.getComment(myapplication);
+						if (old != null && !old.equals("")) {
+							comment = comment + "<br/>" + old;
+						}
+
+						HdzEmployee user = (HdzEmployee) session.getAttribute("user");
+						myapplication.setComments(user.getEmpname() + " (" + user.getPosition() + "): " + comment);
+
+						dao.PendingActionsDao.update(myapplication);
+						myapplication = dao.PendingActionsDao
+								.getapplicationbyapplicationid(myapplication.getApplicationid() + "");
+						session.setAttribute("ApplicationComment", myapplication);
+
+					}
+
 				}
-				
-				HdzEmployee user=(HdzEmployee)session.getAttribute("user");
-				myapplication.setComments(user.getEmpname()+""+user.getPosition()+":"+comment);	
-				
-				dao.PendingActionsDao.update(myapplication);
-				
+
+				if (comment != null && !comment.equals("")) {
+					String old = InterviewDao.getComment(myapplication);
+					if (old != null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
+
+					HdzEmployee user = (HdzEmployee) session.getAttribute("user");
+					myapplication.setComments(user.getEmpname() + " (" + user.getPosition() + "):" + comment);
+
+					dao.PendingActionsDao.update(myapplication);
+					myapplication = dao.PendingActionsDao
+							.getapplicationbyapplicationid(myapplication.getApplicationid() + "");
+					session.setAttribute("ApplicationComment", myapplication);
+
+				}
+
+				List<HdzEducation> educations = dao.PendingActionsDao
+						.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
+				myapplication = dao.PendingActionsDao
+						.getapplicationbyapplicationid(myapplication.getApplicationid() + "");
+				session.setAttribute("EducationCheck", educations);
 				session.setAttribute("ApplicationComment", myapplication);
-				
+
+				request.getRequestDispatcher("educationcheck.jsp").forward(request, response);
+
 			}
-			
-			List<HdzEducation> educations=dao.PendingActionsDao.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
-			
-			session.setAttribute("EducationCheck", educations);
-			
-			session.setAttribute("ApplicationComment", myapplication);
-			
-			request.getRequestDispatcher("/PendingAction").forward(request, response);
-			
+		} catch (Exception e) {
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
-		
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			HttpSession session = request.getSession();
+
+			String eduid = request.getParameter("eduid");
+			String comment = request.getParameter("addcomment");
+			if (eduid != null) {
+
+				HdzEducation myeducation = dao.PendingActionsDao.getEdubyEduid(eduid);
+
+				HdzApplication myapplication = dao.PendingActionsDao
+						.getapplicationbyapplicationid(session.getAttribute("EduApplicationid").toString());
+
+				myeducation.setEducationflag("N");
+
+				dao.PendingActionsDao.update(myeducation);
+
+				myapplication.setAppstatus("Fail");
+
+				session.setAttribute("hiremessage", "The Applicant Failed!!!!");
+
+				dao.PendingActionsDao.update(myapplication);
+
+				session.setAttribute("ApplicationComment", myapplication);
+
+				try {
+					Email.sendEmail("study.javaclass@gmail.com", "study.javaclass@gmail.com", "Application status Info",
+							"<html>Hi " + myapplication.getHdzApplicant().getFirstname() + ",<br/> "
+									+ "We Regret to Inform you that we are not proceeding further with your Application at this point."
+									+ "<br/> Thanks,<br/>HDZ Team</html>",
+							true);
+				} catch (MessagingException e) {
+					
+				}
+
+				if (comment != null && !comment.equals("")) {
+					String old = InterviewDao.getComment(myapplication);
+					if (old != null && !old.equals("")) {
+						comment = comment + "<br/>" + old;
+					}
+
+					HdzEmployee user = (HdzEmployee) session.getAttribute("user");
+					myapplication.setComments(user.getEmpname() + "" + user.getPosition() + ":" + comment);
+
+					dao.PendingActionsDao.update(myapplication);
+
+					session.setAttribute("ApplicationComment", myapplication);
+
+				}
+
+				List<HdzEducation> educations = dao.PendingActionsDao
+						.getEducationbyapplicantid(myapplication.getHdzApplicant().getApplicantid());
+
+				session.setAttribute("EducationCheck", educations);
+
+				session.setAttribute("ApplicationComment", myapplication);
+
+				request.getRequestDispatcher("/PendingAction").forward(request, response);
+
+			}
+		} catch (Exception e) {
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
+		}
+
 	}
 
 }

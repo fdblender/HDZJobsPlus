@@ -14,55 +14,64 @@ import services.InterviewService;
 
 /**
  * Servlet implementation class InterviewForm
+ * 
+ * @author Xiao
  */
 @WebServlet("/InterviewForm")
 public class InterviewForm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InterviewForm() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public InterviewForm() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
-		HdzApplication hdzApplication = (HdzApplication) request.getAttribute("app");
-		hdzApplication.setCodingtest(InterviewService.getCodingTest(hdzApplication.getApplicationid()));
-		request.setAttribute("app", hdzApplication);
-		if (employee == null) {
-			request.setAttribute("message", "Log in!!");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
-			String role = (String) session.getAttribute("role");
-			if (role.equals("HiringManager")) {
-				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HM"));
-				request.setAttribute("interviewType", "HM Interview");
-				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
-			} else if (role.equals("HRManager")) {
-				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"HR"));
-				request.setAttribute("interviewType", "HR Interview");				
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			HttpSession session = request.getSession();
+			HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
+			HdzApplication hdzApplication = (HdzApplication) request.getAttribute("app");
+			hdzApplication.setCodingtest(InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+			request.setAttribute("app", hdzApplication);
+			if (employee == null) {
+				request.setAttribute("message", "Log in!!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} else {
-				request.setAttribute("questions", InterviewService.getQuestions(hdzApplication,"GI"));
-				request.setAttribute("interviewType", "Group Interview");
-				request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
-				
-			} 
-			request.getRequestDispatcher("interview.jsp").forward(request, response);
+				String role = (String) session.getAttribute("role");
+				if (role.equals("HiringManager")) {
+					request.setAttribute("questions", InterviewService.getQuestions(hdzApplication, "HM"));
+					request.setAttribute("interviewType", "HM Interview");
+					request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+				} else if (role.equals("HRManager")) {
+					request.setAttribute("questions", InterviewService.getQuestions(hdzApplication, "HR"));
+					request.setAttribute("interviewType", "HR Interview");
+				} else {
+					request.setAttribute("questions", InterviewService.getQuestions(hdzApplication, "GI"));
+					request.setAttribute("interviewType", "Group Interview");
+					request.setAttribute("coding", InterviewService.getCodingTest(hdzApplication.getApplicationid()));
+
+				}
+				request.getRequestDispatcher("interview.jsp").forward(request, response);
+			}
+		} catch (Exception e) {
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 

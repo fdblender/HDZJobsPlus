@@ -22,7 +22,6 @@ public class ValidateUserDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
 			em.close();
 		}
 
@@ -44,8 +43,7 @@ public class ValidateUserDao {
 				}
 	
 			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				return null;
 			}
 		}
 
@@ -62,7 +60,6 @@ public class ValidateUserDao {
 		try {
 			user = q.getSingleResult();
 		} catch (NoResultException e) {
-			System.out.println(e);
 			em.close();
 		}
 
@@ -84,8 +81,7 @@ public class ValidateUserDao {
 				}
 	
 			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				return null;
 			}
 		}
 

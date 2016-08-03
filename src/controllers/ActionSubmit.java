@@ -14,6 +14,8 @@ import services.InterviewService;
 
 /**
  * Servlet implementation class ActionSubmit
+ * 
+ * @author Navreet
  */
 @WebServlet("/ActionSubmit")
 public class ActionSubmit extends HttpServlet {
@@ -42,41 +44,45 @@ public class ActionSubmit extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
-		String urlToRedirect = null;
-		String appid = request.getParameter("applicationid");
-		HdzApplication hdzApplication = InterviewService.getHdzApplication(appid);
-		request.setAttribute("app", hdzApplication);
-		if (employee == null) {
-			request.setAttribute("message", "Log in!!");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
-			String role = (String) session.getAttribute("role");
-			session.setAttribute("applicationid", request.getAttribute("applicationid"));
-			if (role.equals("ComplianceOfficer")) {
-				urlToRedirect = "/Nationalityform";
+		try {
+			HttpSession session = request.getSession();
+			HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
+			String urlToRedirect = null;
+			String appid = request.getParameter("applicationid");
+			HdzApplication hdzApplication = InterviewService.getHdzApplication(appid);
+			request.setAttribute("app", hdzApplication);
+			if (employee == null) {
+				request.setAttribute("message", "Log in!!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			} else {
+				String role = (String) session.getAttribute("role");
+				session.setAttribute("applicationid", request.getAttribute("applicationid"));
+				if (role.equals("ComplianceOfficer")) {
+					urlToRedirect = "/Nationalityform";
 
-			} else if (role.equals("HRAssistant")) {
-				urlToRedirect = "/Workhistoryreferenceform";
+				} else if (role.equals("HRAssistant")) {
+					urlToRedirect = "/Workhistoryreferenceform";
 
-			} else if (role.equals("HRManager")) {
-				urlToRedirect = "/InterviewForm";
+				} else if (role.equals("HRManager")) {
+					urlToRedirect = "/InterviewForm";
 
-			} else if (role.equals("HRSpecialist")) {
-				urlToRedirect = "/EducationForm";
+				} else if (role.equals("HRSpecialist")) {
+					urlToRedirect = "/EducationForm";
 
-			} else if (role.equals("HealthCareProfessional")) {
-				urlToRedirect = "/DrugCheckForm";
+				} else if (role.equals("HealthCareProfessional")) {
+					urlToRedirect = "/DrugCheckForm";
 
-			} else if (role.equals("HiringManager")) {
-				urlToRedirect = "/InterviewForm";
+				} else if (role.equals("HiringManager")) {
+					urlToRedirect = "/InterviewForm";
 
-			} else{
-				urlToRedirect = "/InterviewForm";
+				} else {
+					urlToRedirect = "/InterviewForm";
+				}
+
+				request.getRequestDispatcher(urlToRedirect).forward(request, response);
 			}
-
-			request.getRequestDispatcher(urlToRedirect).forward(request, response);
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 

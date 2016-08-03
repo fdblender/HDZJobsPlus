@@ -45,7 +45,7 @@ public class ApplicantDao {
 			query.setParameter("lastname", lastname);
 			applicant = query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -234,7 +234,7 @@ public class ApplicantDao {
 			jobs = query.getResultList();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -251,7 +251,7 @@ public class ApplicantDao {
 			query.setParameter("search", "%" + search.toLowerCase() + "%");
 			searchposts = query.getResultList();
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -268,7 +268,7 @@ public class ApplicantDao {
 			query.setParameter("search", Long.parseLong(id));
 			searchposts = query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -285,7 +285,7 @@ public class ApplicantDao {
 			query.setParameter("id", Long.parseLong(appid));
 			applicant = query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -294,7 +294,6 @@ public class ApplicantDao {
 
 	public static boolean checkFlags(HdzApplicant applicant) {
 		boolean pass = true;
-		System.out.println(applicant.getAlcoholtestflag());
 		for (HdzEducation edu : applicant.getHdzEducations()) {
 			if (edu.getEducationflag() != null && edu.getEducationflag().equals("N")) {
 				pass = false;
@@ -313,7 +312,7 @@ public class ApplicantDao {
 		if ((applicant.getAlcoholtestflag() != null && applicant.getAlcoholtestflag().equals("Y"))
 				|| (applicant.getDottestflag() != null && applicant.getDottestflag().equals("Y"))
 				|| (applicant.getStdpanelflag() != null && applicant.getStdpanelflag().equals("Y"))) {
-			System.out.println("in condn");
+			
 
 			pass = false;
 		}
@@ -330,7 +329,7 @@ public class ApplicantDao {
 		boolean pass = true;
 		for (HdzEducation edu : applicant.getHdzEducations()) {
 			if (edu.getEducationflag() == null || !edu.getEducationflag().equals("Y")) {
-				System.out.println("failed as getEducationflag");
+				
 				pass = false;
 			}
 		}
@@ -341,20 +340,20 @@ public class ApplicantDao {
 		}
 		for (HdzReftable ref : applicant.getHdzReftables()) {
 			if (ref.getRefflag() == null || !ref.getRefflag().equals("Y")) {
-				System.out.println("failed as getRefflag");
+				
 				pass = false;
 			}
 		}
 		if ((applicant.getAlcoholtestflag() == null || !applicant.getAlcoholtestflag().equals("N"))
 				|| (applicant.getDottestflag() == null || !applicant.getDottestflag().equals("N"))
 				|| (applicant.getStdpanelflag() == null || !applicant.getStdpanelflag().equals("N"))) {
-			System.out.println("failed as getAlcoholtestflag");
+			
 			pass = false;
 		}
 		if ((applicant.getCitizenflag() == null || !applicant.getCitizenflag().equals("Y"))
 				|| (applicant.getVeteranflag() == null || !applicant.getVeteranflag().equals("Y"))
 				|| (applicant.getVisaflag() == null && !applicant.getVisaflag().equals("Y"))) {
-			System.out.println("failed as getCitizenflag");
+			
 			pass = false;
 		}
 
@@ -371,10 +370,8 @@ public class ApplicantDao {
 			TypedQuery<HdzApplication> query = em.createQuery(qString, HdzApplication.class);
 			query.setParameter("id", applicant.getApplicantid());
 			query.setParameter("jobid", Long.parseLong(jobid));
-			System.out.println(applicant.getApplicantid());
 			application = query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		} finally {
 			em.close();

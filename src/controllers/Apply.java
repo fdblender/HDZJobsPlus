@@ -18,6 +18,8 @@ import util.Email;
 
 /**
  * Servlet implementation class Apply
+ * 
+ * @author Brian
  */
 @WebServlet("/Apply")
 public class Apply extends HttpServlet {
@@ -28,7 +30,6 @@ public class Apply extends HttpServlet {
 	 */
 	public Apply() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -37,14 +38,21 @@ public class Apply extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String jobid = request.getParameter("jobid");
 		String appid = request.getParameter("applicantid");
 		HdzApplicant applicant = null;
-		System.out.println(appid + " -> -> ");
 		try {
 			if (appid != null) {
-				System.out.println("in if appid");
 				applicant = ApplicantDao.getApplicantById(appid);
 				HdzJob job = ApplicantDao.getJobById(jobid);
 				HdzApplication application = new HdzApplication();
@@ -82,19 +90,15 @@ public class Apply extends HttpServlet {
 				}
 
 			} else {
-				System.out.println("in else appid");
 				applicant = (HdzApplicant) session.getAttribute("user");
 				HdzJob job = ApplicantDao.getJobById(jobid);
 				HdzApplication application = new HdzApplication();
 				List<HdzApplication> myapps = applicant.getHdzApplications();
-				System.out.println(jobid + "-> ->");
 				if (ApplicantDao.checkPreviouslyApplied(applicant, jobid)) {
-					System.out.println("in true");
 					request.setAttribute("message", "Already Applied for the Job");
 					request.getRequestDispatcher("/YourApplications").forward(request, response);
 				} else {
 					if (ApplicantDao.checkFlags(applicant)) {
-						System.out.println("in all -- app");
 						if ((applicant.getEmployeeflag() != null && applicant.getEmployeeflag().equals("Y"))
 								|| ApplicantDao.checkPositive(applicant)) {
 							application.setAppstatus("WorkRefChecked");
@@ -118,19 +122,8 @@ public class Apply extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }
