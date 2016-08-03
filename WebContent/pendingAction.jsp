@@ -111,7 +111,7 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
 					<div id="accordion">
-					<h3 style="background-color: #24bdc2; color: #ffffff;"><b>Search Applications</b></h3>
+					<h3 style="background-color:  #fadddc; color: #ffffff;"><b>Search Applications</b></h3>
 						<div>
 							<form action="ViewApplications" method="post">
 								<div class="form-group">
@@ -153,7 +153,7 @@
 								</c:if>
 							</form>
 						</div>
-						<h3 style="background-color: #24bdc2;color: #ffffff;"><b>Pending Actions</b></h3>
+						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Pending Actions</b></h3>
 						<div>
 						<c:set var="actions" scope="session" value="${actionList}" />
 								<c:if test="${actions != null}">
@@ -190,7 +190,7 @@
 								<h2>No Action Pending!!</h2>
 								</c:if>
 						</div>
-						<h3 style="background-color: #24bdc2;color: #ffffff;"><b>Add Jobs</b></h3>
+						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Add Jobs</b></h3>
 						<div>
 							<form id="target" action="AddJobs" method="post">
 								
@@ -209,7 +209,7 @@
 							</form>
 						</div>
 						<c:if test="${role == 'HiringManager'}">
-						<h3 style="background-color: #24bdc2;color: #ffffff;"><b>Hire Qualified Applicants</b></h3>
+						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Hire Qualified Applicants</b></h3>
 						<div>
 								<table class="table table-bordered">
 								<tr>
@@ -238,7 +238,7 @@
 								</table>
 
 						</div>
-						<h3 style="background-color: #24bdc2;color: #ffffff;"><b>Find Applicants</b></h3>
+						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Find Applicants</b></h3>
 						<div>
 						<form action="FindApplicants" method="post">
 						<div class="form-group">

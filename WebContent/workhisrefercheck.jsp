@@ -13,7 +13,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pending Actions Details</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="css/mycss.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/mycss.css" /> -->
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
 
@@ -44,12 +48,12 @@
 			<br />
 
 			<c:if test="${VeteranApplication.hdzApplicant.workrefflag != null}">
-				<div align="center">
+				<div >
 					<h3>Validation Complete!!</h3>
 				</div>
 			</c:if>
 			<c:if test="${VeteranApplication.hdzApplicant.workrefflag == null}">
-				<table align="center" border="0" class="table">
+				<table  border="0"class="table table-bordered table-striped table-hover">
 					<thead>
 						<tr>
 							<th>Add comment</th>
@@ -61,7 +65,7 @@
 
 							<td>Please enter comment:</td>
 						</tr>
-						<tr align="center">
+						<tr >
 							<td><input type="text" name="addcomment" value=""
 								id="addcomment" /></td>
 						</tr>
@@ -70,38 +74,38 @@
 				</table>
 
 				<c:if test="${VeteranApplication.hdzApplicant.veteranflag == null}">
-					<div align="center"
-						Style="background-color: #24bdc2; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">Veteran</div>
-					<table border="1" align="center"
-						class="table responstable table-bordered table-hover">
-						<thead align="center">
-							<tr align="center">
-								<th align="center"><div align="center">App ID</div></th>
-								<th align="center"><div align="center">Applicant Name</div></th>
-								<th align="center"><div align="center">Applying</div></th>
-								<th align="center"><div align="center">Veteran</div></th>
-								<th align="center"><div align="center">Comments</div></th>
-								<th align="center"><div align="center">Actions</div></th>
+					<div 
+						Style="background-color: #fadddc; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">Veteran</div>
+					<table border="1" 
+						class="table table-bordered table-striped table-hover">
+						<thead >
+							<tr >
+								<th ><div >App ID</div></th>
+								<th ><div >Applicant Name</div></th>
+								<th ><div >Applying</div></th>
+								<th ><div >Veteran</div></th>
+								<th ><div >Comments</div></th>
+								<th ><div >Actions</div></th>
 							</tr>
 						</thead>
 						<tbody>
 
 							<tr>
-								<td align="center"><c:set var="myveteranid"
+								<td ><c:set var="myveteranid"
 										value="${VeteranApplication.applicationid}" /> <c:out
 										value="${myveteranid}" />
-								<td align="center"><c:out
+								<td ><c:out
 										value="${VeteranApplication.hdzApplicant.firstname} ${VeteranApplication.hdzApplicant.lastname}" />
 
 								</td>
-								<td align="center"><c:out
+								<td ><c:out
 										value="${VeteranApplication.hdzJob.hdzPosition.position}" /></td>
-								<td align="center"><c:out
+								<td ><c:out
 										value="${VeteranApplication.hdzApplicant.veteran}" /></td>
-								<td align="center">${VeteranApplication.comments}</td>
+								<td >${VeteranApplication.comments}</td>
 
 
-								<td align="center"><input type="button"
+								<td ><input type="button"
 									class="ValidateVeteran"
 									name="ValidateVeteran${VeteranApplication.hdzApplicant.applicantid}"
 									id="ValidateVeteran${VeteranApplication.hdzApplicant.applicantid}"
@@ -117,46 +121,46 @@
 				</c:if>
 
 
-				<div align="center"
-					Style="background-color: #24bdc2; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">Job
+				<div 
+					Style="background-color: #fadddc; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">Job
 					History</div>
-				<table border="1" align="center"
-					class="table responstable table-bordered table-hover">
-					<thead align="center">
-						<tr align="center">
-							<th align="center"><div align="center">App ID</div></th>
-							<th align="center"><div align="center">Applicant Name</div></th>
-							<th align="center"><div align="center">Previous Job</div></th>
-							<th align="center"><div align="center">Company</div></th>
-							<th align="center"><div align="center">Start Date</div></th>
-							<th align="center"><div align="center">End Date</div></th>
-							<th align="center"><div align="center">Description</div></th>
-							<th align="center"><div align="center">Comments</div></th>
-							<th align="center"><div align="center">Actions</div></th>
+				<table border="1" 
+					class="table table-bordered table-striped table-hover">
+					<thead >
+						<tr >
+							<th ><div >App ID</div></th>
+							<th ><div >Applicant Name</div></th>
+							<th ><div >Previous Job</div></th>
+							<th ><div >Company</div></th>
+							<th ><div >Start Date</div></th>
+							<th ><div >End Date</div></th>
+							<th ><div >Description</div></th>
+							<th ><div >Comments</div></th>
+							<th ><div >Actions</div></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="work" items="${WorkHistoryCheck}">
 							<c:if test="${work.jobhistoryflag == null}">
 								<tr>
-									<td align="center"><c:set var="myworkid"
+									<td ><c:set var="myworkid"
 											value="${WorkApplicationid}" /> <c:out value="${myworkid}" />
-									<td align="center"><c:out
+									<td ><c:out
 											value="${work.hdzApplicant.firstname} ${work.hdzApplicant.lastname}" />
 
 									</td>
 
-									<td align="center"><c:out value="${work.position}" /></td>
+									<td ><c:out value="${work.position}" /></td>
 
-									<td align="center"><c:out value="${work.companyname}" /></td>
-									<td align="center"><c:out value="${work.startdate}" /></td>
-									<td align="center"><c:out value="${work.enddate}" /></td>
+									<td ><c:out value="${work.companyname}" /></td>
+									<td ><c:out value="${work.startdate}" /></td>
+									<td ><c:out value="${work.enddate}" /></td>
 
-									<td align="center"><c:out value="${work.description}" /></td>
+									<td ><c:out value="${work.description}" /></td>
 
-									<td align="center">${VeteranApplication.comments}</td>
+									<td >${VeteranApplication.comments}</td>
 
-									<td align="center"><input type="button"
+									<td ><input type="button"
 										class="ValidateWork" name="ValidateWork${work.jobhistoryid}"
 										id="ValidateWork${work.jobhistoryid}" value="Validate" /> <input
 										type="button" class="FailWork"
@@ -169,45 +173,45 @@
 					</tbody>
 				</table>
 
-				<div align="center"
-					Style="background-color: #24bdc2; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">References</div>
-				<table border="1" align="center"
-					class="table responstable table-bordered table-hover">
-					<thead align="center">
-						<tr align="center">
-							<th align="center"><div align="center">App ID</div></th>
-							<th align="center"><div align="center">Applicant Name</div></th>
-							<th align="center"><div align="center">Reference Name</div></th>
-							<th align="center"><div align="center">Reference Email</div></th>
-							<th align="center"><div align="center">Reference Phone</div></th>
-							<th align="center"><div align="center">Reference
+				<div 
+					Style="background-color: #fadddc; color: #fff; border-bottom-width: 0; font-weight: bold; font-size: 16px; height: 34px">References</div>
+				<table border="1" 
+					class="table table-bordered table-striped table-hover">
+					<thead >
+						<tr >
+							<th ><div >App ID</div></th>
+							<th ><div >Applicant Name</div></th>
+							<th ><div >Reference Name</div></th>
+							<th ><div >Reference Email</div></th>
+							<th ><div >Reference Phone</div></th>
+							<th ><div >Reference
 									Position</div></th>
 
-							<th align="center"><div align="center">Comments</div></th>
-							<th align="center"><div align="center">Actions</div></th>
+							<th ><div >Comments</div></th>
+							<th ><div >Actions</div></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="refer" items="${ReferenceCheck}">
 							<c:if test="${refer.refflag == null}">
 								<tr>
-									<td align="center"><c:set var="myreferid"
+									<td ><c:set var="myreferid"
 											value="${WorkApplicationid}" /> <c:out value="${myreferid}" />
-									<td align="center"><c:out
+									<td ><c:out
 											value="${refer.hdzApplicant.firstname} ${refer.hdzApplicant.lastname}" />
 
 									</td>
-									<td align="center"><c:out value="${refer.refname}" /></td>
-									<td align="center"><c:out value="${refer.refemail}" /></td>
+									<td ><c:out value="${refer.refname}" /></td>
+									<td ><c:out value="${refer.refemail}" /></td>
 
-									<td align="center"><c:out value="${refer.refphone}" /></td>
-									<td align="center"><c:out value="${refer.refposition}" />
+									<td ><c:out value="${refer.refphone}" /></td>
+									<td ><c:out value="${refer.refposition}" />
 
 									</td>
 
-									<td align="center">${VeteranApplication.comments}</td>
+									<td >${VeteranApplication.comments}</td>
 
-									<td align="center"><input type="button"
+									<td ><input type="button"
 										class="ValidateRef" name="ValidateRef${refer.refid}"
 										id="ValidateRef${refer.refid}" value="Validate" /> <input
 										type="button" class="FailRef" name="FailRef${refer.refid}"
@@ -226,7 +230,7 @@
 		</div>
 		<script src="js/workhisrefercheck.js"></script>
 	</form>
-
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 </body>
