@@ -49,67 +49,67 @@ function limitText(limitField, limitCount, limitNum) {
 
 <br /><br />
 <c:if test="${NationalityCheck.hdzApplicant.citizenflag != null}">
-<div align="center"><h3>Validation Complete!!</h3></div>
+<div ><h3>Validation Complete!!</h3></div>
 </c:if>
  <c:if test="${NationalityCheck.hdzApplicant.citizenflag == null}">
-<table align="center" border="0" class="table">
+<table  border="0" class="table">
 <thead>
 <tr ><th>Add comment</th></tr>
 </thead>
 <tbody>
 
-<tr style="backgroundcolor:#4db6ac ">
+<tr style="backgroundcolor:#fadddc ">
 
 <td >Please enter comment:</td></tr>
-<tr align="center"><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
+<tr ><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
 
 </tbody>
 </table>
 
-<div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Nationality</div>
-<table border="1" align="center" class="table responstable table-bordered table-hover">
-<thead align="center">
-<tr align="center">
-<th align="center"><div align="center">App ID</div></th>
-<th align="center"><div align="center">Applicant Name</div></th>
-<th align="center"><div align="center">Applying</div></th>
-<th align="center"><div align="center">Citizen</div></th>
-<th align="center"><div align="center">Visa</div></th>
-<th align="center"><div align="center">Comments</div></th>
-<th align="center"><div align="center">Actions</div></th>
+<div  Style="background-color: #fadddc ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Nationality</div>
+<table border="1"  class="table responstable table-bordered table-hover">
+<thead >
+<tr >
+<th ><div >App ID</div></th>
+<th ><div >Applicant Name</div></th>
+<th ><div >Applying</div></th>
+<th ><div >Citizen</div></th>
+<th ><div >Visa</div></th>
+<th ><div >Comments</div></th>
+<th ><div >Actions</div></th>
 </tr>
 </thead>
  <tbody>
  
 <tr>   
-    <td align="center">   
+    <td >   
        
         <c:out value="${NationalityCheck.applicationid}"/>
-    <td align="center"> 
+    <td > 
 	
         <c:out value="${NationalityCheck.hdzApplicant.firstname} ${NationalityCheck.hdzApplicant.lastname}"/>
    
  	</td> 
-    <td align="center"> 
+    <td > 
 	
         <c:out value="${NationalityCheck.hdzJob.hdzPosition.position}"/>
     
  	</td> 
-	<td align="center">
+	<td >
     <c:out value="${NationalityCheck.hdzApplicant.citizen}"/>  
     
    </td>
-   <td align="center">
+   <td >
     <c:out value="${NationalityCheck.hdzApplicant.visa}"/>  
     
    </td>  
    
-     <td align="center">
+     <td >
     ${NationalityCheck.comments}
     
    </td>
    
-   <td align="center">
+   <td >
    
    <input type="button" class="ValidateNationality" name="ValidateNation${NationalityCheck.hdzApplicant.applicantid}" id="ValidateNation${NationalityCheck.hdzApplicant.applicantid}" value="Validate" />
    

@@ -18,7 +18,7 @@
         <li><a href="./YourApplications">Your Applications</a></li>
         <li><a href="./applicantprofile.jsp">My Profile</a></li>
         </c:if>
-        <c:if test="${role != 'applicant'}">
+        <c:if test="${role != 'applicant' && not empty role}">
         <li><a href="./PendingAction">Home</a></li>
         </c:if>
          <c:if test="${user != null}">  
