@@ -55,7 +55,7 @@
   <p>We specialize in Web Development</p> 
  
  <form class="form-inline" onsubmit="return validateLogin()"
-									action="Login" method="get">
+									action="Login" method="post">
     <input type="email" id="email" name="email" class="form-control" size="20" placeholder="Email Address" required>
     <input type="password" id="password" name="password" class="form-control" size="20" placeholder="Password" required>
     <br/><br/>
@@ -340,63 +340,5 @@ $(document).ready(function(){
 })
 </script>
 
-	
-	<%-- <div class="container">
-		<c:set var="mesL" scope="session" value="${message}" />
-		<c:if test="${mesL != null}">
-			<div class="alert alert-success">
-				<strong>${message}</strong> <span id="showSearchTerm"></span>
-			</div>
-		</c:if>
-
-		<div class="row vertical-offset-100">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color: white;">
-						<div class="row-fluid user-row" style="background-color: white;"
-							align="center">
-							<br>
-							<h3>HDZ Jobs Portal</h3>
-
-						</div>
-					</div>
-					<div class="panel-body">
-						<div role="form" class="form-signin">
-							<fieldset>
-								<label class="panel-login">
-									<div class="login_result"></div>
-								</label>
-								<form class="form-signin" onsubmit="return validateLogin()"
-									action="Login" method="get">
-									<label for="inputEmail" class="sr-only">Email address</label> <input
-										type="text" id="email" name="email" class="form-control"
-										placeholder="Email address" required autofocus> <label
-										for="inputPassword" class="sr-only">Password</label> <input
-										type="password" id="password" name="password"
-										class="form-control" placeholder="password" required>
-
-									<br/>
-									<select id="loginrole" name="loginrole" style="width: 320px;">
-										<option value="applicant">Applicant</option>
-										<option value="employee">Employee</option>
-									</select> <br/><br/>
-									<input
-										class="btn btn-lg btn-success btn-block" type="submit"
-										id="login" value="Login »">
-								</form>
-								<div class="login-help">
-									<h4>
-										<a href="./newapplicant.jsp">Create New Applicant Account</a>
-									</h4>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-	</div> --%>
 </body>
 </html>
