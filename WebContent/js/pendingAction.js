@@ -3,7 +3,10 @@
  */
 $(document).ready(function(){
 	
-	 $( "#accordion" ).accordion();
+	 $( "#accordion" ).accordion({
+		 heightStyle: "content"
+	 });
+	 
      $('.buttonLink').click(function (event) {
     	 var score = $("#score").val();
     	 if (score== null || score == "") {
