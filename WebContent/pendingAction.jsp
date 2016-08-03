@@ -94,7 +94,7 @@
 <link rel="stylesheet" href="css/theme.css" />
 <title>Home</title>
 </head>
-<body >
+<body style="color: #262626">
 <div id="container">
    <div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
    <div id="body">
@@ -111,7 +111,7 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
 					<div id="accordion">
-					<h3 style="background-color:  #fadddc; color: #ffffff;"><b>Search Applications</b></h3>
+					<h3 style="background-color:  #fadddc; color: #262626;"><b>Search Applications</b></h3>
 						<div>
 							<form action="ViewApplications" method="post">
 								<div class="form-group">
@@ -153,7 +153,7 @@
 								</c:if>
 							</form>
 						</div>
-						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Pending Actions</b></h3>
+						<h3 style="background-color:  #fadddc;color: #262626;"><b>Pending Actions</b></h3>
 						<div>
 						<c:set var="actions" scope="session" value="${actionList}" />
 								<c:if test="${actions != null}">
@@ -190,7 +190,7 @@
 								<h2>No Action Pending!!</h2>
 								</c:if>
 						</div>
-						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Add Jobs</b></h3>
+						<h3 style="background-color:  #fadddc;color: #262626;"><b>Add Jobs</b></h3>
 						<div>
 							<form id="target" action="AddJobs" method="post">
 								
@@ -203,13 +203,28 @@
 										name="description" id="description" value=""
 										class="form-control">
 								</div>
+								<div class="form-group">
+									<label for="typeAssgn">Type:</label> <input type="text"
+										name="type" id="type" value=""
+										class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="typeAssgn">No Of Openings:</label> <input type="text"
+										name="noOfOpenings" id="noOfOpenings" value=""
+										class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="typeAssgn">Overall Experience required:</label> <input type="text"
+										name="exp" id="exp" value=""
+										class="form-control">
+								</div>
 
 								<input type="submit" name="submit" id="submit" value="Add">
 
 							</form>
 						</div>
 						<c:if test="${role == 'HiringManager'}">
-						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Hire Qualified Applicants</b></h3>
+						<h3 style="background-color:  #fadddc;color: #262626;"><b>Hire Qualified Applicants</b></h3>
 						<div>
 								<table class="table table-bordered">
 								<tr>
@@ -238,7 +253,7 @@
 								</table>
 
 						</div>
-						<h3 style="background-color:  #fadddc;color: #ffffff;"><b>Find Applicants</b></h3>
+						<h3 style="background-color:  #fadddc;color: #262626;"><b>Find Applicants</b></h3>
 						<div>
 						<form action="FindApplicants" method="post">
 						<div class="form-group">
