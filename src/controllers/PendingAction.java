@@ -16,79 +16,89 @@ import services.RoleActionService;
 
 /**
  * Servlet implementation class PendingAction
+ * 
+ * @author Navreet
  */
 @WebServlet("/PendingAction")
 public class PendingAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PendingAction() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PendingAction() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		HdzEmployee employee = (HdzEmployee)session.getAttribute("user");
-		session.setAttribute("app", null);
-		if (employee == null) {
-			request.setAttribute("message", "Log in!!");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		} else {
-			String role = (String) session.getAttribute("role");
-			session.setAttribute("GI", "No");
-			List<HdzApplication> hdzapplication = null;
-			if (role.equals("ComplianceOfficer")) {
-				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionService.getActionsComplianceOfficer();
-				
-			} else if (role.equals("HRAssistant")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionService.getActionsHRAssistant();
-				
-			} else if (role.equals("HRManager")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionService.getActionsHRManager();
-				//System.out.println(hdzapplication.get(0).getAppstatus());
-				
-			} else if (role.equals("HRSpecialist")) {
-				session.setAttribute("HR", "Yes");
-				
-				hdzapplication = RoleActionService.getActionsHRSpecialist();
-				
-			} else if (role.equals("HealthCareProfessional")) {
-				session.setAttribute("HR", "No");
-				hdzapplication = RoleActionService.getActionsHealthCareProfessional();
-				
-			} else if (role.equals("HiringManager")) {
-				session.setAttribute("HR", "Yes");
-				hdzapplication = RoleActionService.getActionsHiringManager();
-				
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			HttpSession session = request.getSession();
+			HdzEmployee employee = (HdzEmployee) session.getAttribute("user");
+			session.setAttribute("app", null);
+			if (employee == null) {
+				request.setAttribute("message", "Log in!!");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 			} else {
-				session.setAttribute("HR", "No");
-				session.setAttribute("GI", "Yes");
-				hdzapplication = RoleActionService.getActionsEmployee();
-				
+				String role = (String) session.getAttribute("role");
+				session.setAttribute("GI", "No");
+				List<HdzApplication> hdzapplication = null;
+				if (role.equals("ComplianceOfficer")) {
+					session.setAttribute("HR", "No");
+					hdzapplication = RoleActionService.getActionsComplianceOfficer();
+
+				} else if (role.equals("HRAssistant")) {
+					session.setAttribute("HR", "Yes");
+					hdzapplication = RoleActionService.getActionsHRAssistant();
+
+				} else if (role.equals("HRManager")) {
+					session.setAttribute("HR", "Yes");
+					hdzapplication = RoleActionService.getActionsHRManager();
+					// System.out.println(hdzapplication.get(0).getAppstatus());
+
+				} else if (role.equals("HRSpecialist")) {
+					session.setAttribute("HR", "Yes");
+
+					hdzapplication = RoleActionService.getActionsHRSpecialist();
+
+				} else if (role.equals("HealthCareProfessional")) {
+					session.setAttribute("HR", "No");
+					hdzapplication = RoleActionService.getActionsHealthCareProfessional();
+
+				} else if (role.equals("HiringManager")) {
+					session.setAttribute("HR", "Yes");
+					hdzapplication = RoleActionService.getActionsHiringManager();
+
+				} else {
+					session.setAttribute("HR", "No");
+					session.setAttribute("GI", "Yes");
+					hdzapplication = RoleActionService.getActionsEmployee();
+
+				}
+				if (hdzapplication == null || hdzapplication.size() == 0) {
+					request.setAttribute("actionList", null);
+				} else {
+					request.setAttribute("actionList", hdzapplication);
+				}
+				List<HdzJob> jobs = RoleActionService.getActiveJobs();
+				request.setAttribute("jobList", jobs);
+				request.getRequestDispatcher("pendingAction.jsp").forward(request, response);
 			}
-			if (hdzapplication== null || hdzapplication.size() ==0) {
-				request.setAttribute("actionList", null);
-			} else {
-				request.setAttribute("actionList", hdzapplication);
-			}
-			List<HdzJob> jobs = RoleActionService.getActiveJobs();
-			request.setAttribute("jobList", jobs);
-			request.getRequestDispatcher("pendingAction.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 
