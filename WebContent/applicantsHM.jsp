@@ -21,9 +21,6 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
-
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 <link rel="stylesheet"
@@ -106,12 +103,14 @@
 				</div>
 			</c:if>
 			<c:set var="job" scope="session" value="${job}" />
+			
 			<div class="row">
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10">
 				<input type="hidden" id="jobid" name="jobid" value="${job.jobsid}">
 				<c:if test="${job != null}">
-								<table class="table table-bordered">
+				<h3>Jobs:</h3>
+								<table class="table table-bordered table-striped table-hover">
 
 									<thead>
 										<tr>											
@@ -136,8 +135,8 @@
 								</table>
 								</c:if>
 								<br/>
-								
-				<table class="table table-bordered">
+							<h3>Applications:</h3>	
+				<table class="table table-bordered table-striped table-hover">
 
 									<thead>
 										<tr>

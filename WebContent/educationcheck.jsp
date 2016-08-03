@@ -49,67 +49,67 @@ function limitText(limitField, limitCount, limitNum) {
 
 <br /><br />
 
-<table align="center" border="0" class="table">
+<table  border="0" class="table">
 <thead>
 <tr ><th>Add comment</th></tr>
 </thead>
 <tbody>
 
-<tr style="backgroundcolor:#4db6ac ">
+<tr style="backgroundcolor:#fadddc ">
 
 <td >Please enter comment:</td></tr>
-<tr align="center"><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
+<tr ><td><input type="text" name="addcomment" value="" id="addcomment"/></td></tr>
 
 </tbody>
 </table>
 
-<div align="center" Style="background-color: #01579b ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Education</div>
-<table border="1" align="center" class="table responstable table-bordered table-hover">
-<thead align="center">
-<tr align="center">
-<th align="center"><div align="center">App ID</div></th>
-<th align="center"><div align="center">Applicant Name</div></th>
-<th align="center"><div align="center">School Name</div></th>
-<th align="center"><div align="center">Degree</div></th>
-<th align="center"><div align="center">Date</div></th>
-<th align="center"><div align="center">Comment</div></th>
-<th align="center"><div align="center">Actions</div></th>
+<div  Style="background-color: #fadddc ;color: #fff;border-bottom-width: 0;font-weight: bold;font-size:16px; height:34px">Education</div>
+<table border="1"  class="table responstable table-bordered table-hover">
+<thead >
+<tr >
+<th ><div >App ID</div></th>
+<th ><div >Applicant Name</div></th>
+<th ><div >School Name</div></th>
+<th ><div >Degree</div></th>
+<th ><div >Date</div></th>
+<th ><div >Comment</div></th>
+<th ><div >Actions</div></th>
 
 </tr>
 </thead>
  <tbody>
  <c:forEach var="edu" items="${EducationCheck}">
 <tr>   
-    <td align="center">      
+    <td >      
         <c:set var="myeduid" value="${EduApplicationid}"/>
         <c:out value="${myeduid}"/>
         
-    <td align="center"> 
+    <td > 
 	
         <c:out value="${edu.hdzApplicant.firstname} ${edu.hdzApplicant.lastname}"/>
    
  	</td> 
     
-	<td align="center">
+	<td >
     <c:out value="${edu.schoolname}"/>  
     
    </td> 
    
-   <td align="center">
+   <td >
     <c:out value="${edu.degreecompleted}"/>  
     
    </td>
-   <td align="center">
+   <td >
     <c:out value="${edu.datecompleted}"/>  
     
    </td>
    
-    <td align="center">
+    <td >
    ${ApplicationComment.comments}
     
    </td>
     
-   <td align="center">
+   <td >
    
    <input type="button" class="ValidateEdu" name="ValidateEdu${edu.educationid}" id="ValidateEdu${edu.educationid}" value="Validate" />
    
