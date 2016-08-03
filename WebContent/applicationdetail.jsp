@@ -37,7 +37,7 @@ function limitText(limitField, limitCount, limitNum) {
 <jsp:include page="navbar.jsp" />
 
 
-<form action="ApplicationDetail" method="get" >
+<form action="ApplicationDetail" method="post" >
 <div class="container" Style="width:600px">
 <c:if test="${questionlist != null}">
 <div>

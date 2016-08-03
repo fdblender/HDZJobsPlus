@@ -49,7 +49,7 @@
 						</table>
 						<br />
 						<c:if test="${pendingcodingtest == 'yes'}">
-							<form id="target" action="ShowCodingTest" method="get">
+							<form id="target" action="ShowCodingTest" method="post">
 								<input type="submit" class="" name="showtests" id="showtests"
 									value="Complete Outstanding Coding Test" />
 							</form>

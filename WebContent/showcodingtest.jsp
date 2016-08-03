@@ -24,7 +24,7 @@
 
 			<div class="container" style="height: 100%">
 
-				<form class="form-signin" action="SaveCodingTest" method="get">
+				<form class="form-signin" action="SaveCodingTest" method="post">
 					<div class="container">
 						<c:set var="mesL" scope="session" value="${message}" />
 						<c:if test="${mesL != null}">
