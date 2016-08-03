@@ -16,6 +16,8 @@ import model.HdzApplication;
 
 /**
  * Servlet implementation class ViewApplications
+ * *
+ * @author Sanjukdha
  */
 @WebServlet("/ViewApplications")
 public class ViewApplications extends HttpServlet {
@@ -40,15 +42,13 @@ public class ViewApplications extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
-		
-		
+			
 		try {
 			
 			//HttpSession session = request.getSession();
 			String position = request.getParameter("position");
 			List<HdzApplication> apps = ApplicationsDao.getapplications(position);
+			
 			if (apps== null || apps.size() ==0) {
 				request.setAttribute("message", "No Results!!");
 				request.setAttribute("applicationsSearch", null);
@@ -56,11 +56,11 @@ public class ViewApplications extends HttpServlet {
 				request.setAttribute("applicationsSearch", apps);
 			}
 			request.getRequestDispatcher("/PendingAction").forward(request, response);
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
 			
+		} catch (NullPointerException e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);			
 		}
 	
 	}
