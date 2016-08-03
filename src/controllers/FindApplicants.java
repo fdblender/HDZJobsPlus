@@ -28,7 +28,6 @@ public class FindApplicants extends HttpServlet {
      */
     public FindApplicants() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

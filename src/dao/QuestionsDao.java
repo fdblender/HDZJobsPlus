@@ -24,7 +24,7 @@ public class QuestionsDao {
 	            query.setParameter("applicationid",Long.parseLong(applicationid));
 	            questions = query.getResultList();
 	        }catch (Exception e){
-	            e.printStackTrace();
+	        	return null;
 	        }finally{
 	            em.close();
 	        }return questions;

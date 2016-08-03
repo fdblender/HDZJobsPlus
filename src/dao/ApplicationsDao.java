@@ -43,7 +43,7 @@ public class ApplicationsDao {
 			app = query.getResultList();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}
@@ -63,7 +63,7 @@ public class ApplicationsDao {
 			app = query.getResultList();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			return null;
 		} finally {
 			em.close();
 		}

@@ -17,6 +17,8 @@ import util.Email;
 
 /**
  * Servlet implementation class ApplicantSelection
+ * 
+ * @author Navreet
  */
 @WebServlet("/ApplicantsHired")
 public class ApplicantsHired extends HttpServlet {
@@ -81,8 +83,7 @@ public class ApplicantsHired extends HttpServlet {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("/PendingAction").forward(request, response);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 

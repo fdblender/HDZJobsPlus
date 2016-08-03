@@ -12,26 +12,37 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ApplicantDao;
 import model.HdzJob;
 
+/**
+ * 
+ * @author Josh
+ *
+ */
 @WebServlet("/JobSearch")
 public class JobSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public JobSearch() {
-        super();
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String search = request.getParameter("search");
-		
-		List<HdzJob> jobs = ApplicantDao.searchJobs(search);
-		
-		request.setAttribute("jobs", jobs);
-
-		request.getRequestDispatcher("/jobs.jsp").forward(request, response);
+	public JobSearch() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			String search = request.getParameter("search");
+
+			List<HdzJob> jobs = ApplicantDao.searchJobs(search);
+
+			request.setAttribute("jobs", jobs);
+
+			request.getRequestDispatcher("/jobs.jsp").forward(request, response);
+		} catch (Exception e) {
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
 	}
 
 }

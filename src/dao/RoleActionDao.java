@@ -24,7 +24,7 @@ public class RoleActionDao {
             query.setParameter("status", "Fail");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -44,7 +44,7 @@ public class RoleActionDao {
             query.setParameter("status", "New");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -54,7 +54,6 @@ public class RoleActionDao {
 
 	public static List<HdzApplication> getActionsHRManager() {
 		// get all applicants where status is workReferenceChecked
-		System.out.println("in getActionsHRManager");
 		EntityManager em = DBUtil.getEmfFactory().createEntityManager();
         List<HdzApplication> hdzApplications = null;
         String qString = "select b from HdzApplication b where b.appstatus = :status";
@@ -64,7 +63,7 @@ public class RoleActionDao {
             query.setParameter("status", "WorkRefChecked");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -86,7 +85,7 @@ public class RoleActionDao {
             query.setParameter("status", "Fail");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -110,7 +109,7 @@ public class RoleActionDao {
             query.setParameter("status", "Fail");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -129,7 +128,7 @@ public class RoleActionDao {
             query.setParameter("status", "HRInterviewDone");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -151,7 +150,7 @@ public class RoleActionDao {
             query.setParameter("position", "developer");
             hdzApplications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -169,7 +168,7 @@ public class RoleActionDao {
             query.setParameter("id", Long.parseLong(id));
             hdzEmployee = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -186,7 +185,7 @@ public class RoleActionDao {
             TypedQuery<HdzJob> query = em.createQuery(qString,HdzJob.class);
             jobs = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -204,7 +203,7 @@ public class RoleActionDao {
             query.setParameter("id", Long.parseLong(jobId));
             applications = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();
@@ -222,7 +221,7 @@ public class RoleActionDao {
             query.setParameter("id", Long.parseLong(jobId));
             job = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+           return null;
         }
         finally{
                 em.close();

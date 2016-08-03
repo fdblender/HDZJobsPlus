@@ -32,7 +32,6 @@ public class testInsert {
 	}
  @Test
  public void testAddSkill(){
-	 System.out.println("Feature not yet implemented");
 	 fail();
  }
 }

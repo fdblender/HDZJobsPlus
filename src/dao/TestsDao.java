@@ -40,8 +40,8 @@ public class TestsDao {
 	            query.setParameter("interviewtype", interviewtype);
 	            question = query.setFirstResult(0).setMaxResults(1).getResultList();
 	        }catch (Exception e){
-	            e.printStackTrace();
-	        }finally{
+	        	return null;
+	        }finally{ 
 	            em.close();
 	        }
 	        if (question != null && question.size()>0) {
@@ -64,7 +64,7 @@ public class TestsDao {
 	            query.setParameter("jobquestionsid", Long.parseLong(jobquestionsid));	            
 	            question = query.getSingleResult();
 	        }catch (Exception e){
-	            e.printStackTrace();
+	        	return null;
 	        }finally{
 	            em.close();
 	        }

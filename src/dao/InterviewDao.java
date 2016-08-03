@@ -26,7 +26,7 @@ public class InterviewDao {
             query.setParameter("id",id);
             coding = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+        	return null;
         }
         finally{
                 em.close();
@@ -44,7 +44,7 @@ public class InterviewDao {
             query.setParameter("id", Long.parseLong(appid));
             hdzApplication = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -77,7 +77,7 @@ public class InterviewDao {
             query.setParameter("id", hdzApplication.getApplicationid());
             comment = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -96,7 +96,7 @@ public class InterviewDao {
             query.setParameter("type", role);
             questions = query.setFirstResult(0).setMaxResults(10).getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -114,7 +114,7 @@ public class InterviewDao {
             query.setParameter("id", hdzApplication.getApplicationid());
             score = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -163,7 +163,7 @@ public class InterviewDao {
             query.setParameter("id", Long.parseLong(jobId));
             applicants = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -183,7 +183,7 @@ public class InterviewDao {
             query.setParameter("experience", new BigDecimal(experience));
             applicants = query.getResultList();
         }catch (Exception e){
-            e.printStackTrace();
+            return null;
         }
         finally{
                 em.close();
@@ -202,7 +202,7 @@ public class InterviewDao {
             query.setParameter("id", hdzApplication.getApplicationid());
             position = query.getSingleResult();
         }catch (Exception e){
-            e.printStackTrace();
+            return false;
         }
         finally{
                 em.close();

@@ -32,15 +32,13 @@ public class PasswordUtilTest {
 	public void test() {
 		String salt1=PasswordUtil.getSalt();
 		String pwd1 = "admin123";
-		System.out.println("Password: "+pwd1+ "  Random Salt "+salt1);
+		/*System.out.println("Password: "+pwd1+ "  Random Salt "+salt1);*/
 		String hashpwd1;
 		
 		try {
 			hashpwd1= PasswordUtil.hashPasswordPlusSalt(pwd1, salt1);
 			assertTrue(PasswordUtil.compareSaltedHashWithUserEnteredPwd(salt1, pwd1, hashpwd1));
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}	
 	}
 }
