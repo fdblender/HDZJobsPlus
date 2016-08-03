@@ -98,7 +98,7 @@
 <div id="container">
    <div id="header"><jsp:include page="navbar.jsp"></jsp:include></div>
    <div id="body">
-   <div class="container" style="height: 100%">
+   <div class="container" >
 
 		<div style="background-color: white;" class="panel-body">
 			<c:set var="mesL" scope="session" value="${message}" />

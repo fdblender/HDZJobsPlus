@@ -84,7 +84,7 @@
 						<tr>
 							<td>${job.hdzPosition.position}</td>
 							<td>${job.description}</td>
-							<td>${job.overallexperience}</td>
+							<td>${job.overallexperience} years</td>
 							<td>${job.numberopenings}</td>
 							<td><c:if test="${role =='applicant'}">
 									<form action="Apply">
