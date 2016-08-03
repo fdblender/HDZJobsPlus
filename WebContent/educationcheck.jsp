@@ -14,7 +14,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Pending Actions Details</title>
 <jsp:include page="bootstrap.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="css/mycss.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/mycss.css" /> -->
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 </head>
 <body >
 
@@ -128,7 +132,7 @@ function limitText(limitField, limitCount, limitNum) {
   <script  src="js/educationcheck.js"></script>
 </form>
 
-
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

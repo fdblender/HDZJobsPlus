@@ -88,6 +88,10 @@
 }
 </style>
 <script src="js/pendingAction.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+<!-- <link rel="stylesheet" href="css/style.css" /> -->
+<link rel="stylesheet" href="css/theme.css" />
 <title>Suitable Applicants</title>
 </head>
 <body id="body" class="ui-widget-content" style="border: 0;">
@@ -169,6 +173,6 @@
 			</div>
 		</div>
 	</div>
-
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
