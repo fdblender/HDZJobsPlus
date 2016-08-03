@@ -12,7 +12,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">About</a></li>
+      <li><a href="./about.jsp">About</a></li>
       <li><a href="./Jobs">Jobs</a></li>
       <c:if test="${role =='applicant'}">  
         <li><a href="./YourApplications">Your Applications</a></li>
@@ -28,7 +28,7 @@
         <li><a href="login.jsp">Login</a></li>
         <li><a href="./newapplicant.jsp">Sign Up</a>
         </c:if>
-        <li><a href="#">Contact</a></li>
+        <li><a href="./contact.jsp">Contact</a></li>
       </ul>
     </div>
   </div>
