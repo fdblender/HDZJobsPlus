@@ -1,1 +1,1 @@
-# HDZjobs is a job portal to search and apply jobs at HDZ Enterprises.
+# HDZjobsPlus is a team project for the Montgomery College Java Web Bootcamp. This application is a job portal to provide management of the job hiring process and to allow job applicants to search and apply for jobs. Individual authors are noted in the javadoc section of each package.
